@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.30503.244
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalculationImpedancesApp", "CalculationImpedancesApp\CalculationImpedancesApp.csproj", "{BB80D9CE-4631-45A6-9D51-90D51C0C18FE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalculationImpedances", "CalculationImpedances\CalculationImpedances.csproj", "{B05A3AFB-0FBF-43B2-A94B-1CF5E8B33EB4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{BB80D9CE-4631-45A6-9D51-90D51C0C18FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BB80D9CE-4631-45A6-9D51-90D51C0C18FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BB80D9CE-4631-45A6-9D51-90D51C0C18FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B05A3AFB-0FBF-43B2-A94B-1CF5E8B33EB4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B05A3AFB-0FBF-43B2-A94B-1CF5E8B33EB4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B05A3AFB-0FBF-43B2-A94B-1CF5E8B33EB4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B05A3AFB-0FBF-43B2-A94B-1CF5E8B33EB4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
