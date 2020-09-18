@@ -13,31 +13,27 @@ namespace CalculationImpedances
 {
     public partial class ElementForm : Form
     {
-        public IElement Element { set; get; }
+        public IElement Element;
 
         public ElementForm()
         {
             InitializeComponent();
         }
 
-        private void DisplayInformation(object sender, EventArgs e)
-        {
-            if (Element != null)
-            {
-                elementTextBox.Text = Convert.ToString(Element.Value);
-            }
-        }
-
         private void OKButton_Click(object sender, EventArgs e)
         {
-            try
+            if (elementTextBox.Text.Length != 0)
             {
-                this.DialogResult = DialogResult.OK;
-            }
-            catch (ArgumentException exception)
-            {
-                MessageBox.Show(exception.Message, "Error",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                try
+                {
+                    //Element
+                    this.DialogResult = DialogResult.OK;
+                }
+                catch (ArgumentException exception)
+                {
+                    MessageBox.Show(exception.Message, "Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 

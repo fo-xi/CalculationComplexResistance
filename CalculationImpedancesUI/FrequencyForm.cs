@@ -21,7 +21,24 @@ namespace CalculationImpedances
 
         private void OKButton_Click(object sender, EventArgs e)
         {
+            if (frequencyTextBox.Text.Length != 0)
+            {
+                try
+                {
+                    Frequency = double.Parse(frequencyTextBox.Text);
+                    this.DialogResult = DialogResult.OK;
+                }
+                catch
+                {
+                    MessageBox.Show("Incorrect Value", "Warning",
+                   MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+        }
 
+        private void CancelButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

@@ -26,8 +26,6 @@ namespace CalculationImpedances
 
         private BindingSource bsElements = new BindingSource();
 
-        private List<IElement> _auxiliaryElementList = null;
-
         public MainForm()
         {
             InitializeComponent();
@@ -169,11 +167,6 @@ namespace CalculationImpedances
             ChainsListBox.DisplayMember = "Name";
         }
 
-        private void ElementsListBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void ChainsListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             var selectedIndexCircuit = ChainsListBox.SelectedIndex;
@@ -181,9 +174,8 @@ namespace CalculationImpedances
             if (selectedIndexCircuit != -1)
             {
                 var selectedCircuit = _circuits[selectedIndexCircuit];
-                _auxiliaryElementList = selectedCircuit.Elements;
                 ElementsListBox.DataSource = null;
-                ElementsListBox.DataSource = _auxiliaryElementList;
+                ElementsListBox.DataSource = selectedCircuit.Elements;
                 ElementsListBox.DisplayMember = "Name";
             }
         }

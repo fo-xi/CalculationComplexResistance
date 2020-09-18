@@ -99,7 +99,6 @@
             this.ElementsListBox.Name = "ElementsListBox";
             this.ElementsListBox.Size = new System.Drawing.Size(171, 289);
             this.ElementsListBox.TabIndex = 4;
-            this.ElementsListBox.SelectedIndexChanged += new System.EventHandler(this.ElementsListBox_SelectedIndexChanged);
             // 
             // ChainsListBox
             // 
@@ -166,7 +165,7 @@
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(722, 57);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(722, 52);
             this.tableLayoutPanel3.TabIndex = 1;
             // 
             // tableLayoutPanel5
@@ -186,7 +185,7 @@
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 1;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(172, 51);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(172, 46);
             this.tableLayoutPanel5.TabIndex = 2;
             // 
             // editFrequencyButton
@@ -197,7 +196,7 @@
             this.editFrequencyButton.Location = new System.Drawing.Point(61, 3);
             this.editFrequencyButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.editFrequencyButton.Name = "editFrequencyButton";
-            this.editFrequencyButton.Size = new System.Drawing.Size(49, 45);
+            this.editFrequencyButton.Size = new System.Drawing.Size(49, 40);
             this.editFrequencyButton.TabIndex = 2;
             this.editFrequencyButton.Text = "edit";
             this.editFrequencyButton.UseVisualStyleBackColor = true;
@@ -211,7 +210,7 @@
             this.removeFrequencyButton.Location = new System.Drawing.Point(118, 3);
             this.removeFrequencyButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.removeFrequencyButton.Name = "removeFrequencyButton";
-            this.removeFrequencyButton.Size = new System.Drawing.Size(50, 45);
+            this.removeFrequencyButton.Size = new System.Drawing.Size(50, 40);
             this.removeFrequencyButton.TabIndex = 1;
             this.removeFrequencyButton.Text = "remove";
             this.removeFrequencyButton.UseVisualStyleBackColor = true;
@@ -225,7 +224,7 @@
             this.addFrequencyButton.Location = new System.Drawing.Point(4, 3);
             this.addFrequencyButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.addFrequencyButton.Name = "addFrequencyButton";
-            this.addFrequencyButton.Size = new System.Drawing.Size(49, 45);
+            this.addFrequencyButton.Size = new System.Drawing.Size(49, 40);
             this.addFrequencyButton.TabIndex = 0;
             this.addFrequencyButton.Text = "add";
             this.addFrequencyButton.UseVisualStyleBackColor = true;
@@ -246,7 +245,7 @@
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 1;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(172, 51);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(172, 46);
             this.tableLayoutPanel4.TabIndex = 1;
             // 
             // editElementButton
@@ -257,7 +256,7 @@
             this.editElementButton.Location = new System.Drawing.Point(61, 3);
             this.editElementButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.editElementButton.Name = "editElementButton";
-            this.editElementButton.Size = new System.Drawing.Size(49, 45);
+            this.editElementButton.Size = new System.Drawing.Size(49, 40);
             this.editElementButton.TabIndex = 1;
             this.editElementButton.Text = "edit";
             this.editElementButton.UseVisualStyleBackColor = true;
