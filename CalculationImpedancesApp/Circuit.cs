@@ -39,12 +39,13 @@ namespace CalculationImpedancesApp
             Elements = elements;
         }
 
-        public Complex[] CalculateZ(double[] frequencies)
+        public List<Complex> CalculateZ(List<double> frequencies)
         {
-            Complex[] results = new Complex[frequencies.Length];
+            List<Complex> results = new List<Complex>();
 
-            for (int i = 0; i < results.Length; i++)
+            for (int i = 0; i < frequencies.Count; i++)
             {
+                results.Add(new Complex());
                 foreach (IElement element in Elements)
                 {
                     results[i] += element.CalculateZ(frequencies[i]);

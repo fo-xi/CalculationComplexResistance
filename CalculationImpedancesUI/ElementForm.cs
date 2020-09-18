@@ -26,7 +26,7 @@ namespace CalculationImpedances
             {
                 try
                 {
-                    //Element
+                    Element.Value = double.Parse(elementTextBox.Text);
                     this.DialogResult = DialogResult.OK;
                 }
                 catch (ArgumentException exception)

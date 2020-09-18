@@ -32,7 +32,7 @@
             this.FrequenciesListBox = new System.Windows.Forms.ListBox();
             this.ElementsListBox = new System.Windows.Forms.ListBox();
             this.ChainsListBox = new System.Windows.Forms.ListBox();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.ResultsListBox = new System.Windows.Forms.ListBox();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
@@ -64,7 +64,7 @@
             this.tableLayoutPanel1.Controls.Add(this.FrequenciesListBox, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.ElementsListBox, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.ChainsListBox, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.listBox1, 3, 0);
+            this.tableLayoutPanel1.Controls.Add(this.ResultsListBox, 3, 0);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(4, 3);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -114,17 +114,17 @@
             this.ChainsListBox.TabIndex = 0;
             this.ChainsListBox.SelectedIndexChanged += new System.EventHandler(this.ChainsListBox_SelectedIndexChanged);
             // 
-            // listBox1
+            // ResultsListBox
             // 
-            this.listBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.ResultsListBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 15;
-            this.listBox1.Location = new System.Drawing.Point(542, 3);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(177, 289);
-            this.listBox1.TabIndex = 6;
+            this.ResultsListBox.FormattingEnabled = true;
+            this.ResultsListBox.ItemHeight = 15;
+            this.ResultsListBox.Location = new System.Drawing.Point(542, 3);
+            this.ResultsListBox.Name = "ResultsListBox";
+            this.ResultsListBox.Size = new System.Drawing.Size(177, 289);
+            this.ResultsListBox.TabIndex = 6;
             // 
             // splitContainer1
             // 
@@ -165,7 +165,7 @@
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(722, 52);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(722, 46);
             this.tableLayoutPanel3.TabIndex = 1;
             // 
             // tableLayoutPanel5
@@ -185,7 +185,7 @@
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 1;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(172, 46);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(172, 40);
             this.tableLayoutPanel5.TabIndex = 2;
             // 
             // editFrequencyButton
@@ -196,7 +196,7 @@
             this.editFrequencyButton.Location = new System.Drawing.Point(61, 3);
             this.editFrequencyButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.editFrequencyButton.Name = "editFrequencyButton";
-            this.editFrequencyButton.Size = new System.Drawing.Size(49, 40);
+            this.editFrequencyButton.Size = new System.Drawing.Size(49, 34);
             this.editFrequencyButton.TabIndex = 2;
             this.editFrequencyButton.Text = "edit";
             this.editFrequencyButton.UseVisualStyleBackColor = true;
@@ -210,7 +210,7 @@
             this.removeFrequencyButton.Location = new System.Drawing.Point(118, 3);
             this.removeFrequencyButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.removeFrequencyButton.Name = "removeFrequencyButton";
-            this.removeFrequencyButton.Size = new System.Drawing.Size(50, 40);
+            this.removeFrequencyButton.Size = new System.Drawing.Size(50, 34);
             this.removeFrequencyButton.TabIndex = 1;
             this.removeFrequencyButton.Text = "remove";
             this.removeFrequencyButton.UseVisualStyleBackColor = true;
@@ -224,7 +224,7 @@
             this.addFrequencyButton.Location = new System.Drawing.Point(4, 3);
             this.addFrequencyButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.addFrequencyButton.Name = "addFrequencyButton";
-            this.addFrequencyButton.Size = new System.Drawing.Size(49, 40);
+            this.addFrequencyButton.Size = new System.Drawing.Size(49, 34);
             this.addFrequencyButton.TabIndex = 0;
             this.addFrequencyButton.Text = "add";
             this.addFrequencyButton.UseVisualStyleBackColor = true;
@@ -245,7 +245,7 @@
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 1;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(172, 46);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(172, 40);
             this.tableLayoutPanel4.TabIndex = 1;
             // 
             // editElementButton
@@ -256,7 +256,7 @@
             this.editElementButton.Location = new System.Drawing.Point(61, 3);
             this.editElementButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.editElementButton.Name = "editElementButton";
-            this.editElementButton.Size = new System.Drawing.Size(49, 40);
+            this.editElementButton.Size = new System.Drawing.Size(49, 34);
             this.editElementButton.TabIndex = 1;
             this.editElementButton.Text = "edit";
             this.editElementButton.UseVisualStyleBackColor = true;
@@ -298,7 +298,7 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.Button editElementButton;
         private System.Windows.Forms.Button editFrequencyButton;
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.ListBox ResultsListBox;
     }
 }
 

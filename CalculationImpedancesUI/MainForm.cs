@@ -22,9 +22,7 @@ namespace CalculationImpedances
 
         private List<Complex> _results = new List<Complex>();
 
-        private BindingSource bsCircuits = new BindingSource();
-
-        private BindingSource bsElements = new BindingSource();
+        private Circuit SupportCircuitry = null;
 
         public MainForm()
         {
@@ -54,6 +52,7 @@ namespace CalculationImpedances
                     ElementsListBox.Items.Insert(selectedIndex, element.Element);
                 }
             }
+            Calculate();
         }
 
         private void addFrequencyButton_Click(object sender, EventArgs e)
@@ -65,6 +64,7 @@ namespace CalculationImpedances
                 _frequencies.Add(frequency.Frequency);
                 FrequenciesListBox.Items.Add(frequency.Frequency);
             }
+            Calculate();
         }
 
         private void editFrequencyButton_Click(object sender, EventArgs e)
@@ -91,6 +91,7 @@ namespace CalculationImpedances
                     FrequenciesListBox.Items.Insert(selectedIndex, frequency.Frequency);
                 }
             }
+            Calculate();
         }
 
         private void removeFrequencyButton_Click(object sender, EventArgs e)
@@ -111,9 +112,8 @@ namespace CalculationImpedances
                 _frequencies.Remove(selectedContact);
                 FrequenciesListBox.Items.RemoveAt(selectedIndex);
             }
-            FrequenciesListBox.DataSource = null;
-            FrequenciesListBox.DataSource = _frequencies;
         }
+
         private void MainForm_Load_1(object sender, EventArgs e)
         {
             List<IElement> elements = new List<IElement>
@@ -162,8 +162,8 @@ namespace CalculationImpedances
             };
             _circuits.Add(new Circuit("Circuit No. 5", elements));
 
-            bsCircuits.DataSource = _circuits;
-            ChainsListBox.DataSource = bsCircuits;
+            ChainsListBox.DataSource = null;
+            ChainsListBox.DataSource = _circuits;
             ChainsListBox.DisplayMember = "Name";
         }
 
@@ -173,11 +173,19 @@ namespace CalculationImpedances
 
             if (selectedIndexCircuit != -1)
             {
-                var selectedCircuit = _circuits[selectedIndexCircuit];
+                SupportCircuitry = _circuits[selectedIndexCircuit];
                 ElementsListBox.DataSource = null;
-                ElementsListBox.DataSource = selectedCircuit.Elements;
+                ElementsListBox.DataSource = SupportCircuitry.Elements;
                 ElementsListBox.DisplayMember = "Name";
             }
+            Calculate();
+        }
+
+        private void Calculate()
+        {
+            _results = SupportCircuitry.CalculateZ(_frequencies);
+            ResultsListBox.DataSource = null;
+            ResultsListBox.DataSource = _results;
         }
     }
 }
