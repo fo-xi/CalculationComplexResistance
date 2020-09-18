@@ -39,5 +39,10 @@ namespace CalculationImpedancesApp
             Complex result = new Complex(Value, 0);
             return result;
         }
+
+        public override string ToString()
+        {
+            return "Resistor: " + Name + " = " + Value;
+        }
     }
 }

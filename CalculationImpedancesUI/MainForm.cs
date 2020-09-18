@@ -184,7 +184,6 @@ namespace CalculationImpedances
                 _elements = SupportCircuitry.Elements;
                 ElementsListBox.DataSource = null;
                 ElementsListBox.DataSource = SupportCircuitry.Elements;
-                ElementsListBox.DisplayMember = "Name";
             }
             Calculate();
         }

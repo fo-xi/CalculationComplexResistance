@@ -42,5 +42,10 @@ namespace CalculationImpedancesApp
             Complex result = -1 / (2 * Math.PI * frequency * this.Value);
             return result;
         }
+
+        public override string ToString()
+        {
+            return "Inductor: " + Name + " = " + Value;
+        }
     }
 }
