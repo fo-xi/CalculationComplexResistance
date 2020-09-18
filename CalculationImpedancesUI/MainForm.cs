@@ -48,10 +48,6 @@ namespace CalculationImpedances
                     selectedElement.Value = element.Value;
                     ElementsListBox.DataSource = null;
                     ElementsListBox.DataSource = _elements;
-                    //ElementsListBox.Items.RemoveAt(selectedIndex);
-                    //_elements.Remove(selectedElement);
-                    //_elements.Insert(selectedIndex, element.Element);
-                    //ElementsListBox.Items.Insert(selectedIndex, element.Element);
                 }
             }
             Calculate();
@@ -197,8 +193,8 @@ namespace CalculationImpedances
 
         private void Message(object sender, object e)
         {
-            MessageBox.Show(e.ToString(), "Warning",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            MessageBox.Show(e.ToString(), "Information",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }

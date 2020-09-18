@@ -13,25 +13,7 @@ namespace CalculationImpedancesApp
 
         public string Name { get; set; }
 
-        private List<IElement> _elements;
-
-        public List<IElement> Elements
-        {
-            get
-            {
-                return _elements;
-            }
-            set
-            {
-                if (value != _elements)
-                {
-                    CircuitChangetEvent?.Invoke(this,
-                    $"Item values have been changed!");
-                }
-                _elements = value;
-            }
-
-        }
+        public List<IElement> Elements;
 
         public Circuit(string name, List<IElement> elements)
         {
