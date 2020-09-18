@@ -7,9 +7,9 @@ namespace CalculationImpedancesApp
 {
     public class Circuit
     {
-        delegate void CircuitChanget(object sender, object e);
+        public delegate void CircuitChanget(object sender, object e);
 
-        event CircuitChanget CircuitChangetEvent;
+        public event CircuitChanget CircuitChangetEvent;
 
         public string Name { get; set; }
 
@@ -37,6 +37,11 @@ namespace CalculationImpedancesApp
         {
             Name = name;
             Elements = elements;
+
+            foreach (var i in Elements)
+            {
+                i.ValueChangetEvent += CallingAnElementEvent;
+            }
         }
 
         public List<Complex> CalculateZ(List<double> frequencies)
@@ -52,6 +57,11 @@ namespace CalculationImpedancesApp
                 }
             }
             return results;
+        }
+
+        private void CallingAnElementEvent(object sender, object e)
+        {
+            CircuitChangetEvent?.Invoke(sender, e);
         }
 
     }

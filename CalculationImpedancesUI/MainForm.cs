@@ -41,15 +41,17 @@ namespace CalculationImpedances
             {
                 var element = new ElementForm();
                 var selectedElement = _elements[selectedIndex];
-                element.Element = selectedElement;
+                element.Value = selectedElement.Value;
                 element.ShowDialog();
                 if (element.DialogResult == DialogResult.OK)
                 {
-
-                    ElementsListBox.Items.RemoveAt(selectedIndex);
-                    _elements.Remove(selectedElement);
-                    _elements.Insert(selectedIndex, element.Element);
-                    ElementsListBox.Items.Insert(selectedIndex, element.Element);
+                    selectedElement.Value = element.Value;
+                    ElementsListBox.DataSource = null;
+                    ElementsListBox.DataSource = _elements;
+                    //ElementsListBox.Items.RemoveAt(selectedIndex);
+                    //_elements.Remove(selectedElement);
+                    //_elements.Insert(selectedIndex, element.Element);
+                    //ElementsListBox.Items.Insert(selectedIndex, element.Element);
                 }
             }
             Calculate();
@@ -165,6 +167,11 @@ namespace CalculationImpedances
             ChainsListBox.DataSource = null;
             ChainsListBox.DataSource = _circuits;
             ChainsListBox.DisplayMember = "Name";
+
+            foreach (var i in _circuits)
+            {
+                i.CircuitChangetEvent += Message;
+            }
         }
 
         private void ChainsListBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -174,6 +181,7 @@ namespace CalculationImpedances
             if (selectedIndexCircuit != -1)
             {
                 SupportCircuitry = _circuits[selectedIndexCircuit];
+                _elements = SupportCircuitry.Elements;
                 ElementsListBox.DataSource = null;
                 ElementsListBox.DataSource = SupportCircuitry.Elements;
                 ElementsListBox.DisplayMember = "Name";
@@ -186,6 +194,12 @@ namespace CalculationImpedances
             _results = SupportCircuitry.CalculateZ(_frequencies);
             ResultsListBox.DataSource = null;
             ResultsListBox.DataSource = _results;
+        }
+
+        private void Message(object sender, object e)
+        {
+            MessageBox.Show(e.ToString(), "Warning",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
     }
 }

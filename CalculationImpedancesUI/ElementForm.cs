@@ -13,7 +13,7 @@ namespace CalculationImpedances
 {
     public partial class ElementForm : Form
     {
-        public IElement Element;
+        public double Value;
 
         public ElementForm()
         {
@@ -26,7 +26,7 @@ namespace CalculationImpedances
             {
                 try
                 {
-                    Element.Value = double.Parse(elementTextBox.Text);
+                    Value = double.Parse(elementTextBox.Text);
                     this.DialogResult = DialogResult.OK;
                 }
                 catch (ArgumentException exception)
