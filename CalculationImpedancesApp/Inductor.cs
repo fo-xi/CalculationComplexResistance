@@ -26,12 +26,9 @@ namespace CalculationImpedancesApp
                     ValueChangetEvent?.Invoke(this,
                     $"The inductor changed the value to {value}!");
                 }
-                else
-                {
-                    _value = value;
-                }
-
+                _value = value;
             }
+
         }
 
         public Inductor(string name, double value)

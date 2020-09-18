@@ -11,6 +11,8 @@ namespace CalculationImpedancesApp
 
         event CircuitChanget CircuitChangetEvent;
 
+        public string Name { get; set; }
+
         private List<IElement> _elements;
 
         public List<IElement> Elements
@@ -26,16 +28,14 @@ namespace CalculationImpedancesApp
                     CircuitChangetEvent?.Invoke(this,
                     $"Item values have been changed!");
                 }
-                else
-                {
-                    _elements = value;
-                }
+                _elements = value;
             }
 
         }
 
-        public Circuit(List<IElement> elements)
+        public Circuit(string name, List<IElement> elements)
         {
+            Name = name;
             Elements = elements;
         }
 

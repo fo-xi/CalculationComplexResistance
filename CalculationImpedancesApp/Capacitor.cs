@@ -26,11 +26,7 @@ namespace CalculationImpedancesApp
                     ValueChangetEvent?.Invoke(this,
                     $"The capacitor changed the value to {value}!");
                 }
-                else
-                {
-                    _value = value;
-                }
-
+                _value = value;
             }
         }
 

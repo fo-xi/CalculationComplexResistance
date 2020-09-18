@@ -24,10 +24,7 @@ namespace CalculationImpedancesApp
                     ValueChangetEvent?.Invoke(this,
                     $"The resistor changed the value to {value}!");
                 }
-                else
-                {
-                    _value = value;
-                }
+                _value = value;
             }
         }
 
