@@ -7,7 +7,7 @@ namespace CalculationImpedancesApp
 {
     public class Inductor : IElement
     {
-        public event IElement.ValueChanget ValueChangetEvent;
+        public event EventHandler ValueChanged;
 
         private double _value;
 
@@ -21,10 +21,14 @@ namespace CalculationImpedancesApp
             }
             set
             {
+                if (value < 0)
+                {
+                    throw new ArgumentOutOfRangeException($"The {nameof(value)} cannot be negative!");
+                }
                 if (value != _value)
                 {
-                    ValueChangetEvent?.Invoke(this,
-                    $"The inductor changed the value to {value}!");
+                    ValueChanged?.Invoke(this,
+                    new ElementEventArgs($"The inductor changed the {nameof(value)} to {value}!"));
                 }
                 _value = value;
             }
@@ -39,7 +43,7 @@ namespace CalculationImpedancesApp
 
         public Complex CalculateZ(double frequency)
         {
-            Complex result = -1 / (2 * Math.PI * frequency * this.Value);
+            Complex result = 2 * Math.PI * frequency * this.Value;
             return result;
         }
 

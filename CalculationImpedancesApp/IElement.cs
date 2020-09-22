@@ -7,9 +7,7 @@ namespace CalculationImpedancesApp
 {
     public interface IElement
     {
-        delegate void ValueChanget(object sender, object e);
-
-        event ValueChanget ValueChangetEvent;
+        event EventHandler ValueChanged;
 
         string Name { get; set; }
 

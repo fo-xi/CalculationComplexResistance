@@ -7,9 +7,7 @@ namespace CalculationImpedancesApp
 {
     public class Circuit
     {
-        public delegate void CircuitChanget(object sender, object e);
-
-        public event CircuitChanget CircuitChangetEvent;
+        public event EventHandler CircuitChanged;
 
         public string Name { get; set; }
 
@@ -22,7 +20,7 @@ namespace CalculationImpedancesApp
 
             foreach (var i in Elements)
             {
-                i.ValueChangetEvent += CallingAnElementEvent;
+                i.ValueChanged += OnElementEvent;
             }
         }
 
@@ -41,10 +39,9 @@ namespace CalculationImpedancesApp
             return results;
         }
 
-        private void CallingAnElementEvent(object sender, object e)
+        private void OnElementEvent(object sender, EventArgs e)
         {
-            CircuitChangetEvent?.Invoke(sender, e);
+            CircuitChanged?.Invoke(sender, e);
         }
-
     }
 }
