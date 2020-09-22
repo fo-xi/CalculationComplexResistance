@@ -6,7 +6,7 @@ namespace CalculationImpedancesApp
 {
 	public class ElementEventArgs : EventArgs
 	{
-		private string Message { get; set; }
+		public string Message { get; set; }
 
 		public ElementEventArgs(string message)
 		{

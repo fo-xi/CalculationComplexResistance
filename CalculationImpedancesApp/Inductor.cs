@@ -43,8 +43,8 @@ namespace CalculationImpedancesApp
 
         public Complex CalculateZ(double frequency)
         {
-            Complex result = 2 * Math.PI * frequency * this.Value;
-            return result;
+            double result = 2 * Math.PI * frequency * this.Value;
+            return new Complex(0, result);
         }
 
         public override string ToString()

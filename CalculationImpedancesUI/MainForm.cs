@@ -32,14 +32,14 @@ namespace CalculationImpedances
             else
             {
                 var element = new ElementForm();
-                var selectedElement = project._elements[selectedIndex];
+                var selectedElement = project.Elements[selectedIndex];
                 element.Value = selectedElement.Value;
                 element.ShowDialog();
                 if (element.DialogResult == DialogResult.OK)
                 {
                     selectedElement.Value = element.Value;
                     ElementsListBox.DataSource = null;
-                    ElementsListBox.DataSource = project._elements;
+                    ElementsListBox.DataSource = project.Elements;
                 }
             }
             Calculate();
@@ -51,7 +51,7 @@ namespace CalculationImpedances
             frequency.ShowDialog();
             if (frequency.DialogResult == DialogResult.OK)
             {
-                project._frequencies.Add(frequency.Frequency);
+                project.Frequencies.Add(frequency.Frequency);
                 FrequenciesListBox.Items.Add(frequency.Frequency);
             }
             Calculate();
@@ -69,15 +69,15 @@ namespace CalculationImpedances
             {
 
                 var frequency = new FrequencyForm();
-                var selectedElement = project._frequencies[selectedIndex];
+                var selectedElement = project.Frequencies[selectedIndex];
                 frequency.Frequency = selectedElement;
                 frequency.ShowDialog();
                 if (frequency.DialogResult == DialogResult.OK)
                 {
 
                     FrequenciesListBox.Items.RemoveAt(selectedIndex);
-                    project._frequencies.Remove(selectedElement);
-                    project._frequencies.Insert(selectedIndex, frequency.Frequency);
+                    project.Frequencies.Remove(selectedElement);
+                    project.Frequencies.Insert(selectedIndex, frequency.Frequency);
                     FrequenciesListBox.Items.Insert(selectedIndex, frequency.Frequency);
                 }
             }
@@ -98,19 +98,19 @@ namespace CalculationImpedances
                             "Remove frequency", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
             if (result == DialogResult.OK)
             {
-                var selectedContact = project._frequencies[selectedIndex];
-                project._frequencies.Remove(selectedContact);
+                var selectedContact = project.Frequencies[selectedIndex];
+                project.Frequencies.Remove(selectedContact);
                 FrequenciesListBox.Items.RemoveAt(selectedIndex);
             }
         }
 
-        private void MainForm_Load_1(object sender, EventArgs e)
+        private void MainForm_Load(object sender, EventArgs e)
         {
-            ChainsListBox.DataSource = null;
-            ChainsListBox.DataSource = project._circuits;
-            ChainsListBox.DisplayMember = "Name";
+            СircuitListBox.DataSource = null;
+            СircuitListBox.DataSource = project.Circuits;
+            СircuitListBox.DisplayMember = "Name";
 
-            foreach (var i in project._circuits)
+            foreach (var i in project.Circuits)
             {
                 i.CircuitChanged += ShowMessage;
             }
@@ -118,12 +118,12 @@ namespace CalculationImpedances
 
         private void ChainsListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var selectedIndexCircuit = ChainsListBox.SelectedIndex;
+            var selectedIndexCircuit = СircuitListBox.SelectedIndex;
 
             if (selectedIndexCircuit != -1)
             {
-                project.CircuitElement = project._circuits[selectedIndexCircuit];
-                project._elements = project.CircuitElement.Elements;
+                project.CircuitElement = project.Circuits[selectedIndexCircuit];
+                project.Elements = project.CircuitElement.Elements;
                 ElementsListBox.DataSource = null;
                 ElementsListBox.DataSource = project.CircuitElement.Elements;
             }
@@ -132,15 +132,26 @@ namespace CalculationImpedances
 
         private void Calculate()
         {
-            project._results = project.CircuitElement.CalculateZ(project._frequencies);
+            project.Results = project.CircuitElement.CalculateZ(project.Frequencies);
+            ImpedanceValues();
             ResultsListBox.DataSource = null;
-            ResultsListBox.DataSource = project._results;
+            ResultsListBox.DataSource = project.ImpedanceValues;
         }
 
-        private void ShowMessage(object sender, object e)
+        private void ShowMessage(object sender, EventArgs e)
         {
-            MessageBox.Show(e.ToString(), "Information",
+            var message = e as ElementEventArgs; 
+            MessageBox.Show(message.Message, "Information",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void ImpedanceValues()
+        {
+            project.ImpedanceValues = new List<string>();
+            foreach (var i in project.Results)
+            {
+                project.ImpedanceValues.Add($"{i.Real} + {i.Imaginary}*j");
+            }
         }
     }
 }

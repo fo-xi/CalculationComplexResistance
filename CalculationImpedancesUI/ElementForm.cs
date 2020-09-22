@@ -13,7 +13,7 @@ namespace CalculationImpedances
 {
     public partial class ElementForm : Form
     {
-        public double Value;
+        public double Value { get; set; }
 
         public ElementForm()
         {

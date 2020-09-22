@@ -5,15 +5,17 @@ namespace CalculationImpedancesApp
 {
     public class Project
     {
-        public List<Circuit> _circuits = new List<Circuit>();
+        public List<Circuit> Circuits = new List<Circuit>();
 
-        public List<IElement> _elements = new List<IElement>();
+        public List<IElement> Elements = new List<IElement>();
 
-        public List<double> _frequencies = new List<double>();
+        public List<double> Frequencies = new List<double>();
 
-        public List<Complex> _results = new List<Complex>();
+        public List<Complex> Results = new List<Complex>();
 
         public Circuit CircuitElement = null;
+
+        public List<string> ImpedanceValues = new List<string>();
 
         public Project()
         {
@@ -24,16 +26,16 @@ namespace CalculationImpedancesApp
                 new Inductor("ut7", 32.6),
                 new Inductor("it6", 33.9)
             };
-            _circuits.Add(new Circuit("Circuit No. 1", elements));
+            Circuits.Add(new Circuit("Circuit No. 1", elements));
 
             elements = new List<IElement>
             {
                 new Inductor("re94", 20.0),
                 new Resistor("8u", 5.3),
                 new Inductor("2e7", 12.2),
-                new Capacitor("ft5", 36.0)
+                new Capacitor("ft5", 0.0036)
             };
-            _circuits.Add(new Circuit("Circuit No. 2", elements));
+            Circuits.Add(new Circuit("Circuit No. 2", elements));
 
             elements = new List<IElement>
             {
@@ -42,7 +44,7 @@ namespace CalculationImpedancesApp
                 new Inductor("j877", 56.7),
                 new Capacitor("df56", 21.0)
             };
-            _circuits.Add(new Circuit("Circuit No. 3", elements));
+            Circuits.Add(new Circuit("Circuit No. 3", elements));
 
             elements = new List<IElement>
             {
@@ -51,7 +53,7 @@ namespace CalculationImpedancesApp
                 new Inductor("21e", 38.6),
                 new Inductor("ki4", 90.7)
             };
-            _circuits.Add(new Circuit("Circuit No. 4", elements));
+            Circuits.Add(new Circuit("Circuit No. 4", elements));
 
 
             elements = new List<IElement>
@@ -61,7 +63,7 @@ namespace CalculationImpedancesApp
                 new Capacitor("hji", 6.2),
                 new Inductor("r43", 3.0)
             };
-            _circuits.Add(new Circuit("Circuit No. 5", elements));
+            Circuits.Add(new Circuit("Circuit No. 5", elements));
         }
     }
 }
