@@ -84,15 +84,16 @@
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(182, 33);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(182, 32);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // CancelButton
             // 
+            this.CancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.CancelButton.Location = new System.Drawing.Point(95, 3);
             this.CancelButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.CancelButton.Name = "CancelButton";
-            this.CancelButton.Size = new System.Drawing.Size(83, 27);
+            this.CancelButton.Size = new System.Drawing.Size(83, 26);
             this.CancelButton.TabIndex = 1;
             this.CancelButton.Text = "Cancel";
             this.CancelButton.UseVisualStyleBackColor = true;
@@ -103,7 +104,7 @@
             this.OKButton.Location = new System.Drawing.Point(4, 3);
             this.OKButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.OKButton.Name = "OKButton";
-            this.OKButton.Size = new System.Drawing.Size(83, 27);
+            this.OKButton.Size = new System.Drawing.Size(83, 26);
             this.OKButton.TabIndex = 0;
             this.OKButton.Text = "OK";
             this.OKButton.UseVisualStyleBackColor = true;
