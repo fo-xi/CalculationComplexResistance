@@ -11,9 +11,9 @@ namespace CalculationImpedancesApp
 
         public string Name { get; set; }
 
-        public List<IElement> Elements;
+        public ElementObservableCollectioncs<IElement> Elements;
 
-        public Circuit(string name, List<IElement> elements)
+        public Circuit(string name, ElementObservableCollectioncs<IElement> elements)
         {
             Name = name;
             Elements = elements;
