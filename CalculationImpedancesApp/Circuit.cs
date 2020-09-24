@@ -5,23 +5,18 @@ using System.Numerics;
 
 namespace CalculationImpedancesApp
 {
-    public class Circuit
+    public class Circuit: ISegment
     {
-        public event EventHandler CircuitChanged;
+        public event EventHandler SegmentChanged;
 
         public string Name { get; set; }
 
-        public ElementObservableCollectioncs<IElement> Elements;
+        public ElementObservableCollectioncs<ISegment> SubSegments { get; set; }
 
-        public Circuit(string name, ElementObservableCollectioncs<IElement> elements)
+        public Circuit(string name, ElementObservableCollectioncs<ISegment> subSegments)
         {
             Name = name;
-            Elements = elements;
-
-            foreach (var i in Elements)
-            {
-                i.ValueChanged += OnElementEvent;
-            }
+            SubSegments = subSegments;
         }
 
         public List<Complex> CalculateZ(List<double> frequencies)
@@ -31,17 +26,17 @@ namespace CalculationImpedancesApp
             for (int i = 0; i < frequencies.Count; i++)
             {
                 results.Add(new Complex());
-                foreach (IElement element in Elements)
+                foreach (ISegment segment in SubSegments)
                 {
-                    results[i] += element.CalculateZ(frequencies[i]);
+                    results[i] += segment.CalculateZ(frequencies[i]);
                 }
             }
             return results;
         }
 
-        private void OnElementEvent(object sender, EventArgs e)
+        Complex ISegment.CalculateZ(double frequencies)
         {
-            CircuitChanged?.Invoke(sender, e);
+            throw new NotImplementedException();
         }
     }
 }

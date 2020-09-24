@@ -12,146 +12,147 @@ using System.Numerics;
 
 namespace CalculationImpedances
 {
-    public partial class MainForm : Form
-    {
-        Project project = new Project();
+	public partial class MainForm : Form
+	{
+		Project project = new Project();
 
-        public MainForm()
-        {
-            InitializeComponent();
-        }
+		public MainForm()
+		{
+			InitializeComponent();
+		}
 
-        private void editElementButton_Click(object sender, EventArgs e)
-        {
-            var selectedIndex = ElementsListBox.SelectedIndex;
-            if (selectedIndex == -1)
-            {
-                MessageBox.Show("Select a element from the list", "Warning",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            else
-            {
-                var element = new ElementForm();
-                var selectedElement = project.Elements[selectedIndex];
-                element.Value = selectedElement.Value;
-                element.ShowDialog();
-                if (element.DialogResult == DialogResult.OK)
-                {
-                    selectedElement.Value = element.Value;
-                    ElementsListBox.DataSource = null;
-                    ElementsListBox.DataSource = project.Elements;
-                }
-            }
-            Calculate();
-        }
+		private void editElementButton_Click(object sender, EventArgs e)
+		{
+			var selectedIndex = ElementsListBox.SelectedIndex;
+			if (selectedIndex == -1)
+			{
+				MessageBox.Show("Select a element from the list", "Warning",
+					MessageBoxButtons.OK, MessageBoxIcon.Warning);
+			}
+			else
+			{
+				var element = new ElementForm();
+				var selectedElement = project.Elements[selectedIndex];
+				element.Value = selectedElement.Value;
+				element.ShowDialog();
+				if (element.DialogResult == DialogResult.OK)
+				{
+					selectedElement.Value = element.Value;
+					ElementsListBox.DataSource = null;
+					ElementsListBox.DataSource = project.Elements;
+				}
+			}
+			Calculate();
+		}
 
-        private void addFrequencyButton_Click(object sender, EventArgs e)
-        {
-            var frequency = new FrequencyForm();
-            frequency.ShowDialog();
-            if (frequency.DialogResult == DialogResult.OK)
-            {
-                project.Frequencies.Add(frequency.Frequency);
-                FrequenciesListBox.Items.Add(frequency.Frequency);
-            }
-            Calculate();
-        }
+		private void addFrequencyButton_Click(object sender, EventArgs e)
+		{
+			var frequency = new FrequencyForm();
+			frequency.ShowDialog();
+			if (frequency.DialogResult == DialogResult.OK)
+			{
+				project.Frequencies.Add(frequency.Frequency);
+				FrequenciesListBox.Items.Add(frequency.Frequency);
+			}
+			Calculate();
+		}
 
-        private void editFrequencyButton_Click(object sender, EventArgs e)
-        {
-            var selectedIndex = FrequenciesListBox.SelectedIndex;
-            if (selectedIndex == -1)
-            {
-                MessageBox.Show("Select a frequency from the list", "Warning",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            else
-            {
+		private void editFrequencyButton_Click(object sender, EventArgs e)
+		{
+			var selectedIndex = FrequenciesListBox.SelectedIndex;
+			if (selectedIndex == -1)
+			{
+				MessageBox.Show("Select a frequency from the list", "Warning",
+					MessageBoxButtons.OK, MessageBoxIcon.Warning);
+			}
+			else
+			{
 
-                var frequency = new FrequencyForm();
-                var selectedElement = project.Frequencies[selectedIndex];
-                frequency.Frequency = selectedElement;
-                frequency.ShowDialog();
-                if (frequency.DialogResult == DialogResult.OK)
-                {
+				var frequency = new FrequencyForm();
+				var selectedElement = project.Frequencies[selectedIndex];
+				frequency.Frequency = selectedElement;
+				frequency.ShowDialog();
+				if (frequency.DialogResult == DialogResult.OK)
+				{
 
-                    FrequenciesListBox.Items.RemoveAt(selectedIndex);
-                    project.Frequencies.Remove(selectedElement);
-                    project.Frequencies.Insert(selectedIndex, frequency.Frequency);
-                    FrequenciesListBox.Items.Insert(selectedIndex, frequency.Frequency);
-                }
-            }
-            Calculate();
-        }
+					FrequenciesListBox.Items.RemoveAt(selectedIndex);
+					project.Frequencies.Remove(selectedElement);
+					project.Frequencies.Insert(selectedIndex, frequency.Frequency);
+					FrequenciesListBox.Items.Insert(selectedIndex, frequency.Frequency);
+				}
+			}
+			Calculate();
+		}
 
-        private void removeFrequencyButton_Click(object sender, EventArgs e)
-        {
-            var selectedIndex = FrequenciesListBox.SelectedIndex;
-            if (selectedIndex == -1)
-            {
-                MessageBox.Show("Select a frequency from the list", "Warning",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
+		private void removeFrequencyButton_Click(object sender, EventArgs e)
+		{
+			var selectedIndex = FrequenciesListBox.SelectedIndex;
+			if (selectedIndex == -1)
+			{
+				MessageBox.Show("Select a frequency from the list", "Warning",
+					MessageBoxButtons.OK, MessageBoxIcon.Warning);
+				return;
+			}
 
-            DialogResult result = MessageBox.Show("Do you really want to remove this frequency?",
-                            "Remove frequency", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-            if (result == DialogResult.OK)
-            {
-                var selectedContact = project.Frequencies[selectedIndex];
-                project.Frequencies.Remove(selectedContact);
-                FrequenciesListBox.Items.RemoveAt(selectedIndex);
-            }
-        }
+			DialogResult result = MessageBox.Show("Do you really want to remove this frequency?",
+							"Remove frequency", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+			if (result == DialogResult.OK)
+			{
+				var selectedContact = project.Frequencies[selectedIndex];
+				project.Frequencies.Remove(selectedContact);
+				FrequenciesListBox.Items.RemoveAt(selectedIndex);
+			}
+		}
 
-        private void MainForm_Load(object sender, EventArgs e)
-        {
-            СircuitListBox.DataSource = null;
-            СircuitListBox.DataSource = project.Circuits;
-            СircuitListBox.DisplayMember = "Name";
+		private void MainForm_Load(object sender, EventArgs e)
+		{
+			СircuitListBox.DataSource = null;
+			СircuitListBox.DataSource = project.Circuits;
+			СircuitListBox.DisplayMember = "Name";
 
-            foreach (var i in project.Circuits)
-            {
-                i.CircuitChanged += ShowMessage;
-            }
-        }
+			foreach (var i in project.Circuits)
+			{
+				i.CircuitChanged += ShowMessage;
+			}
+		}
 
-        private void ChainsListBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            var selectedIndexCircuit = СircuitListBox.SelectedIndex;
+		private void ChainsListBox_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			var selectedIndexCircuit = СircuitListBox.SelectedIndex;
 
-            if (selectedIndexCircuit != -1)
-            {
-                project.CircuitElement = project.Circuits[selectedIndexCircuit];
-                project.Elements = project.CircuitElement.Elements;
-                ElementsListBox.DataSource = null;
-                ElementsListBox.DataSource = project.CircuitElement.Elements;
-            }
-            Calculate();
-        }
+			if (selectedIndexCircuit != -1)
+			{
+				project.CircuitElement = project.Circuits[selectedIndexCircuit];
+				project.AllElements(project.CircuitElement);
+				project.Elements = project.CircuitElement.Elements;
+				ElementsListBox.DataSource = null;
+				ElementsListBox.DataSource = project.CircuitElement.Elements;
+			}
+			Calculate();
+		}
 
-        private void Calculate()
-        {
-            project.Results = project.CircuitElement.CalculateZ(project.Frequencies);
-            ImpedanceValues();
-            ResultsListBox.DataSource = null;
-            ResultsListBox.DataSource = project.ImpedanceValues;
-        }
+		private void Calculate()
+		{
+			project.Results = project.CircuitElement.CalculateZ(project.Frequencies);
+			ImpedanceValues();
+			ResultsListBox.DataSource = null;
+			ResultsListBox.DataSource = project.ImpedanceValues;
+		}
 
-        private void ShowMessage(object sender, EventArgs e)
-        {
-            var message = e as ElementEventArgs; 
-            MessageBox.Show(message.Message, "Information",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
+		private void ShowMessage(object sender, EventArgs e)
+		{
+			var message = e as ElementEventArgs; 
+			MessageBox.Show(message.Message, "Information",
+					MessageBoxButtons.OK, MessageBoxIcon.Information);
+		}
 
-        private void ImpedanceValues()
-        {
-            project.ImpedanceValues = new List<string>();
-            foreach (var i in project.Results)
-            {
-                project.ImpedanceValues.Add($"{i.Real} + {i.Imaginary}*j");
-            }
-        }
-    }
+		private void ImpedanceValues()
+		{
+			project.ImpedanceValues = new List<string>();
+			foreach (var i in project.Results)
+			{
+				project.ImpedanceValues.Add($"{i.Real} + {i.Imaginary}*j");
+			}
+		}
+	}
 }

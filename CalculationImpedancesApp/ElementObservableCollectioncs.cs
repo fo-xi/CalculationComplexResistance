@@ -6,7 +6,7 @@ using System.Text;
 namespace CalculationImpedancesApp
 {
     public sealed class ElementObservableCollectioncs<T>: Collection<T>
-        where T: IElement
+        where T: ISegment
     {
         public event EventHandler CollectionChanged;
         protected override void InsertItem(int index, T item)

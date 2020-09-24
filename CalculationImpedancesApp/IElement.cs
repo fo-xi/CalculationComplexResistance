@@ -5,14 +5,8 @@ using System.Numerics;
 
 namespace CalculationImpedancesApp
 {
-    public interface IElement
+    public interface IElement: ISegment
     {
-        event EventHandler ValueChanged;
-
-        string Name { get; set; }
-
         double Value { get; set; }
-
-        Complex CalculateZ(double frequency);
     }
 }

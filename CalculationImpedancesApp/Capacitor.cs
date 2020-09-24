@@ -7,7 +7,9 @@ namespace CalculationImpedancesApp
 {
     public class Capacitor : IElement
     {
-        public event EventHandler ValueChanged;
+        public event EventHandler SegmentChanged;
+
+        public ElementObservableCollectioncs<ISegment> SubSegments { get; } = null;
 
         private double _value;
 
@@ -27,7 +29,7 @@ namespace CalculationImpedancesApp
                 }
                 if (value != _value)
                 {
-                    ValueChanged?.Invoke(this,
+                    SegmentChanged?.Invoke(this,
                     new ElementEventArgs($"The capacitor changed the {nameof(value)} to {value}!"));
                 }
                 _value = value;
