@@ -43,10 +43,6 @@ namespace CalculationImpedancesApp
 
 		public void AllElements(ISegment segment)
 		{
-			if (segment == CircuitElement)
-			{
-				Elements = new List<IElement>();
-			}
 			foreach (var element in segment.SubSegments)
 			{
 				if (element is IElement trueElement)

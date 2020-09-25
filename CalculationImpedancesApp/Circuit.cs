@@ -5,7 +5,7 @@ using System.Numerics;
 
 namespace CalculationImpedancesApp
 {
-    public class Circuit: ISegment
+    public class Circuit
     {
         public event EventHandler SegmentChanged;
 
@@ -32,11 +32,6 @@ namespace CalculationImpedancesApp
                 }
             }
             return results;
-        }
-
-        Complex ISegment.CalculateZ(double frequencies)
-        {
-            throw new NotImplementedException();
         }
     }
 }

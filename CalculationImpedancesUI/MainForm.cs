@@ -123,10 +123,13 @@ namespace CalculationImpedances
 			if (selectedIndexCircuit != -1)
 			{
 				project.CircuitElement = project.Circuits[selectedIndexCircuit];
-				project.AllElements(project.CircuitElement);
-				project.Elements = project.CircuitElement.Elements;
+				project.Elements = new List<IElement>();
+				foreach(IElement segment in project.CircuitElement.SubSegments)
+                {
+					project.AllElements(segment);
+				}
 				ElementsListBox.DataSource = null;
-				ElementsListBox.DataSource = project.CircuitElement.Elements;
+				ElementsListBox.DataSource = project.Elements;
 			}
 			Calculate();
 		}
