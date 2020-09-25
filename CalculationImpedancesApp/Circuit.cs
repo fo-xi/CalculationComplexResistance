@@ -7,7 +7,7 @@ namespace CalculationImpedancesApp
 {
     public class Circuit
     {
-        public event EventHandler SegmentChanged;
+        public event EventHandler CircuitChanged;
 
         public string Name { get; set; }
 
@@ -17,6 +17,7 @@ namespace CalculationImpedancesApp
         {
             Name = name;
             SubSegments = subSegments;
+            SubSegments.CollectionChanged += OnCircuitChanged;
         }
 
         public List<Complex> CalculateZ(List<double> frequencies)
@@ -32,6 +33,11 @@ namespace CalculationImpedancesApp
                 }
             }
             return results;
+        }
+
+        private void OnCircuitChanged(object sender, EventArgs e)
+        {
+            CircuitChanged?.Invoke(sender, e);
         }
     }
 }

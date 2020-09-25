@@ -12,7 +12,7 @@ namespace CalculationImpedancesApp
         protected override void InsertItem(int index, T item)
         {
             base.InsertItem(index, item);
-            item.ValueChanged += item_ValueChanged;
+            item.SegmentChanged += item_SegmentChanged;
             CollectionChanged?.Invoke(this, 
                 new ElementEventArgs($"Added element to the circuit"));
         }
@@ -21,12 +21,12 @@ namespace CalculationImpedancesApp
         {
             var item = this[index];
             base.RemoveItem(index);
-            item.ValueChanged -= item_ValueChanged;
+            item.SegmentChanged -= item_SegmentChanged;
             CollectionChanged?.Invoke(this,
                 new ElementEventArgs($"Removed element to the circuit"));
         }
 
-        private void item_ValueChanged(object sender, EventArgs e)
+        private void item_SegmentChanged(object sender, EventArgs e)
         {
             CollectionChanged?.Invoke(sender, e);
         }
