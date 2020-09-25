@@ -20,6 +20,12 @@ namespace CalculationImpedancesApp
         {
             Name = name;
             SubSegments = subSegments;
+            SubSegments.CollectionChanged += OnSegmentChanged;
+        }
+
+        private void OnSegmentChanged(object sender, EventArgs e)
+        {
+            SegmentChanged?.Invoke(sender, e);
         }
 
         public Complex CalculateZ(double frequencies)
