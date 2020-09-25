@@ -12,6 +12,9 @@ namespace CalculationImpedances
 {
     public partial class FrequencyForm : Form
     {
+        /// <summary>
+        /// Frequency entered.
+        /// </summary>
         public double Frequency { get; set; }
 
         public FrequencyForm()

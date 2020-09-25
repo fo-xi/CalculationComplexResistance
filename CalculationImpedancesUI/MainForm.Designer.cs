@@ -166,7 +166,7 @@
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(825, 36);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(825, 33);
             this.tableLayoutPanel3.TabIndex = 1;
             // 
             // tableLayoutPanel5
@@ -186,7 +186,7 @@
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 1;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(196, 28);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(196, 25);
             this.tableLayoutPanel5.TabIndex = 2;
             // 
             // editFrequencyButton
@@ -197,7 +197,7 @@
             this.editFrequencyButton.Location = new System.Drawing.Point(70, 4);
             this.editFrequencyButton.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.editFrequencyButton.Name = "editFrequencyButton";
-            this.editFrequencyButton.Size = new System.Drawing.Size(55, 20);
+            this.editFrequencyButton.Size = new System.Drawing.Size(55, 17);
             this.editFrequencyButton.TabIndex = 2;
             this.editFrequencyButton.Text = "edit";
             this.editFrequencyButton.UseVisualStyleBackColor = true;
@@ -211,7 +211,7 @@
             this.removeFrequencyButton.Location = new System.Drawing.Point(135, 4);
             this.removeFrequencyButton.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.removeFrequencyButton.Name = "removeFrequencyButton";
-            this.removeFrequencyButton.Size = new System.Drawing.Size(56, 20);
+            this.removeFrequencyButton.Size = new System.Drawing.Size(56, 17);
             this.removeFrequencyButton.TabIndex = 1;
             this.removeFrequencyButton.Text = "remove";
             this.removeFrequencyButton.UseVisualStyleBackColor = true;
@@ -225,7 +225,7 @@
             this.addFrequencyButton.Location = new System.Drawing.Point(5, 4);
             this.addFrequencyButton.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.addFrequencyButton.Name = "addFrequencyButton";
-            this.addFrequencyButton.Size = new System.Drawing.Size(55, 20);
+            this.addFrequencyButton.Size = new System.Drawing.Size(55, 17);
             this.addFrequencyButton.TabIndex = 0;
             this.addFrequencyButton.Text = "add";
             this.addFrequencyButton.UseVisualStyleBackColor = true;
@@ -246,7 +246,7 @@
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 1;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(196, 28);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(196, 25);
             this.tableLayoutPanel4.TabIndex = 1;
             // 
             // editElementButton
@@ -257,7 +257,7 @@
             this.editElementButton.Location = new System.Drawing.Point(70, 4);
             this.editElementButton.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.editElementButton.Name = "editElementButton";
-            this.editElementButton.Size = new System.Drawing.Size(55, 20);
+            this.editElementButton.Size = new System.Drawing.Size(55, 17);
             this.editElementButton.TabIndex = 1;
             this.editElementButton.Text = "edit";
             this.editElementButton.UseVisualStyleBackColor = true;

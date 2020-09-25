@@ -14,6 +14,9 @@ namespace CalculationImpedances
 {
 	public partial class MainForm : Form
 	{
+		/// <summary>
+		/// All program data.
+		/// </summary>
 		Project project = new Project();
 
 		public MainForm()

@@ -6,21 +6,45 @@ namespace CalculationImpedancesApp
 {
 	public class Project
 	{
+		/// <summary>
+		/// Circuits list.
+		/// </summary>
 		public List<Circuit> Circuits = new List<Circuit>();
 
+		/// <summary>
+		/// Segments list.
+		/// </summary>
 		public List<ISegment> Segments = new List<ISegment>();
 
+		/// <summary>
+		/// All elements of the selected circuit
+		/// </summary>
 		public List<IElement> Elements = new List<IElement>();
 
+		/// <summary>
+		/// Frequencies list.
+		/// </summary>
 		public List<double> Frequencies = new List<double>();
 
+		/// <summary>
+		/// Results list.
+		/// </summary>
 		public List<Complex> Results = new List<Complex>();
 
+		/// <summary>
+		/// Selected circuit from the list of circuits.
+		/// </summary>
 		public Circuit CircuitElement = null;
 
+		/// <summary>
+		/// The list necessary for a nice display 
+		/// of the result of calculating the impedance of the circuit.
+		/// </summary>
 		public List<string> ImpedanceValues = new List<string>();
 
-
+		/// <summary>
+		/// Create a circuits.
+		/// </summary>
 		public Project()
 		{
 			ElementObservableCollectioncs<ISegment> segments =
@@ -105,6 +129,10 @@ namespace CalculationImpedancesApp
 			Circuits.Add(new Circuit("Circuit No. 5", segments));
 		}
 
+		/// <summary>
+		/// Find all elements of a sub-segment.
+		/// </summary>
+		/// <param name="segment"></param>
 		public void AllElements(ISegment segment)
 		{
 			foreach (var element in segment.SubSegments)

@@ -11,12 +11,12 @@ namespace CalculationImpedancesApp
     public class Capacitor : IElement
     {
         /// <summary>
-        /// An event that will fire when an element changes.
+        /// An event that will fire when an segment changes.
         /// </summary>
         public event EventHandler SegmentChanged;
 
         /// <summary>
-        /// A list that stores either a list of elements or sub-segments.
+        /// A collection that stores sub-segments of the circiut.
         /// </summary>
         public ElementObservableCollectioncs<ISegment> SubSegments { get; } = null;
 
