@@ -6,10 +6,9 @@ using System.Text;
 namespace CalculationImpedancesApp
 {
     /// <summary>
-    /// Own collection of segments.
+    /// Own collection of segmentsObservable.
     /// </summary>
-    /// <typeparam name="T"></typeparam>
-    public sealed class ElementObservableCollections: Collection<ISegment>
+    public sealed class SegmentsObservableCollection: ObservableCollection<ISegment>
     {
         /// <summary>
         /// Event that fires when the collection changes.

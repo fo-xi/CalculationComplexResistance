@@ -47,86 +47,86 @@ namespace CalculationImpedancesApp
 		/// </summary>
 		public Project()
 		{
-			ElementObservableCollections segments =
-				new ElementObservableCollections
+			SegmentsObservableCollection segmentsObservable =
+				new SegmentsObservableCollection
 				{
-					new SerialCircuit("fj5", new ElementObservableCollections
+					new SerialCircuit("fj5", new SegmentsObservableCollection
 					{
 						new Inductor("jng5", 56.0),
 						new Resistor("fr4tt", 32.6)
 					}),
-					new ParallelCircuit("ut4f", new ElementObservableCollections
+					new ParallelCircuit("ut4f", new SegmentsObservableCollection
 					{
 						new Resistor("g56", 7.8),
 						new Capacitor("duj", 22.6)
 					}),
 
 				};
-			Circuits.Add(new Circuit("Circuit No. 1", segments));
+			Circuits.Add(new Circuit("Circuit No. 1", segmentsObservable));
 
-			segments = new ElementObservableCollections
+			segmentsObservable = new SegmentsObservableCollection
 			{
-				new SerialCircuit("ew5", new ElementObservableCollections
+				new SerialCircuit("ew5", new SegmentsObservableCollection
 				{
 					new Capacitor("j55t", 32.5),
 					new Resistor("sct", 4.6)
 				}),
-				new ParallelCircuit("ut4f", new ElementObservableCollections
+				new ParallelCircuit("ut4f", new SegmentsObservableCollection
 				{
 					new Inductor("bb7", 11.3),
 					new Resistor("ji9", 81.0)
 				}),
 
 			};
-			Circuits.Add(new Circuit("Circuit No. 2", segments));
+			Circuits.Add(new Circuit("Circuit No. 2", segmentsObservable));
 
-			segments = new ElementObservableCollections
+			segmentsObservable = new SegmentsObservableCollection
 			{
-				new ParallelCircuit("dt5", new ElementObservableCollections
+				new ParallelCircuit("dt5", new SegmentsObservableCollection
 				{
 					new Inductor("yu8", 22.5),
 					new Inductor("ff5", 7.8)
 				}),
-				new SerialCircuit("ee4", new ElementObservableCollections
+				new SerialCircuit("ee4", new SegmentsObservableCollection
 				{
 					new Inductor("nh78", 57.8),
 					new Capacitor("d45t", 90.4),
 				}),
 
 			};
-			Circuits.Add(new Circuit("Circuit No. 3", segments));
+			Circuits.Add(new Circuit("Circuit No. 3", segmentsObservable));
 
-			segments = new ElementObservableCollections
+			segmentsObservable = new SegmentsObservableCollection
 			{
-				new SerialCircuit("ddc4", new ElementObservableCollections
+				new SerialCircuit("ddc4", new SegmentsObservableCollection
 				{
 					new Resistor("h6j7", 32.5),
 					new Resistor("s23", 4.6)
 				}),
-				new ParallelCircuit("", new ElementObservableCollections
+				new ParallelCircuit("", new SegmentsObservableCollection
 				{
 					new Inductor("bb7", 11.3),
 					new Inductor("d4t", 88.9),
 				}),
 
 			};
-			Circuits.Add(new Circuit("Circuit No. 4", segments));
+			Circuits.Add(new Circuit("Circuit No. 4", segmentsObservable));
 
-			segments = new ElementObservableCollections
+			segmentsObservable = new SegmentsObservableCollection
 			{
-				new SerialCircuit("gh6", new ElementObservableCollections
+				new SerialCircuit("gh6", new SegmentsObservableCollection
 				{
 					new Capacitor("j55", 12.4),
 					new Capacitor("sc2", 78.4)
 				}),
-				new ParallelCircuit("u7y", new ElementObservableCollections
+				new ParallelCircuit("u7y", new SegmentsObservableCollection
 				{
 					new Inductor("aa2", 2.5),
 					new Capacitor("byb6", 8.7)
 				}),
 
 			};
-			Circuits.Add(new Circuit("Circuit No. 5", segments));
+			Circuits.Add(new Circuit("Circuit No. 5", segmentsObservable));
 		}
 
 		/// <summary>
@@ -135,7 +135,7 @@ namespace CalculationImpedancesApp
 		/// <param name="segment"></param>
 		public void AllElements(ISegment segment)
 		{
-			foreach (var element in segment.SubSegments)
+			foreach (var element in segment.SubSegmentsObservable)
 			{
 				if (element is IElement trueElement)
 				{

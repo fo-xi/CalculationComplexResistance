@@ -41,20 +41,20 @@ namespace CalculationImpedancesApp
         }
 
         /// <summary>
-        /// A collection that stores sub-segments of the circuit.
+        /// A collection that stores sub-segmentsObservable of the circuit.
         /// </summary>
-        public ElementObservableCollections SubSegments { get; set; }
+        public SegmentsObservableCollection SubSegmentsObservable { get; set; }
 
         /// <summary>
         /// Creates a circuit.
         /// </summary>
         /// <param name="name">Circuit name</param>
-        /// <param name="subSegments">Circuit sub segments</param>
-        public Circuit(string name, ElementObservableCollections subSegments)
+        /// <param name="subSegmentsObservable">Circuit sub segmentsObservable</param>
+        public Circuit(string name, SegmentsObservableCollection subSegmentsObservable)
         {
             Name = name;
-            SubSegments = subSegments;
-            SubSegments.CollectionChanged += OnCircuitChanged;
+            SubSegmentsObservable = subSegmentsObservable;
+            SubSegmentsObservable.CollectionChanged += OnCircuitChanged;
         }
 
         /// <summary>
@@ -79,7 +79,7 @@ namespace CalculationImpedancesApp
             for (int i = 0; i < frequencies.Count; i++)
             {
                 results.Add(new Complex());
-                foreach (ISegment segment in SubSegments)
+                foreach (ISegment segment in SubSegmentsObservable)
                 {
                     results[i] += segment.CalculateZ(frequencies[i]);
                 }

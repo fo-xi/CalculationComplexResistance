@@ -16,9 +16,9 @@ namespace CalculationImpedancesApp
 		public event EventHandler SegmentChanged;
 
 		/// <summary>
-		/// A collection that stores sub-segments.
+		/// A collection that stores sub-segmentsObservable.
 		/// </summary>
-		public ElementObservableCollections SubSegments { get; } = null;
+		public SegmentsObservableCollection SubSegmentsObservable { get; } = null;
 
 		/// <summary>
 		/// Element name.
