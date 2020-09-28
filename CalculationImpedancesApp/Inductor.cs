@@ -8,95 +8,29 @@ namespace CalculationImpedancesApp
     /// <summary>
     /// A class representing a inductor.
     /// </summary>
-    public class Inductor : IElement
+    public class Inductor : Element
     {
-        /// <summary>
-        /// An event that will fire when an element changes.
-        /// </summary>
-        public event EventHandler SegmentChanged;
-
-        /// <summary>
-        /// A collection that stores sub-segments of the circiut.
-        /// </summary>
-        public ElementObservableCollectioncs<ISegment> SubSegments { get; } = null;
-
-        /// <summary>
-        /// Inductor name.
-        /// </summary>
-        private double _name;
-
-        /// <summary>
-        /// Inductor value.
-        /// </summary>
-        private double _value;
-
-        /// <summary>
-        /// Returns and sets the name of a inductor.
-        /// </summary>
-        public string Name
-        {
-	        get
-	        {
-		        return _name;
-
-	        }
-	        set
-	        {
-		        if (value.Lenght < 0)
-		        {
-			        throw new ArgumentException($"The {nameof(Value)} cannot be empty!");
-		        }
-	        }
-        }
-
-        /// <summary>
-        /// Returns and sets the value of a inductor.
-        /// </summary>
-        public double Value
-        {
-            get
-            {
-                return _value;
-            }
-            set
-            {
-                if (value < 0)
-                {
-                    throw new ArgumentException($"The {nameof(value)} cannot be negative!");
-                }
-                if (value != _value)
-                {
-                    SegmentChanged?.Invoke(this,
-                    new ElementEventArgs($"The inductor changed the {nameof(value)} to {value}!"));
-                }
-                _value = value;
-            }
-
-        }
-
-        /// <summary>
+	    /// <summary>
         /// Creates a inductor.
         /// </summary>
         /// <param name="name">Inductor name.</param>
         /// <param name="value">Inductor value.</param>
-        public Inductor(string name, double value)
+        public Inductor(string name, double value): base(name, value)
         {
-            Name = name;
-            Value = value;
         }
 
         /// <summary>
         /// Inductor impedance calculation.
         /// <param name="frequency">Signal frequency.</param>
         /// </summary>
-        public Complex CalculateZ(double frequency)
+        public override Complex CalculateZ(double frequency)
         {
             double result = 2 * Math.PI * frequency * this.Value;
             return new Complex(0, result);
         }
 
         /// <summary>
-        /// Overriding a method that returns the name and value of the capacitor.
+        /// Overriding a method that returns the name and value of the inductor.
         /// </summary>
         public override string ToString()
         {

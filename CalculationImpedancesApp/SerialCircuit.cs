@@ -34,11 +34,12 @@ namespace CalculationImpedancesApp
 	        }
 	        set
 	        {
-		        if (value.Lenght < 0)
+		        if (value.Length < 0)
 		        {
-			        throw new ArgumentException($"The {nameof(Value)} cannot be empty!");
+			        throw new ArgumentException($"The {nameof(Name)} cannot be empty!");
 		        }
-	        }
+		        _name = value;
+            }
         }
 
         /// <summary>
