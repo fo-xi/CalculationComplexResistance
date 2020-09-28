@@ -20,14 +20,33 @@ namespace CalculationImpedancesApp
         public ElementObservableCollectioncs<ISegment> SubSegments { get; } = null;
 
         /// <summary>
+        /// Resistor name.
+        /// </summary>
+        private double _name;
+
+        /// <summary>
         /// Resistor value.
         /// </summary>
         private double _value;
 
         /// <summary>
-        /// Resistor value.
+        /// Returns and sets the name of a resistor.
         /// </summary>
-        public string Name { get; set; }
+        public string Name
+        {
+	        get
+	        {
+		        return _name;
+
+	        }
+	        set
+	        {
+		        if (value.Lenght < 0)
+		        {
+			        throw new ArgumentException($"The {nameof(Value)} cannot be empty!");
+		        }
+	        }
+        }
 
         /// <summary>
         /// Returns and sets the value of a resistor.
@@ -42,12 +61,12 @@ namespace CalculationImpedancesApp
             {
                 if (value < 0)
                 {
-                    throw new ArgumentOutOfRangeException($"The {nameof(value)} cannot be negative!");
+                    throw new ArgumentException($"The {nameof(Value)} cannot be negative!");
                 }
                 if (value != _value)
                 {
                     SegmentChanged?.Invoke(this,
-                    new ElementEventArgs($"The resistor changed the {nameof(value)} to {value}!"));
+                    new ElementEventArgs($"The resistor changed the {nameof(Value)} to {Value}!"));
                 }
                 _value = value;
             }

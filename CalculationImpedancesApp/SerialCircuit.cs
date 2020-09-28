@@ -13,22 +13,41 @@ namespace CalculationImpedancesApp
     public class SerialCircuit : ISegment
     {
         /// <summary>
-        /// An event that fires when a parallel segment changes.
+        /// An event that fires when a serial circuit segment changes.
         /// </summary>
         public event EventHandler SegmentChanged;
 
         /// <summary>
-        /// Serial circuit name.
+        /// Serial circuit segment name.
         /// </summary>
-        public string Name { get; set; }
+        private string _name;
 
         /// <summary>
-        /// Collection of parallel segment subsegments.
+        ///Returns and sets the name of the serial circuit segment.
+        /// </summary>
+        public string Name
+        {
+	        get
+	        {
+		        return _name;
+
+	        }
+	        set
+	        {
+		        if (value.Lenght < 0)
+		        {
+			        throw new ArgumentException($"The {nameof(Value)} cannot be empty!");
+		        }
+	        }
+        }
+
+        /// <summary>
+        /// Collection of serial circuit segment subsegments.
         /// </summary>
         public ElementObservableCollectioncs<ISegment> SubSegments { get; set; }
 
         /// <summary>
-        /// Create a serial segment.
+        /// Create a serial circuit segment.
         /// </summary>
         /// <param name="name">Serial circuit name.</param>
         /// <param name="subSegments">Serial circuit segment.</param>
@@ -51,7 +70,7 @@ namespace CalculationImpedancesApp
         }
 
         /// <summary>
-        /// Calculating the impedance of a serial segment.
+        /// Calculating the impedance of a serial circuit segment.
         /// </summary>
         /// <param name="frequencies">Signal frequency.</param>
         /// <returns></returns>

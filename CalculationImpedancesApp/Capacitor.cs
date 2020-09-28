@@ -21,14 +21,33 @@ namespace CalculationImpedancesApp
         public ElementObservableCollectioncs<ISegment> SubSegments { get; } = null;
 
         /// <summary>
+        /// Capacitor name.
+        /// </summary>
+        private string _name;
+
+        /// <summary>
         /// Capacitor value.
         /// </summary>
         private double _value;
 
         /// <summary>
-        /// Capacitor name.
+        /// Returns and sets the name of a capacitor.
         /// </summary>
-        public string Name { get; set; }
+        public string Name
+        {
+	        get
+	        {
+		        return _name;
+
+	        }
+	        set
+	        {
+		        if (value.Lenght < 0)
+		        {
+			        throw new ArgumentException($"The {nameof(Value)} cannot be empty!");
+		        }
+	        }
+        }
 
         /// <summary>
         /// Returns and sets the value of a capacitor.
@@ -43,12 +62,12 @@ namespace CalculationImpedancesApp
             {
                 if (value < 0)
                 {
-                    throw new ArgumentOutOfRangeException($"The {nameof(value)} cannot be negative!");
+                    throw new ArgumentException($"The {nameof(Value)} cannot be negative!");
                 }
                 if (value != _value)
                 {
                     SegmentChanged?.Invoke(this,
-                    new ElementEventArgs($"The capacitor changed the {nameof(value)} to {value}!"));
+                    new ElementEventArgs($"The capacitor changed the {nameof(Value)} to {Value}!"));
                 }
                 _value = value;
             }

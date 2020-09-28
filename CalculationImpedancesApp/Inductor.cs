@@ -21,14 +21,33 @@ namespace CalculationImpedancesApp
         public ElementObservableCollectioncs<ISegment> SubSegments { get; } = null;
 
         /// <summary>
+        /// Inductor name.
+        /// </summary>
+        private double _name;
+
+        /// <summary>
         /// Inductor value.
         /// </summary>
         private double _value;
 
         /// <summary>
-        /// Inductor name.
+        /// Returns and sets the name of a inductor.
         /// </summary>
-        public string Name { get; set; }
+        public string Name
+        {
+	        get
+	        {
+		        return _name;
+
+	        }
+	        set
+	        {
+		        if (value.Lenght < 0)
+		        {
+			        throw new ArgumentException($"The {nameof(Value)} cannot be empty!");
+		        }
+	        }
+        }
 
         /// <summary>
         /// Returns and sets the value of a inductor.
@@ -43,7 +62,7 @@ namespace CalculationImpedancesApp
             {
                 if (value < 0)
                 {
-                    throw new ArgumentOutOfRangeException($"The {nameof(value)} cannot be negative!");
+                    throw new ArgumentException($"The {nameof(value)} cannot be negative!");
                 }
                 if (value != _value)
                 {
