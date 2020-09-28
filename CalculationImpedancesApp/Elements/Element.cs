@@ -5,6 +5,9 @@ using System.Text;
 
 namespace CalculationImpedancesApp
 {
+	/// <summary>
+	/// Base class for all chain elements.
+	/// </summary>
 	public abstract class Element : IElement
 	{
 		/// <summary>
@@ -13,9 +16,9 @@ namespace CalculationImpedancesApp
 		public event EventHandler SegmentChanged;
 
 		/// <summary>
-		/// A collection that stores sub-segments of the circiut.
+		/// A collection that stores sub-segments.
 		/// </summary>
-		public ElementObservableCollectioncs<ISegment> SubSegments { get; } = null;
+		public ElementObservableCollections SubSegments { get; } = null;
 
 		/// <summary>
 		/// Element name.
@@ -71,6 +74,11 @@ namespace CalculationImpedancesApp
 			}
 		}
 
+		/// <summary>
+		/// Creates an element.
+		/// </summary>
+		/// <param name="name">Element name</param>
+		/// <param name="value">Element value</param>
 		public Element(string name, double value)
 		{
 			Name = name;

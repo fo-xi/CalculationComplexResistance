@@ -9,8 +9,7 @@ namespace CalculationImpedancesApp
     /// Own collection of segments.
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public sealed class ElementObservableCollectioncs<T>: Collection<T>
-        where T: ISegment
+    public sealed class ElementObservableCollections: Collection<ISegment>
     {
         /// <summary>
         /// Event that fires when the collection changes.
@@ -22,7 +21,7 @@ namespace CalculationImpedancesApp
         /// </summary>
         /// <param name="index">Element index.</param>
         /// <param name="item">Element.</param>
-        protected override void InsertItem(int index, T item)
+        protected override void InsertItem(int index, ISegment item)
         {
             base.InsertItem(index, item);
             item.SegmentChanged += item_SegmentChanged;

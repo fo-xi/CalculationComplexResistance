@@ -45,7 +45,7 @@ namespace CalculationImpedancesApp
         /// <summary>
         /// Collection of serial circuit segment subsegments.
         /// </summary>
-        public ElementObservableCollectioncs<ISegment> SubSegments { get; set; }
+        public ElementObservableCollections SubSegments { get; set; }
 
         /// <summary>
         /// Create a serial circuit segment.
@@ -53,7 +53,7 @@ namespace CalculationImpedancesApp
         /// <param name="name">Serial circuit name.</param>
         /// <param name="subSegments">Serial circuit segment.</param>
         public SerialCircuit(string name,
-            ElementObservableCollectioncs<ISegment> subSegments)
+            ElementObservableCollections subSegments)
         {
             Name = name;
             SubSegments = subSegments;

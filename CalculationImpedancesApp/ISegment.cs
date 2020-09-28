@@ -23,7 +23,7 @@ namespace CalculationImpedancesApp
         /// <summary>
         /// A collection that stores sub-segments of the circiut.
         /// </summary>
-        ElementObservableCollectioncs<ISegment> SubSegments { get; }
+        ElementObservableCollections SubSegments { get; }
 
         /// <summary>
         /// Element or sub - segment impedance calculator.
