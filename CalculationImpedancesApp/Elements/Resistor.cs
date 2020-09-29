@@ -24,7 +24,7 @@ namespace CalculationImpedancesApp
         /// </summary>
         public override Complex CalculateZ(double frequency)
         {
-            Complex result = new Complex(Value, 0);
+            var result = new Complex(Value, 0);
             return result;
         }
 

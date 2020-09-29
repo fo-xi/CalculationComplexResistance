@@ -76,7 +76,7 @@ namespace CalculationImpedancesApp
         /// <returns></returns>
         public Complex CalculateZ(double frequencies)
         {
-            Complex result = new Complex();
+            var result = new Complex();
 
             foreach (ISegment segment in SubSegmentsObservable)
             {

@@ -74,7 +74,7 @@ namespace CalculationImpedancesApp
         /// <returns></returns>
         public List<Complex> CalculateZ(List<double> frequencies)
         {
-            List<Complex> results = new List<Complex>();
+            var results = new List<Complex>();
 
             for (int i = 0; i < frequencies.Count; i++)
             {
