@@ -50,6 +50,37 @@ namespace NUnitTest
 			}, message);
 		}
 
+		[Test(Description = "Positive test of the getter SubSegments")]
+		public void TestSubSegmentsGet_CorrectValue()
+		{
+			var expected = new SegmentsObservableCollection
+			{
+				new Inductor("jng5", 56.0),
+				new Resistor("fr4tt", 32.6)
+
+			};
+			var serialCircuit = new SerialCircuit(" ", null);
+			serialCircuit.SubSegments = expected;
+			var actual = serialCircuit.SubSegments;
+			Assert.AreEqual(expected, actual, "The SubSegments getter " +
+			  "returns an incorrect sub segments");
+		}
+
+		[Test(Description = "Positive test of the setter SubSegments")]
+		public void TestSubSegmentsSet_CorrectValue()
+		{
+			var expected = new SegmentsObservableCollection
+			{
+				new Inductor("jng5", 56.0),
+				new Resistor("fr4tt", 32.6)
+			};
+			var serialCircuit = new SerialCircuit(" ", null);
+			Assert.DoesNotThrow(() =>
+			{
+				serialCircuit.SubSegments = expected;
+			}, "The SubSegments setter accepts the correct sub segments");
+		}
+
 		[Test(Description = "Positive test of the constructor SerialCircuit")]
 		public void TestSerialCircuitConstructor_CorrectValue()
 		{

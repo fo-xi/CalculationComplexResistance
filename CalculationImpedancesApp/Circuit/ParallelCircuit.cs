@@ -18,7 +18,7 @@ namespace CalculationImpedancesApp
         /// <summary>
         /// Collection of serial parallel segment subsegments.
         /// </summary>
-        public SegmentsObservableCollection SubSegmentsObservable { get; set; }
+        public SegmentsObservableCollection SubSegments { get; set; }
 
         /// <summary>
         /// Returns and sets the name of the parallel circuit segment.
@@ -50,8 +50,8 @@ namespace CalculationImpedancesApp
             SegmentsObservableCollection subSegmentsObservable)
         {
             Name = name;
-            SubSegmentsObservable = subSegmentsObservable;
-            SubSegmentsObservable.CollectionChanged += OnSegmentChanged;
+            SubSegments = subSegmentsObservable;
+            SubSegments.CollectionChanged += OnSegmentChanged;
         }
 
         /// <summary>
@@ -78,7 +78,7 @@ namespace CalculationImpedancesApp
         {
             var result = new Complex();
 
-            foreach (ISegment segment in SubSegmentsObservable)
+            foreach (ISegment segment in SubSegments)
             {
                 result += (1.0/(segment.CalculateZ(frequencies)));
             }

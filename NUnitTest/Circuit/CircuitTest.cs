@@ -50,6 +50,37 @@ namespace NUnitTest
 			}, message);
 		}
 
+		[Test(Description = "Positive test of the getter SubSegments")]
+		public void TestSubSegmentsGet_CorrectValue()
+		{
+			var expected = new SegmentsObservableCollection
+			{
+				new Inductor("jng5", 56.0),
+				new Resistor("fr4tt", 32.6)
+
+			};
+			var circuit = new Circuit(" ", null);
+			circuit.SubSegments = expected;
+			var actual = circuit.SubSegments;
+			Assert.AreEqual(expected, actual, "The SubSegments getter " +
+			  "returns an incorrect sub segments");
+		}
+
+		[Test(Description = "Positive test of the setter SubSegments")]
+		public void TestSubSegmentsSet_CorrectValue()
+		{
+			var expected = new SegmentsObservableCollection
+			{
+				new Inductor("jng5", 56.0),
+				new Resistor("fr4tt", 32.6)
+			};
+			var circuit = new Circuit(" ", null);
+			Assert.DoesNotThrow(() =>
+			{
+				circuit.SubSegments = expected;
+			}, "The SubSegments setter accepts the correct sub segments");
+		}
+
 		[Test(Description = "Positive test of the constructor Circuit")]
 		public void TestCircuitConstructor_CorrectValue()
 		{
@@ -57,15 +88,15 @@ namespace NUnitTest
 			var subSegments = new SegmentsObservableCollection
 			{
 				new SerialCircuit("fj5", new SegmentsObservableCollection
-					{
-						new Inductor("jng5", 56.0),
-						new Resistor("fr4tt", 32.6)
-					}),
+				{
+					new Inductor("jng5", 56.0),
+					new Resistor("fr4tt", 32.6)
+				}),
 				new ParallelCircuit("ut4f", new SegmentsObservableCollection
-					{
-						new Resistor("g56", 7.8),
-						new Capacitor("duj", 22.6)
-					}),
+				{
+					new Resistor("g56", 7.8),
+					new Capacitor("duj", 22.6)
+				}),
 
 			}; 
 			Assert.DoesNotThrow(() =>

@@ -23,7 +23,7 @@ namespace CalculationImpedancesApp
 		/// <summary>
 		/// A collection that stores sub-segmentsObservable.
 		/// </summary>
-		public SegmentsObservableCollection SubSegmentsObservable { get; } = null;
+		public SegmentsObservableCollection SubSegments { get; } = null;
 
 		/// <summary>
 		/// Returns and sets the name of an element.

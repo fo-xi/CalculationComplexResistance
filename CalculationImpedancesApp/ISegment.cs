@@ -13,7 +13,7 @@ namespace CalculationImpedancesApp
         /// <summary>
         /// A collection that stores sub-segmentsObservable of the circiut.
         /// </summary>
-        SegmentsObservableCollection SubSegmentsObservable { get; }
+        SegmentsObservableCollection SubSegments { get; }
 
         /// <summary>
         /// Segment name.

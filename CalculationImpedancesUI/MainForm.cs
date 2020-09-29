@@ -127,7 +127,7 @@ namespace CalculationImpedances
 			{
 				project.CircuitElement = project.Circuits[selectedIndexCircuit];
 				project.Elements = new List<IElement>();
-				foreach(ISegment segment in project.CircuitElement.SubSegmentsObservable)
+				foreach(ISegment segment in project.CircuitElement.SubSegments)
                 {
 					project.AllElements(segment);
 				}

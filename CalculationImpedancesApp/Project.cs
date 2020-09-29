@@ -135,7 +135,7 @@ namespace CalculationImpedancesApp
 		/// <param name="segment"></param>
 		public void AllElements(ISegment segment)
 		{
-			foreach (var element in segment.SubSegmentsObservable)
+			foreach (var element in segment.SubSegments)
 			{
 				if (element is IElement trueElement)
 				{
