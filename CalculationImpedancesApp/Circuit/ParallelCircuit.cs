@@ -11,14 +11,14 @@ namespace CalculationImpedancesApp
     public class ParallelCircuit : ISegment
     {
         /// <summary>
-        /// An event that fires when a parallel circuit segment changes.
-        /// </summary>
-        public event EventHandler SegmentChanged;
-
-        /// <summary>
         /// Parallel circuit segment name.
         /// </summary>
         private string _name;
+
+        /// <summary>
+        /// Collection of serial parallel segment subsegments.
+        /// </summary>
+        public SegmentsObservableCollection SubSegmentsObservable { get; set; }
 
         /// <summary>
         /// Returns and sets the name of the parallel circuit segment.
@@ -40,11 +40,6 @@ namespace CalculationImpedancesApp
 		        _name = value;
 	        }
         }
-
-        /// <summary>
-        /// Collection of serial parallel segment subsegments.
-        /// </summary>
-        public SegmentsObservableCollection SubSegmentsObservable { get; set; }
         
         /// <summary>
         /// Create a parallel circuit segment.
@@ -58,6 +53,11 @@ namespace CalculationImpedancesApp
             SubSegmentsObservable = subSegmentsObservable;
             SubSegmentsObservable.CollectionChanged += OnSegmentChanged;
         }
+
+        /// <summary>
+        /// An event that fires when a parallel circuit segment changes.
+        /// </summary>
+        public event EventHandler SegmentChanged;
 
         /// <summary>
         /// SegmentChanged event registration.

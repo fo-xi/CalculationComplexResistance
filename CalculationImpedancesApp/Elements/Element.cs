@@ -11,16 +11,6 @@ namespace CalculationImpedancesApp
 	public abstract class Element : IElement
 	{
 		/// <summary>
-		/// An event that will fire when an segment changes.
-		/// </summary>
-		public event EventHandler SegmentChanged;
-
-		/// <summary>
-		/// A collection that stores sub-segmentsObservable.
-		/// </summary>
-		public SegmentsObservableCollection SubSegmentsObservable { get; } = null;
-
-		/// <summary>
 		/// Element name.
 		/// </summary>
 		private string _name;
@@ -29,6 +19,11 @@ namespace CalculationImpedancesApp
 		/// Element value.
 		/// </summary>
 		private double _value;
+
+		/// <summary>
+		/// A collection that stores sub-segmentsObservable.
+		/// </summary>
+		public SegmentsObservableCollection SubSegmentsObservable { get; } = null;
 
 		/// <summary>
 		/// Returns and sets the name of an element.
@@ -84,6 +79,11 @@ namespace CalculationImpedancesApp
 			Name = name;
 			Value = value;
 		}
+
+		/// <summary>
+		/// An event that will fire when an segment changes.
+		/// </summary>
+		public event EventHandler SegmentChanged;
 
 		/// <summary>
 		/// Element impedance calculation.

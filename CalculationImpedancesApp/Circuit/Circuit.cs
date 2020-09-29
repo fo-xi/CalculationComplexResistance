@@ -11,14 +11,14 @@ namespace CalculationImpedancesApp
     public class Circuit
     {
         /// <summary>
-        /// Event that fires when the circuit changes
-        /// </summary>
-        public event EventHandler CircuitChanged;
-
-        /// <summary>
         /// Circuit name.
         /// </summary>
         private string _name;
+
+        /// <summary>
+        /// A collection that stores sub-segmentsObservable of the circuit.
+        /// </summary>
+        public SegmentsObservableCollection SubSegmentsObservable { get; set; }
 
         /// <summary>
         /// Returns and sets the name of a circuit.
@@ -41,11 +41,6 @@ namespace CalculationImpedancesApp
         }
 
         /// <summary>
-        /// A collection that stores sub-segmentsObservable of the circuit.
-        /// </summary>
-        public SegmentsObservableCollection SubSegmentsObservable { get; set; }
-
-        /// <summary>
         /// Creates a circuit.
         /// </summary>
         /// <param name="name">Circuit name</param>
@@ -56,6 +51,11 @@ namespace CalculationImpedancesApp
             SubSegmentsObservable = subSegmentsObservable;
             SubSegmentsObservable.CollectionChanged += OnCircuitChanged;
         }
+
+        /// <summary>
+        /// Event that fires when the circuit changes
+        /// </summary>
+        public event EventHandler CircuitChanged;
 
         /// <summary>
         /// CircuitChanged event registration.

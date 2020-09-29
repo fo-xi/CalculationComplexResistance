@@ -13,14 +13,14 @@ namespace CalculationImpedancesApp
     public class SerialCircuit : ISegment
     {
         /// <summary>
-        /// An event that fires when a serial circuit segment changes.
-        /// </summary>
-        public event EventHandler SegmentChanged;
-
-        /// <summary>
         /// Serial circuit segment name.
         /// </summary>
         private string _name;
+
+        /// <summary>
+        /// Collection of serial circuit segment subsegments.
+        /// </summary>
+        public SegmentsObservableCollection SubSegmentsObservable { get; set; }
 
         /// <summary>
         ///Returns and sets the name of the serial circuit segment.
@@ -43,11 +43,6 @@ namespace CalculationImpedancesApp
         }
 
         /// <summary>
-        /// Collection of serial circuit segment subsegments.
-        /// </summary>
-        public SegmentsObservableCollection SubSegmentsObservable { get; set; }
-
-        /// <summary>
         /// Create a serial circuit segment.
         /// </summary>
         /// <param name="name">Serial circuit name.</param>
@@ -59,6 +54,11 @@ namespace CalculationImpedancesApp
             SubSegmentsObservable = subSegmentsObservable;
             SubSegmentsObservable.CollectionChanged += OnSegmentChanged;
         }
+
+        /// <summary>
+        /// An event that fires when a serial circuit segment changes.
+        /// </summary>
+        public event EventHandler SegmentChanged;
 
         /// <summary>
         /// SegmentChanged event registration.

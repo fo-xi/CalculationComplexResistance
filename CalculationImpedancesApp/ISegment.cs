@@ -11,9 +11,9 @@ namespace CalculationImpedancesApp
     public interface ISegment
     {
         /// <summary>
-        /// An event that will fire when an segment changes.
+        /// A collection that stores sub-segmentsObservable of the circiut.
         /// </summary>
-        event EventHandler SegmentChanged;
+        SegmentsObservableCollection SubSegmentsObservable { get; }
 
         /// <summary>
         /// Segment name.
@@ -21,9 +21,9 @@ namespace CalculationImpedancesApp
         string Name { get; set; }
 
         /// <summary>
-        /// A collection that stores sub-segmentsObservable of the circiut.
+        /// An event that will fire when an segment changes.
         /// </summary>
-        SegmentsObservableCollection SubSegmentsObservable { get; }
+        event EventHandler SegmentChanged;
 
         /// <summary>
         /// Element or sub - segment impedance calculator.
