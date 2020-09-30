@@ -9,7 +9,7 @@ namespace NUnitTest
 {
     class ResistorTest
     {
-        [Test(Description = "Positive test of the constructor Resistor")]
+        [Test(Description = "Test of the constructor Resistor")]
         public void TestResistorConstructor_CorrectValue()
         {
             var name = "uh44";
@@ -20,7 +20,7 @@ namespace NUnitTest
             }, "The Resistor constructor create a resistor object");
         }
 
-        [Test(Description = "Positive test of the calculate")]
+        [Test(Description =  "Test of the calculate")]
         public void TestCalculateZ_CorrectValue()
         {
 	        var resistor = new Resistor("dfr4", 43.5);
@@ -31,7 +31,7 @@ namespace NUnitTest
 		        actual, "The calculator does not count correctly");
         }
 
-        [Test(Description = "Positive test of the ToString")]
+        [Test(Description = "Test of the ToString")]
         public void TestToString_CorrectValue()
         {
 	        var resistor = new Resistor("dfr4", 43.5);

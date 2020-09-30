@@ -94,5 +94,46 @@ namespace NUnitTest
 				var parallelCircuit = new ParallelCircuit(name, subSegments);
 			}, "The ParallelCircuit constructor create a parallel сircuit object");
 		}
+
+		[Test(Description = "Test of the calculate")]
+		public void TestCalculateZ_CorrectValue()
+		{
+			var subSegments = new SegmentsObservableCollection
+			{
+				new Resistor("g56", 7.8),
+				new Capacitor("duj", 22.6)
+			};
+			var parallelCircuit = new ParallelCircuit("fdr4", subSegments);
+
+			var frequency = 7;
+			var expected =
+				1/((1 / (subSegments[0].CalculateZ(frequency)) +
+				      (1 / (subSegments[1].CalculateZ(frequency)))));
+
+			var actual = parallelCircuit.CalculateZ(frequency);
+
+			Assert.AreEqual(expected,
+				actual, "The calculator does not count correctly");
+		}
+
+		[Test(Description = "Test of the OnSegmentChanged")]
+		public void EventRegistrationTesting_CorrectValue()
+		{
+			var wasCalled = false;
+			var subSegments = new SegmentsObservableCollection
+			{
+				new Resistor("g56", 7.8),
+				new Capacitor("duj", 22.6)
+			};
+			var parallelCircuit = new ParallelCircuit("fdr4", subSegments);
+
+			parallelCircuit.SegmentChanged += delegate (object o, EventArgs e)
+			{
+				wasCalled = true;
+			};
+
+			parallelCircuit.SubSegments.RemoveAt(1);
+			Assert.IsTrue(wasCalled);
+		}
 	}
 }

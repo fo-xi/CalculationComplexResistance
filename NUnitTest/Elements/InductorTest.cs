@@ -8,7 +8,7 @@ namespace NUnitTest
 {
     class InductorTest
     {
-        [Test(Description = "Positive test of the constructor")]
+	    [Test(Description = "Test of the constructor")]
         public void TestInductorConstructor_CorrectValue()
         {
             var name = "d345";
@@ -19,7 +19,7 @@ namespace NUnitTest
             }, "The Inductor constructor create a inductor object");
         }
 
-        [Test(Description = "Positive test of the calculate")]
+        [Test(Description = "Test of the calculate")]
         public void TestCalculateZ_CorrectValue()
         {
 	        var inductor = new Inductor("dfr4", 43.5);
@@ -30,7 +30,7 @@ namespace NUnitTest
 		        actual.Imaginary, "The calculator does not count correctly");
         }
 
-        [Test(Description = "Positive test of the ToString")]
+        [Test(Description = "Test of the ToString")]
         public void TestToString_CorrectValue()
         {
 	        var inductor = new Inductor("dfr4", 43.5);

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using CalculationImpedancesApp;
 using NUnit.Framework;
+using System.Numerics;
 
 namespace NUnitTest
 {
@@ -87,12 +88,53 @@ namespace NUnitTest
 			var name = "d345";
 			var subSegments = new SegmentsObservableCollection
 			{
-					new Inductor("jng5", 56.0),
+				new Inductor("jng5", 56.0),
 			};
 			Assert.DoesNotThrow(() =>
 			{
 				var serialCircuit = new SerialCircuit(name, subSegments);
 			}, "The SerialCircuit constructor create a serial circuit object");
+		} 
+
+		[Test(Description = "Test of the calculate")]
+		public void TestCalculateZ_CorrectValue()
+		{
+			var subSegments = new SegmentsObservableCollection
+			{
+				new Inductor("jng5", 56.0),
+				new Resistor("fr4tt", 32.6)
+			};
+			var serialCircuit = new SerialCircuit("fdr4", subSegments);
+
+			var frequency = 7;
+			var expected = 
+				subSegments[0].CalculateZ(frequency) +
+				subSegments[1].CalculateZ(frequency);
+
+			var actual = serialCircuit.CalculateZ(frequency);
+
+			Assert.AreEqual(expected,
+				actual, "The calculator does not count correctly");
 		}
-	}
+
+		[Test(Description = "Test of the OnSegmentChanged")]
+		public void EventRegistrationTesting_CorrectValue()
+		{
+			var wasCalled = false;
+			var subSegments = new SegmentsObservableCollection
+			{
+				new Inductor("jng5", 56.0),
+				new Resistor("fr4tt", 32.6)
+			};
+			var serialCircuit = new SerialCircuit("fdr4", subSegments);
+
+			serialCircuit.SegmentChanged += delegate (object o, EventArgs e)
+			{
+				wasCalled = true;
+			};
+
+			serialCircuit.SubSegments.RemoveAt(1);
+			Assert.IsTrue(wasCalled);
+		}
+    }
 }
