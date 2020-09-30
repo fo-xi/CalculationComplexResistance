@@ -56,7 +56,6 @@ namespace NUnitTest
 		{
 			var name = "d345";
 			var value = 55.7;
-			var element = new Resistor(name, value);
 			Assert.DoesNotThrow(() =>
 			{
 				var element = new Resistor(name, value);
