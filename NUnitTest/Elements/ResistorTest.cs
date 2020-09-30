@@ -10,7 +10,7 @@ namespace NUnitTest
     class ResistorTest
     {
         [Test(Description = "Test of the constructor Resistor")]
-        public void TestResistorConstructor_CorrectValue()
+        public void TestConstructor_CorrectValue()
         {
             var name = "uh44";
             var value = 23.2;

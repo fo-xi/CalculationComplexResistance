@@ -9,7 +9,7 @@ namespace NUnitTest
     class InductorTest
     {
 	    [Test(Description = "Test of the constructor")]
-        public void TestInductorConstructor_CorrectValue()
+        public void TestConstructor_CorrectValue()
         {
             var name = "d345";
             var value = 4.6;

@@ -10,7 +10,7 @@ namespace NUnitTest
 	class CapacitorTest
     {
         [Test(Description = "Test of the constructor")]
-        public void TestCapacitorConstructor_CorrectValue()
+        public void TestConstructor_CorrectValue()
         {
             var name = "gh4";
             var value = 57.2;

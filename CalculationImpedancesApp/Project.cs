@@ -103,7 +103,7 @@ namespace CalculationImpedancesApp
 					new Resistor("h6j7", 32.5),
 					new Resistor("s23", 4.6)
 				}),
-				new ParallelCircuit("", new SegmentsObservableCollection
+				new ParallelCircuit("gh6k", new SegmentsObservableCollection
 				{
 					new Inductor("bb7", 11.3),
 					new Inductor("d4t", 88.9),
