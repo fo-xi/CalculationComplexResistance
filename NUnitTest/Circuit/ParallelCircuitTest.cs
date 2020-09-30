@@ -59,7 +59,7 @@ namespace NUnitTest
 				new Resistor("fr4tt", 32.6)
 
 			};
-			var parallelCircuit = new ParallelCircuit(" ", null);
+			var parallelCircuit = new ParallelCircuit(" ", new SegmentsObservableCollection());
 			parallelCircuit.SubSegments = expected;
 			var actual = parallelCircuit.SubSegments;
 			Assert.AreEqual(expected, actual, "The SubSegments getter " +
@@ -74,7 +74,7 @@ namespace NUnitTest
 				new Inductor("jng5", 56.0),
 				new Resistor("fr4tt", 32.6)
 			};
-			var parallelCircuit = new ParallelCircuit(" ", null);
+			var parallelCircuit = new ParallelCircuit(" ", new SegmentsObservableCollection());
 			Assert.DoesNotThrow(() =>
 			{
 				parallelCircuit.SubSegments = expected;

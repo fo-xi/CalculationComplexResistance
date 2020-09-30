@@ -56,10 +56,9 @@ namespace NUnitTest
 			var expected = new SegmentsObservableCollection
 			{
 				new Inductor("jng5", 56.0),
-				new Resistor("fr4tt", 32.6)
-
+				new Resistor("fr4tt", 32.6),
 			};
-			var circuit = new Circuit(" ", null);
+			var circuit = new Circuit(" ", new SegmentsObservableCollection());
 			circuit.SubSegments = expected;
 			var actual = circuit.SubSegments;
 			Assert.AreEqual(expected, actual, "The SubSegments getter " +
@@ -74,7 +73,7 @@ namespace NUnitTest
 				new Inductor("jng5", 56.0),
 				new Resistor("fr4tt", 32.6)
 			};
-			var circuit = new Circuit(" ", null);
+			var circuit = new Circuit(" ", new SegmentsObservableCollection());
 			Assert.DoesNotThrow(() =>
 			{
 				circuit.SubSegments = expected;
