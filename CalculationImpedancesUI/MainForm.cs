@@ -160,5 +160,10 @@ namespace CalculationImpedances
 				project.ImpedanceValues.Add($"{i.Real} + {i.Imaginary}*j");
 			}
 		}
+
+		private void tableLayoutPanel2_Paint(object sender, PaintEventArgs e)
+		{
+
+		}
 	}
 }
