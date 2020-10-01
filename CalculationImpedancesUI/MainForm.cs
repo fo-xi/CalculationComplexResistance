@@ -107,8 +107,48 @@ namespace CalculationImpedances
 			}
 		}
 
+		private void FillCircuitNodes()
+		{
+			var selectedCircuit = project.CircuitElement = project.Circuits[0];
+			foreach (var segment in selectedCircuit.SubSegments)
+			{
+				TreeNode circuitNode = new TreeNode
+				{
+					Text = segment.Name
+				};
+				FillTreeNode(circuitNode, segment);
+				CircuitTreeView.Nodes.Add(circuitNode);
+			}
+		}
+
+		private void FillTreeNode(TreeNode circuitNode, ISegment segment)
+		{
+			if (segment is IElement)
+			{
+				TreeNode elementNode = new TreeNode
+				{
+					Text = segment.Name
+				};
+				circuitNode.Nodes.Add(elementNode);
+			}
+			else
+			{
+				foreach (var subSegment in segment.SubSegments)
+				{
+					TreeNode segmentNode = new TreeNode
+					{
+						Text = subSegment.Name
+					};
+					circuitNode.Nodes.Add(segmentNode);
+					FillTreeNode(segmentNode, subSegment);
+				}
+			}
+		}
+
 		private void MainForm_Load(object sender, EventArgs e)
 		{
+			FillCircuitNodes();
+
 			СircuitListBox.DataSource = null;
 			СircuitListBox.DataSource = project.Circuits;
 			СircuitListBox.DisplayMember = "Name";
@@ -119,7 +159,7 @@ namespace CalculationImpedances
 			}
 		}
 
-		private void ChainsListBox_SelectedIndexChanged(object sender, EventArgs e)
+		private void СircuitListBox_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			var selectedIndexCircuit = СircuitListBox.SelectedIndex;
 
@@ -136,7 +176,7 @@ namespace CalculationImpedances
 			}
 			Calculate();
 		}
-
+		
 		private void Calculate()
 		{
 			project.Results = project.CircuitElement.CalculateZ(project.Frequencies);
@@ -159,11 +199,6 @@ namespace CalculationImpedances
 			{
 				project.ImpedanceValues.Add($"{i.Real} + {i.Imaginary}*j");
 			}
-		}
-
-		private void tableLayoutPanel2_Paint(object sender, PaintEventArgs e)
-		{
-
 		}
 	}
 }
