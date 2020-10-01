@@ -314,6 +314,7 @@
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(872, 574);
 			this.Controls.Add(this.tableLayoutPanel8);
+			this.MaximumSize = new System.Drawing.Size(888, 613);
 			this.Name = "MainForm";
 			this.Text = "Form1";
 			this.Load += new System.EventHandler(this.MainForm_Load);
