@@ -207,9 +207,24 @@ namespace CalculationImpedances
 
 		private void addButton_Click(object sender, EventArgs e)
 		{
-			
-
-
+			var segment = new ElementForm();
+			segment.ShowDialog();
+			if (segment.DialogResult == DialogResult.OK)
+			{
+				if (segment.Segment is IElement element)
+				{
+					project.Elements.Add(element);
+				}
+				else if (segment.Segment is Circuit circiut)
+				{
+					project.Segments.Add(circiut);
+				}
+				else
+				{
+					project.Segments.Add(segment.Segment);
+				}
+			}
+			Calculate();
 		}
 	}
 }
