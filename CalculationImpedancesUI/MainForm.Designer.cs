@@ -38,17 +38,12 @@
 			this.removeElementButton = new System.Windows.Forms.Button();
 			this.addElementButton = new System.Windows.Forms.Button();
 			this.editElementButton = new System.Windows.Forms.Button();
-			this.removeCitcuitButton = new System.Windows.Forms.Button();
-			this.editCitcuitButton = new System.Windows.Forms.Button();
-			this.addCitcuitButton = new System.Windows.Forms.Button();
-			this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
 			this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
 			this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
 			this.tableLayoutPanel11 = new System.Windows.Forms.TableLayoutPanel();
 			this.tableLayoutPanel10 = new System.Windows.Forms.TableLayoutPanel();
 			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
 			this.CircuitTreeView = new System.Windows.Forms.TreeView();
-			this.tableLayoutPanel7.SuspendLayout();
 			this.tableLayoutPanel8.SuspendLayout();
 			this.tableLayoutPanel9.SuspendLayout();
 			this.tableLayoutPanel11.SuspendLayout();
@@ -177,61 +172,6 @@
 			this.editElementButton.UseVisualStyleBackColor = true;
 			this.editElementButton.Click += new System.EventHandler(this.editElementButton_Click);
 			// 
-			// removeCitcuitButton
-			// 
-			this.removeCitcuitButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.removeCitcuitButton.Location = new System.Drawing.Point(141, 3);
-			this.removeCitcuitButton.Name = "removeCitcuitButton";
-			this.removeCitcuitButton.Size = new System.Drawing.Size(65, 27);
-			this.removeCitcuitButton.TabIndex = 8;
-			this.removeCitcuitButton.Text = "remove";
-			this.removeCitcuitButton.UseVisualStyleBackColor = true;
-			// 
-			// editCitcuitButton
-			// 
-			this.editCitcuitButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.editCitcuitButton.Location = new System.Drawing.Point(72, 3);
-			this.editCitcuitButton.Name = "editCitcuitButton";
-			this.editCitcuitButton.Size = new System.Drawing.Size(63, 27);
-			this.editCitcuitButton.TabIndex = 8;
-			this.editCitcuitButton.Text = "edit";
-			this.editCitcuitButton.UseVisualStyleBackColor = true;
-			// 
-			// addCitcuitButton
-			// 
-			this.addCitcuitButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.addCitcuitButton.Location = new System.Drawing.Point(3, 3);
-			this.addCitcuitButton.Name = "addCitcuitButton";
-			this.addCitcuitButton.Size = new System.Drawing.Size(63, 27);
-			this.addCitcuitButton.TabIndex = 8;
-			this.addCitcuitButton.Text = "add";
-			this.addCitcuitButton.UseVisualStyleBackColor = true;
-			// 
-			// tableLayoutPanel7
-			// 
-			this.tableLayoutPanel7.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.tableLayoutPanel7.ColumnCount = 3;
-			this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
-			this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
-			this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
-			this.tableLayoutPanel7.Controls.Add(this.removeCitcuitButton, 2, 0);
-			this.tableLayoutPanel7.Controls.Add(this.addCitcuitButton, 0, 0);
-			this.tableLayoutPanel7.Controls.Add(this.editCitcuitButton, 1, 0);
-			this.tableLayoutPanel7.Location = new System.Drawing.Point(3, 190);
-			this.tableLayoutPanel7.Name = "tableLayoutPanel7";
-			this.tableLayoutPanel7.RowCount = 1;
-			this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-			this.tableLayoutPanel7.Size = new System.Drawing.Size(209, 33);
-			this.tableLayoutPanel7.TabIndex = 1;
-			// 
 			// tableLayoutPanel8
 			// 
 			this.tableLayoutPanel8.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -259,13 +199,11 @@
 			this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
 			this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
 			this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-			this.tableLayoutPanel9.Controls.Add(this.tableLayoutPanel7, 0, 1);
 			this.tableLayoutPanel9.Controls.Add(this.СircuitListBox, 0, 0);
 			this.tableLayoutPanel9.Controls.Add(this.ResultsListBox, 3, 0);
 			this.tableLayoutPanel9.Controls.Add(this.FrequenciesListBox, 2, 0);
 			this.tableLayoutPanel9.Controls.Add(this.ElementsListBox, 1, 0);
 			this.tableLayoutPanel9.Controls.Add(this.tableLayoutPanel11, 2, 1);
-			this.tableLayoutPanel9.Controls.Add(this.tableLayoutPanel10, 1, 1);
 			this.tableLayoutPanel9.Location = new System.Drawing.Point(3, 342);
 			this.tableLayoutPanel9.Name = "tableLayoutPanel9";
 			this.tableLayoutPanel9.RowCount = 2;
@@ -295,9 +233,7 @@
 			// 
 			// tableLayoutPanel10
 			// 
-			this.tableLayoutPanel10.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+			this.tableLayoutPanel10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.tableLayoutPanel10.ColumnCount = 3;
 			this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
 			this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
@@ -305,7 +241,7 @@
 			this.tableLayoutPanel10.Controls.Add(this.editElementButton, 1, 0);
 			this.tableLayoutPanel10.Controls.Add(this.removeElementButton, 2, 0);
 			this.tableLayoutPanel10.Controls.Add(this.addElementButton, 0, 0);
-			this.tableLayoutPanel10.Location = new System.Drawing.Point(218, 190);
+			this.tableLayoutPanel10.Location = new System.Drawing.Point(218, 150);
 			this.tableLayoutPanel10.Name = "tableLayoutPanel10";
 			this.tableLayoutPanel10.RowCount = 1;
 			this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -320,6 +256,7 @@
 			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
 			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
 			this.tableLayoutPanel1.Controls.Add(this.CircuitTreeView, 0, 0);
+			this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel10, 1, 0);
 			this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
 			this.tableLayoutPanel1.Name = "tableLayoutPanel1";
 			this.tableLayoutPanel1.RowCount = 1;
@@ -344,7 +281,6 @@
 			this.Name = "MainForm";
 			this.Text = "Form1";
 			this.Load += new System.EventHandler(this.MainForm_Load);
-			this.tableLayoutPanel7.ResumeLayout(false);
 			this.tableLayoutPanel8.ResumeLayout(false);
 			this.tableLayoutPanel9.ResumeLayout(false);
 			this.tableLayoutPanel11.ResumeLayout(false);
@@ -365,10 +301,6 @@
         private System.Windows.Forms.ListBox ResultsListBox;
 		private System.Windows.Forms.Button removeElementButton;
 		private System.Windows.Forms.Button addElementButton;
-		private System.Windows.Forms.Button removeCitcuitButton;
-		private System.Windows.Forms.Button editCitcuitButton;
-		private System.Windows.Forms.Button addCitcuitButton;
-		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel8;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel9;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel10;

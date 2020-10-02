@@ -32,10 +32,10 @@
 			this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
 			this.valueTextBox = new System.Windows.Forms.TextBox();
 			this.NameLabel = new System.Windows.Forms.Label();
-			this.elementTextBox = new System.Windows.Forms.TextBox();
+			this.nameTextBox = new System.Windows.Forms.TextBox();
 			this.valueLabel = new System.Windows.Forms.Label();
 			this.Typelabel = new System.Windows.Forms.Label();
-			this.comboBox1 = new System.Windows.Forms.ComboBox();
+			this.typeComboBox = new System.Windows.Forms.ComboBox();
 			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
 			this.CancelButton = new System.Windows.Forms.Button();
 			this.OKButton = new System.Windows.Forms.Button();
@@ -75,10 +75,10 @@
 			this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 87.46518F));
 			this.tableLayoutPanel2.Controls.Add(this.valueTextBox, 1, 1);
 			this.tableLayoutPanel2.Controls.Add(this.NameLabel, 0, 0);
-			this.tableLayoutPanel2.Controls.Add(this.elementTextBox, 1, 0);
+			this.tableLayoutPanel2.Controls.Add(this.nameTextBox, 1, 0);
 			this.tableLayoutPanel2.Controls.Add(this.valueLabel, 0, 1);
 			this.tableLayoutPanel2.Controls.Add(this.Typelabel, 0, 2);
-			this.tableLayoutPanel2.Controls.Add(this.comboBox1, 1, 2);
+			this.tableLayoutPanel2.Controls.Add(this.typeComboBox, 1, 2);
 			this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 3);
 			this.tableLayoutPanel2.Name = "tableLayoutPanel2";
 			this.tableLayoutPanel2.RowCount = 3;
@@ -91,34 +91,34 @@
 			// valueTextBox
 			// 
 			this.valueTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.valueTextBox.Location = new System.Drawing.Point(47, 36);
+			this.valueTextBox.Location = new System.Drawing.Point(48, 36);
 			this.valueTextBox.Name = "valueTextBox";
-			this.valueTextBox.Size = new System.Drawing.Size(309, 20);
+			this.valueTextBox.Size = new System.Drawing.Size(308, 20);
 			this.valueTextBox.TabIndex = 3;
 			// 
 			// NameLabel
 			// 
 			this.NameLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
 			this.NameLabel.AutoSize = true;
-			this.NameLabel.Location = new System.Drawing.Point(3, 9);
+			this.NameLabel.Location = new System.Drawing.Point(4, 9);
 			this.NameLabel.Name = "NameLabel";
 			this.NameLabel.Size = new System.Drawing.Size(38, 13);
 			this.NameLabel.TabIndex = 1;
 			this.NameLabel.Text = "Name:";
 			// 
-			// elementTextBox
+			// nameTextBox
 			// 
-			this.elementTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.elementTextBox.Location = new System.Drawing.Point(47, 5);
-			this.elementTextBox.Name = "elementTextBox";
-			this.elementTextBox.Size = new System.Drawing.Size(309, 20);
-			this.elementTextBox.TabIndex = 0;
+			this.nameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.nameTextBox.Location = new System.Drawing.Point(48, 5);
+			this.nameTextBox.Name = "nameTextBox";
+			this.nameTextBox.Size = new System.Drawing.Size(308, 20);
+			this.nameTextBox.TabIndex = 0;
 			// 
 			// valueLabel
 			// 
 			this.valueLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
 			this.valueLabel.AutoSize = true;
-			this.valueLabel.Location = new System.Drawing.Point(4, 40);
+			this.valueLabel.Location = new System.Drawing.Point(5, 40);
 			this.valueLabel.Name = "valueLabel";
 			this.valueLabel.Size = new System.Drawing.Size(37, 13);
 			this.valueLabel.TabIndex = 2;
@@ -128,20 +128,21 @@
 			// 
 			this.Typelabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
 			this.Typelabel.AutoSize = true;
-			this.Typelabel.Location = new System.Drawing.Point(7, 71);
+			this.Typelabel.Location = new System.Drawing.Point(8, 71);
 			this.Typelabel.Name = "Typelabel";
 			this.Typelabel.Size = new System.Drawing.Size(34, 13);
 			this.Typelabel.TabIndex = 4;
 			this.Typelabel.Text = "Type:";
 			// 
-			// comboBox1
+			// typeComboBox
 			// 
-			this.comboBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.comboBox1.FormattingEnabled = true;
-			this.comboBox1.Location = new System.Drawing.Point(47, 67);
-			this.comboBox1.Name = "comboBox1";
-			this.comboBox1.Size = new System.Drawing.Size(309, 21);
-			this.comboBox1.TabIndex = 5;
+			this.typeComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.typeComboBox.FormattingEnabled = true;
+			this.typeComboBox.Location = new System.Drawing.Point(48, 67);
+			this.typeComboBox.Name = "typeComboBox";
+			this.typeComboBox.Size = new System.Drawing.Size(308, 21);
+			this.typeComboBox.TabIndex = 5;
+			this.typeComboBox.SelectedIndexChanged += new System.EventHandler(this.typeComboBox_SelectedIndexChanged);
 			// 
 			// tableLayoutPanel1
 			// 
@@ -196,6 +197,7 @@
 			this.MinimumSize = new System.Drawing.Size(381, 180);
 			this.Name = "ElementForm";
 			this.Text = "ElementForm";
+			this.Load += new System.EventHandler(this.ElementForm_Load);
 			this.splitContainer1.Panel1.ResumeLayout(false);
 			this.splitContainer1.Panel2.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
@@ -210,7 +212,7 @@
         #endregion
 
         private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.TextBox elementTextBox;
+        private System.Windows.Forms.TextBox nameTextBox;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Button CancelButton;
         private System.Windows.Forms.Button OKButton;
@@ -219,6 +221,6 @@
 		private System.Windows.Forms.TextBox valueTextBox;
 		private System.Windows.Forms.Label valueLabel;
 		private System.Windows.Forms.Label Typelabel;
-		private System.Windows.Forms.ComboBox comboBox1;
+		private System.Windows.Forms.ComboBox typeComboBox;
 	}
 }

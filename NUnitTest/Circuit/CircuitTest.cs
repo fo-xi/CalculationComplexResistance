@@ -137,7 +137,7 @@ namespace NUnitTest
 			};
 			var circuit = new Circuit("fdr4", subSegments);
 
-			circuit.CircuitChanged += delegate (object o, EventArgs e)
+			circuit.SegmentChanged += delegate (object o, EventArgs e)
 			{
 				wasCalled = true;
 			};

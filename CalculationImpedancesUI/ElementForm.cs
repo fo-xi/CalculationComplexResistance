@@ -18,6 +18,24 @@ namespace CalculationImpedances
         /// </summary>
         public double Value { get; set; }
 
+        /// <summary>
+        /// Entered element Name.
+        /// </summary>
+        public string Name { get; set; }
+
+        public readonly List<string> Type = new List<string>
+        {
+            " ",
+	        "Resistor",
+            "Inductor",
+            "Capacitor",
+            "Serial circuit",
+            "Parallel circuit",
+            "Cirsuit"
+        };
+
+        public ISegment Segment = null;
+
         public ElementForm()
         {
             InitializeComponent();
@@ -25,11 +43,46 @@ namespace CalculationImpedances
 
         private void OKButton_Click(object sender, EventArgs e)
         {
-            if (elementTextBox.Text.Length != 0)
+            if ((valueTextBox.Text.Length != 0) && (nameTextBox.Text.Length != 0))
             {
                 try
                 {
-                    Value = double.Parse(elementTextBox.Text);
+	                Name = nameTextBox.Text;
+                    Value = double.Parse(valueTextBox.Text);
+                    switch (typeComboBox.SelectedIndex)
+                    {
+	                    case 1:
+	                    {
+		                    Segment = new Resistor(Name, Value);
+		                    break;
+	                    }
+	                    case 2:
+	                    {
+		                    Segment = new Inductor(Name, Value);
+		                    break;
+	                    }
+	                    case 3:
+	                    {
+		                    Segment = new Capacitor(Name, Value);
+		                    break;
+	                    }
+	                    case 4:
+	                    {
+		                    Segment = new SerialCircuit(Name, new SegmentsObservableCollection());
+		                    break;
+	                    }
+	                    case 5:
+	                    {
+		                    Segment = new ParallelCircuit(Name, new SegmentsObservableCollection());
+		                    break;
+	                    }
+	                    case 6:
+	                    {
+		                    Segment = new Circuit(Name, new SegmentsObservableCollection());
+		                    break;
+	                    }
+                    }
+
                     this.DialogResult = DialogResult.OK;
                 }
                 catch (ArgumentException exception)
@@ -44,5 +97,16 @@ namespace CalculationImpedances
         {
             this.DialogResult = DialogResult.Cancel;
         }
-    }
+
+		private void ElementForm_Load(object sender, EventArgs e)
+		{
+
+			typeComboBox.DataSource = Type;
+        }
+
+		private void typeComboBox_SelectedIndexChanged(object sender, EventArgs e)
+		{
+
+		}
+	}
 }
