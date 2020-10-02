@@ -109,14 +109,22 @@ namespace CalculationImpedances
 
 		private void FillCircuitNodes()
 		{
-			var selectedCircuit = project.CircuitElement = project.Circuits[0];
-			foreach (var segment in selectedCircuit.SubSegments)
+			var selectedCircuit = project.Circuits;
+			foreach (var circuit in selectedCircuit)
 			{
 				TreeNode circuitNode = new TreeNode
 				{
-					Text = segment.Name
+					Text = circuit.Name
 				};
-				FillTreeNode(circuitNode, segment);
+				foreach (var segment in circuit.SubSegments)
+				{
+					TreeNode segmentNode = new TreeNode
+					{
+						Text = segment.Name
+					};
+					FillTreeNode(segmentNode, segment);
+					circuitNode.Nodes.Add(segmentNode);
+				}
 				CircuitTreeView.Nodes.Add(circuitNode);
 			}
 		}
@@ -140,7 +148,10 @@ namespace CalculationImpedances
 						Text = subSegment.Name
 					};
 					circuitNode.Nodes.Add(segmentNode);
-					FillTreeNode(segmentNode, subSegment);
+					if (!(subSegment is IElement))
+					{
+						FillTreeNode(segmentNode, subSegment);
+					}
 				}
 			}
 		}
