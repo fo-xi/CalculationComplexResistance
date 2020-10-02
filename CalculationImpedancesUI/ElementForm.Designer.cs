@@ -1,4 +1,4 @@
-﻿namespace CalculationImpedances
+﻿namespace CalculationImpedancesUI
 {
     partial class ElementForm
     {
@@ -104,7 +104,7 @@
 			this.NameLabel.Name = "NameLabel";
 			this.NameLabel.Size = new System.Drawing.Size(38, 13);
 			this.NameLabel.TabIndex = 1;
-			this.NameLabel.Text = "Name:";
+			this.NameLabel.Text = "Circiut:";
 			// 
 			// nameTextBox
 			// 

@@ -1,37 +1,37 @@
 ﻿namespace CalculationImpedancesUI
 {
-    partial class FrequencyForm
-    {
-        /// <summary>
-        /// Required designer variable.
-        /// </summary>
-        private System.ComponentModel.IContainer components = null;
+	partial class CircuitForm
+	{
+		/// <summary>
+		/// Required designer variable.
+		/// </summary>
+		private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
-        /// Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing && (components != null))
-            {
-                components.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+		/// <summary>
+		/// Clean up any resources being used.
+		/// </summary>
+		/// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+		protected override void Dispose(bool disposing)
+		{
+			if (disposing && (components != null))
+			{
+				components.Dispose();
+			}
+			base.Dispose(disposing);
+		}
 
-        #region Windows Form Designer generated code
+		#region Windows Form Designer generated code
 
-        /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
-        /// </summary>
-        private void InitializeComponent()
-        {
+		/// <summary>
+		/// Required method for Designer support - do not modify
+		/// the contents of this method with the code editor.
+		/// </summary>
+		private void InitializeComponent()
+		{
 			this.splitContainer1 = new System.Windows.Forms.SplitContainer();
 			this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-			this.frequencyTextBox = new System.Windows.Forms.TextBox();
-			this.valueLabel = new System.Windows.Forms.Label();
+			this.nameTextBox = new System.Windows.Forms.TextBox();
+			this.nameLabel = new System.Windows.Forms.Label();
 			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
 			this.CancelButton = new System.Windows.Forms.Button();
 			this.OKButton = new System.Windows.Forms.Button();
@@ -59,7 +59,7 @@
 			this.splitContainer1.Panel2.Controls.Add(this.tableLayoutPanel1);
 			this.splitContainer1.Size = new System.Drawing.Size(305, 80);
 			this.splitContainer1.SplitterDistance = 40;
-			this.splitContainer1.TabIndex = 0;
+			this.splitContainer1.TabIndex = 1;
 			// 
 			// tableLayoutPanel2
 			// 
@@ -69,8 +69,8 @@
 			this.tableLayoutPanel2.ColumnCount = 2;
 			this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15.38461F));
 			this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 84.61539F));
-			this.tableLayoutPanel2.Controls.Add(this.frequencyTextBox, 1, 0);
-			this.tableLayoutPanel2.Controls.Add(this.valueLabel, 0, 0);
+			this.tableLayoutPanel2.Controls.Add(this.nameTextBox, 1, 0);
+			this.tableLayoutPanel2.Controls.Add(this.nameLabel, 0, 0);
 			this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 3);
 			this.tableLayoutPanel2.Name = "tableLayoutPanel2";
 			this.tableLayoutPanel2.RowCount = 1;
@@ -78,23 +78,23 @@
 			this.tableLayoutPanel2.Size = new System.Drawing.Size(299, 34);
 			this.tableLayoutPanel2.TabIndex = 1;
 			// 
-			// frequencyTextBox
+			// nameTextBox
 			// 
-			this.frequencyTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.frequencyTextBox.Location = new System.Drawing.Point(48, 7);
-			this.frequencyTextBox.Name = "frequencyTextBox";
-			this.frequencyTextBox.Size = new System.Drawing.Size(248, 20);
-			this.frequencyTextBox.TabIndex = 0;
+			this.nameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.nameTextBox.Location = new System.Drawing.Point(48, 7);
+			this.nameTextBox.Name = "nameTextBox";
+			this.nameTextBox.Size = new System.Drawing.Size(248, 20);
+			this.nameTextBox.TabIndex = 0;
 			// 
-			// valueLabel
+			// nameLabel
 			// 
-			this.valueLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
-			this.valueLabel.AutoSize = true;
-			this.valueLabel.Location = new System.Drawing.Point(5, 10);
-			this.valueLabel.Name = "valueLabel";
-			this.valueLabel.Size = new System.Drawing.Size(37, 13);
-			this.valueLabel.TabIndex = 1;
-			this.valueLabel.Text = "Value:";
+			this.nameLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
+			this.nameLabel.AutoSize = true;
+			this.nameLabel.Location = new System.Drawing.Point(4, 10);
+			this.nameLabel.Name = "nameLabel";
+			this.nameLabel.Size = new System.Drawing.Size(38, 13);
+			this.nameLabel.TabIndex = 1;
+			this.nameLabel.Text = "Name:";
 			// 
 			// tableLayoutPanel1
 			// 
@@ -125,7 +125,6 @@
 			this.CancelButton.TabIndex = 1;
 			this.CancelButton.Text = "Cancel";
 			this.CancelButton.UseVisualStyleBackColor = true;
-			this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click);
 			// 
 			// OKButton
 			// 
@@ -140,14 +139,14 @@
 			this.OKButton.UseVisualStyleBackColor = true;
 			this.OKButton.Click += new System.EventHandler(this.OKButton_Click);
 			// 
-			// FrequencyForm
+			// CircuitForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(305, 80);
 			this.Controls.Add(this.splitContainer1);
-			this.Name = "FrequencyForm";
-			this.Text = "FrequencyForm";
+			this.Name = "CircuitForm";
+			this.Text = "CircuitForm";
 			this.splitContainer1.Panel1.ResumeLayout(false);
 			this.splitContainer1.Panel2.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
@@ -157,16 +156,16 @@
 			this.tableLayoutPanel1.ResumeLayout(false);
 			this.ResumeLayout(false);
 
-        }
+		}
 
-        #endregion
+		#endregion
 
-        private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.TextBox frequencyTextBox;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.Button CancelButton;
-        private System.Windows.Forms.Button OKButton;
+		private System.Windows.Forms.SplitContainer splitContainer1;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-		private System.Windows.Forms.Label valueLabel;
+		private System.Windows.Forms.TextBox nameTextBox;
+		private System.Windows.Forms.Label nameLabel;
+		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+		private System.Windows.Forms.Button CancelButton;
+		private System.Windows.Forms.Button OKButton;
 	}
 }

@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using CalculationImpedancesApp;
 using System.Numerics;
 
-namespace CalculationImpedances
+namespace CalculationImpedancesUI
 {
 	public partial class MainForm : Form
 	{
@@ -24,29 +24,6 @@ namespace CalculationImpedances
 			InitializeComponent();
 		}
 
-		private void editElementButton_Click(object sender, EventArgs e)
-		{
-			var selectedIndex = ElementsListBox.SelectedIndex;
-			if (selectedIndex == -1)
-			{
-				MessageBox.Show("Select a element from the list", "Warning",
-					MessageBoxButtons.OK, MessageBoxIcon.Warning);
-			}
-			else
-			{
-				var element = new ElementForm();
-				var selectedElement = project.Elements[selectedIndex];
-				element.Value = selectedElement.Value;
-				element.ShowDialog();
-				if (element.DialogResult == DialogResult.OK)
-				{
-					selectedElement.Value = element.Value;
-					ElementsListBox.DataSource = null;
-					ElementsListBox.DataSource = project.Elements;
-				}
-			}
-			Calculate();
-		}
 
 		private void addFrequencyButton_Click(object sender, EventArgs e)
 		{
@@ -77,11 +54,7 @@ namespace CalculationImpedances
 				frequency.ShowDialog();
 				if (frequency.DialogResult == DialogResult.OK)
 				{
-
-					FrequenciesListBox.Items.RemoveAt(selectedIndex);
-					project.Frequencies.Remove(selectedElement);
-					project.Frequencies.Insert(selectedIndex, frequency.Frequency);
-					FrequenciesListBox.Items.Insert(selectedIndex, frequency.Frequency);
+					project.Frequencies[selectedIndex] = frequency.Frequency;
 				}
 			}
 			Calculate();
@@ -101,23 +74,23 @@ namespace CalculationImpedances
 							"Remove frequency", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
 			if (result == DialogResult.OK)
 			{
-				var selectedContact = project.Frequencies[selectedIndex];
-				project.Frequencies.Remove(selectedContact);
+				var selectedFrequency = project.Frequencies[selectedIndex];
+				project.Frequencies.Remove(selectedFrequency);
 				FrequenciesListBox.Items.RemoveAt(selectedIndex);
 			}
 		}
 
 		private void FillCircuitNodes()
 		{
-			var circuits = project.Circuits;
-			foreach (var circuit in circuits)
+			CircuitTreeView.Nodes.Clear();
+			var segment = project.CircuitElement;
+			foreach (var subSegment in segment.SubSegments)
 			{
 				TreeNode circuitNode = new TreeNode
 				{
-					Text = circuit.Name
+					Text = subSegment.Name
 				};
-				
-				FillTreeNode(circuitNode, circuit);
+				FillTreeNode(circuitNode, subSegment);
 				CircuitTreeView.Nodes.Add(circuitNode);
 			}
 		}
@@ -128,7 +101,7 @@ namespace CalculationImpedances
 			{
 				TreeNode elementNode = new TreeNode
 				{
-					Text = segment.Name
+					Text = segment.ToString()
 				};
 				circuitNode.Nodes.Add(elementNode);
 			}
@@ -138,7 +111,7 @@ namespace CalculationImpedances
 				{
 					TreeNode segmentNode = new TreeNode
 					{
-						Text = subSegment.Name
+						Text = subSegment is IElement ? subSegment.ToString() : subSegment.Name
 					};
 					circuitNode.Nodes.Add(segmentNode);
 					if (!(subSegment is IElement))
@@ -151,11 +124,10 @@ namespace CalculationImpedances
 
 		private void MainForm_Load(object sender, EventArgs e)
 		{
-			FillCircuitNodes();
 
-			СircuitListBox.DataSource = null;
-			СircuitListBox.DataSource = project.Circuits;
-			СircuitListBox.DisplayMember = "Name";
+			CircuitsListBox.DataSource = null;
+			CircuitsListBox.DataSource = project.Circuits;
+			CircuitsListBox.DisplayMember = "Name";
 
 			foreach (var i in project.Circuits)
 			{
@@ -165,7 +137,7 @@ namespace CalculationImpedances
 
 		private void СircuitListBox_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			var selectedIndexCircuit = СircuitListBox.SelectedIndex;
+			var selectedIndexCircuit = CircuitsListBox.SelectedIndex;
 
 			if (selectedIndexCircuit != -1)
 			{
@@ -175,10 +147,9 @@ namespace CalculationImpedances
                 {
 					project.AllElements(segment);
 				}
-				ElementsListBox.DataSource = null;
-				ElementsListBox.DataSource = project.Elements;
 			}
 			Calculate();
+			FillCircuitNodes();
 		}
 		
 		private void Calculate()
@@ -215,16 +186,75 @@ namespace CalculationImpedances
 				{
 					project.Elements.Add(element);
 				}
-				else if (segment.Segment is Circuit circiut)
-				{
-					project.Segments.Add(circiut);
-				}
 				else
 				{
 					project.Segments.Add(segment.Segment);
 				}
 			}
 			Calculate();
+		}
+
+		private void addCircuitButton_Click(object sender, EventArgs e)
+		{
+			var circuit = new CircuitForm();
+			circuit.ShowDialog();
+			if (circuit.DialogResult == DialogResult.OK)
+			{
+				project.Circuits.Add(circuit.Circiut);
+				CircuitsListBox.DataSource = null;
+				CircuitsListBox.DataSource = project.Circuits;
+				CircuitsListBox.DisplayMember = "Name";
+			}
+		}
+
+		private void editCircuitButton_Click(object sender, EventArgs e)
+		{
+			var selectedIndex = CircuitsListBox.SelectedIndex;
+			if (selectedIndex == -1)
+			{
+				MessageBox.Show("Select a circuit from the list", "Warning",
+					MessageBoxButtons.OK, MessageBoxIcon.Warning);
+			}
+			else
+			{
+
+				var circuit = new CircuitForm();
+				var selectedCircuit = project.Circuits[selectedIndex];
+				circuit.Circiut = selectedCircuit;
+				circuit.ShowDialog();
+				if (circuit.DialogResult == DialogResult.OK)
+				{
+					project.Circuits[selectedIndex].Name = circuit.Circiut.Name;
+
+					CircuitsListBox.DataSource = null;
+					CircuitsListBox.DataSource = project.Circuits;
+					CircuitsListBox.DisplayMember = "Name";
+				}
+			}
+			Calculate();
+		}
+
+		private void removeCircuitButton_Click(object sender, EventArgs e)
+		{
+			var selectedIndex = CircuitsListBox.SelectedIndex;
+			if (selectedIndex == -1)
+			{
+				MessageBox.Show("Select a circuit from the list", "Warning",
+					MessageBoxButtons.OK, MessageBoxIcon.Warning);
+				return;
+			}
+
+			DialogResult result = MessageBox.Show("Do you really want to remove this circuit?",
+				"Remove circuit", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+			if (result == DialogResult.OK)
+			{
+				var selectedCircuit = project.Circuits[selectedIndex];
+				project.Circuits.Remove(selectedCircuit);
+
+				CircuitsListBox.DataSource = null;
+				CircuitsListBox.DataSource = project.Circuits;
+				CircuitsListBox.DisplayMember = "Name";
+			}
 		}
 	}
 }

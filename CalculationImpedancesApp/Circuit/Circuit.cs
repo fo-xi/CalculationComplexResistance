@@ -8,7 +8,7 @@ namespace CalculationImpedancesApp
     /// <summary>
     /// Circuit class
     /// </summary>
-    public class Circuit: ISegment
+    public class Circuit
     {
         /// <summary>
         /// Circuit name.
@@ -58,11 +58,6 @@ namespace CalculationImpedancesApp
         /// Event that fires when the circuit changes
         /// </summary>
         public event EventHandler SegmentChanged;
-
-       Complex ISegment.CalculateZ(double frequencies)
-        {
-	        return _segmentImplementation.CalculateZ(frequencies);
-        }
 
         /// <summary>
         /// SegmentChanged event registration.

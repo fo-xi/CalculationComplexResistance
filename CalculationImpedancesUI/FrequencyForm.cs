@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace CalculationImpedances
+namespace CalculationImpedancesUI
 {
     public partial class FrequencyForm : Form
     {

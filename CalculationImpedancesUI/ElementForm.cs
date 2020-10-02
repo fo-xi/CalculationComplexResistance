@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using CalculationImpedancesApp;
 
-namespace CalculationImpedances
+namespace CalculationImpedancesUI
 {
 	public partial class ElementForm : Form
 	{
@@ -19,7 +19,7 @@ namespace CalculationImpedances
 		public double Value { get; set; }
 
 		/// <summary>
-		/// Entered element Name.
+		/// Entered element Circiut.
 		/// </summary>
 		public string Name { get; set; }
 
@@ -31,7 +31,6 @@ namespace CalculationImpedances
 			"Capacitor",
 			"Serial circuit",
 			"Parallel circuit",
-			"Cirsuit"
 		};
 
 		public ISegment Segment = null;
@@ -74,11 +73,6 @@ namespace CalculationImpedances
 						case 5:
 						{
 							Segment = new ParallelCircuit(Name, new SegmentsObservableCollection());
-							break;
-						}
-						case 6:
-						{
-							Segment = new Circuit(Name, new SegmentsObservableCollection());
 							break;
 						}
 					}
@@ -129,11 +123,6 @@ namespace CalculationImpedances
 					break;
 				}
 				case 5:
-				{
-					valueTextBox.Enabled = false;
-					break;
-				}
-				case 6:
 				{
 					valueTextBox.Enabled = false;
 					break;
