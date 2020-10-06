@@ -10,38 +10,38 @@ using System.Windows.Forms;
 
 namespace CalculationImpedancesUI
 {
-    public partial class FrequencyForm : Form
-    {
-        /// <summary>
-        /// Frequency entered.
-        /// </summary>
-        public double Frequency { get; set; }
+	public partial class FrequencyForm : Form
+	{
+		/// <summary>
+		/// Frequency entered.
+		/// </summary>
+		public double Frequency { get; set; }
 
-        public FrequencyForm()
-        {
-            InitializeComponent();
-        }
+		public FrequencyForm()
+		{
+			InitializeComponent();
+		}
 
-        private void OKButton_Click(object sender, EventArgs e)
-        {
-            if (frequencyTextBox.Text.Length != 0)
-            {
-                try
-                {
-                    Frequency = double.Parse(frequencyTextBox.Text);
-                    this.DialogResult = DialogResult.OK;
-                }
-                catch
-                {
-                    MessageBox.Show("Incorrect Value", "Warning",
-                   MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-            }
-        }
+		private void OKButton_Click(object sender, EventArgs e)
+		{
+			if (frequencyTextBox.Text.Length != 0)
+			{
+				try
+				{
+					Frequency = double.Parse(frequencyTextBox.Text);
+					this.DialogResult = DialogResult.OK;
+				}
+				catch
+				{
+					MessageBox.Show("Incorrect Value", "Warning",
+						MessageBoxButtons.OK, MessageBoxIcon.Warning);
+				}
+			}
+		}
 
-        private void CancelButton_Click(object sender, EventArgs e)
-        {
-            this.DialogResult = DialogResult.Cancel;
-        }
-    }
+		private void CancelButton_Click(object sender, EventArgs e)
+		{
+			this.DialogResult = DialogResult.Cancel;
+		}
+	}
 }

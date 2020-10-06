@@ -51,30 +51,30 @@ namespace CalculationImpedancesUI
 					switch (typeComboBox.SelectedIndex)
 					{
 						case 1:
-						{
-							Segment = new Resistor(Name, Value);
-							break;
-						}
+							{
+								Segment = new Resistor(Name, Value);
+								break;
+							}
 						case 2:
-						{
-							Segment = new Inductor(Name, Value);
-							break;
-						}
+							{
+								Segment = new Inductor(Name, Value);
+								break;
+							}
 						case 3:
-						{
-							Segment = new Capacitor(Name, Value);
-							break;
-						}
+							{
+								Segment = new Capacitor(Name, Value);
+								break;
+							}
 						case 4:
-						{
-							Segment = new SerialCircuit(Name, new SegmentsObservableCollection());
-							break;
-						}
+							{
+								Segment = new SerialCircuit(Name, new SegmentsObservableCollection());
+								break;
+							}
 						case 5:
-						{
-							Segment = new ParallelCircuit(Name, new SegmentsObservableCollection());
-							break;
-						}
+							{
+								Segment = new ParallelCircuit(Name, new SegmentsObservableCollection());
+								break;
+							}
 					}
 
 					this.DialogResult = DialogResult.OK;
@@ -103,30 +103,30 @@ namespace CalculationImpedancesUI
 			switch (typeComboBox.SelectedIndex)
 			{
 				case 1:
-				{
-					valueTextBox.Enabled = true;
-					break;
-				}
+					{
+						valueTextBox.Enabled = true;
+						break;
+					}
 				case 2:
-				{
-					valueTextBox.Enabled = true;
-					break;
-				}
+					{
+						valueTextBox.Enabled = true;
+						break;
+					}
 				case 3:
-				{
-					valueTextBox.Enabled = true;
-					break;
-				}
+					{
+						valueTextBox.Enabled = true;
+						break;
+					}
 				case 4:
-				{
-					valueTextBox.Enabled = false;
-					break;
-				}
+					{
+						valueTextBox.Enabled = false;
+						break;
+					}
 				case 5:
-				{
-					valueTextBox.Enabled = false;
-					break;
-				}
+					{
+						valueTextBox.Enabled = false;
+						break;
+					}
 			}
 		}
 	}

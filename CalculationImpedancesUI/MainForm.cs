@@ -143,15 +143,15 @@ namespace CalculationImpedancesUI
 			{
 				project.CircuitElement = project.Circuits[selectedIndexCircuit];
 				project.Elements = new List<IElement>();
-				foreach(ISegment segment in project.CircuitElement.SubSegments)
-                {
+				foreach (ISegment segment in project.CircuitElement.SubSegments)
+				{
 					project.AllElements(segment);
 				}
 			}
 			Calculate();
 			FillCircuitNodes();
 		}
-		
+
 		private void Calculate()
 		{
 			project.Results = project.CircuitElement.CalculateZ(project.Frequencies);
@@ -162,7 +162,7 @@ namespace CalculationImpedancesUI
 
 		private void ShowMessage(object sender, EventArgs e)
 		{
-			var message = e as ElementEventArgs; 
+			var message = e as ElementEventArgs;
 			MessageBox.Show(message.Message, "Information",
 					MessageBoxButtons.OK, MessageBoxIcon.Information);
 		}
