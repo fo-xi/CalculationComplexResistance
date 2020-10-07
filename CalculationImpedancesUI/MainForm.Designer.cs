@@ -46,12 +46,14 @@
 			this.addCircuitButton = new System.Windows.Forms.Button();
 			this.editCircuitButton = new System.Windows.Forms.Button();
 			this.tableLayoutPanel11 = new System.Windows.Forms.TableLayoutPanel();
+			this.CircuitsGroupBox = new System.Windows.Forms.GroupBox();
 			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
 			this.tableLayoutPanel8.SuspendLayout();
 			this.tableLayoutPanel9.SuspendLayout();
 			this.tableLayoutPanel10.SuspendLayout();
 			this.tableLayoutPanel2.SuspendLayout();
 			this.tableLayoutPanel11.SuspendLayout();
+			this.CircuitsGroupBox.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// FrequenciesListBox
@@ -171,7 +173,7 @@
 			this.tableLayoutPanel8.ColumnCount = 1;
 			this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
 			this.tableLayoutPanel8.Controls.Add(this.tableLayoutPanel9, 0, 1);
-			this.tableLayoutPanel8.Controls.Add(this.tableLayoutPanel1, 0, 0);
+			this.tableLayoutPanel8.Controls.Add(this.CircuitsGroupBox, 0, 0);
 			this.tableLayoutPanel8.Location = new System.Drawing.Point(1, 1);
 			this.tableLayoutPanel8.Name = "tableLayoutPanel8";
 			this.tableLayoutPanel8.RowCount = 2;
@@ -304,19 +306,31 @@
 			this.tableLayoutPanel11.Size = new System.Drawing.Size(209, 33);
 			this.tableLayoutPanel11.TabIndex = 8;
 			// 
+			// CircuitsGroupBox
+			// 
+			this.CircuitsGroupBox.Controls.Add(this.tableLayoutPanel1);
+			this.CircuitsGroupBox.Location = new System.Drawing.Point(3, 3);
+			this.CircuitsGroupBox.Name = "CircuitsGroupBox";
+			this.CircuitsGroupBox.Size = new System.Drawing.Size(212, 333);
+			this.CircuitsGroupBox.TabIndex = 1;
+			this.CircuitsGroupBox.TabStop = false;
+			this.CircuitsGroupBox.Text = "Circuits";
+			// 
 			// tableLayoutPanel1
 			// 
-			this.tableLayoutPanel1.ColumnCount = 4;
-			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-			this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
+			this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.tableLayoutPanel1.ColumnCount = 1;
+			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+			this.tableLayoutPanel1.Location = new System.Drawing.Point(6, 8);
 			this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-			this.tableLayoutPanel1.RowCount = 1;
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-			this.tableLayoutPanel1.Size = new System.Drawing.Size(863, 332);
-			this.tableLayoutPanel1.TabIndex = 1;
+			this.tableLayoutPanel1.RowCount = 3;
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 80F));
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+			this.tableLayoutPanel1.Size = new System.Drawing.Size(203, 319);
+			this.tableLayoutPanel1.TabIndex = 0;
 			// 
 			// MainForm
 			// 
@@ -333,6 +347,7 @@
 			this.tableLayoutPanel10.ResumeLayout(false);
 			this.tableLayoutPanel2.ResumeLayout(false);
 			this.tableLayoutPanel11.ResumeLayout(false);
+			this.CircuitsGroupBox.ResumeLayout(false);
 			this.ResumeLayout(false);
 
 		}
@@ -351,11 +366,12 @@
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel9;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel10;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel11;
-		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
 		private System.Windows.Forms.TreeView CircuitTreeView;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
 		private System.Windows.Forms.Button editCircuitButton;
 		private System.Windows.Forms.Button removeCircuitButton;
 		private System.Windows.Forms.Button addCircuitButton;
+		private System.Windows.Forms.GroupBox CircuitsGroupBox;
+		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
 	}
 }
