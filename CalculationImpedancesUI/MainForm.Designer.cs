@@ -143,8 +143,8 @@
 			this.tableLayoutPanel1.Location = new System.Drawing.Point(6, 19);
 			this.tableLayoutPanel1.Name = "tableLayoutPanel1";
 			this.tableLayoutPanel1.RowCount = 3;
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 80F));
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.202216F));
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 82.54848F));
 			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
 			this.tableLayoutPanel1.Size = new System.Drawing.Size(255, 361);
 			this.tableLayoutPanel1.TabIndex = 0;
@@ -296,9 +296,9 @@
 			this.CircuitsTreeView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.CircuitsTreeView.Location = new System.Drawing.Point(3, 39);
+			this.CircuitsTreeView.Location = new System.Drawing.Point(3, 29);
 			this.CircuitsTreeView.Name = "CircuitsTreeView";
-			this.CircuitsTreeView.Size = new System.Drawing.Size(249, 282);
+			this.CircuitsTreeView.Size = new System.Drawing.Size(249, 292);
 			this.CircuitsTreeView.TabIndex = 2;
 			// 
 			// FrequencyLabel
