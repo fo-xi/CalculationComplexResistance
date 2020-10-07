@@ -7,11 +7,16 @@ using System.Globalization;
 
 namespace CalculationImpedancesApp
 {
-    /// <summary>
+	/// <summary>
     /// Serial circuit segment.
     /// </summary>
     public class SerialCircuit : ISegment
     {
+	    /// <summary>
+	    /// Serial circuit segment.
+	    /// </summary>
+	    private static int _id = 0;
+
         /// <summary>
         /// Serial circuit segment name.
         /// </summary>
@@ -47,10 +52,9 @@ namespace CalculationImpedancesApp
         /// </summary>
         /// <param name="name">Serial circuit name.</param>
         /// <param name="subSegmentsObservable">Serial circuit segment.</param>
-        public SerialCircuit(string name,
-            SegmentsObservableCollection subSegmentsObservable)
+        public SerialCircuit(SegmentsObservableCollection subSegmentsObservable)
         {
-            Name = name;
+            Name = SetIdSerialCircuit();
             SubSegments = subSegmentsObservable;
             SubSegments.CollectionChanged += OnSegmentChanged;
         }
@@ -84,6 +88,17 @@ namespace CalculationImpedancesApp
                 result += segment.CalculateZ(frequencies);
             }
             return result;
+        }
+
+        /// <summary>
+        /// Setting id of a serial segment
+        /// </summary>
+        /// <returns></returns>
+        public static string SetIdSerialCircuit()
+        {
+	        string id = "Parallel" + _id.ToString();
+	        _id++;
+	        return id;
         }
     }
 }
