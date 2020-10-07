@@ -10,12 +10,7 @@ namespace CalculationImpedancesApp
 	/// </summary>
     public class ParallelCircuit : ISegment
 	{
-        /// <summary>
-        /// Parallel circuit segment id 
-        /// </summary>
-		private static int _id = 0;
-
-        /// <summary>
+		/// <summary>
         /// Parallel circuit segment name.
         /// </summary>
         private string _name;
@@ -53,7 +48,7 @@ namespace CalculationImpedancesApp
         /// <param name="subSegmentsObservable">Parallel circuit segment.</param>
         public ParallelCircuit(SegmentsObservableCollection subSegmentsObservable)
         {
-            Name = SetIdParallelCircuit();
+            Name = "Parallel";
             SubSegments = subSegmentsObservable;
             SubSegments.CollectionChanged += OnSegmentChanged;
         }
@@ -88,17 +83,6 @@ namespace CalculationImpedancesApp
             }
             result = 1/(result);
             return result;
-        }
-
-        /// <summary>
-        /// Setting id of a parallel segment
-        /// </summary>
-        /// <returns></returns>
-        public static string SetIdParallelCircuit()
-        {
-	        string id = "Parallel" + _id.ToString();
-	        _id++;
-	        return id;
         }
 	}
 }

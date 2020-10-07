@@ -49,12 +49,12 @@ namespace CalculationImpedancesApp
 			SegmentsObservableCollection segmentsObservable =
 				new SegmentsObservableCollection
 				{
-					new SerialCircuit("fj5", new SegmentsObservableCollection
+					new SerialCircuit(new SegmentsObservableCollection
 					{
 						new Inductor("jng5", 56.0),
 						new Resistor("fr4tt", 32.6)
 					}),
-					new ParallelCircuit("ut4f", new SegmentsObservableCollection
+					new ParallelCircuit(new SegmentsObservableCollection
 					{
 						new Resistor("g56", 7.8),
 						new Capacitor("duj", 22.6)
@@ -65,12 +65,12 @@ namespace CalculationImpedancesApp
 
 			segmentsObservable = new SegmentsObservableCollection
 			{
-				new SerialCircuit("ew5", new SegmentsObservableCollection
+				new SerialCircuit(new SegmentsObservableCollection
 				{
 					new Capacitor("j55t", 32.5),
 					new Resistor("sct", 4.6)
 				}),
-				new ParallelCircuit("ut4f", new SegmentsObservableCollection
+				new ParallelCircuit(new SegmentsObservableCollection
 				{
 					new Inductor("bb7", 11.3),
 					new Resistor("ji9", 81.0)
@@ -81,12 +81,12 @@ namespace CalculationImpedancesApp
 
 			segmentsObservable = new SegmentsObservableCollection
 			{
-				new ParallelCircuit("dt5", new SegmentsObservableCollection
+				new ParallelCircuit(new SegmentsObservableCollection
 				{
 					new Inductor("yu8", 22.5),
 					new Inductor("ff5", 7.8)
 				}),
-				new SerialCircuit("ee4", new SegmentsObservableCollection
+				new SerialCircuit(new SegmentsObservableCollection
 				{
 					new Inductor("nh78", 57.8),
 					new Capacitor("d45t", 90.4),
@@ -97,12 +97,12 @@ namespace CalculationImpedancesApp
 
 			segmentsObservable = new SegmentsObservableCollection
 			{
-				new SerialCircuit("ddc4", new SegmentsObservableCollection
+				new SerialCircuit(new SegmentsObservableCollection
 				{
 					new Resistor("h6j7", 32.5),
 					new Resistor("s23", 4.6)
 				}),
-				new ParallelCircuit("gh6k", new SegmentsObservableCollection
+				new ParallelCircuit(new SegmentsObservableCollection
 				{
 					new Inductor("bb7", 11.3),
 					new Inductor("d4t", 88.9),
@@ -113,12 +113,12 @@ namespace CalculationImpedancesApp
 
 			segmentsObservable = new SegmentsObservableCollection
 			{
-				new SerialCircuit("gh6", new SegmentsObservableCollection
+				new SerialCircuit(new SegmentsObservableCollection
 				{
 					new Capacitor("j55", 12.4),
 					new Capacitor("sc2", 78.4)
 				}),
-				new ParallelCircuit("u7y", new SegmentsObservableCollection
+				new ParallelCircuit(new SegmentsObservableCollection
 				{
 					new Inductor("aa2", 2.5),
 					new Capacitor("byb6", 8.7)

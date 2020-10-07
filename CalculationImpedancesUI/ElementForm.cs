@@ -67,12 +67,12 @@ namespace CalculationImpedancesUI
 							}
 						case 4:
 							{
-								Segment = new SerialCircuit(Name, new SegmentsObservableCollection());
+								Segment = new SerialCircuit(new SegmentsObservableCollection());
 								break;
 							}
 						case 5:
 							{
-								Segment = new ParallelCircuit(Name, new SegmentsObservableCollection());
+								Segment = new ParallelCircuit(new SegmentsObservableCollection());
 								break;
 							}
 					}
