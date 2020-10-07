@@ -86,22 +86,24 @@ namespace CalculationImpedancesUI
 			var segment = project.CircuitElement;
 			foreach (var subSegment in segment.SubSegments)
 			{
-				TreeNode circuitNode = new TreeNode
+				SegmentTreeNode circuitNode = new SegmentTreeNode
 				{
-					Text = subSegment.Name
+					Text = subSegment.Name,
+					Segment = subSegment
 				};
 				FillTreeNode(circuitNode, subSegment);
 				CircuitTreeView.Nodes.Add(circuitNode);
 			}
 		}
 
-		private void FillTreeNode(TreeNode circuitNode, ISegment segment)
+		private void FillTreeNode(SegmentTreeNode circuitNode, ISegment segment)
 		{
 			if (segment is IElement)
 			{
-				TreeNode elementNode = new TreeNode
+				SegmentTreeNode elementNode = new SegmentTreeNode
 				{
-					Text = segment.ToString()
+					Text = segment.ToString(),
+					Segment = segment
 				};
 				circuitNode.Nodes.Add(elementNode);
 			}
@@ -109,9 +111,10 @@ namespace CalculationImpedancesUI
 			{
 				foreach (var subSegment in segment.SubSegments)
 				{
-					TreeNode segmentNode = new TreeNode
+					SegmentTreeNode segmentNode = new SegmentTreeNode
 					{
-						Text = subSegment is IElement ? subSegment.ToString() : subSegment.Name
+						Text = subSegment is IElement ? subSegment.ToString() : subSegment.Name,
+						Segment = subSegment
 					};
 					circuitNode.Nodes.Add(segmentNode);
 					if (!(subSegment is IElement))
