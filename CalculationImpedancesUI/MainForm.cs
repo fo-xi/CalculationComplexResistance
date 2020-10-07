@@ -25,36 +25,19 @@ namespace CalculationImpedancesUI
 		}
 
 
-		private void addFrequencyButton_Click(object sender, EventArgs e)
+		private void CalculateButton_Click(object sender, EventArgs e)
 		{
-			var frequency = new FrequencyForm();
-			frequency.ShowDialog();
-			if (frequency.DialogResult == DialogResult.OK)
+			if (FrequencyTextBox.Text.Length != 0)
 			{
-				project.Frequencies.Add(frequency.Frequency);
-				FrequenciesListBox.Items.Add(frequency.Frequency);
-			}
-			Calculate();
-		}
-
-		private void editFrequencyButton_Click(object sender, EventArgs e)
-		{
-			var selectedIndex = FrequenciesListBox.SelectedIndex;
-			if (selectedIndex == -1)
-			{
-				MessageBox.Show("Select a frequency from the list", "Warning",
-					MessageBoxButtons.OK, MessageBoxIcon.Warning);
-			}
-			else
-			{
-
-				var frequency = new FrequencyForm();
-				var selectedElement = project.Frequencies[selectedIndex];
-				frequency.Frequency = selectedElement;
-				frequency.ShowDialog();
-				if (frequency.DialogResult == DialogResult.OK)
+				try
 				{
-					project.Frequencies[selectedIndex] = frequency.Frequency;
+					project.Frequencies.Add(double.Parse(FrequencyTextBox.Text));
+					FrequenciesListBox.Items.Add(double.Parse(FrequencyTextBox.Text));
+				}
+				catch
+				{
+					MessageBox.Show("Incorrect Value", "Warning",
+						MessageBoxButtons.OK, MessageBoxIcon.Warning);
 				}
 			}
 			Calculate();
@@ -82,7 +65,7 @@ namespace CalculationImpedancesUI
 
 		private void FillCircuitNodes()
 		{
-			CircuitTreeView.Nodes.Clear();
+			CircuitsTreeView.Nodes.Clear();
 			var segment = project.CircuitElement;
 			foreach (var subSegment in segment.SubSegments)
 			{
@@ -92,7 +75,7 @@ namespace CalculationImpedancesUI
 					Segment = subSegment
 				};
 				FillTreeNode(circuitNode, subSegment);
-				CircuitTreeView.Nodes.Add(circuitNode);
+				CircuitsTreeView.Nodes.Add(circuitNode);
 			}
 		}
 
@@ -128,9 +111,9 @@ namespace CalculationImpedancesUI
 		private void MainForm_Load(object sender, EventArgs e)
 		{
 
-			CircuitsListBox.DataSource = null;
-			CircuitsListBox.DataSource = project.Circuits;
-			CircuitsListBox.DisplayMember = "Name";
+			CircuitSelectionComboBox.DataSource = null;
+			CircuitSelectionComboBox.DataSource = project.Circuits;
+			CircuitSelectionComboBox.DisplayMember = "Name";
 
 			foreach (var i in project.Circuits)
 			{
@@ -138,9 +121,9 @@ namespace CalculationImpedancesUI
 			}
 		}
 
-		private void СircuitListBox_SelectedIndexChanged(object sender, EventArgs e)
+		private void CircuitSelectionComboBox_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			var selectedIndexCircuit = CircuitsListBox.SelectedIndex;
+			var selectedIndexCircuit = CircuitSelectionComboBox.SelectedIndex;
 
 			if (selectedIndexCircuit != -1)
 			{
@@ -204,15 +187,15 @@ namespace CalculationImpedancesUI
 			if (circuit.DialogResult == DialogResult.OK)
 			{
 				project.Circuits.Add(circuit.Circiut);
-				CircuitsListBox.DataSource = null;
-				CircuitsListBox.DataSource = project.Circuits;
-				CircuitsListBox.DisplayMember = "Name";
+				CircuitSelectionComboBox.DataSource = null;
+				CircuitSelectionComboBox.DataSource = project.Circuits;
+				CircuitSelectionComboBox.DisplayMember = "Name";
 			}
 		}
 
 		private void editCircuitButton_Click(object sender, EventArgs e)
 		{
-			var selectedIndex = CircuitsListBox.SelectedIndex;
+			var selectedIndex = CircuitSelectionComboBox.SelectedIndex;
 			if (selectedIndex == -1)
 			{
 				MessageBox.Show("Select a circuit from the list", "Warning",
@@ -229,9 +212,9 @@ namespace CalculationImpedancesUI
 				{
 					project.Circuits[selectedIndex].Name = circuit.Circiut.Name;
 
-					CircuitsListBox.DataSource = null;
-					CircuitsListBox.DataSource = project.Circuits;
-					CircuitsListBox.DisplayMember = "Name";
+					CircuitSelectionComboBox.DataSource = null;
+					CircuitSelectionComboBox.DataSource = project.Circuits;
+					CircuitSelectionComboBox.DisplayMember = "Name";
 				}
 			}
 			Calculate();
@@ -239,7 +222,7 @@ namespace CalculationImpedancesUI
 
 		private void removeCircuitButton_Click(object sender, EventArgs e)
 		{
-			var selectedIndex = CircuitsListBox.SelectedIndex;
+			var selectedIndex = CircuitSelectionComboBox.SelectedIndex;
 			if (selectedIndex == -1)
 			{
 				MessageBox.Show("Select a circuit from the list", "Warning",
@@ -254,15 +237,10 @@ namespace CalculationImpedancesUI
 				var selectedCircuit = project.Circuits[selectedIndex];
 				project.Circuits.Remove(selectedCircuit);
 
-				CircuitsListBox.DataSource = null;
-				CircuitsListBox.DataSource = project.Circuits;
-				CircuitsListBox.DisplayMember = "Name";
+				CircuitSelectionComboBox.DataSource = null;
+				CircuitSelectionComboBox.DataSource = project.Circuits;
+				CircuitSelectionComboBox.DisplayMember = "Name";
 			}
-		}
-
-		private void tableLayoutPanel8_Paint(object sender, PaintEventArgs e)
-		{
-
 		}
 	}
 }

@@ -33,51 +33,51 @@
 			this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
 			this.CircuitsGroupBox = new System.Windows.Forms.GroupBox();
 			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-			this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-			this.ElementsGroupBox = new System.Windows.Forms.GroupBox();
-			this.FrequencyGroupBox = new System.Windows.Forms.GroupBox();
-			this.FrequenciesGroupBox = new System.Windows.Forms.GroupBox();
-			this.ImpedancesGroupBox = new System.Windows.Forms.GroupBox();
 			this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+			this.RemoveButton = new System.Windows.Forms.Button();
 			this.AddButton = new System.Windows.Forms.Button();
 			this.EditButton = new System.Windows.Forms.Button();
-			this.RemoveButton = new System.Windows.Forms.Button();
 			this.CircuitSelectionComboBox = new System.Windows.Forms.ComboBox();
 			this.CircuitsTreeView = new System.Windows.Forms.TreeView();
-			this.FrequencyLabel = new System.Windows.Forms.Label();
-			this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-			this.FrequencyTextBox = new System.Windows.Forms.TextBox();
+			this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+			this.ImpedancesGroupBox = new System.Windows.Forms.GroupBox();
+			this.FrequenciesGroupBox = new System.Windows.Forms.GroupBox();
+			this.FrequencyGroupBox = new System.Windows.Forms.GroupBox();
 			this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
-			this.CalculateButton = new System.Windows.Forms.Button();
 			this.RemoveFrequencyButton = new System.Windows.Forms.Button();
-			this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
-			this.AddSerialElementButton = new System.Windows.Forms.Button();
-			this.AddParallelElementButton = new System.Windows.Forms.Button();
-			this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
-			this.AddElementButton = new System.Windows.Forms.Button();
-			this.EditElementButton = new System.Windows.Forms.Button();
-			this.RemoveElementButton = new System.Windows.Forms.Button();
+			this.CalculateButton = new System.Windows.Forms.Button();
+			this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+			this.FrequencyLabel = new System.Windows.Forms.Label();
+			this.FrequencyTextBox = new System.Windows.Forms.TextBox();
+			this.ElementsGroupBox = new System.Windows.Forms.GroupBox();
 			this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
+			this.textBox1 = new System.Windows.Forms.TextBox();
 			this.NameLabel = new System.Windows.Forms.Label();
 			this.ValueLabel = new System.Windows.Forms.Label();
 			this.TypeLabel = new System.Windows.Forms.Label();
 			this.NameTextBox = new System.Windows.Forms.TextBox();
-			this.textBox1 = new System.Windows.Forms.TextBox();
 			this.textBox2 = new System.Windows.Forms.TextBox();
+			this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
+			this.RemoveElementButton = new System.Windows.Forms.Button();
+			this.EditElementButton = new System.Windows.Forms.Button();
+			this.AddElementButton = new System.Windows.Forms.Button();
+			this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
+			this.AddSerialElementButton = new System.Windows.Forms.Button();
+			this.AddParallelElementButton = new System.Windows.Forms.Button();
 			this.tableLayoutPanel8.SuspendLayout();
 			this.CircuitsGroupBox.SuspendLayout();
 			this.tableLayoutPanel1.SuspendLayout();
-			this.tableLayoutPanel2.SuspendLayout();
-			this.ElementsGroupBox.SuspendLayout();
-			this.FrequencyGroupBox.SuspendLayout();
-			this.FrequenciesGroupBox.SuspendLayout();
-			this.ImpedancesGroupBox.SuspendLayout();
 			this.tableLayoutPanel3.SuspendLayout();
-			this.tableLayoutPanel4.SuspendLayout();
+			this.tableLayoutPanel2.SuspendLayout();
+			this.ImpedancesGroupBox.SuspendLayout();
+			this.FrequenciesGroupBox.SuspendLayout();
+			this.FrequencyGroupBox.SuspendLayout();
 			this.tableLayoutPanel5.SuspendLayout();
-			this.tableLayoutPanel6.SuspendLayout();
-			this.tableLayoutPanel7.SuspendLayout();
+			this.tableLayoutPanel4.SuspendLayout();
+			this.ElementsGroupBox.SuspendLayout();
 			this.tableLayoutPanel9.SuspendLayout();
+			this.tableLayoutPanel7.SuspendLayout();
+			this.tableLayoutPanel6.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// FrequenciesListBox
@@ -88,7 +88,7 @@
 			this.FrequenciesListBox.FormattingEnabled = true;
 			this.FrequenciesListBox.Location = new System.Drawing.Point(6, 19);
 			this.FrequenciesListBox.Name = "FrequenciesListBox";
-			this.FrequenciesListBox.Size = new System.Drawing.Size(222, 173);
+			this.FrequenciesListBox.Size = new System.Drawing.Size(222, 186);
 			this.FrequenciesListBox.TabIndex = 5;
 			// 
 			// ResultsListBox
@@ -99,7 +99,7 @@
 			this.ResultsListBox.FormattingEnabled = true;
 			this.ResultsListBox.Location = new System.Drawing.Point(6, 19);
 			this.ResultsListBox.Name = "ResultsListBox";
-			this.ResultsListBox.Size = new System.Drawing.Size(224, 173);
+			this.ResultsListBox.Size = new System.Drawing.Size(224, 186);
 			this.ResultsListBox.TabIndex = 6;
 			// 
 			// tableLayoutPanel8
@@ -118,7 +118,6 @@
 			this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 36.77419F));
 			this.tableLayoutPanel8.Size = new System.Drawing.Size(1074, 620);
 			this.tableLayoutPanel8.TabIndex = 1;
-			this.tableLayoutPanel8.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel8_Paint);
 			// 
 			// CircuitsGroupBox
 			// 
@@ -149,6 +148,86 @@
 			this.tableLayoutPanel1.Size = new System.Drawing.Size(255, 361);
 			this.tableLayoutPanel1.TabIndex = 0;
 			// 
+			// tableLayoutPanel3
+			// 
+			this.tableLayoutPanel3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.tableLayoutPanel3.ColumnCount = 3;
+			this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
+			this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
+			this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
+			this.tableLayoutPanel3.Controls.Add(this.RemoveButton, 2, 0);
+			this.tableLayoutPanel3.Controls.Add(this.AddButton, 0, 0);
+			this.tableLayoutPanel3.Controls.Add(this.EditButton, 1, 0);
+			this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 327);
+			this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+			this.tableLayoutPanel3.RowCount = 1;
+			this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+			this.tableLayoutPanel3.Size = new System.Drawing.Size(249, 31);
+			this.tableLayoutPanel3.TabIndex = 0;
+			// 
+			// RemoveButton
+			// 
+			this.RemoveButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.RemoveButton.Location = new System.Drawing.Point(169, 3);
+			this.RemoveButton.Name = "RemoveButton";
+			this.RemoveButton.Size = new System.Drawing.Size(77, 25);
+			this.RemoveButton.TabIndex = 2;
+			this.RemoveButton.Text = "Remove";
+			this.RemoveButton.UseVisualStyleBackColor = true;
+			this.RemoveButton.Click += new System.EventHandler(this.removeCircuitButton_Click);
+			// 
+			// AddButton
+			// 
+			this.AddButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.AddButton.Location = new System.Drawing.Point(3, 3);
+			this.AddButton.Name = "AddButton";
+			this.AddButton.Size = new System.Drawing.Size(77, 25);
+			this.AddButton.TabIndex = 0;
+			this.AddButton.Text = "Add";
+			this.AddButton.UseVisualStyleBackColor = true;
+			this.AddButton.Click += new System.EventHandler(this.addCircuitButton_Click);
+			// 
+			// EditButton
+			// 
+			this.EditButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.EditButton.Location = new System.Drawing.Point(86, 3);
+			this.EditButton.Name = "EditButton";
+			this.EditButton.Size = new System.Drawing.Size(77, 25);
+			this.EditButton.TabIndex = 1;
+			this.EditButton.Text = "Edit";
+			this.EditButton.UseVisualStyleBackColor = true;
+			this.EditButton.Click += new System.EventHandler(this.editCircuitButton_Click);
+			// 
+			// CircuitSelectionComboBox
+			// 
+			this.CircuitSelectionComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.CircuitSelectionComboBox.FormattingEnabled = true;
+			this.CircuitSelectionComboBox.Location = new System.Drawing.Point(3, 3);
+			this.CircuitSelectionComboBox.Name = "CircuitSelectionComboBox";
+			this.CircuitSelectionComboBox.Size = new System.Drawing.Size(249, 21);
+			this.CircuitSelectionComboBox.TabIndex = 1;
+			this.CircuitSelectionComboBox.SelectedIndexChanged += new System.EventHandler(this.CircuitSelectionComboBox_SelectedIndexChanged);
+			// 
+			// CircuitsTreeView
+			// 
+			this.CircuitsTreeView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.CircuitsTreeView.Location = new System.Drawing.Point(3, 29);
+			this.CircuitsTreeView.Name = "CircuitsTreeView";
+			this.CircuitsTreeView.Size = new System.Drawing.Size(249, 292);
+			this.CircuitsTreeView.TabIndex = 2;
+			// 
 			// tableLayoutPanel2
 			// 
 			this.tableLayoutPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -170,34 +249,18 @@
 			this.tableLayoutPanel2.Size = new System.Drawing.Size(1068, 222);
 			this.tableLayoutPanel2.TabIndex = 2;
 			// 
-			// ElementsGroupBox
+			// ImpedancesGroupBox
 			// 
-			this.ElementsGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+			this.ImpedancesGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.ElementsGroupBox.Controls.Add(this.tableLayoutPanel9);
-			this.ElementsGroupBox.Controls.Add(this.tableLayoutPanel7);
-			this.ElementsGroupBox.Controls.Add(this.tableLayoutPanel6);
-			this.ElementsGroupBox.Location = new System.Drawing.Point(3, 3);
-			this.ElementsGroupBox.Name = "ElementsGroupBox";
-			this.ElementsGroupBox.Size = new System.Drawing.Size(380, 216);
-			this.ElementsGroupBox.TabIndex = 0;
-			this.ElementsGroupBox.TabStop = false;
-			this.ElementsGroupBox.Text = "Elements";
-			// 
-			// FrequencyGroupBox
-			// 
-			this.FrequencyGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.FrequencyGroupBox.Controls.Add(this.tableLayoutPanel5);
-			this.FrequencyGroupBox.Controls.Add(this.tableLayoutPanel4);
-			this.FrequencyGroupBox.Location = new System.Drawing.Point(389, 3);
-			this.FrequencyGroupBox.Name = "FrequencyGroupBox";
-			this.FrequencyGroupBox.Size = new System.Drawing.Size(194, 216);
-			this.FrequencyGroupBox.TabIndex = 1;
-			this.FrequencyGroupBox.TabStop = false;
-			this.FrequencyGroupBox.Text = "Frequency";
+			this.ImpedancesGroupBox.Controls.Add(this.ResultsListBox);
+			this.ImpedancesGroupBox.Location = new System.Drawing.Point(829, 3);
+			this.ImpedancesGroupBox.Name = "ImpedancesGroupBox";
+			this.ImpedancesGroupBox.Size = new System.Drawing.Size(236, 216);
+			this.ImpedancesGroupBox.TabIndex = 3;
+			this.ImpedancesGroupBox.TabStop = false;
+			this.ImpedancesGroupBox.Text = "Impedances";
 			// 
 			// FrequenciesGroupBox
 			// 
@@ -212,127 +275,19 @@
 			this.FrequenciesGroupBox.TabStop = false;
 			this.FrequenciesGroupBox.Text = "Frequencies";
 			// 
-			// ImpedancesGroupBox
+			// FrequencyGroupBox
 			// 
-			this.ImpedancesGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+			this.FrequencyGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.ImpedancesGroupBox.Controls.Add(this.ResultsListBox);
-			this.ImpedancesGroupBox.Location = new System.Drawing.Point(829, 3);
-			this.ImpedancesGroupBox.Name = "ImpedancesGroupBox";
-			this.ImpedancesGroupBox.Size = new System.Drawing.Size(236, 216);
-			this.ImpedancesGroupBox.TabIndex = 3;
-			this.ImpedancesGroupBox.TabStop = false;
-			this.ImpedancesGroupBox.Text = "Impedances";
-			// 
-			// tableLayoutPanel3
-			// 
-			this.tableLayoutPanel3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.tableLayoutPanel3.ColumnCount = 3;
-			this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
-			this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
-			this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
-			this.tableLayoutPanel3.Controls.Add(this.RemoveButton, 2, 0);
-			this.tableLayoutPanel3.Controls.Add(this.AddButton, 0, 0);
-			this.tableLayoutPanel3.Controls.Add(this.EditButton, 1, 0);
-			this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 327);
-			this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-			this.tableLayoutPanel3.RowCount = 1;
-			this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-			this.tableLayoutPanel3.Size = new System.Drawing.Size(249, 31);
-			this.tableLayoutPanel3.TabIndex = 0;
-			// 
-			// AddButton
-			// 
-			this.AddButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.AddButton.Location = new System.Drawing.Point(3, 3);
-			this.AddButton.Name = "AddButton";
-			this.AddButton.Size = new System.Drawing.Size(77, 25);
-			this.AddButton.TabIndex = 0;
-			this.AddButton.Text = "Add";
-			this.AddButton.UseVisualStyleBackColor = true;
-			// 
-			// EditButton
-			// 
-			this.EditButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.EditButton.Location = new System.Drawing.Point(86, 3);
-			this.EditButton.Name = "EditButton";
-			this.EditButton.Size = new System.Drawing.Size(77, 25);
-			this.EditButton.TabIndex = 1;
-			this.EditButton.Text = "Edit";
-			this.EditButton.UseVisualStyleBackColor = true;
-			// 
-			// RemoveButton
-			// 
-			this.RemoveButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.RemoveButton.Location = new System.Drawing.Point(169, 3);
-			this.RemoveButton.Name = "RemoveButton";
-			this.RemoveButton.Size = new System.Drawing.Size(77, 25);
-			this.RemoveButton.TabIndex = 2;
-			this.RemoveButton.Text = "Remove";
-			this.RemoveButton.UseVisualStyleBackColor = true;
-			// 
-			// CircuitSelectionComboBox
-			// 
-			this.CircuitSelectionComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.CircuitSelectionComboBox.FormattingEnabled = true;
-			this.CircuitSelectionComboBox.Location = new System.Drawing.Point(3, 3);
-			this.CircuitSelectionComboBox.Name = "CircuitSelectionComboBox";
-			this.CircuitSelectionComboBox.Size = new System.Drawing.Size(249, 21);
-			this.CircuitSelectionComboBox.TabIndex = 1;
-			// 
-			// CircuitsTreeView
-			// 
-			this.CircuitsTreeView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.CircuitsTreeView.Location = new System.Drawing.Point(3, 29);
-			this.CircuitsTreeView.Name = "CircuitsTreeView";
-			this.CircuitsTreeView.Size = new System.Drawing.Size(249, 292);
-			this.CircuitsTreeView.TabIndex = 2;
-			// 
-			// FrequencyLabel
-			// 
-			this.FrequencyLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
-			this.FrequencyLabel.AutoSize = true;
-			this.FrequencyLabel.Location = new System.Drawing.Point(6, 11);
-			this.FrequencyLabel.Name = "FrequencyLabel";
-			this.FrequencyLabel.Size = new System.Drawing.Size(60, 13);
-			this.FrequencyLabel.TabIndex = 0;
-			this.FrequencyLabel.Text = "Frequency:";
-			// 
-			// tableLayoutPanel4
-			// 
-			this.tableLayoutPanel4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tableLayoutPanel4.ColumnCount = 2;
-			this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 37.94872F));
-			this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62.05128F));
-			this.tableLayoutPanel4.Controls.Add(this.FrequencyLabel, 0, 0);
-			this.tableLayoutPanel4.Controls.Add(this.FrequencyTextBox, 1, 0);
-			this.tableLayoutPanel4.Location = new System.Drawing.Point(6, 42);
-			this.tableLayoutPanel4.Name = "tableLayoutPanel4";
-			this.tableLayoutPanel4.RowCount = 1;
-			this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-			this.tableLayoutPanel4.Size = new System.Drawing.Size(182, 35);
-			this.tableLayoutPanel4.TabIndex = 1;
-			// 
-			// FrequencyTextBox
-			// 
-			this.FrequencyTextBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
-			this.FrequencyTextBox.Location = new System.Drawing.Point(72, 7);
-			this.FrequencyTextBox.Name = "FrequencyTextBox";
-			this.FrequencyTextBox.Size = new System.Drawing.Size(104, 20);
-			this.FrequencyTextBox.TabIndex = 1;
+			this.FrequencyGroupBox.Controls.Add(this.tableLayoutPanel5);
+			this.FrequencyGroupBox.Controls.Add(this.tableLayoutPanel4);
+			this.FrequencyGroupBox.Location = new System.Drawing.Point(389, 3);
+			this.FrequencyGroupBox.Name = "FrequencyGroupBox";
+			this.FrequencyGroupBox.Size = new System.Drawing.Size(194, 216);
+			this.FrequencyGroupBox.TabIndex = 1;
+			this.FrequencyGroupBox.TabStop = false;
+			this.FrequencyGroupBox.Text = "Frequency";
 			// 
 			// tableLayoutPanel5
 			// 
@@ -349,18 +304,6 @@
 			this.tableLayoutPanel5.Size = new System.Drawing.Size(182, 80);
 			this.tableLayoutPanel5.TabIndex = 2;
 			// 
-			// CalculateButton
-			// 
-			this.CalculateButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.CalculateButton.Location = new System.Drawing.Point(3, 3);
-			this.CalculateButton.Name = "CalculateButton";
-			this.CalculateButton.Size = new System.Drawing.Size(176, 34);
-			this.CalculateButton.TabIndex = 0;
-			this.CalculateButton.Text = "Calculate";
-			this.CalculateButton.UseVisualStyleBackColor = true;
-			// 
 			// RemoveFrequencyButton
 			// 
 			this.RemoveFrequencyButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -373,6 +316,201 @@
 			this.RemoveFrequencyButton.Text = "Remove frequency";
 			this.RemoveFrequencyButton.UseVisualStyleBackColor = true;
 			this.RemoveFrequencyButton.Click += new System.EventHandler(this.removeFrequencyButton_Click);
+			// 
+			// CalculateButton
+			// 
+			this.CalculateButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.CalculateButton.Location = new System.Drawing.Point(3, 3);
+			this.CalculateButton.Name = "CalculateButton";
+			this.CalculateButton.Size = new System.Drawing.Size(176, 34);
+			this.CalculateButton.TabIndex = 0;
+			this.CalculateButton.Text = "Calculate";
+			this.CalculateButton.UseVisualStyleBackColor = true;
+			this.CalculateButton.Click += new System.EventHandler(this.CalculateButton_Click);
+			// 
+			// tableLayoutPanel4
+			// 
+			this.tableLayoutPanel4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.tableLayoutPanel4.ColumnCount = 2;
+			this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 37.94872F));
+			this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62.05128F));
+			this.tableLayoutPanel4.Controls.Add(this.FrequencyLabel, 0, 0);
+			this.tableLayoutPanel4.Controls.Add(this.FrequencyTextBox, 1, 0);
+			this.tableLayoutPanel4.Location = new System.Drawing.Point(6, 42);
+			this.tableLayoutPanel4.Name = "tableLayoutPanel4";
+			this.tableLayoutPanel4.RowCount = 1;
+			this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+			this.tableLayoutPanel4.Size = new System.Drawing.Size(182, 35);
+			this.tableLayoutPanel4.TabIndex = 1;
+			// 
+			// FrequencyLabel
+			// 
+			this.FrequencyLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
+			this.FrequencyLabel.AutoSize = true;
+			this.FrequencyLabel.Location = new System.Drawing.Point(6, 11);
+			this.FrequencyLabel.Name = "FrequencyLabel";
+			this.FrequencyLabel.Size = new System.Drawing.Size(60, 13);
+			this.FrequencyLabel.TabIndex = 0;
+			this.FrequencyLabel.Text = "Frequency:";
+			// 
+			// FrequencyTextBox
+			// 
+			this.FrequencyTextBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
+			this.FrequencyTextBox.Location = new System.Drawing.Point(72, 7);
+			this.FrequencyTextBox.Name = "FrequencyTextBox";
+			this.FrequencyTextBox.Size = new System.Drawing.Size(107, 20);
+			this.FrequencyTextBox.TabIndex = 1;
+			this.FrequencyTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+			// 
+			// ElementsGroupBox
+			// 
+			this.ElementsGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.ElementsGroupBox.Controls.Add(this.tableLayoutPanel9);
+			this.ElementsGroupBox.Controls.Add(this.tableLayoutPanel7);
+			this.ElementsGroupBox.Controls.Add(this.tableLayoutPanel6);
+			this.ElementsGroupBox.Location = new System.Drawing.Point(3, 3);
+			this.ElementsGroupBox.Name = "ElementsGroupBox";
+			this.ElementsGroupBox.Size = new System.Drawing.Size(380, 216);
+			this.ElementsGroupBox.TabIndex = 0;
+			this.ElementsGroupBox.TabStop = false;
+			this.ElementsGroupBox.Text = "Elements";
+			// 
+			// tableLayoutPanel9
+			// 
+			this.tableLayoutPanel9.ColumnCount = 2;
+			this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 32.0442F));
+			this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 67.9558F));
+			this.tableLayoutPanel9.Controls.Add(this.textBox1, 1, 1);
+			this.tableLayoutPanel9.Controls.Add(this.NameLabel, 0, 0);
+			this.tableLayoutPanel9.Controls.Add(this.ValueLabel, 0, 1);
+			this.tableLayoutPanel9.Controls.Add(this.TypeLabel, 0, 2);
+			this.tableLayoutPanel9.Controls.Add(this.NameTextBox, 1, 0);
+			this.tableLayoutPanel9.Controls.Add(this.textBox2, 1, 2);
+			this.tableLayoutPanel9.Location = new System.Drawing.Point(6, 49);
+			this.tableLayoutPanel9.Name = "tableLayoutPanel9";
+			this.tableLayoutPanel9.RowCount = 3;
+			this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
+			this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
+			this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
+			this.tableLayoutPanel9.Size = new System.Drawing.Size(181, 126);
+			this.tableLayoutPanel9.TabIndex = 5;
+			// 
+			// textBox1
+			// 
+			this.textBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
+			this.textBox1.Location = new System.Drawing.Point(61, 53);
+			this.textBox1.Name = "textBox1";
+			this.textBox1.Size = new System.Drawing.Size(117, 20);
+			this.textBox1.TabIndex = 4;
+			this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+			// 
+			// NameLabel
+			// 
+			this.NameLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
+			this.NameLabel.AutoSize = true;
+			this.NameLabel.Location = new System.Drawing.Point(10, 14);
+			this.NameLabel.Name = "NameLabel";
+			this.NameLabel.Size = new System.Drawing.Size(38, 13);
+			this.NameLabel.TabIndex = 0;
+			this.NameLabel.Text = "Name:";
+			this.NameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			// 
+			// ValueLabel
+			// 
+			this.ValueLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
+			this.ValueLabel.AutoSize = true;
+			this.ValueLabel.Location = new System.Drawing.Point(10, 56);
+			this.ValueLabel.Name = "ValueLabel";
+			this.ValueLabel.Size = new System.Drawing.Size(37, 13);
+			this.ValueLabel.TabIndex = 1;
+			this.ValueLabel.Text = "Value:";
+			this.ValueLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			// 
+			// TypeLabel
+			// 
+			this.TypeLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
+			this.TypeLabel.AutoSize = true;
+			this.TypeLabel.Location = new System.Drawing.Point(12, 98);
+			this.TypeLabel.Name = "TypeLabel";
+			this.TypeLabel.Size = new System.Drawing.Size(34, 13);
+			this.TypeLabel.TabIndex = 2;
+			this.TypeLabel.Text = "Type:";
+			this.TypeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			// 
+			// NameTextBox
+			// 
+			this.NameTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
+			this.NameTextBox.Location = new System.Drawing.Point(61, 11);
+			this.NameTextBox.Name = "NameTextBox";
+			this.NameTextBox.Size = new System.Drawing.Size(117, 20);
+			this.NameTextBox.TabIndex = 3;
+			this.NameTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+			// 
+			// textBox2
+			// 
+			this.textBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
+			this.textBox2.Location = new System.Drawing.Point(61, 95);
+			this.textBox2.Name = "textBox2";
+			this.textBox2.Size = new System.Drawing.Size(117, 20);
+			this.textBox2.TabIndex = 5;
+			this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+			// 
+			// tableLayoutPanel7
+			// 
+			this.tableLayoutPanel7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.tableLayoutPanel7.ColumnCount = 3;
+			this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
+			this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
+			this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
+			this.tableLayoutPanel7.Controls.Add(this.RemoveElementButton, 2, 0);
+			this.tableLayoutPanel7.Controls.Add(this.EditElementButton, 1, 0);
+			this.tableLayoutPanel7.Controls.Add(this.AddElementButton, 0, 0);
+			this.tableLayoutPanel7.Location = new System.Drawing.Point(190, 130);
+			this.tableLayoutPanel7.Name = "tableLayoutPanel7";
+			this.tableLayoutPanel7.RowCount = 1;
+			this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+			this.tableLayoutPanel7.Size = new System.Drawing.Size(181, 40);
+			this.tableLayoutPanel7.TabIndex = 4;
+			// 
+			// RemoveElementButton
+			// 
+			this.RemoveElementButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.RemoveElementButton.Location = new System.Drawing.Point(123, 3);
+			this.RemoveElementButton.Name = "RemoveElementButton";
+			this.RemoveElementButton.Size = new System.Drawing.Size(55, 34);
+			this.RemoveElementButton.TabIndex = 2;
+			this.RemoveElementButton.Text = "Remove";
+			this.RemoveElementButton.UseVisualStyleBackColor = true;
+			// 
+			// EditElementButton
+			// 
+			this.EditElementButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.EditElementButton.Location = new System.Drawing.Point(63, 3);
+			this.EditElementButton.Name = "EditElementButton";
+			this.EditElementButton.Size = new System.Drawing.Size(54, 34);
+			this.EditElementButton.TabIndex = 1;
+			this.EditElementButton.Text = "Edit";
+			this.EditElementButton.UseVisualStyleBackColor = true;
+			// 
+			// AddElementButton
+			// 
+			this.AddElementButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.AddElementButton.Location = new System.Drawing.Point(3, 3);
+			this.AddElementButton.Name = "AddElementButton";
+			this.AddElementButton.Size = new System.Drawing.Size(54, 34);
+			this.AddElementButton.TabIndex = 0;
+			this.AddElementButton.Text = "Add";
+			this.AddElementButton.UseVisualStyleBackColor = true;
 			// 
 			// tableLayoutPanel6
 			// 
@@ -413,139 +551,6 @@
 			this.AddParallelElementButton.Text = "Add parallel element";
 			this.AddParallelElementButton.UseVisualStyleBackColor = true;
 			// 
-			// tableLayoutPanel7
-			// 
-			this.tableLayoutPanel7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.tableLayoutPanel7.ColumnCount = 3;
-			this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
-			this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
-			this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
-			this.tableLayoutPanel7.Controls.Add(this.RemoveElementButton, 2, 0);
-			this.tableLayoutPanel7.Controls.Add(this.EditElementButton, 1, 0);
-			this.tableLayoutPanel7.Controls.Add(this.AddElementButton, 0, 0);
-			this.tableLayoutPanel7.Location = new System.Drawing.Point(190, 130);
-			this.tableLayoutPanel7.Name = "tableLayoutPanel7";
-			this.tableLayoutPanel7.RowCount = 1;
-			this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-			this.tableLayoutPanel7.Size = new System.Drawing.Size(181, 40);
-			this.tableLayoutPanel7.TabIndex = 4;
-			// 
-			// AddElementButton
-			// 
-			this.AddElementButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.AddElementButton.Location = new System.Drawing.Point(3, 3);
-			this.AddElementButton.Name = "AddElementButton";
-			this.AddElementButton.Size = new System.Drawing.Size(54, 34);
-			this.AddElementButton.TabIndex = 0;
-			this.AddElementButton.Text = "Add";
-			this.AddElementButton.UseVisualStyleBackColor = true;
-			// 
-			// EditElementButton
-			// 
-			this.EditElementButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.EditElementButton.Location = new System.Drawing.Point(63, 3);
-			this.EditElementButton.Name = "EditElementButton";
-			this.EditElementButton.Size = new System.Drawing.Size(54, 34);
-			this.EditElementButton.TabIndex = 1;
-			this.EditElementButton.Text = "Edit";
-			this.EditElementButton.UseVisualStyleBackColor = true;
-			// 
-			// RemoveElementButton
-			// 
-			this.RemoveElementButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.RemoveElementButton.Location = new System.Drawing.Point(123, 3);
-			this.RemoveElementButton.Name = "RemoveElementButton";
-			this.RemoveElementButton.Size = new System.Drawing.Size(55, 34);
-			this.RemoveElementButton.TabIndex = 2;
-			this.RemoveElementButton.Text = "Remove";
-			this.RemoveElementButton.UseVisualStyleBackColor = true;
-			// 
-			// tableLayoutPanel9
-			// 
-			this.tableLayoutPanel9.ColumnCount = 2;
-			this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 32.0442F));
-			this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 67.9558F));
-			this.tableLayoutPanel9.Controls.Add(this.textBox2, 1, 2);
-			this.tableLayoutPanel9.Controls.Add(this.textBox1, 1, 1);
-			this.tableLayoutPanel9.Controls.Add(this.NameLabel, 0, 0);
-			this.tableLayoutPanel9.Controls.Add(this.ValueLabel, 0, 1);
-			this.tableLayoutPanel9.Controls.Add(this.TypeLabel, 0, 2);
-			this.tableLayoutPanel9.Controls.Add(this.NameTextBox, 1, 0);
-			this.tableLayoutPanel9.Location = new System.Drawing.Point(6, 49);
-			this.tableLayoutPanel9.Name = "tableLayoutPanel9";
-			this.tableLayoutPanel9.RowCount = 3;
-			this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
-			this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
-			this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
-			this.tableLayoutPanel9.Size = new System.Drawing.Size(181, 126);
-			this.tableLayoutPanel9.TabIndex = 5;
-			// 
-			// NameLabel
-			// 
-			this.NameLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
-			this.NameLabel.AutoSize = true;
-			this.NameLabel.Location = new System.Drawing.Point(9, 14);
-			this.NameLabel.Name = "NameLabel";
-			this.NameLabel.Size = new System.Drawing.Size(38, 13);
-			this.NameLabel.TabIndex = 0;
-			this.NameLabel.Text = "Name:";
-			this.NameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-			// 
-			// ValueLabel
-			// 
-			this.ValueLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
-			this.ValueLabel.AutoSize = true;
-			this.ValueLabel.Location = new System.Drawing.Point(10, 56);
-			this.ValueLabel.Name = "ValueLabel";
-			this.ValueLabel.Size = new System.Drawing.Size(37, 13);
-			this.ValueLabel.TabIndex = 1;
-			this.ValueLabel.Text = "Value:";
-			this.ValueLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-			// 
-			// TypeLabel
-			// 
-			this.TypeLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
-			this.TypeLabel.AutoSize = true;
-			this.TypeLabel.Location = new System.Drawing.Point(11, 98);
-			this.TypeLabel.Name = "TypeLabel";
-			this.TypeLabel.Size = new System.Drawing.Size(34, 13);
-			this.TypeLabel.TabIndex = 2;
-			this.TypeLabel.Text = "Type:";
-			this.TypeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-			// 
-			// NameTextBox
-			// 
-			this.NameTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
-			this.NameTextBox.Location = new System.Drawing.Point(63, 11);
-			this.NameTextBox.Name = "NameTextBox";
-			this.NameTextBox.Size = new System.Drawing.Size(112, 20);
-			this.NameTextBox.TabIndex = 3;
-			this.NameTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-			// 
-			// textBox1
-			// 
-			this.textBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
-			this.textBox1.Location = new System.Drawing.Point(63, 53);
-			this.textBox1.Name = "textBox1";
-			this.textBox1.Size = new System.Drawing.Size(112, 20);
-			this.textBox1.TabIndex = 4;
-			this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-			// 
-			// textBox2
-			// 
-			this.textBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
-			this.textBox2.Location = new System.Drawing.Point(63, 95);
-			this.textBox2.Name = "textBox2";
-			this.textBox2.Size = new System.Drawing.Size(112, 20);
-			this.textBox2.TabIndex = 5;
-			this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -558,19 +563,19 @@
 			this.tableLayoutPanel8.ResumeLayout(false);
 			this.CircuitsGroupBox.ResumeLayout(false);
 			this.tableLayoutPanel1.ResumeLayout(false);
-			this.tableLayoutPanel2.ResumeLayout(false);
-			this.ElementsGroupBox.ResumeLayout(false);
-			this.FrequencyGroupBox.ResumeLayout(false);
-			this.FrequenciesGroupBox.ResumeLayout(false);
-			this.ImpedancesGroupBox.ResumeLayout(false);
 			this.tableLayoutPanel3.ResumeLayout(false);
+			this.tableLayoutPanel2.ResumeLayout(false);
+			this.ImpedancesGroupBox.ResumeLayout(false);
+			this.FrequenciesGroupBox.ResumeLayout(false);
+			this.FrequencyGroupBox.ResumeLayout(false);
+			this.tableLayoutPanel5.ResumeLayout(false);
 			this.tableLayoutPanel4.ResumeLayout(false);
 			this.tableLayoutPanel4.PerformLayout();
-			this.tableLayoutPanel5.ResumeLayout(false);
-			this.tableLayoutPanel6.ResumeLayout(false);
-			this.tableLayoutPanel7.ResumeLayout(false);
+			this.ElementsGroupBox.ResumeLayout(false);
 			this.tableLayoutPanel9.ResumeLayout(false);
 			this.tableLayoutPanel9.PerformLayout();
+			this.tableLayoutPanel7.ResumeLayout(false);
+			this.tableLayoutPanel6.ResumeLayout(false);
 			this.ResumeLayout(false);
 
 		}
