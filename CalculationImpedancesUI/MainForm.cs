@@ -259,5 +259,10 @@ namespace CalculationImpedancesUI
 				CircuitsListBox.DisplayMember = "Name";
 			}
 		}
+
+		private void tableLayoutPanel8_Paint(object sender, PaintEventArgs e)
+		{
+
+		}
 	}
 }
