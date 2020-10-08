@@ -51,12 +51,12 @@
 			this.FrequencyTextBox = new System.Windows.Forms.TextBox();
 			this.ElementsGroupBox = new System.Windows.Forms.GroupBox();
 			this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
-			this.textBox1 = new System.Windows.Forms.TextBox();
-			this.NameLabel = new System.Windows.Forms.Label();
-			this.ValueLabel = new System.Windows.Forms.Label();
 			this.TypeLabel = new System.Windows.Forms.Label();
+			this.ValueLabel = new System.Windows.Forms.Label();
+			this.NameLabel = new System.Windows.Forms.Label();
+			this.ValueTextBox = new System.Windows.Forms.TextBox();
 			this.NameTextBox = new System.Windows.Forms.TextBox();
-			this.textBox2 = new System.Windows.Forms.TextBox();
+			this.TypeComboBox = new System.Windows.Forms.ComboBox();
 			this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
 			this.RemoveElementButton = new System.Windows.Forms.Button();
 			this.EditElementButton = new System.Windows.Forms.Button();
@@ -227,6 +227,7 @@
 			this.CircuitsTreeView.Name = "CircuitsTreeView";
 			this.CircuitsTreeView.Size = new System.Drawing.Size(249, 292);
 			this.CircuitsTreeView.TabIndex = 2;
+			this.CircuitsTreeView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.CircuitsTreeView_AfterSelect);
 			// 
 			// tableLayoutPanel2
 			// 
@@ -384,13 +385,13 @@
 			this.tableLayoutPanel9.ColumnCount = 2;
 			this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 32.0442F));
 			this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 67.9558F));
-			this.tableLayoutPanel9.Controls.Add(this.textBox1, 1, 1);
-			this.tableLayoutPanel9.Controls.Add(this.NameLabel, 0, 0);
-			this.tableLayoutPanel9.Controls.Add(this.ValueLabel, 0, 1);
-			this.tableLayoutPanel9.Controls.Add(this.TypeLabel, 0, 2);
-			this.tableLayoutPanel9.Controls.Add(this.NameTextBox, 1, 0);
-			this.tableLayoutPanel9.Controls.Add(this.textBox2, 1, 2);
-			this.tableLayoutPanel9.Location = new System.Drawing.Point(6, 49);
+			this.tableLayoutPanel9.Controls.Add(this.TypeLabel, 0, 0);
+			this.tableLayoutPanel9.Controls.Add(this.ValueLabel, 0, 2);
+			this.tableLayoutPanel9.Controls.Add(this.NameLabel, 0, 1);
+			this.tableLayoutPanel9.Controls.Add(this.ValueTextBox, 1, 2);
+			this.tableLayoutPanel9.Controls.Add(this.NameTextBox, 1, 1);
+			this.tableLayoutPanel9.Controls.Add(this.TypeComboBox, 1, 0);
+			this.tableLayoutPanel9.Location = new System.Drawing.Point(6, 28);
 			this.tableLayoutPanel9.Name = "tableLayoutPanel9";
 			this.tableLayoutPanel9.RowCount = 3;
 			this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
@@ -399,65 +400,65 @@
 			this.tableLayoutPanel9.Size = new System.Drawing.Size(181, 126);
 			this.tableLayoutPanel9.TabIndex = 5;
 			// 
-			// textBox1
-			// 
-			this.textBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
-			this.textBox1.Location = new System.Drawing.Point(61, 53);
-			this.textBox1.Name = "textBox1";
-			this.textBox1.Size = new System.Drawing.Size(117, 20);
-			this.textBox1.TabIndex = 4;
-			this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-			// 
-			// NameLabel
-			// 
-			this.NameLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
-			this.NameLabel.AutoSize = true;
-			this.NameLabel.Location = new System.Drawing.Point(10, 14);
-			this.NameLabel.Name = "NameLabel";
-			this.NameLabel.Size = new System.Drawing.Size(38, 13);
-			this.NameLabel.TabIndex = 0;
-			this.NameLabel.Text = "Name:";
-			this.NameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-			// 
-			// ValueLabel
-			// 
-			this.ValueLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
-			this.ValueLabel.AutoSize = true;
-			this.ValueLabel.Location = new System.Drawing.Point(10, 56);
-			this.ValueLabel.Name = "ValueLabel";
-			this.ValueLabel.Size = new System.Drawing.Size(37, 13);
-			this.ValueLabel.TabIndex = 1;
-			this.ValueLabel.Text = "Value:";
-			this.ValueLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-			// 
 			// TypeLabel
 			// 
 			this.TypeLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
 			this.TypeLabel.AutoSize = true;
-			this.TypeLabel.Location = new System.Drawing.Point(12, 98);
+			this.TypeLabel.Location = new System.Drawing.Point(12, 14);
 			this.TypeLabel.Name = "TypeLabel";
 			this.TypeLabel.Size = new System.Drawing.Size(34, 13);
 			this.TypeLabel.TabIndex = 2;
 			this.TypeLabel.Text = "Type:";
 			this.TypeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
 			// 
+			// ValueLabel
+			// 
+			this.ValueLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
+			this.ValueLabel.AutoSize = true;
+			this.ValueLabel.Location = new System.Drawing.Point(10, 98);
+			this.ValueLabel.Name = "ValueLabel";
+			this.ValueLabel.Size = new System.Drawing.Size(37, 13);
+			this.ValueLabel.TabIndex = 1;
+			this.ValueLabel.Text = "Value:";
+			this.ValueLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			// 
+			// NameLabel
+			// 
+			this.NameLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
+			this.NameLabel.AutoSize = true;
+			this.NameLabel.Location = new System.Drawing.Point(10, 56);
+			this.NameLabel.Name = "NameLabel";
+			this.NameLabel.Size = new System.Drawing.Size(38, 13);
+			this.NameLabel.TabIndex = 0;
+			this.NameLabel.Text = "Name:";
+			this.NameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			// 
+			// ValueTextBox
+			// 
+			this.ValueTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
+			this.ValueTextBox.Location = new System.Drawing.Point(61, 95);
+			this.ValueTextBox.Name = "ValueTextBox";
+			this.ValueTextBox.Size = new System.Drawing.Size(117, 20);
+			this.ValueTextBox.TabIndex = 4;
+			this.ValueTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+			// 
 			// NameTextBox
 			// 
 			this.NameTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
-			this.NameTextBox.Location = new System.Drawing.Point(61, 11);
+			this.NameTextBox.Location = new System.Drawing.Point(61, 53);
 			this.NameTextBox.Name = "NameTextBox";
 			this.NameTextBox.Size = new System.Drawing.Size(117, 20);
 			this.NameTextBox.TabIndex = 3;
 			this.NameTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
 			// 
-			// textBox2
+			// TypeComboBox
 			// 
-			this.textBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
-			this.textBox2.Location = new System.Drawing.Point(61, 95);
-			this.textBox2.Name = "textBox2";
-			this.textBox2.Size = new System.Drawing.Size(117, 20);
-			this.textBox2.TabIndex = 5;
-			this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+			this.TypeComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.TypeComboBox.FormattingEnabled = true;
+			this.TypeComboBox.Location = new System.Drawing.Point(61, 10);
+			this.TypeComboBox.Name = "TypeComboBox";
+			this.TypeComboBox.Size = new System.Drawing.Size(117, 21);
+			this.TypeComboBox.TabIndex = 5;
 			// 
 			// tableLayoutPanel7
 			// 
@@ -469,7 +470,7 @@
 			this.tableLayoutPanel7.Controls.Add(this.RemoveElementButton, 2, 0);
 			this.tableLayoutPanel7.Controls.Add(this.EditElementButton, 1, 0);
 			this.tableLayoutPanel7.Controls.Add(this.AddElementButton, 0, 0);
-			this.tableLayoutPanel7.Location = new System.Drawing.Point(190, 130);
+			this.tableLayoutPanel7.Location = new System.Drawing.Point(6, 160);
 			this.tableLayoutPanel7.Name = "tableLayoutPanel7";
 			this.tableLayoutPanel7.RowCount = 1;
 			this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -499,6 +500,7 @@
 			this.EditElementButton.TabIndex = 1;
 			this.EditElementButton.Text = "Edit";
 			this.EditElementButton.UseVisualStyleBackColor = true;
+			this.EditElementButton.Click += new System.EventHandler(this.EditElementButton_Click);
 			// 
 			// AddElementButton
 			// 
@@ -511,6 +513,7 @@
 			this.AddElementButton.TabIndex = 0;
 			this.AddElementButton.Text = "Add";
 			this.AddElementButton.UseVisualStyleBackColor = true;
+			this.AddElementButton.Click += new System.EventHandler(this.AddElementButton_Click);
 			// 
 			// tableLayoutPanel6
 			// 
@@ -519,7 +522,7 @@
 			this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
 			this.tableLayoutPanel6.Controls.Add(this.AddSerialElementButton, 0, 1);
 			this.tableLayoutPanel6.Controls.Add(this.AddParallelElementButton, 0, 0);
-			this.tableLayoutPanel6.Location = new System.Drawing.Point(190, 52);
+			this.tableLayoutPanel6.Location = new System.Drawing.Point(190, 74);
 			this.tableLayoutPanel6.Name = "tableLayoutPanel6";
 			this.tableLayoutPanel6.RowCount = 2;
 			this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -536,7 +539,7 @@
 			this.AddSerialElementButton.Name = "AddSerialElementButton";
 			this.AddSerialElementButton.Size = new System.Drawing.Size(175, 34);
 			this.AddSerialElementButton.TabIndex = 1;
-			this.AddSerialElementButton.Text = "Add serial element";
+			this.AddSerialElementButton.Text = "Add serial segment";
 			this.AddSerialElementButton.UseVisualStyleBackColor = true;
 			// 
 			// AddParallelElementButton
@@ -548,7 +551,7 @@
 			this.AddParallelElementButton.Name = "AddParallelElementButton";
 			this.AddParallelElementButton.Size = new System.Drawing.Size(175, 34);
 			this.AddParallelElementButton.TabIndex = 0;
-			this.AddParallelElementButton.Text = "Add parallel element";
+			this.AddParallelElementButton.Text = "Add parallel segment";
 			this.AddParallelElementButton.UseVisualStyleBackColor = true;
 			// 
 			// MainForm
@@ -611,11 +614,11 @@
 		private System.Windows.Forms.Button AddSerialElementButton;
 		private System.Windows.Forms.Button AddParallelElementButton;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel9;
-		private System.Windows.Forms.TextBox textBox2;
-		private System.Windows.Forms.TextBox textBox1;
+		private System.Windows.Forms.TextBox ValueTextBox;
 		private System.Windows.Forms.Label NameLabel;
 		private System.Windows.Forms.Label ValueLabel;
 		private System.Windows.Forms.Label TypeLabel;
 		private System.Windows.Forms.TextBox NameTextBox;
+		private System.Windows.Forms.ComboBox TypeComboBox;
 	}
 }

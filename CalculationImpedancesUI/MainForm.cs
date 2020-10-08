@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using CalculationImpedancesApp;
 using System.Numerics;
+using System.Security.Cryptography.X509Certificates;
 
 namespace CalculationImpedancesUI
 {
@@ -19,11 +20,18 @@ namespace CalculationImpedancesUI
 		/// </summary>
 		Project project = new Project();
 
+		public readonly List<string> Type = new List<string>
+		{
+			"",
+			"Resistor",
+			"Inductor",
+			"Capacitor",
+		};
+
 		public MainForm()
 		{
 			InitializeComponent();
 		}
-
 
 		private void CalculateButton_Click(object sender, EventArgs e)
 		{
@@ -40,6 +48,7 @@ namespace CalculationImpedancesUI
 						MessageBoxButtons.OK, MessageBoxIcon.Warning);
 				}
 			}
+
 			Calculate();
 		}
 
@@ -54,7 +63,7 @@ namespace CalculationImpedancesUI
 			}
 
 			DialogResult result = MessageBox.Show("Do you really want to remove this frequency?",
-							"Remove frequency", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+				"Remove frequency", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
 			if (result == DialogResult.OK)
 			{
 				var selectedFrequency = project.Frequencies[selectedIndex];
@@ -63,7 +72,7 @@ namespace CalculationImpedancesUI
 			}
 		}
 
-		private void FillCircuitNodes()
+		private void FillCircuitNodes() 
 		{
 			CircuitsTreeView.Nodes.Clear();
 			var segment = project.CircuitElement;
@@ -115,6 +124,10 @@ namespace CalculationImpedancesUI
 			CircuitSelectionComboBox.DataSource = project.Circuits;
 			CircuitSelectionComboBox.DisplayMember = "Name";
 
+			TypeComboBox.DataSource = Type;
+
+			CircuitsTreeView.ExpandAll();
+
 			foreach (var i in project.Circuits)
 			{
 				i.SegmentChanged += ShowMessage;
@@ -134,6 +147,7 @@ namespace CalculationImpedancesUI
 					project.AllElements(segment);
 				}
 			}
+
 			Calculate();
 			FillCircuitNodes();
 		}
@@ -150,7 +164,7 @@ namespace CalculationImpedancesUI
 		{
 			var message = e as ElementEventArgs;
 			MessageBox.Show(message.Message, "Information",
-					MessageBoxButtons.OK, MessageBoxIcon.Information);
+				MessageBoxButtons.OK, MessageBoxIcon.Information);
 		}
 
 		private void ImpedanceValues()
@@ -177,6 +191,7 @@ namespace CalculationImpedancesUI
 					project.Segments.Add(segment.Segment);
 				}
 			}
+
 			Calculate();
 		}
 
@@ -217,6 +232,7 @@ namespace CalculationImpedancesUI
 					CircuitSelectionComboBox.DisplayMember = "Name";
 				}
 			}
+
 			Calculate();
 		}
 
@@ -240,6 +256,151 @@ namespace CalculationImpedancesUI
 				CircuitSelectionComboBox.DataSource = null;
 				CircuitSelectionComboBox.DataSource = project.Circuits;
 				CircuitSelectionComboBox.DisplayMember = "Name";
+			}
+		}
+
+		private void AddElementButton_Click(object sender, EventArgs e)
+		{
+			var selectedIndex = CircuitsTreeView.SelectedNode as SegmentTreeNode;
+			if (selectedIndex == null)
+			{
+				MessageBox.Show("Select a element from the list", "Warning",
+					MessageBoxButtons.OK, MessageBoxIcon.Warning);
+				return;
+			}
+
+			if ((NameTextBox.Text.Length != 0) && (ValueTextBox.Text.Length != 0))
+			{
+				try
+				{
+					if (selectedIndex.Segment is IElement)
+					{
+						var parent = selectedIndex.Parent as SegmentTreeNode;
+						var element = CreateElement();
+						parent.Segment.SubSegments.Add(element);
+						parent.Nodes.Add(new SegmentTreeNode
+						{
+							Text = element.ToString(),
+							Segment = element
+						});
+
+					}
+					else
+					{
+						var element = CreateElement();
+						selectedIndex.Segment.SubSegments.Add(element);
+						selectedIndex.Nodes.Add(new SegmentTreeNode
+						{
+							Text = element.ToString(),
+							Segment = element
+						});
+					}
+
+					TypeComboBox.Text = "";
+					NameTextBox.Text = "";
+					ValueTextBox.Text = "";
+				}
+				catch (ArgumentException exception)
+				{
+					MessageBox.Show(exception.Message, "Error",
+						MessageBoxButtons.OK, MessageBoxIcon.Error);
+				}
+
+			}
+
+		}
+
+		private IElement CreateElement()
+		{
+			IElement segment = null;
+			if ((NameTextBox.Text.Length != 0) && (ValueTextBox.Text.Length != 0))
+			{
+				try
+				{
+					var name = NameTextBox.Text;
+					var value = double.Parse(ValueTextBox.Text);
+					switch (TypeComboBox.SelectedIndex)
+					{
+						case 1:
+						{
+							segment = new Resistor(name, value);
+							break;
+						}
+						case 2:
+						{
+							segment = new Inductor(name, value);
+							break;
+						}
+						case 3:
+						{
+							segment = new Capacitor(name, value);
+							break;
+						}
+					}
+				}
+				catch (ArgumentException exception)
+				{
+					MessageBox.Show(exception.Message, "Error",
+						MessageBoxButtons.OK, MessageBoxIcon.Error);
+				}
+
+			}
+
+			return segment;
+		}
+
+		private void EditElementButton_Click(object sender, EventArgs e)
+		{
+			var selectedIndex = CircuitsTreeView.SelectedNode as SegmentTreeNode;
+			if (selectedIndex == null)
+			{
+				MessageBox.Show("Select a element from the list", "Warning",
+					MessageBoxButtons.OK, MessageBoxIcon.Warning);
+				return;
+			}
+
+			if (selectedIndex.Segment is IElement)
+			{
+				var parent = selectedIndex.Parent as SegmentTreeNode;
+				var element = CreateElement();
+				parent.Segment.SubSegments.Remove(selectedIndex.Segment);
+				parent.Segment.SubSegments.Add(element);
+				parent.Nodes.Remove(selectedIndex);
+				parent.Nodes.Add(new SegmentTreeNode
+				{
+					Text = element.ToString(),
+					Segment = element
+				});
+			}
+			else
+			{
+				var element = CreateElement();
+				selectedIndex.Segment.SubSegments.Remove(selectedIndex.Segment);
+				selectedIndex.Segment.SubSegments.Add(element);
+				selectedIndex.Nodes.Remove(selectedIndex);
+				selectedIndex.Nodes.Add(new SegmentTreeNode
+				{
+					Text = element.ToString(),
+					Segment = element
+				});
+			}
+		}
+
+		private void CircuitsTreeView_AfterSelect(object sender, TreeViewEventArgs e)
+		{
+			var selectedIndex = CircuitsTreeView.SelectedNode as SegmentTreeNode;
+			if (selectedIndex == null)
+			{
+				MessageBox.Show("Select a element from the list", "Warning",
+					MessageBoxButtons.OK, MessageBoxIcon.Warning);
+				return;
+			}
+
+			TypeComboBox.Text = selectedIndex.Segment.GetType().ToString();
+			NameTextBox.Text = selectedIndex.Segment.Name;
+			if (selectedIndex.Segment is IElement element)
+			{
+				ValueTextBox.Text = element.Value.ToString();
 			}
 		}
 	}
