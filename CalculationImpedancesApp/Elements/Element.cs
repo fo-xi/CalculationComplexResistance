@@ -90,6 +90,5 @@ namespace CalculationImpedancesApp
 		/// <param name="frequency">Signal frequency.</param>
 		/// </summary>
 		public abstract Complex CalculateZ(double frequency);
-
 	}
 }

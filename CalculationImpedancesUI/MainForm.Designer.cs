@@ -454,6 +454,7 @@
 			// TypeComboBox
 			// 
 			this.TypeComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.TypeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.TypeComboBox.FormattingEnabled = true;
 			this.TypeComboBox.Location = new System.Drawing.Point(61, 10);
 			this.TypeComboBox.Name = "TypeComboBox";
@@ -488,6 +489,7 @@
 			this.RemoveElementButton.TabIndex = 2;
 			this.RemoveElementButton.Text = "Remove";
 			this.RemoveElementButton.UseVisualStyleBackColor = true;
+			this.RemoveElementButton.Click += new System.EventHandler(this.RemoveElementButton_Click);
 			// 
 			// EditElementButton
 			// 
@@ -541,6 +543,7 @@
 			this.AddSerialElementButton.TabIndex = 1;
 			this.AddSerialElementButton.Text = "Add serial segment";
 			this.AddSerialElementButton.UseVisualStyleBackColor = true;
+			this.AddSerialElementButton.Click += new System.EventHandler(this.AddSerialElementButton_Click);
 			// 
 			// AddParallelElementButton
 			// 
@@ -553,6 +556,7 @@
 			this.AddParallelElementButton.TabIndex = 0;
 			this.AddParallelElementButton.Text = "Add parallel segment";
 			this.AddParallelElementButton.UseVisualStyleBackColor = true;
+			this.AddParallelElementButton.Click += new System.EventHandler(this.AddParallelElementButton_Click);
 			// 
 			// MainForm
 			// 

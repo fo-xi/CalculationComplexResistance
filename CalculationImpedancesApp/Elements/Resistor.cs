@@ -31,9 +31,10 @@ namespace CalculationImpedancesApp
         /// <summary>
         /// Overriding a method that returns the name and value of the resistor.
         /// </summary>
+        /// public override string ToString()
         public override string ToString()
         {
-            return "Resistor: " + Name + " = " + Value;
+	        return "Inductor: " + Name + " = " + Value;
         }
     }
 }
