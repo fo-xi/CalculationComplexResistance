@@ -33,7 +33,7 @@ namespace CalculationImpedancesApp
 		/// <summary>
 		/// Selected circuit from the list of circuits.
 		/// </summary>
-		public Circuit CircuitElement = null;
+		public Circuit SelectedCircuit = null;
 
 		/// <summary>
 		/// The list necessary for a nice display 

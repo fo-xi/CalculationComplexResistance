@@ -51,16 +51,21 @@ namespace CalculationImpedancesUI
 		private void FillCircuitNodes() 
 		{
 			CircuitsTreeView.Nodes.Clear();
-			var segment = project.CircuitElement;
-			foreach (var subSegment in segment.SubSegments)
+			var circuit = project.SelectedCircuit;
+			SegmentTreeNode mainCircuitNode= new SegmentTreeNode
 			{
-				SegmentTreeNode circuitNode = new SegmentTreeNode
+				Text = circuit.Name,
+			};
+			CircuitsTreeView.Nodes.Add(mainCircuitNode);
+			foreach (var subSegment in circuit.SubSegments)
+			{
+				SegmentTreeNode subSegmentNode = new SegmentTreeNode
 				{
 					Text = subSegment.Name,
 					Segment = subSegment
 				};
-				FillTreeNode(circuitNode, subSegment);
-				CircuitsTreeView.Nodes.Add(circuitNode);
+				FillTreeNode(subSegmentNode, subSegment);
+				CircuitsTreeView.Nodes[0].Nodes.Add(subSegmentNode);
 			}
 			CircuitsTreeView.ExpandAll();
 		}
@@ -98,7 +103,10 @@ namespace CalculationImpedancesUI
 
 		{
 			var selectedIndexCircuit = CircuitSelectionComboBox.SelectedIndex;
-			project.CircuitElement = project.Circuits[selectedIndexCircuit];
+			if (selectedIndexCircuit != -1)
+			{
+				project.SelectedCircuit = project.Circuits[selectedIndexCircuit];
+			}
 
 			Calculate();
 			FillCircuitNodes();
@@ -189,7 +197,7 @@ namespace CalculationImpedancesUI
 
 		private void Calculate()
 		{
-			project.Results = project.CircuitElement.CalculateZ(project.Frequencies);
+			project.Results = project.SelectedCircuit.CalculateZ(project.Frequencies);
 			ImpedanceValues();
 			ResultsListBox.DataSource = null;
 			ResultsListBox.DataSource = project.ImpedanceValues;
@@ -225,7 +233,23 @@ namespace CalculationImpedancesUI
 				return;
 			}
 
-			if (selectedIndex.Segment is IElement)
+			if (selectedIndex == CircuitsTreeView.Nodes[0])
+			{
+				var element = CreateElement();
+				if (element == null)
+				{
+					MessageBox.Show("Fill in all the fields", "Warning",
+						MessageBoxButtons.OK, MessageBoxIcon.Warning);
+					return;
+				}
+				project.SelectedCircuit.SubSegments.Add(element);
+				selectedIndex.Nodes.Add(new SegmentTreeNode
+				{
+					Text = element.ToString(),
+					Segment = element
+				});
+			}
+			else if (selectedIndex.Segment is IElement)
 			{
 				var parent = selectedIndex.Parent as SegmentTreeNode;
 				var element = CreateElement();
@@ -311,7 +335,12 @@ namespace CalculationImpedancesUI
 				return;
 			}
 
-			if (selectedIndex.Segment is IElement)
+			if (selectedIndex == CircuitsTreeView.Nodes[0])
+			{
+				MessageBox.Show("Can't delete root element", "Error",
+					MessageBoxButtons.OK, MessageBoxIcon.Error);
+			}
+			else if (selectedIndex.Segment is IElement)
 			{
 				var parent = selectedIndex.Parent as SegmentTreeNode;
 				var element = selectedIndex.Segment;
