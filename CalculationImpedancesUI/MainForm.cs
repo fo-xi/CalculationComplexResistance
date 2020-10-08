@@ -255,8 +255,6 @@ namespace CalculationImpedancesUI
 				var element = CreateElement();
 				if (element == null)
 				{
-					MessageBox.Show("Fill in all the fields", "Warning",
-						MessageBoxButtons.OK, MessageBoxIcon.Warning);
 					return;
 				}
 
@@ -272,8 +270,6 @@ namespace CalculationImpedancesUI
 				var element = CreateElement();
 				if (element == null)
 				{
-					MessageBox.Show("Fill in all the fields", "Warning",
-						MessageBoxButtons.OK, MessageBoxIcon.Warning);
 					return;
 				}
 				selectedIndex.Segment.SubSegments.Add(element);
@@ -302,6 +298,7 @@ namespace CalculationImpedancesUI
 			{
 				var parent = selectedIndex.Parent as SegmentTreeNode;
 				var element = CreateElement();
+				if(element == null) return;
 				parent.Segment.SubSegments.Remove(selectedIndex.Segment);
 				parent.Segment.SubSegments.Add(element);
 				parent.Nodes.Remove(selectedIndex);
@@ -314,6 +311,7 @@ namespace CalculationImpedancesUI
 			else
 			{
 				var element = CreateElement();
+				if (element == null) return;
 				selectedIndex.Segment.SubSegments.Remove(selectedIndex.Segment);
 				selectedIndex.Segment.SubSegments.Add(element);
 				selectedIndex.Nodes.Remove(selectedIndex);
@@ -340,19 +338,19 @@ namespace CalculationImpedancesUI
 				MessageBox.Show("Can't delete root element", "Error",
 					MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
-			else if (selectedIndex.Segment is IElement)
+			else
 			{
 				var parent = selectedIndex.Parent as SegmentTreeNode;
 				var element = selectedIndex.Segment;
-				parent.Segment.SubSegments.Remove(element);
+				if (parent.Segment == null)
+				{
+					project.SelectedCircuit.SubSegments.Remove(element);
+				}
+				else
+				{
+					parent.Segment.SubSegments.Remove(element);
+				}
 				parent.Nodes.Remove(selectedIndex);
-
-			}
-			else
-			{
-				var element = selectedIndex.Segment;
-				selectedIndex.Segment.SubSegments.Remove(element);
-				selectedIndex.Nodes.Remove(selectedIndex);
 			}
 		}
 
@@ -365,7 +363,17 @@ namespace CalculationImpedancesUI
 					MessageBoxButtons.OK, MessageBoxIcon.Warning);
 				return;
 			}
-			if (selectedIndex.Segment is IElement)
+			if (selectedIndex == CircuitsTreeView.Nodes[0])
+			{
+				var segment = new ParallelCircuit(new SegmentsObservableCollection());
+				project.SelectedCircuit.SubSegments.Add(segment);
+				selectedIndex.Nodes.Add(new SegmentTreeNode
+				{
+					Text = "Parallel",
+					Segment = segment
+				});
+			}
+			else if (selectedIndex.Segment is IElement)
 			{
 				MessageBox.Show("Segment cannot be created from element", "Error",
 					MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -392,7 +400,17 @@ namespace CalculationImpedancesUI
 					MessageBoxButtons.OK, MessageBoxIcon.Warning);
 				return;
 			}
-			if (selectedIndex.Segment is IElement)
+			if (selectedIndex == CircuitsTreeView.Nodes[0])
+			{
+				var segment = new SerialCircuit(new SegmentsObservableCollection());
+				project.SelectedCircuit.SubSegments.Add(segment);
+				selectedIndex.Nodes.Add(new SegmentTreeNode
+				{
+					Text = "Serial",
+					Segment = segment
+				});
+			}
+			else if (selectedIndex.Segment is IElement)
 			{
 				MessageBox.Show("Segment cannot be created from element", "Error",
 					MessageBoxButtons.OK, MessageBoxIcon.Error);
