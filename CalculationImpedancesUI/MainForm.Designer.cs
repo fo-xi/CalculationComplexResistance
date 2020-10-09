@@ -220,6 +220,7 @@
 			// 
 			// CircuitsTreeView
 			// 
+			this.CircuitsTreeView.AllowDrop = true;
 			this.CircuitsTreeView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -227,7 +228,10 @@
 			this.CircuitsTreeView.Name = "CircuitsTreeView";
 			this.CircuitsTreeView.Size = new System.Drawing.Size(249, 292);
 			this.CircuitsTreeView.TabIndex = 2;
+			this.CircuitsTreeView.ItemDrag += new System.Windows.Forms.ItemDragEventHandler(this.CircuitsTreeView_ItemDrag);
 			this.CircuitsTreeView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.CircuitsTreeView_AfterSelect);
+			this.CircuitsTreeView.DragDrop += new System.Windows.Forms.DragEventHandler(this.CircuitsTreeView_DragDrop);
+			this.CircuitsTreeView.DragEnter += new System.Windows.Forms.DragEventHandler(this.CircuitsTreeView_DragEnter);
 			// 
 			// tableLayoutPanel2
 			// 

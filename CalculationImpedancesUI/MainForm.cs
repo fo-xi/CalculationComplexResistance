@@ -61,10 +61,13 @@ namespace CalculationImpedancesUI
 			{
 				SegmentTreeNode subSegmentNode = new SegmentTreeNode
 				{
-					Text = subSegment.Name,
+					Text = subSegment is IElement ? subSegment.ToString(): subSegment.Name,
 					Segment = subSegment
 				};
-				FillTreeNode(subSegmentNode, subSegment);
+				if(!(subSegmentNode.Segment is IElement))
+				{
+					FillTreeNode(subSegmentNode, subSegment);
+				}
 				CircuitsTreeView.Nodes[0].Nodes.Add(subSegmentNode);
 			}
 			CircuitsTreeView.ExpandAll();
@@ -525,6 +528,99 @@ namespace CalculationImpedancesUI
 			foreach (var i in project.Results)
 			{
 				project.ImpedanceValues.Add($"{i.Real} + {i.Imaginary}*j");
+			}
+		}
+
+		private void CircuitsTreeView_ItemDrag(object sender, ItemDragEventArgs e)
+		{
+			DoDragDrop(e.Item, DragDropEffects.Move);
+		}
+
+		private void CircuitsTreeView_DragEnter(object sender, DragEventArgs e)
+		{
+			e.Effect = DragDropEffects.Move;
+		}
+
+		private void CircuitsTreeView_DragDrop(object sender, DragEventArgs e)
+		{
+			// Получаем координаты объекта, к которому перетаскиваем выбранный нами объект 
+			Point targetPoint = CircuitsTreeView.PointToClient(new Point(e.X, e.Y));
+
+			// Извлекает узел из места падения (куда перетаскиваем)
+			SegmentTreeNode targetNode = CircuitsTreeView.GetNodeAt(targetPoint) as SegmentTreeNode;
+
+			// Вабранная нами node, которую мы перетаскиваем (что перетаскиваем)
+			SegmentTreeNode draggedNode = e.Data.GetData(typeof(SegmentTreeNode)) as SegmentTreeNode;
+
+			// Проверка на пустоту
+			if (draggedNode == null)
+			{
+				return;
+			}
+
+			// Если пользователь попал в пустоту
+			if (targetNode == null)
+			{
+				UpdateTreeView(draggedNode, targetNode);
+				draggedNode.Remove();
+				CircuitsTreeView.Nodes[0].Nodes.Add(draggedNode);
+				draggedNode.Expand();
+			}
+			else
+			{
+				TreeNode parentNode = targetNode;
+
+				// Если перетаскиваемый узел не равен сам себе и не равен нулю 
+				if (!draggedNode.Equals(targetNode) && targetNode != null)
+				{
+					bool canDrop = true;
+
+					// Поднимаемся вверх от узла, на который мы упали,
+					// чтобы узнать, является ли targetNode нашим родителем
+					while (canDrop && (parentNode != null))
+					{
+						canDrop = !Object.ReferenceEquals(draggedNode, parentNode);
+						parentNode = parentNode.Parent;
+					}
+
+					// Это допустимое место падения?
+					if (canDrop)
+					{
+						if (targetNode.Segment is IElement)
+						{
+							return;
+						}
+						UpdateTreeView(draggedNode, targetNode);
+						draggedNode.Remove();
+						targetNode.Nodes.Add(draggedNode);
+
+					}
+					targetNode.Expand();
+					
+				}
+			}
+			CircuitsTreeView.SelectedNode = draggedNode;
+		}
+
+		private void UpdateTreeView(SegmentTreeNode draggedNode, SegmentTreeNode targetNode)
+		{
+			var parent = draggedNode.Parent as SegmentTreeNode;
+			if (parent.Segment == null)
+			{
+				project.SelectedCircuit.SubSegments.Remove(draggedNode.Segment);
+			}
+			else
+			{
+				parent.Segment.SubSegments.Remove(draggedNode.Segment);
+			}
+
+			if (targetNode == null || targetNode.Segment == null)
+			{
+				project.SelectedCircuit.SubSegments.Add(draggedNode.Segment);
+			}
+			else
+			{
+				targetNode.Segment.SubSegments.Add(draggedNode.Segment);
 			}
 		}
 	}
