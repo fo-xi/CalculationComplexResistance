@@ -6,7 +6,7 @@ using NUnit.Framework;
 
 namespace NUnitTest
 {
-    class ParallelCircuitTest
+	class ParallelCircuitTest
     {
 		[Test(Description = "Positive test of the getter Name")]
 		public void TestParallelCircuitNameGet_CorrectValue()

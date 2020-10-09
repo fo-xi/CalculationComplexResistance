@@ -6,7 +6,7 @@ using NUnit.Framework;
 
 namespace NUnitTest
 {
-    class InductorTest
+	class InductorTest
     {
 	    [Test(Description = "Test of the constructor")]
         public void TestConstructor_CorrectValue()

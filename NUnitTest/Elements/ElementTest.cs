@@ -31,13 +31,48 @@ namespace NUnitTest
 		}
 
 		[TestCase("", "An exception may occur if the name contains less than 1 symbol",
-			TestName = "Assigning an incorrect name that contains less than 1 symbol")]
+			TestName = "Assigning an incorrect element name that contains less than 1 symbol")]
 		public void TestName_InvalidName(string wrongName, string message)
 		{
 			var element = new Resistor(" ", 32.5);
 			Assert.Throws<ArgumentException>(() =>
 			{
 				element.Name = wrongName;
+			}, message);
+		}
+
+
+
+		[Test(Description = "Positive test of the getter Value")]
+		public void TestValueGet_CorrectValue()
+		{
+			var expected = 4.6;
+			var element = new Resistor("j55t", 32.5);
+			element.Value = expected;
+			var actual = element.Value;
+			Assert.AreEqual(expected, actual, "The Value getter " +
+			                                  "returns an incorrect value");
+		}
+
+		[Test(Description = "Positive test of the setter Value")]
+		public void TestValueSet_CorrectValue()
+		{
+			var expected = 21.6;
+			var element = new Resistor("j55t", 32.5);
+			Assert.DoesNotThrow(() =>
+			{
+				element.Value = expected;
+			}, "The Value setter accepts the correct value");
+		}
+
+		[TestCase(-8.5, "An exception can occur if the value contains a negative number",
+			TestName = "Assigning a negative number")]
+		public void TestValue_NegativeNumber(double wrongValue, string message)
+		{
+			var element = new Resistor("thn4", 32.5);
+			Assert.Throws<ArgumentException>(() =>
+			{
+				element.Value = wrongValue;
 			}, message);
 		}
 

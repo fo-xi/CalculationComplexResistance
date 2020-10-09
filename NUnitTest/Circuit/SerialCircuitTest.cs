@@ -7,7 +7,7 @@ using System.Numerics;
 
 namespace NUnitTest
 {
-    class SerialCircuitTest
+	class SerialCircuitTest
     {
 		[Test(Description = "Positive test of the getter Name")]
 		public void TestSerialCircuitNameGet_CorrectValue()

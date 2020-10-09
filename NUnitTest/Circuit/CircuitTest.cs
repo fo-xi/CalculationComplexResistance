@@ -38,7 +38,7 @@ namespace NUnitTest
 		}
 
 		[TestCase("", "An exception may occur if the name contains less than 1 symbol",
-			TestName = "Assigning an incorrect name that contains less than 1 symbol")]
+			TestName = "Assigning an incorrect circuit name that contains less than 1 symbol")]
 		public void TestName_InvalidName(string wrongName, string message)
 		{
 			var circuit = new Circuit(" ", new SegmentsObservableCollection

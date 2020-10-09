@@ -7,7 +7,7 @@ using NUnit.Framework;
 
 namespace NUnitTest
 {
-    class ResistorTest
+	class ResistorTest
     {
         [Test(Description = "Test of the constructor Resistor")]
         public void TestConstructor_CorrectValue()
