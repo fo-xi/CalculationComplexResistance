@@ -238,8 +238,6 @@ namespace CalculationImpedancesUI
 				var element = CreateElement();
 				if (element == null)
 				{
-					MessageBox.Show("Fill in all the fields", "Warning",
-						MessageBoxButtons.OK, MessageBoxIcon.Warning);
 					return;
 				}
 				project.SelectedCircuit.SubSegments.Add(element);
@@ -282,6 +280,7 @@ namespace CalculationImpedancesUI
 			TypeComboBox.Text = "";
 			NameTextBox.Text = "";
 			ValueTextBox.Text = "";
+			Calculate();
 		}
 
 		private void EditElementButton_Click(object sender, EventArgs e)
@@ -298,7 +297,11 @@ namespace CalculationImpedancesUI
 			{
 				var parent = selectedIndex.Parent as SegmentTreeNode;
 				var element = CreateElement();
-				if(element == null) return;
+				if (element == null)
+				{
+					return;
+				}
+
 				parent.Segment.SubSegments.Remove(selectedIndex.Segment);
 				parent.Segment.SubSegments.Add(element);
 				parent.Nodes.Remove(selectedIndex);
@@ -311,7 +314,10 @@ namespace CalculationImpedancesUI
 			else
 			{
 				var element = CreateElement();
-				if (element == null) return;
+				if (element == null)
+				{
+					return;
+				}
 				selectedIndex.Segment.SubSegments.Remove(selectedIndex.Segment);
 				selectedIndex.Segment.SubSegments.Add(element);
 				selectedIndex.Nodes.Remove(selectedIndex);
@@ -321,6 +327,7 @@ namespace CalculationImpedancesUI
 					Segment = element
 				});
 			}
+			Calculate();
 		}
 
 		private void RemoveElementButton_Click(object sender, EventArgs e)
@@ -352,6 +359,7 @@ namespace CalculationImpedancesUI
 				}
 				parent.Nodes.Remove(selectedIndex);
 			}
+			Calculate();
 		}
 
 		private void AddParallelElementButton_Click(object sender, EventArgs e)
@@ -431,7 +439,6 @@ namespace CalculationImpedancesUI
 		private IElement CreateElement()
 		{
 			IElement segment = null;
-
 			try
 			{
 				var name = NameTextBox.Text;
