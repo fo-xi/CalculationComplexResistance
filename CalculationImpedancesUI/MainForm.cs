@@ -383,7 +383,6 @@ namespace CalculationImpedancesUI
 					Text = "Parallel",
 					Segment = segment
 				});
-
 			}
 			else if (selectedIndex.Segment is IElement)
 			{
