@@ -11,8 +11,8 @@ namespace NUnitTest
 		[Test(Description = "Positive test of the getter Name")]
 		public void TestParallelCircuitNameGet_CorrectValue()
 		{
-			var expected = "ht56";
-			var parallelCircuit = new ParallelCircuit(" ", new SegmentsObservableCollection
+			var expected = "Parallel";
+			var parallelCircuit = new ParallelCircuit(new SegmentsObservableCollection
 			{
 				new Inductor("jng5", 56.0),
 			});
@@ -25,8 +25,8 @@ namespace NUnitTest
 		[Test(Description = "Positive test of the setter Name")]
 		public void TestParallelCircuitNameSet_CorrectValue()
 		{
-			var expected = "htt56";
-			var parallelCircuit = new ParallelCircuit(" ", new SegmentsObservableCollection
+			var expected = "Parallel";
+			var parallelCircuit = new ParallelCircuit(new SegmentsObservableCollection
 			{
 				new Capacitor("j55t", 32.5),
 			});
@@ -34,20 +34,6 @@ namespace NUnitTest
 			{
 				parallelCircuit.Name = expected;
 			}, "The Name setter accepts the correct name");
-		}
-
-		[TestCase("", "An exception may occur if the name contains less than 1 symbol",
-			TestName = "Assigning an incorrect name that contains less than 1 symbol")]
-		public void TestParallelCircuitName_InvalidName(string wrongName, string message)
-		{
-			var parallelCircuit = new ParallelCircuit(" ", new SegmentsObservableCollection
-			{
-				new Capacitor("rg4", 32.5)
-			});
-			Assert.Throws<ArgumentException>(() =>
-			{
-				parallelCircuit.Name = wrongName;
-			}, message);
 		}
 
 		[Test(Description = "Positive test of the getter SubSegments")]
@@ -59,7 +45,7 @@ namespace NUnitTest
 				new Resistor("fr4tt", 32.6)
 
 			};
-			var parallelCircuit = new ParallelCircuit(" ", new SegmentsObservableCollection());
+			var parallelCircuit = new ParallelCircuit(new SegmentsObservableCollection());
 			parallelCircuit.SubSegments = expected;
 			var actual = parallelCircuit.SubSegments;
 			Assert.AreEqual(expected, actual, "The SubSegments getter " +
@@ -74,7 +60,7 @@ namespace NUnitTest
 				new Inductor("jng5", 56.0),
 				new Resistor("fr4tt", 32.6)
 			};
-			var parallelCircuit = new ParallelCircuit(" ", new SegmentsObservableCollection());
+			var parallelCircuit = new ParallelCircuit(new SegmentsObservableCollection());
 			Assert.DoesNotThrow(() =>
 			{
 				parallelCircuit.SubSegments = expected;
@@ -84,14 +70,13 @@ namespace NUnitTest
 		[Test(Description = "Positive test of the constructor ParallelCircuit")]
 		public void TestParallelCircuitConstructor_CorrectValue()
 		{
-			var name = "d345";
 			var subSegments = new SegmentsObservableCollection
 			{
 					new Inductor("jng5", 56.0),
 			};
 			Assert.DoesNotThrow(() =>
 			{
-				var parallelCircuit = new ParallelCircuit(name, subSegments);
+				var parallelCircuit = new ParallelCircuit(subSegments);
 			}, "The ParallelCircuit constructor create a parallel сircuit object");
 		}
 
@@ -103,7 +88,7 @@ namespace NUnitTest
 				new Resistor("g56", 7.8),
 				new Capacitor("duj", 22.6)
 			};
-			var parallelCircuit = new ParallelCircuit("fdr4", subSegments);
+			var parallelCircuit = new ParallelCircuit(subSegments);
 
 			var frequency = 7;
 			var expected =
@@ -125,7 +110,7 @@ namespace NUnitTest
 				new Resistor("g56", 7.8),
 				new Capacitor("duj", 22.6)
 			};
-			var parallelCircuit = new ParallelCircuit("fdr4", subSegments);
+			var parallelCircuit = new ParallelCircuit(subSegments);
 
 			parallelCircuit.SegmentChanged += delegate (object o, EventArgs e)
 			{

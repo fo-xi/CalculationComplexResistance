@@ -15,10 +15,8 @@ namespace CalculationImpedancesApp
         /// </summary>
         private string _name;
 
-        private ISegment _segmentImplementation;
-
         /// <summary>
-        /// A collection that stores sub-segmentsObservable of the circuit.
+        /// A collection that stores sub-segments of the circuit.
         /// </summary>
         public SegmentsObservableCollection SubSegments { get; set; }
 

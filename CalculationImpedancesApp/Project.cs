@@ -190,24 +190,5 @@ namespace CalculationImpedancesApp
 			};
 			Circuits.Add(new Circuit("Circuit No. 5", segmentsObservable));
 		}
-
-		/// <summary>
-		/// Find all elements of a sub-segment.
-		/// </summary>
-		/// <param name="segment"></param>
-		public void AllElements(ISegment segment)
-		{
-			foreach (var element in segment.SubSegments)
-			{
-				if (element is IElement trueElement)
-				{
-					Elements.Add(trueElement);
-				}
-				else
-				{
-					AllElements(element);
-				}
-			}
-		}
 	}
 }

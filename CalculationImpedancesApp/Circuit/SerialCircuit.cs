@@ -25,22 +25,7 @@ namespace CalculationImpedancesApp
         /// <summary>
         ///Returns and sets the name of the serial circuit segment.
         /// </summary>
-        public string Name
-        {
-	        get
-	        {
-		        return _name;
-
-	        }
-	        set
-	        {
-		        if (value.Length == 0)
-		        {
-			        throw new ArgumentException($"The {nameof(Name)} cannot be empty!");
-		        }
-		        _name = value;
-            }
-        }
+        public string Name { get; set; }
 
         /// <summary>
         /// Create a serial circuit segment.

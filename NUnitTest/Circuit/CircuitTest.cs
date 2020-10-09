@@ -56,11 +56,11 @@ namespace NUnitTest
 		{
 			var expected = new SegmentsObservableCollection
 			{
-				new SerialCircuit("fj5", new SegmentsObservableCollection
+				new SerialCircuit(new SegmentsObservableCollection
 				{
 					new Inductor("jng5", 56.0),
 				}),
-				new ParallelCircuit("ut4f", new SegmentsObservableCollection
+				new ParallelCircuit(new SegmentsObservableCollection
 				{
 					new Resistor("g56", 7.8),
 					new Capacitor("duj", 22.6)
@@ -78,11 +78,11 @@ namespace NUnitTest
 		{
 			var expected = new SegmentsObservableCollection
 			{
-				new SerialCircuit("fj5", new SegmentsObservableCollection
+				new SerialCircuit(new SegmentsObservableCollection
 				{
 					new Inductor("jng5", 56.0),
 				}),
-				new ParallelCircuit("ut4f", new SegmentsObservableCollection
+				new ParallelCircuit(new SegmentsObservableCollection
 				{
 					new Resistor("g56", 7.8),
 					new Capacitor("duj", 22.6)
@@ -101,12 +101,12 @@ namespace NUnitTest
 			var name = "d345";
 			var subSegments = new SegmentsObservableCollection
 			{
-				new SerialCircuit("fj5", new SegmentsObservableCollection
+				new SerialCircuit(new SegmentsObservableCollection
 				{
 					new Inductor("jng5", 56.0),
 					new Resistor("fr4tt", 32.6)
 				}),
-				new ParallelCircuit("ut4f", new SegmentsObservableCollection
+				new ParallelCircuit(new SegmentsObservableCollection
 				{
 					new Resistor("g56", 7.8),
 					new Capacitor("duj", 22.6)
@@ -124,12 +124,12 @@ namespace NUnitTest
 			var wasCalled = false;
 			var subSegments = new SegmentsObservableCollection
 			{
-				new SerialCircuit("fj5", new SegmentsObservableCollection
+				new SerialCircuit(new SegmentsObservableCollection
 				{
 					new Inductor("jng5", 56.0),
 					new Resistor("fr4tt", 32.6)
 				}),
-				new ParallelCircuit("ut4f", new SegmentsObservableCollection
+				new ParallelCircuit(new SegmentsObservableCollection
 				{
 					new Resistor("g56", 7.8),
 					new Capacitor("duj", 22.6)
@@ -151,12 +151,12 @@ namespace NUnitTest
 		{
 			var subSegments = new SegmentsObservableCollection
 			{
-				new SerialCircuit("fj5", new SegmentsObservableCollection
+				new SerialCircuit(new SegmentsObservableCollection
 				{
 					new Inductor("jng5", 56.0),
 					new Resistor("fr4tt", 32.6)
 				}),
-				new ParallelCircuit("ut4f", new SegmentsObservableCollection
+				new ParallelCircuit(new SegmentsObservableCollection
 				{
 					new Resistor("g56", 7.8),
 					new Capacitor("duj", 22.6)
