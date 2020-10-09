@@ -446,6 +446,7 @@ namespace CalculationImpedancesUI
 			{
 				var name = NameTextBox.Text;
 				var value = double.Parse(ValueTextBox.Text);
+
 				switch (TypeComboBox.SelectedIndex)
 				{
 					case 1:
