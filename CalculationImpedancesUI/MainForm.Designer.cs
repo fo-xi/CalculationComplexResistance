@@ -64,6 +64,7 @@
 			this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
 			this.AddSerialElementButton = new System.Windows.Forms.Button();
 			this.AddParallelElementButton = new System.Windows.Forms.Button();
+			this.AddSegmentButton = new System.Windows.Forms.Button();
 			this.tableLayoutPanel8.SuspendLayout();
 			this.CircuitsGroupBox.SuspendLayout();
 			this.tableLayoutPanel1.SuspendLayout();
@@ -153,12 +154,14 @@
 			this.tableLayoutPanel3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.tableLayoutPanel3.ColumnCount = 3;
-			this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
-			this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
-			this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
+			this.tableLayoutPanel3.ColumnCount = 4;
+			this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+			this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+			this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+			this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
 			this.tableLayoutPanel3.Controls.Add(this.RemoveButton, 2, 0);
 			this.tableLayoutPanel3.Controls.Add(this.AddButton, 0, 0);
+			this.tableLayoutPanel3.Controls.Add(this.AddSegmentButton, 3, 0);
 			this.tableLayoutPanel3.Controls.Add(this.EditButton, 1, 0);
 			this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 327);
 			this.tableLayoutPanel3.Name = "tableLayoutPanel3";
@@ -172,9 +175,9 @@
 			this.RemoveButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.RemoveButton.Location = new System.Drawing.Point(169, 3);
+			this.RemoveButton.Location = new System.Drawing.Point(127, 3);
 			this.RemoveButton.Name = "RemoveButton";
-			this.RemoveButton.Size = new System.Drawing.Size(77, 25);
+			this.RemoveButton.Size = new System.Drawing.Size(56, 25);
 			this.RemoveButton.TabIndex = 2;
 			this.RemoveButton.Text = "Remove";
 			this.RemoveButton.UseVisualStyleBackColor = true;
@@ -187,7 +190,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.AddButton.Location = new System.Drawing.Point(3, 3);
 			this.AddButton.Name = "AddButton";
-			this.AddButton.Size = new System.Drawing.Size(77, 25);
+			this.AddButton.Size = new System.Drawing.Size(56, 25);
 			this.AddButton.TabIndex = 0;
 			this.AddButton.Text = "Add";
 			this.AddButton.UseVisualStyleBackColor = true;
@@ -198,9 +201,9 @@
 			this.EditButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.EditButton.Location = new System.Drawing.Point(86, 3);
+			this.EditButton.Location = new System.Drawing.Point(65, 3);
 			this.EditButton.Name = "EditButton";
-			this.EditButton.Size = new System.Drawing.Size(77, 25);
+			this.EditButton.Size = new System.Drawing.Size(56, 25);
 			this.EditButton.TabIndex = 1;
 			this.EditButton.Text = "Edit";
 			this.EditButton.UseVisualStyleBackColor = true;
@@ -533,7 +536,7 @@
 			this.tableLayoutPanel6.RowCount = 2;
 			this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
 			this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-			this.tableLayoutPanel6.Size = new System.Drawing.Size(181, 80);
+			this.tableLayoutPanel6.Size = new System.Drawing.Size(190, 69);
 			this.tableLayoutPanel6.TabIndex = 3;
 			// 
 			// AddSerialElementButton
@@ -541,9 +544,9 @@
 			this.AddSerialElementButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.AddSerialElementButton.Location = new System.Drawing.Point(3, 43);
+			this.AddSerialElementButton.Location = new System.Drawing.Point(3, 37);
 			this.AddSerialElementButton.Name = "AddSerialElementButton";
-			this.AddSerialElementButton.Size = new System.Drawing.Size(175, 34);
+			this.AddSerialElementButton.Size = new System.Drawing.Size(184, 29);
 			this.AddSerialElementButton.TabIndex = 1;
 			this.AddSerialElementButton.Text = "Add serial segment";
 			this.AddSerialElementButton.UseVisualStyleBackColor = true;
@@ -556,11 +559,23 @@
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.AddParallelElementButton.Location = new System.Drawing.Point(3, 3);
 			this.AddParallelElementButton.Name = "AddParallelElementButton";
-			this.AddParallelElementButton.Size = new System.Drawing.Size(175, 34);
+			this.AddParallelElementButton.Size = new System.Drawing.Size(184, 28);
 			this.AddParallelElementButton.TabIndex = 0;
 			this.AddParallelElementButton.Text = "Add parallel segment";
 			this.AddParallelElementButton.UseVisualStyleBackColor = true;
 			this.AddParallelElementButton.Click += new System.EventHandler(this.AddParallelElementButton_Click);
+			// 
+			// AddSegmentButton
+			// 
+			this.AddSegmentButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.AddSegmentButton.Location = new System.Drawing.Point(189, 3);
+			this.AddSegmentButton.Name = "AddSegmentButton";
+			this.AddSegmentButton.Size = new System.Drawing.Size(57, 25);
+			this.AddSegmentButton.TabIndex = 3;
+			this.AddSegmentButton.Text = "AS";
+			this.AddSegmentButton.UseVisualStyleBackColor = true;
 			// 
 			// MainForm
 			// 
@@ -628,5 +643,6 @@
 		private System.Windows.Forms.Label TypeLabel;
 		private System.Windows.Forms.TextBox NameTextBox;
 		private System.Windows.Forms.ComboBox TypeComboBox;
+		private System.Windows.Forms.Button AddSegmentButton;
 	}
 }

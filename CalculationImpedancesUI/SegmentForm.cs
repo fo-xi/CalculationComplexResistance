@@ -7,34 +7,37 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CalculationImpedancesApp;
 
 namespace CalculationImpedancesUI
 {
-	public partial class FrequencyForm : Form
+	public partial class SegmentForm : Form
 	{
-		/// <summary>
-		/// Frequency entered.
-		/// </summary>
-		public double Frequency { get; set; }
-
-		public FrequencyForm()
+		public ISegment Segment { get; set; }
+		public SegmentForm()
 		{
 			InitializeComponent();
 		}
 
+		public readonly List<string> SegmentType = new List<string>
+		{
+			"Serial",
+			"Parallel"
+		};
+
 		private void OKButton_Click(object sender, EventArgs e)
 		{
-			if (frequencyTextBox.Text.Length != 0)
+			switch (SegmentComboBox.SelectedIndex)
 			{
-				try
+				case 0:
 				{
-					Frequency = double.Parse(frequencyTextBox.Text);
-					this.DialogResult = DialogResult.OK;
+					Segment = new SerialCircuit(new SegmentsObservableCollection());
+					break;
 				}
-				catch
+				case 1:
 				{
-					MessageBox.Show("Incorrect Value", "Warning",
-						MessageBoxButtons.OK, MessageBoxIcon.Warning);
+					Segment = new ParallelCircuit(new SegmentsObservableCollection());
+					break;
 				}
 			}
 		}

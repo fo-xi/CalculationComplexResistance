@@ -22,18 +22,15 @@ namespace CalculationImpedancesUI
 
 		private void OKButton_Click(object sender, EventArgs e)
 		{
-			if (nameTextBox.Text.Length != 0)
+			try
 			{
-				try
-				{
-					Circiut = new Circuit(nameTextBox.Text, new SegmentsObservableCollection());
-					this.DialogResult = DialogResult.OK;
-				}
-				catch
-				{
-					MessageBox.Show("Incorrect Value", "Warning",
-						MessageBoxButtons.OK, MessageBoxIcon.Warning);
-				}
+				Circiut = new Circuit(nameTextBox.Text, new SegmentsObservableCollection());
+				this.DialogResult = DialogResult.OK;
+			}
+			catch (ArgumentException)
+			{
+				MessageBox.Show("Incorrect Value", "Warning",
+					MessageBoxButtons.OK, MessageBoxIcon.Warning);
 			}
 		}
 
