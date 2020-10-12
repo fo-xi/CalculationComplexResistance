@@ -40,11 +40,17 @@ namespace CalculationImpedancesUI
 					break;
 				}
 			}
+            this.DialogResult = DialogResult.OK;
 		}
 
 		private void CancelButton_Click(object sender, EventArgs e)
 		{
 			this.DialogResult = DialogResult.Cancel;
 		}
-	}
+
+        private void SegmentForm_Load(object sender, EventArgs e)
+        {
+            SegmentComboBox.DataSource = SegmentType;
+		}
+    }
 }
