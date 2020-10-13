@@ -80,7 +80,7 @@
             this.FrequenciesListBox.FormattingEnabled = true;
             this.FrequenciesListBox.Location = new System.Drawing.Point(3, 3);
             this.FrequenciesListBox.Name = "FrequenciesListBox";
-            this.FrequenciesListBox.Size = new System.Drawing.Size(306, 121);
+            this.FrequenciesListBox.Size = new System.Drawing.Size(306, 147);
             this.FrequenciesListBox.TabIndex = 5;
             // 
             // ResultsListBox
@@ -91,7 +91,7 @@
             this.ResultsListBox.FormattingEnabled = true;
             this.ResultsListBox.Location = new System.Drawing.Point(315, 3);
             this.ResultsListBox.Name = "ResultsListBox";
-            this.ResultsListBox.Size = new System.Drawing.Size(307, 121);
+            this.ResultsListBox.Size = new System.Drawing.Size(307, 147);
             this.ResultsListBox.TabIndex = 6;
             // 
             // CircuitsGroupBox
@@ -103,7 +103,7 @@
             this.CircuitsGroupBox.Controls.Add(this.AddSegmentButton);
             this.CircuitsGroupBox.Location = new System.Drawing.Point(15, 12);
             this.CircuitsGroupBox.Name = "CircuitsGroupBox";
-            this.CircuitsGroupBox.Size = new System.Drawing.Size(267, 364);
+            this.CircuitsGroupBox.Size = new System.Drawing.Size(267, 386);
             this.CircuitsGroupBox.TabIndex = 1;
             this.CircuitsGroupBox.TabStop = false;
             this.CircuitsGroupBox.Text = "Circuits";
@@ -118,7 +118,7 @@
             this.tableLayoutPanel3.Controls.Add(this.RemoveButton, 2, 0);
             this.tableLayoutPanel3.Controls.Add(this.AddButton, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.EditButton, 1, 0);
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(9, 322);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(9, 341);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -163,7 +163,7 @@
             // 
             this.AddSegmentButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.AddSegmentButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.AddSegmentButton.Location = new System.Drawing.Point(175, 325);
+            this.AddSegmentButton.Location = new System.Drawing.Point(175, 344);
             this.AddSegmentButton.Margin = new System.Windows.Forms.Padding(3, 3, 2, 3);
             this.AddSegmentButton.Name = "AddSegmentButton";
             this.AddSegmentButton.Size = new System.Drawing.Size(83, 30);
@@ -201,14 +201,12 @@
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.024692F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 91.97531F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(255, 297);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(255, 319);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // CircuitSelectionComboBox
             // 
-            this.CircuitSelectionComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.CircuitSelectionComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.CircuitSelectionComboBox.FormattingEnabled = true;
             this.CircuitSelectionComboBox.Location = new System.Drawing.Point(3, 3);
             this.CircuitSelectionComboBox.Name = "CircuitSelectionComboBox";
@@ -222,9 +220,9 @@
             this.CircuitsTreeView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.CircuitsTreeView.Location = new System.Drawing.Point(3, 26);
+            this.CircuitsTreeView.Location = new System.Drawing.Point(3, 28);
             this.CircuitsTreeView.Name = "CircuitsTreeView";
-            this.CircuitsTreeView.Size = new System.Drawing.Size(249, 268);
+            this.CircuitsTreeView.Size = new System.Drawing.Size(249, 288);
             this.CircuitsTreeView.TabIndex = 2;
             this.CircuitsTreeView.ItemDrag += new System.Windows.Forms.ItemDragEventHandler(this.CircuitsTreeView_ItemDrag);
             this.CircuitsTreeView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.CircuitsTreeView_AfterSelect);
@@ -241,11 +239,11 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.Controls.Add(this.ImpedancesGroupBox, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.ElementsGroupBox, 0, 0);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(12, 379);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(12, 401);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(915, 200);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(915, 223);
             this.tableLayoutPanel2.TabIndex = 2;
             // 
             // ImpedancesGroupBox
@@ -257,7 +255,7 @@
             this.ImpedancesGroupBox.Controls.Add(this.tableLayoutPanel4);
             this.ImpedancesGroupBox.Location = new System.Drawing.Point(275, 3);
             this.ImpedancesGroupBox.Name = "ImpedancesGroupBox";
-            this.ImpedancesGroupBox.Size = new System.Drawing.Size(637, 194);
+            this.ImpedancesGroupBox.Size = new System.Drawing.Size(637, 217);
             this.ImpedancesGroupBox.TabIndex = 3;
             this.ImpedancesGroupBox.TabStop = false;
             this.ImpedancesGroupBox.Text = "Impedances";
@@ -276,22 +274,22 @@
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 1;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(625, 134);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(625, 157);
             this.tableLayoutPanel5.TabIndex = 4;
             // 
             // tableLayoutPanel4
             // 
             this.tableLayoutPanel4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.tableLayoutPanel4.ColumnCount = 4;
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 36.26374F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 63.73626F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 37.07865F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62.92135F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 70F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 61F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 64F));
             this.tableLayoutPanel4.Controls.Add(this.FrequencyTextBox, 1, 0);
             this.tableLayoutPanel4.Controls.Add(this.FrequencyLabel, 0, 0);
             this.tableLayoutPanel4.Controls.Add(this.CalculateButton, 2, 0);
             this.tableLayoutPanel4.Controls.Add(this.RemoveFrequencyButton, 3, 0);
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(6, 152);
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(6, 175);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 1;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -303,7 +301,7 @@
             this.FrequencyTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.FrequencyTextBox.Location = new System.Drawing.Point(69, 8);
             this.FrequencyTextBox.Name = "FrequencyTextBox";
-            this.FrequencyTextBox.Size = new System.Drawing.Size(109, 20);
+            this.FrequencyTextBox.Size = new System.Drawing.Size(106, 20);
             this.FrequencyTextBox.TabIndex = 1;
             this.FrequencyTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -322,7 +320,7 @@
             this.CalculateButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.CalculateButton.Location = new System.Drawing.Point(184, 3);
+            this.CalculateButton.Location = new System.Drawing.Point(181, 3);
             this.CalculateButton.Name = "CalculateButton";
             this.CalculateButton.Size = new System.Drawing.Size(64, 30);
             this.CalculateButton.TabIndex = 0;
@@ -335,9 +333,9 @@
             this.RemoveFrequencyButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.RemoveFrequencyButton.Location = new System.Drawing.Point(254, 3);
+            this.RemoveFrequencyButton.Location = new System.Drawing.Point(251, 3);
             this.RemoveFrequencyButton.Name = "RemoveFrequencyButton";
-            this.RemoveFrequencyButton.Size = new System.Drawing.Size(56, 30);
+            this.RemoveFrequencyButton.Size = new System.Drawing.Size(59, 30);
             this.RemoveFrequencyButton.TabIndex = 1;
             this.RemoveFrequencyButton.Text = "Remove";
             this.RemoveFrequencyButton.UseVisualStyleBackColor = true;
@@ -349,7 +347,7 @@
             this.ElementsGroupBox.Controls.Add(this.tableLayoutPanel7);
             this.ElementsGroupBox.Location = new System.Drawing.Point(3, 3);
             this.ElementsGroupBox.Name = "ElementsGroupBox";
-            this.ElementsGroupBox.Size = new System.Drawing.Size(266, 194);
+            this.ElementsGroupBox.Size = new System.Drawing.Size(266, 217);
             this.ElementsGroupBox.TabIndex = 0;
             this.ElementsGroupBox.TabStop = false;
             this.ElementsGroupBox.Text = "Element";
@@ -367,20 +365,20 @@
             this.tableLayoutPanel9.Controls.Add(this.NameTextBox, 1, 1);
             this.tableLayoutPanel9.Controls.Add(this.TypeComboBox, 1, 0);
             this.tableLayoutPanel9.Controls.Add(this.TypeLabel, 0, 0);
-            this.tableLayoutPanel9.Location = new System.Drawing.Point(6, 43);
+            this.tableLayoutPanel9.Location = new System.Drawing.Point(6, 56);
             this.tableLayoutPanel9.Name = "tableLayoutPanel9";
             this.tableLayoutPanel9.RowCount = 3;
             this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
             this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
             this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
-            this.tableLayoutPanel9.Size = new System.Drawing.Size(252, 90);
+            this.tableLayoutPanel9.Size = new System.Drawing.Size(255, 79);
             this.tableLayoutPanel9.TabIndex = 5;
             // 
             // TypeLabel
             // 
             this.TypeLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.TypeLabel.AutoSize = true;
-            this.TypeLabel.Location = new System.Drawing.Point(10, 8);
+            this.TypeLabel.Location = new System.Drawing.Point(11, 6);
             this.TypeLabel.Name = "TypeLabel";
             this.TypeLabel.Size = new System.Drawing.Size(34, 13);
             this.TypeLabel.TabIndex = 2;
@@ -391,7 +389,7 @@
             // 
             this.ValueLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.ValueLabel.AutoSize = true;
-            this.ValueLabel.Location = new System.Drawing.Point(9, 68);
+            this.ValueLabel.Location = new System.Drawing.Point(9, 59);
             this.ValueLabel.Name = "ValueLabel";
             this.ValueLabel.Size = new System.Drawing.Size(37, 13);
             this.ValueLabel.TabIndex = 1;
@@ -402,7 +400,7 @@
             // 
             this.NameLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.NameLabel.AutoSize = true;
-            this.NameLabel.Location = new System.Drawing.Point(8, 38);
+            this.NameLabel.Location = new System.Drawing.Point(9, 32);
             this.NameLabel.Name = "NameLabel";
             this.NameLabel.Size = new System.Drawing.Size(38, 13);
             this.NameLabel.TabIndex = 0;
@@ -412,18 +410,18 @@
             // ValueTextBox
             // 
             this.ValueTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.ValueTextBox.Location = new System.Drawing.Point(58, 65);
+            this.ValueTextBox.Location = new System.Drawing.Point(59, 55);
             this.ValueTextBox.Name = "ValueTextBox";
-            this.ValueTextBox.Size = new System.Drawing.Size(191, 20);
+            this.ValueTextBox.Size = new System.Drawing.Size(193, 20);
             this.ValueTextBox.TabIndex = 4;
             this.ValueTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // NameTextBox
             // 
             this.NameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.NameTextBox.Location = new System.Drawing.Point(58, 35);
+            this.NameTextBox.Location = new System.Drawing.Point(59, 29);
             this.NameTextBox.Name = "NameTextBox";
-            this.NameTextBox.Size = new System.Drawing.Size(191, 20);
+            this.NameTextBox.Size = new System.Drawing.Size(193, 20);
             this.NameTextBox.TabIndex = 3;
             this.NameTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -432,9 +430,9 @@
             this.TypeComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.TypeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.TypeComboBox.FormattingEnabled = true;
-            this.TypeComboBox.Location = new System.Drawing.Point(58, 4);
+            this.TypeComboBox.Location = new System.Drawing.Point(59, 3);
             this.TypeComboBox.Name = "TypeComboBox";
-            this.TypeComboBox.Size = new System.Drawing.Size(191, 21);
+            this.TypeComboBox.Size = new System.Drawing.Size(193, 21);
             this.TypeComboBox.TabIndex = 5;
             // 
             // tableLayoutPanel7
@@ -447,11 +445,11 @@
             this.tableLayoutPanel7.Controls.Add(this.EditElementButton, 1, 0);
             this.tableLayoutPanel7.Controls.Add(this.AddElementButton, 0, 0);
             this.tableLayoutPanel7.Controls.Add(this.RemoveElementButton, 2, 0);
-            this.tableLayoutPanel7.Location = new System.Drawing.Point(152, 134);
+            this.tableLayoutPanel7.Location = new System.Drawing.Point(152, 138);
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
             this.tableLayoutPanel7.RowCount = 1;
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel7.Size = new System.Drawing.Size(106, 36);
+            this.tableLayoutPanel7.Size = new System.Drawing.Size(109, 36);
             this.tableLayoutPanel7.TabIndex = 4;
             // 
             // RemoveElementButton
@@ -463,9 +461,9 @@
             this.RemoveElementButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.RemoveElementButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.RemoveElementButton.ForeColor = System.Drawing.SystemColors.Control;
-            this.RemoveElementButton.Location = new System.Drawing.Point(73, 3);
+            this.RemoveElementButton.Location = new System.Drawing.Point(75, 3);
             this.RemoveElementButton.Name = "RemoveElementButton";
-            this.RemoveElementButton.Size = new System.Drawing.Size(30, 30);
+            this.RemoveElementButton.Size = new System.Drawing.Size(31, 30);
             this.RemoveElementButton.TabIndex = 2;
             this.RemoveElementButton.UseVisualStyleBackColor = true;
             this.RemoveElementButton.Click += new System.EventHandler(this.RemoveElementButton_Click);
@@ -479,9 +477,9 @@
             this.EditElementButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.EditElementButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.EditElementButton.ForeColor = System.Drawing.SystemColors.Control;
-            this.EditElementButton.Location = new System.Drawing.Point(38, 3);
+            this.EditElementButton.Location = new System.Drawing.Point(39, 3);
             this.EditElementButton.Name = "EditElementButton";
-            this.EditElementButton.Size = new System.Drawing.Size(29, 30);
+            this.EditElementButton.Size = new System.Drawing.Size(30, 30);
             this.EditElementButton.TabIndex = 1;
             this.EditElementButton.UseVisualStyleBackColor = true;
             this.EditElementButton.Click += new System.EventHandler(this.EditElementButton_Click);
@@ -497,7 +495,7 @@
             this.AddElementButton.ForeColor = System.Drawing.SystemColors.Control;
             this.AddElementButton.Location = new System.Drawing.Point(3, 3);
             this.AddElementButton.Name = "AddElementButton";
-            this.AddElementButton.Size = new System.Drawing.Size(29, 30);
+            this.AddElementButton.Size = new System.Drawing.Size(30, 30);
             this.AddElementButton.TabIndex = 0;
             this.AddElementButton.UseVisualStyleBackColor = true;
             this.AddElementButton.Click += new System.EventHandler(this.AddElementButton_Click);
@@ -506,7 +504,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(939, 591);
+            this.ClientSize = new System.Drawing.Size(939, 636);
             this.Controls.Add(this.CircuitsGroupBox);
             this.Controls.Add(this.tableLayoutPanel2);
             this.Name = "MainForm";
