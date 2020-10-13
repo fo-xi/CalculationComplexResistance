@@ -38,5 +38,5 @@ namespace CalculationImpedancesUI
 		{
 			this.DialogResult = DialogResult.Cancel;
 		}
-	}
+    }
 }
