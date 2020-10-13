@@ -34,7 +34,7 @@ namespace CalculationImpedancesApp
         /// public override string ToString()
         public override string ToString()
         {
-	        return "Resistor: " + Name + " = " + Value;
+	        return "Resistor: " + Name + " = " + Value + " Om";
         }
     }
 }

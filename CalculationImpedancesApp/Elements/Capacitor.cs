@@ -34,7 +34,7 @@ namespace CalculationImpedancesApp
         /// </summary>
         public override string ToString()
         {
-            return "Capacitor: " + Name + " = " + Value;
+            return "Capacitor: " + Name + " = " + Value + " F";
         }
     }
 }
