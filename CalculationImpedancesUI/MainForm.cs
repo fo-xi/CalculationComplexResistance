@@ -15,11 +15,13 @@ namespace CalculationImpedancesUI
 {
 	public partial class MainForm : Form
 	{
+		//TODO: RSDN
 		/// <summary>
 		/// All program data.
 		/// </summary>
 		Project project = new Project();
 
+		//TODO: Зачем публично?
 		public readonly List<string> Type = new List<string>
 		{
 			"",
@@ -122,6 +124,7 @@ namespace CalculationImpedancesUI
 			if (circuit.DialogResult == DialogResult.OK)
 			{
 				project.Circuits.Add(circuit.Circiut);
+                //TODO: Дубль
 				CircuitSelectionComboBox.DataSource = null;
 				CircuitSelectionComboBox.DataSource = project.Circuits;
 				CircuitSelectionComboBox.DisplayMember = "Name";
@@ -146,7 +149,7 @@ namespace CalculationImpedancesUI
 				if (circuit.DialogResult == DialogResult.OK)
 				{
 					project.Circuits[selectedIndex].Name = circuit.Circiut.Name;
-
+                    //TODO: Дубль
 					CircuitSelectionComboBox.DataSource = null;
 					CircuitSelectionComboBox.DataSource = project.Circuits;
 					CircuitSelectionComboBox.DisplayMember = "Name";
@@ -165,14 +168,15 @@ namespace CalculationImpedancesUI
 					MessageBoxButtons.OK, MessageBoxIcon.Warning);
 				return;
 			}
-
+			
+            //TODO: RSDN
 			DialogResult result = MessageBox.Show("Do you really want to remove this circuit?",
 				"Remove circuit", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
 			if (result == DialogResult.OK)
 			{
 				var selectedCircuit = project.Circuits[selectedIndex];
 				project.Circuits.Remove(selectedCircuit);
-
+                //TODO: Дубль
 				CircuitSelectionComboBox.DataSource = null;
 				CircuitSelectionComboBox.DataSource = project.Circuits;
 				CircuitSelectionComboBox.DisplayMember = "Name";
@@ -228,6 +232,7 @@ namespace CalculationImpedancesUI
 
 		private void AddElementButton_Click(object sender, EventArgs e)
 		{
+			//TODO: Дубль
 			var selectedIndex = CircuitsTreeView.SelectedNode as SegmentTreeNode;
 			if (selectedIndex == null)
 			{
@@ -238,6 +243,7 @@ namespace CalculationImpedancesUI
 
 			if (selectedIndex == CircuitsTreeView.Nodes[0])
 			{
+                //TODO: Дубль
 				var element = CreateElement();
 				if (element == null)
 				{
@@ -253,6 +259,7 @@ namespace CalculationImpedancesUI
 			else if (selectedIndex.Segment is IElement)
 			{
 				var parent = selectedIndex.Parent as SegmentTreeNode;
+				//TODO: Дубль
 				var element = CreateElement();
 				if (element == null)
 				{
@@ -268,6 +275,7 @@ namespace CalculationImpedancesUI
 			}
 			else
 			{
+                //TODO: Дубль
 				var element = CreateElement();
 				if (element == null)
 				{
@@ -288,7 +296,8 @@ namespace CalculationImpedancesUI
 
         private void EditElementButton_Click(object sender, EventArgs e)
         {
-            var selectedIndex = CircuitsTreeView.SelectedNode as SegmentTreeNode;
+            //TODO: Дубль
+			var selectedIndex = CircuitsTreeView.SelectedNode as SegmentTreeNode;
             if (selectedIndex == null)
             {
                 MessageBox.Show("Select a element from the list", "Warning",
@@ -297,7 +306,8 @@ namespace CalculationImpedancesUI
             }
 
             var parent = selectedIndex.Parent as SegmentTreeNode;
-            var element = CreateElement();
+            //TODO: Дубль
+			var element = CreateElement();
             if (element == null)
             {
                 return;
@@ -315,6 +325,7 @@ namespace CalculationImpedancesUI
 
         private void RemoveElementButton_Click(object sender, EventArgs e)
 		{
+            //TODO: Дубль
 			var selectedIndex = CircuitsTreeView.SelectedNode as SegmentTreeNode;
 			if (selectedIndex == null)
 			{
@@ -330,6 +341,7 @@ namespace CalculationImpedancesUI
 			}
 			else
 			{
+                //TODO: Дубль
 				var parent = selectedIndex.Parent as SegmentTreeNode;
 				var element = selectedIndex.Segment;
 				if (parent.Segment == null)
@@ -382,6 +394,7 @@ namespace CalculationImpedancesUI
 
 		private void CircuitsTreeView_AfterSelect(object sender, TreeViewEventArgs e)
 		{
+            //TODO: Дубль
 			var selectedIndex = CircuitsTreeView.SelectedNode as SegmentTreeNode;
 			if (selectedIndex == null)
 			{
@@ -451,6 +464,7 @@ namespace CalculationImpedancesUI
 
 		private void CircuitsTreeView_DragDrop(object sender, DragEventArgs e)
 		{
+			//TODO: Подозрительно много комментариев...
 			// Получаем координаты объекта, к которому перетаскиваем выбранный нами объект 
 			Point targetPoint = CircuitsTreeView.PointToClient(new Point(e.X, e.Y));
 
@@ -538,7 +552,8 @@ namespace CalculationImpedancesUI
             segmentForm.ShowDialog();
             if (segmentForm.DialogResult == DialogResult.OK)
             {
-                var selectedIndex = CircuitsTreeView.SelectedNode as SegmentTreeNode;
+                //TODO: Дубль
+				var selectedIndex = CircuitsTreeView.SelectedNode as SegmentTreeNode;
                 if (selectedIndex == null)
                 {
                     MessageBox.Show("Select a element from the list", "Warning",
@@ -548,7 +563,8 @@ namespace CalculationImpedancesUI
 
                 if (selectedIndex == CircuitsTreeView.Nodes[0])
                 {
-                    var segment = segmentForm.Segment;
+                    //TODO: Дубль
+					var segment = segmentForm.Segment;
                     project.SelectedCircuit.SubSegments.Add(segment);
                     selectedIndex.Nodes.Add(new SegmentTreeNode
                     {
@@ -564,7 +580,8 @@ namespace CalculationImpedancesUI
                 }
                 else
                 {
-                    var segment = segmentForm.Segment;
+                    //TODO: Дубль
+					var segment = segmentForm.Segment;
                     selectedIndex.Segment.SubSegments.Add(segment);
                     selectedIndex.Nodes.Add(new SegmentTreeNode
                     {

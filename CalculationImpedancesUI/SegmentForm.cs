@@ -13,12 +13,14 @@ namespace CalculationImpedancesUI
 {
 	public partial class SegmentForm : Form
 	{
+		//TODO: RSDN?
 		public ISegment Segment { get; set; }
 		public SegmentForm()
 		{
 			InitializeComponent();
 		}
 
+		//TODO: Почему публично?
 		public readonly List<string> SegmentType = new List<string>
 		{
 			"Serial",

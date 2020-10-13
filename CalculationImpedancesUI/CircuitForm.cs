@@ -13,6 +13,7 @@ namespace CalculationImpedancesUI
 {
 	public partial class CircuitForm : Form
 	{
+		 //TODO: RSDN
 		public Circuit Circiut { get; set; }
 
 		public CircuitForm()
