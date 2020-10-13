@@ -34,7 +34,7 @@ namespace CalculationImpedancesApp
         /// </summary>
         public override string ToString()
         {
-            return "Inductor: " + Name + " = " + Value;
+            return "Inductor: " + Name + " = " + Value + " H";
         }
     }
 }

@@ -591,6 +591,6 @@ namespace CalculationImpedancesUI
                 }
             }
         }
-    }
+	}
 }
 
