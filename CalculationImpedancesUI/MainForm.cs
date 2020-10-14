@@ -232,11 +232,6 @@ namespace CalculationImpedancesUI
 			{
 				var selectedIndex = CheckElementSelection();
 				var element = CreateElement();
-				if (element == null)
-				{
-					return;
-				}
-
 				if (selectedIndex == CircuitsTreeView.Nodes[0])
 				{
 					//TODO: Дубль (+)
@@ -258,11 +253,13 @@ namespace CalculationImpedancesUI
 
 					selectedIndex.Segment.SubSegments.Add(element);
 				}
+
 				selectedIndex.Nodes.Add(new SegmentTreeNode
 				{
 					Text = element.ToString(),
 					Segment = element
 				});
+
 
 				TypeComboBox.Text = "";
 				NameTextBox.Text = "";
@@ -282,15 +279,9 @@ namespace CalculationImpedancesUI
 			try
 			{
 				var selectedIndex = CheckElementSelection();
-
-				var parent = selectedIndex.Parent as SegmentTreeNode;
-				//TODO: Дубль
+				//TODO: Дубль (+)
 				var element = CreateElement();
-				if (element == null)
-				{
-					return;
-				}
-
+				var parent = selectedIndex.Parent as SegmentTreeNode;
 				parent.Segment.SubSegments.Remove(selectedIndex.Segment);
 				parent.Segment.SubSegments.Add(element);
 				parent.Nodes.Remove(selectedIndex);
@@ -322,7 +313,7 @@ namespace CalculationImpedancesUI
 				}
 				else
 				{
-					//TODO: Дубль
+					//TODO: Дубль (?)
 					var parent = selectedIndex.Parent as SegmentTreeNode;
 					var element = selectedIndex.Segment;
 					if (parent.Segment == null)
@@ -370,56 +361,66 @@ namespace CalculationImpedancesUI
 						element = new Capacitor(name, value);
 						break;
 					}
+					default:
+					{
+						throw new ArgumentNullException("You must select an element type");
+					}
 				}
 			}
-			catch (FormatException exception)
+			catch (FormatException)
 			{
-				MessageBox.Show(exception.Message, "Error",
-					MessageBoxButtons.OK, MessageBoxIcon.Error);
+				throw new ArgumentNullException("Incorrect value");
 			}
-			catch (ArgumentException exception)
+			catch (ArgumentException)
 			{
-				MessageBox.Show(exception.Message, "Warning",
-					MessageBoxButtons.OK, MessageBoxIcon.Warning);
+				throw new ArgumentNullException("Fields cannot be empty");
 			}
 			return element;
 		}
 
-	private void CircuitsTreeView_AfterSelect(object sender, TreeViewEventArgs e)
+		private void CircuitsTreeView_AfterSelect(object sender, TreeViewEventArgs e)
 		{
             //TODO: Дубль (+)
-			var selectedIndex = CircuitsTreeView.SelectedNode as SegmentTreeNode;
+            try
+            {
+	            var selectedIndex = CheckElementSelection();
 
-			if (selectedIndex.Segment is Resistor)
-			{
-				TypeComboBox.Text = "Resistor";
-			}
-			else if (selectedIndex.Segment is Inductor)
-			{
-				TypeComboBox.Text = "Inductor";
-			}
-			else if (selectedIndex.Segment is Capacitor)
-			{
-				TypeComboBox.Text = "Capacitor";
-			}
-			else
-			{
-				TypeComboBox.Text = "";
-			}
+	            if (selectedIndex.Segment is Resistor)
+	            {
+		            TypeComboBox.Text = "Resistor";
+	            }
+	            else if (selectedIndex.Segment is Inductor)
+	            {
+		            TypeComboBox.Text = "Inductor";
+	            }
+	            else if (selectedIndex.Segment is Capacitor)
+	            {
+		            TypeComboBox.Text = "Capacitor";
+	            }
+	            else
+	            {
+		            TypeComboBox.Text = "";
+	            }
 
-			if (selectedIndex.Segment is IElement element)
-			{
-				NameTextBox.Text = selectedIndex.Segment.Name;
-				ValueTextBox.Text = element.Value.ToString();
-				EditElementButton.Enabled = true;
-			}
-			else
-			{
-				TypeComboBox.Text = "";
-				NameTextBox.Text = "";
-				ValueTextBox.Text = "";
-				EditElementButton.Enabled = false;
-			}
+	            if (selectedIndex.Segment is IElement element)
+	            {
+		            NameTextBox.Text = selectedIndex.Segment.Name;
+		            ValueTextBox.Text = element.Value.ToString();
+		            EditElementButton.Enabled = true;
+	            }
+	            else
+	            {
+		            TypeComboBox.Text = "";
+		            NameTextBox.Text = "";
+		            ValueTextBox.Text = "";
+		            EditElementButton.Enabled = false;
+	            }
+            }
+            catch (ArgumentNullException exception)
+            {
+	            MessageBox.Show(exception.ParamName, "Warning",
+		            MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
 		}
 
 		private void ShowMessage(object sender, EventArgs e)
@@ -508,12 +509,12 @@ namespace CalculationImpedancesUI
 
         private void AddSegmentButton_Click(object sender, EventArgs e)
         {
-            var segmentForm = new SegmentForm();
+	        var segmentForm = new SegmentForm();
             segmentForm.ShowDialog();
             if (segmentForm.DialogResult == DialogResult.OK)
             {
-                //TODO: Дубль
-				var selectedIndex = CircuitsTreeView.SelectedNode as SegmentTreeNode;
+                //TODO: Дубль (+)
+				var selectedIndex = CheckElementSelection();
                 if (selectedIndex == null)
                 {
                     MessageBox.Show("Select a element from the list", "Warning",
@@ -550,6 +551,7 @@ namespace CalculationImpedancesUI
                     });
                 }
             }
+			
         }
 
         private void UpdateTreeView(SegmentTreeNode draggedNode, SegmentTreeNode targetNode)
