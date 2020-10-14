@@ -232,41 +232,37 @@ namespace CalculationImpedancesUI
 			{
 				var selectedIndex = CheckElementSelection();
 				var element = CreateElement();
+				if (element == null)
+				{
+					return;
+				}
 
 				if (selectedIndex == CircuitsTreeView.Nodes[0])
 				{
-					//TODO: Дубль
+					//TODO: Дубль (+)
 
 					_project.SelectedCircuit.SubSegments.Add(element);
-					selectedIndex.Nodes.Add(new SegmentTreeNode
-					{
-						Text = element.ToString(),
-						Segment = element
-					});
 				}
-				else if (selectedIndex.Segment is IElement)
+
+				if (selectedIndex.Segment is IElement)
 				{
 					selectedIndex = selectedIndex.Parent as SegmentTreeNode;
-					//TODO: Дубль
+					//TODO: Дубль (+)
 
 					selectedIndex.Segment.SubSegments.Add(element);
-					selectedIndex.Nodes.Add(new SegmentTreeNode
-					{
-						Text = element.ToString(),
-						Segment = element
-					});
 				}
-				else
+
+				if (selectedIndex.Segment is ISegment)
 				{
-					//TODO: Дубль
+					//TODO: Дубль (+)
 
 					selectedIndex.Segment.SubSegments.Add(element);
-					selectedIndex.Nodes.Add(new SegmentTreeNode
-					{
-						Text = element.ToString(),
-						Segment = element
-					});
 				}
+				selectedIndex.Nodes.Add(new SegmentTreeNode
+				{
+					Text = element.ToString(),
+					Segment = element
+				});
 
 				TypeComboBox.Text = "";
 				NameTextBox.Text = "";
@@ -353,11 +349,10 @@ namespace CalculationImpedancesUI
 		private IElement CreateElement()
 		{
 			IElement element = null;
-			var name = NameTextBox.Text;
-			double value;
-			var success = double.TryParse(ValueTextBox.Text, out value);
-			if (success)
+			try
 			{
+				var name = NameTextBox.Text;
+				var value = double.Parse(ValueTextBox.Text);
 				switch (TypeComboBox.SelectedIndex)
 				{
 					case 1:
@@ -377,13 +372,15 @@ namespace CalculationImpedancesUI
 					}
 				}
 			}
-			else
+			catch (FormatException exception)
 			{
-				throw new ArgumentNullException("Fields for name and value cannot be empty");
+				MessageBox.Show(exception.Message, "Error",
+					MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
-			if (element == null)
+			catch (ArgumentException exception)
 			{
-				throw new ArgumentNullException("You must select the type of element");
+				MessageBox.Show(exception.Message, "Warning",
+					MessageBoxButtons.OK, MessageBoxIcon.Warning);
 			}
 			return element;
 		}
