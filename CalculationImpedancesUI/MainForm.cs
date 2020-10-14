@@ -15,14 +15,14 @@ namespace CalculationImpedancesUI
 {
 	public partial class MainForm : Form
 	{
-		//TODO: RSDN
+		//TODO: RSDN (+)
 		/// <summary>
-		/// All program data.
+		/// All program data
 		/// </summary>
-		Project project = new Project();
+		private Project _project = new Project();
 
-		//TODO: Зачем публично?
-		public readonly List<string> Type = new List<string>
+		//TODO: Зачем публично? (+)
+		private readonly List<string> Type = new List<string>
 		{
 			"",
 			"Resistor",
@@ -38,13 +38,11 @@ namespace CalculationImpedancesUI
 		private void MainForm_Load(object sender, EventArgs e)
 		{
 
-			CircuitSelectionComboBox.DataSource = null;
-			CircuitSelectionComboBox.DataSource = project.Circuits;
-			CircuitSelectionComboBox.DisplayMember = "Name";
+			UpdateComboBox();
 
 			TypeComboBox.DataSource = Type;
 
-			foreach (var i in project.Circuits)
+			foreach (var i in _project.Circuits)
 			{
 				i.SegmentChanged += ShowMessage;
 			}
@@ -53,7 +51,7 @@ namespace CalculationImpedancesUI
 		private void FillCircuitNodes() 
 		{
 			CircuitsTreeView.Nodes.Clear();
-			var circuit = project.SelectedCircuit;
+			var circuit = _project.SelectedCircuit;
 			SegmentTreeNode mainCircuitNode= new SegmentTreeNode
 			{
 				Text = circuit.Name,
@@ -110,7 +108,7 @@ namespace CalculationImpedancesUI
 			var selectedIndexCircuit = CircuitSelectionComboBox.SelectedIndex;
 			if (selectedIndexCircuit != -1)
 			{
-				project.SelectedCircuit = project.Circuits[selectedIndexCircuit];
+				_project.SelectedCircuit = _project.Circuits[selectedIndexCircuit];
 			}
 
 			Calculate();
@@ -123,11 +121,9 @@ namespace CalculationImpedancesUI
 			circuit.ShowDialog();
 			if (circuit.DialogResult == DialogResult.OK)
 			{
-				project.Circuits.Add(circuit.Circiut);
-                //TODO: Дубль
-				CircuitSelectionComboBox.DataSource = null;
-				CircuitSelectionComboBox.DataSource = project.Circuits;
-				CircuitSelectionComboBox.DisplayMember = "Name";
+				_project.Circuits.Add(circuit.NewCirciut);
+				//TODO: Дубль (+)
+				UpdateComboBox();
 			}
 		}
 
@@ -143,16 +139,14 @@ namespace CalculationImpedancesUI
 			{
 
 				var circuit = new CircuitForm();
-				var selectedCircuit = project.Circuits[selectedIndex];
-				circuit.Circiut = selectedCircuit;
+				var selectedCircuit = _project.Circuits[selectedIndex];
+				circuit.NewCirciut = selectedCircuit;
 				circuit.ShowDialog();
 				if (circuit.DialogResult == DialogResult.OK)
 				{
-					project.Circuits[selectedIndex].Name = circuit.Circiut.Name;
-                    //TODO: Дубль
-					CircuitSelectionComboBox.DataSource = null;
-					CircuitSelectionComboBox.DataSource = project.Circuits;
-					CircuitSelectionComboBox.DisplayMember = "Name";
+					_project.Circuits[selectedIndex].Name = circuit.NewCirciut.Name;
+					//TODO: Дубль (+)
+					UpdateComboBox();
 				}
 			}
 
@@ -169,17 +163,15 @@ namespace CalculationImpedancesUI
 				return;
 			}
 			
-            //TODO: RSDN
-			DialogResult result = MessageBox.Show("Do you really want to remove this circuit?",
-				"Remove circuit", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            //TODO: RSDN (?)
+			var result = MessageBox.Show("Do you really want to remove this circuit?", 
+				"Remove Circuit", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
 			if (result == DialogResult.OK)
 			{
-				var selectedCircuit = project.Circuits[selectedIndex];
-				project.Circuits.Remove(selectedCircuit);
-                //TODO: Дубль
-				CircuitSelectionComboBox.DataSource = null;
-				CircuitSelectionComboBox.DataSource = project.Circuits;
-				CircuitSelectionComboBox.DisplayMember = "Name";
+				var selectedCircuit = _project.Circuits[selectedIndex];
+				_project.Circuits.Remove(selectedCircuit);
+				//TODO: Дубль (+)
+				UpdateComboBox();
 			}
 		}
 
@@ -189,7 +181,7 @@ namespace CalculationImpedancesUI
 			{
 				try
 				{
-					project.Frequencies.Add(double.Parse(FrequencyTextBox.Text));
+					_project.Frequencies.Add(double.Parse(FrequencyTextBox.Text));
 					FrequenciesListBox.Items.Add(double.Parse(FrequencyTextBox.Text));
 				}
 				catch
@@ -204,10 +196,10 @@ namespace CalculationImpedancesUI
 
 		private void Calculate()
 		{
-            project.Results = project.SelectedCircuit.CalculateZ(project.Frequencies);
+            _project.Results = _project.SelectedCircuit.CalculateZ(_project.Frequencies);
 			ImpedanceValues();
 			ResultsListBox.DataSource = null;
-			ResultsListBox.DataSource = project.ImpedanceValues;
+			ResultsListBox.DataSource = _project.ImpedanceValues;
 		}
 
 		private void RemoveFrequencyButton_Click(object sender, EventArgs e)
@@ -220,12 +212,12 @@ namespace CalculationImpedancesUI
 				return;
 			}
 
-			DialogResult result = MessageBox.Show("Do you really want to remove this frequency?",
-				"Remove frequency", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+			var result = MessageBox.Show("Do you really want to remove this frequency?",
+				"Remove Frequency", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
 			if (result == DialogResult.OK)
 			{
-				var selectedFrequency = project.Frequencies[selectedIndex];
-				project.Frequencies.Remove(selectedFrequency);
+				var selectedFrequency = _project.Frequencies[selectedIndex];
+				_project.Frequencies.Remove(selectedFrequency);
 				FrequenciesListBox.Items.RemoveAt(selectedIndex);
 			}
 		}
@@ -240,7 +232,6 @@ namespace CalculationImpedancesUI
 					MessageBoxButtons.OK, MessageBoxIcon.Warning);
 				return;
 			}
-
 			if (selectedIndex == CircuitsTreeView.Nodes[0])
 			{
                 //TODO: Дубль
@@ -249,7 +240,7 @@ namespace CalculationImpedancesUI
 				{
 					return;
 				}
-				project.SelectedCircuit.SubSegments.Add(element);
+				_project.SelectedCircuit.SubSegments.Add(element);
 				selectedIndex.Nodes.Add(new SegmentTreeNode
 				{
 					Text = element.ToString(),
@@ -346,7 +337,7 @@ namespace CalculationImpedancesUI
 				var element = selectedIndex.Segment;
 				if (parent.Segment == null)
 				{
-					project.SelectedCircuit.SubSegments.Remove(element);
+					_project.SelectedCircuit.SubSegments.Remove(element);
 				}
 				else
 				{
@@ -444,10 +435,10 @@ namespace CalculationImpedancesUI
 
 		private void ImpedanceValues()
 		{
-			project.ImpedanceValues = new List<string>();
-			foreach (var i in project.Results)
+			_project.ImpedanceValues = new List<string>();
+			foreach (var i in _project.Results)
 			{
-				project.ImpedanceValues.Add($"{Math.Round(i.Real, 3)} " +
+				_project.ImpedanceValues.Add($"{Math.Round(i.Real, 3)} " +
                                             $"+ {Math.Round(i.Imaginary, 3)}*j");
 			}
 		}
@@ -464,23 +455,20 @@ namespace CalculationImpedancesUI
 
 		private void CircuitsTreeView_DragDrop(object sender, DragEventArgs e)
 		{
-			//TODO: Подозрительно много комментариев...
-			// Получаем координаты объекта, к которому перетаскиваем выбранный нами объект 
+			//TODO: Подозрительно много комментариев... (+)
 			Point targetPoint = CircuitsTreeView.PointToClient(new Point(e.X, e.Y));
 
-			// Извлекает узел из места падения (куда перетаскиваем)
+			// Куда перетаскиваем
 			SegmentTreeNode targetNode = CircuitsTreeView.GetNodeAt(targetPoint) as SegmentTreeNode;
 
-			// Вабранная нами node, которую мы перетаскиваем (что перетаскиваем)
+			// Что перетаскиваем
 			SegmentTreeNode draggedNode = e.Data.GetData(typeof(SegmentTreeNode)) as SegmentTreeNode;
 
-			// Проверка на пустоту
 			if (draggedNode == null)
 			{
 				return;
 			}
 
-			// Если пользователь попал в пустоту
 			if (targetNode == null)
 			{
 				UpdateTreeView(draggedNode, targetNode);
@@ -492,7 +480,6 @@ namespace CalculationImpedancesUI
 			{
 				TreeNode parentNode = targetNode;
 
-				// Если перетаскиваемый узел не равен сам себе и не равен нулю 
 				if (!draggedNode.Equals(targetNode) && targetNode != null)
 				{
 					bool canDrop = true;
@@ -505,7 +492,6 @@ namespace CalculationImpedancesUI
 						parentNode = parentNode.Parent;
 					}
 
-					// Это допустимое место падения?
 					if (canDrop)
 					{
 						if (targetNode.Segment is IElement)
@@ -529,16 +515,16 @@ namespace CalculationImpedancesUI
 			var parent = draggedNode.Parent as SegmentTreeNode;
 			if (parent.Segment == null)
 			{
-				project.SelectedCircuit.SubSegments.Remove(draggedNode.Segment);
+				_project.SelectedCircuit.SubSegments.Remove(draggedNode.Segment);
 			}
 			else
 			{
 				parent.Segment.SubSegments.Remove(draggedNode.Segment);
 			}
 
-			if (targetNode == null || targetNode.Segment == null)
+			if ((targetNode == null) || (targetNode.Segment == null))
 			{
-				project.SelectedCircuit.SubSegments.Add(draggedNode.Segment);
+				_project.SelectedCircuit.SubSegments.Add(draggedNode.Segment);
 			}
 			else
 			{
@@ -564,33 +550,40 @@ namespace CalculationImpedancesUI
                 if (selectedIndex == CircuitsTreeView.Nodes[0])
                 {
                     //TODO: Дубль
-					var segment = segmentForm.Segment;
-                    project.SelectedCircuit.SubSegments.Add(segment);
+					var segment = segmentForm.NewSegment;
+                    _project.SelectedCircuit.SubSegments.Add(segment);
                     selectedIndex.Nodes.Add(new SegmentTreeNode
                     {
-                        Text = segmentForm.Segment.Name,
+                        Text = segmentForm.NewSegment.Name,
                         Segment = segment
                     });
                 }
                 else if (selectedIndex.Segment is IElement)
                 {
-                    MessageBox.Show("Segment cannot be created from element", "Error",
+                    MessageBox.Show("NewSegment cannot be created from element", "Error",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
                 else
                 {
                     //TODO: Дубль
-					var segment = segmentForm.Segment;
+					var segment = segmentForm.NewSegment;
                     selectedIndex.Segment.SubSegments.Add(segment);
                     selectedIndex.Nodes.Add(new SegmentTreeNode
                     {
-                        Text = segmentForm.Segment.Name,
+                        Text = segmentForm.NewSegment.Name,
                         Segment = segment
                     });
                 }
             }
         }
+
+        private void UpdateComboBox()
+        {
+	        CircuitSelectionComboBox.DataSource = null;
+	        CircuitSelectionComboBox.DataSource = _project.Circuits;
+	        CircuitSelectionComboBox.DisplayMember = "Name";
+		}
 	}
 }
 

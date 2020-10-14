@@ -13,8 +13,11 @@ namespace CalculationImpedancesUI
 {
 	public partial class CircuitForm : Form
 	{
-		 //TODO: RSDN
-		public Circuit Circiut { get; set; }
+		//TODO: RSDN (+)
+		/// <summary>
+		/// New circuit.
+		/// </summary>
+		public Circuit NewCirciut { get; set; }
 
 		public CircuitForm()
 		{
@@ -25,7 +28,7 @@ namespace CalculationImpedancesUI
 		{
 			try
 			{
-				Circiut = new Circuit(nameTextBox.Text, new SegmentsObservableCollection());
+				NewCirciut = new Circuit(nameTextBox.Text, new SegmentsObservableCollection());
 				this.DialogResult = DialogResult.OK;
 			}
 			catch (ArgumentException)

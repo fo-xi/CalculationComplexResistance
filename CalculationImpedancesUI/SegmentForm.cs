@@ -13,15 +13,18 @@ namespace CalculationImpedancesUI
 {
 	public partial class SegmentForm : Form
 	{
-		//TODO: RSDN?
-		public ISegment Segment { get; set; }
+		//TODO: RSDN? (+)
+		/// <summary>
+		/// New circuit segment.
+		/// </summary>
+		public ISegment NewSegment { get; set; }
 		public SegmentForm()
 		{
 			InitializeComponent();
 		}
 
-		//TODO: Почему публично?
-		public readonly List<string> SegmentType = new List<string>
+		//TODO: Почему публично? (+)
+		private readonly List<string> SegmentType = new List<string>
 		{
 			"Serial",
 			"Parallel"
@@ -33,12 +36,12 @@ namespace CalculationImpedancesUI
 			{
 				case 0:
 				{
-					Segment = new SerialCircuit(new SegmentsObservableCollection());
+					NewSegment = new SerialCircuit(new SegmentsObservableCollection());
 					break;
 				}
 				case 1:
 				{
-					Segment = new ParallelCircuit(new SegmentsObservableCollection());
+					NewSegment = new ParallelCircuit(new SegmentsObservableCollection());
 					break;
 				}
 			}

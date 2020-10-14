@@ -3,6 +3,9 @@ using System.Numerics;
 
 namespace CalculationImpedancesApp
 {
+	/// <summary>
+	/// Сlass that stores all circuit data and its calculations.
+	/// </summary>
 	public class Project
 	{
 		/// <summary>

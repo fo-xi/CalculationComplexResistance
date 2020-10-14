@@ -216,12 +216,12 @@
 			// 
 			this.AddSegmentButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
 			this.AddSegmentButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-			this.AddSegmentButton.Location = new System.Drawing.Point(175, 368);
+			this.AddSegmentButton.Location = new System.Drawing.Point(155, 368);
 			this.AddSegmentButton.Margin = new System.Windows.Forms.Padding(3, 3, 2, 3);
 			this.AddSegmentButton.Name = "AddSegmentButton";
-			this.AddSegmentButton.Size = new System.Drawing.Size(83, 30);
+			this.AddSegmentButton.Size = new System.Drawing.Size(103, 30);
 			this.AddSegmentButton.TabIndex = 3;
-			this.AddSegmentButton.Text = "Add Segment";
+			this.AddSegmentButton.Text = "Add NewSegment";
 			this.AddSegmentButton.UseVisualStyleBackColor = true;
 			this.AddSegmentButton.Click += new System.EventHandler(this.AddSegmentButton_Click);
 			// 
@@ -277,10 +277,10 @@
 			// 
 			this.tableLayoutPanel4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
 			this.tableLayoutPanel4.ColumnCount = 4;
-			this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 37.07865F));
-			this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62.92135F));
+			this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38.37209F));
+			this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 61.62791F));
 			this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 70F));
-			this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 69F));
+			this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 70F));
 			this.tableLayoutPanel4.Controls.Add(this.FrequencyTextBox, 1, 0);
 			this.tableLayoutPanel4.Controls.Add(this.FrequencyLabel, 0, 0);
 			this.tableLayoutPanel4.Controls.Add(this.CalculateButton, 2, 0);
@@ -295,9 +295,9 @@
 			// FrequencyTextBox
 			// 
 			this.FrequencyTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.FrequencyTextBox.Location = new System.Drawing.Point(67, 8);
+			this.FrequencyTextBox.Location = new System.Drawing.Point(69, 8);
 			this.FrequencyTextBox.Name = "FrequencyTextBox";
-			this.FrequencyTextBox.Size = new System.Drawing.Size(103, 20);
+			this.FrequencyTextBox.Size = new System.Drawing.Size(100, 20);
 			this.FrequencyTextBox.TabIndex = 1;
 			this.FrequencyTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
 			// 
@@ -305,9 +305,9 @@
 			// 
 			this.FrequencyLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
 			this.FrequencyLabel.AutoSize = true;
-			this.FrequencyLabel.Location = new System.Drawing.Point(4, 5);
+			this.FrequencyLabel.Location = new System.Drawing.Point(3, 11);
 			this.FrequencyLabel.Name = "FrequencyLabel";
-			this.FrequencyLabel.Size = new System.Drawing.Size(57, 26);
+			this.FrequencyLabel.Size = new System.Drawing.Size(60, 13);
 			this.FrequencyLabel.TabIndex = 0;
 			this.FrequencyLabel.Text = "Frequency:";
 			// 
@@ -316,7 +316,7 @@
 			this.CalculateButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.CalculateButton.Location = new System.Drawing.Point(176, 3);
+			this.CalculateButton.Location = new System.Drawing.Point(175, 3);
 			this.CalculateButton.Name = "CalculateButton";
 			this.CalculateButton.Size = new System.Drawing.Size(64, 30);
 			this.CalculateButton.TabIndex = 0;
@@ -329,9 +329,9 @@
 			this.RemoveFrequencyButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.RemoveFrequencyButton.Location = new System.Drawing.Point(246, 3);
+			this.RemoveFrequencyButton.Location = new System.Drawing.Point(245, 3);
 			this.RemoveFrequencyButton.Name = "RemoveFrequencyButton";
-			this.RemoveFrequencyButton.Size = new System.Drawing.Size(64, 30);
+			this.RemoveFrequencyButton.Size = new System.Drawing.Size(65, 30);
 			this.RemoveFrequencyButton.TabIndex = 1;
 			this.RemoveFrequencyButton.Text = "Remove";
 			this.RemoveFrequencyButton.UseVisualStyleBackColor = true;
