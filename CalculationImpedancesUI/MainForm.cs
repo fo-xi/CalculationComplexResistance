@@ -509,48 +509,46 @@ namespace CalculationImpedancesUI
 
         private void AddSegmentButton_Click(object sender, EventArgs e)
         {
-	        var segmentForm = new SegmentForm();
-            segmentForm.ShowDialog();
-            if (segmentForm.DialogResult == DialogResult.OK)
-            {
-                //TODO: Дубль (+)
-				var selectedIndex = CheckElementSelection();
-                if (selectedIndex == null)
-                {
-                    MessageBox.Show("Select a element from the list", "Warning",
-                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
+			try
+			{
+				var segmentForm = new SegmentForm();
+				segmentForm.ShowDialog();
+				if (segmentForm.DialogResult == DialogResult.OK)
+				{
+					//TODO: Дубль (+)
+					var selectedIndex = CheckElementSelection();
+					var segment = segmentForm.NewSegment;
 
-                if (selectedIndex == CircuitsTreeView.Nodes[0])
-                {
-                    //TODO: Дубль
-					var segment = segmentForm.NewSegment;
-                    _project.SelectedCircuit.SubSegments.Add(segment);
-                    selectedIndex.Nodes.Add(new SegmentTreeNode
-                    {
-                        Text = segmentForm.NewSegment.Name,
-                        Segment = segment
-                    });
-                }
-                else if (selectedIndex.Segment is IElement)
-                {
-                    MessageBox.Show("NewSegment cannot be created from element", "Error",
-                        MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-                else
-                {
-                    //TODO: Дубль
-					var segment = segmentForm.NewSegment;
-                    selectedIndex.Segment.SubSegments.Add(segment);
-                    selectedIndex.Nodes.Add(new SegmentTreeNode
-                    {
-                        Text = segmentForm.NewSegment.Name,
-                        Segment = segment
-                    });
-                }
-            }
+					if (selectedIndex.Segment is IElement)
+					{
+						MessageBox.Show("Segment cannot be created from element", "Error",
+							MessageBoxButtons.OK, MessageBoxIcon.Error);
+						return;
+					}
+
+					if (selectedIndex == CircuitsTreeView.Nodes[0])
+					{
+						//TODO: Дубль (+)
+						_project.SelectedCircuit.SubSegments.Add(segment);
+						
+					}
+					else
+					{
+						//TODO: Дубль (+)
+						selectedIndex.Segment.SubSegments.Add(segment);
+					}
+					selectedIndex.Nodes.Add(new SegmentTreeNode
+					{
+						Text = segmentForm.NewSegment.Name,
+						Segment = segment
+					});
+				}
+			}
+			catch (ArgumentNullException exception)
+			{
+				MessageBox.Show(exception.ParamName, "Warning",
+					MessageBoxButtons.OK, MessageBoxIcon.Warning);
+			}
 			
         }
 
