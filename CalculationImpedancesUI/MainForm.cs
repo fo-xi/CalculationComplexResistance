@@ -231,12 +231,18 @@ namespace CalculationImpedancesUI
 			try
 			{
 				var selectedIndex = CheckElementSelection();
-				var element = CreateElement();
+				var elementForm = new AddEditSegmentForm();
+				elementForm.ShowDialog();
+				if (elementForm.DialogResult != DialogResult.OK)
+				{
+					return;
+				}
+
 				if (selectedIndex == CircuitsTreeView.Nodes[0])
 				{
 					//TODO: Дубль (+)
 
-					_project.SelectedCircuit.SubSegments.Add(element);
+					_project.SelectedCircuit.SubSegments.Add(elementForm.NewElement);
 				}
 
 				if (selectedIndex.Segment is IElement)
@@ -244,22 +250,21 @@ namespace CalculationImpedancesUI
 					selectedIndex = selectedIndex.Parent as SegmentTreeNode;
 					//TODO: Дубль (+)
 
-					selectedIndex.Segment.SubSegments.Add(element);
+					selectedIndex.Segment.SubSegments.Add(elementForm.NewElement);
 				}
 
 				if (selectedIndex.Segment is ISegment)
 				{
 					//TODO: Дубль (+)
 
-					selectedIndex.Segment.SubSegments.Add(element);
+					selectedIndex.Segment.SubSegments.Add(elementForm.NewElement);
 				}
 
 				selectedIndex.Nodes.Add(new SegmentTreeNode
 				{
-					Text = element.ToString(),
-					Segment = element
+					Text = elementForm.NewElement.ToString(),
+					Segment = elementForm.NewElement
 				});
-
 
 				TypeComboBox.Text = "";
 				NameTextBox.Text = "";
@@ -280,17 +285,16 @@ namespace CalculationImpedancesUI
 			{
 				var selectedIndex = CheckElementSelection();
 				//TODO: Дубль (+)
-				var element = CreateElement();
-				var parent = selectedIndex.Parent as SegmentTreeNode;
-				parent.Segment.SubSegments.Remove(selectedIndex.Segment);
-				parent.Segment.SubSegments.Add(element);
-				parent.Nodes.Remove(selectedIndex);
-				parent.Nodes.Add(new SegmentTreeNode
+				var elementForm = new AddEditSegmentForm{NewElement = selectedIndex.Segment as IElement};
+				elementForm.ShowDialog();
+				if (elementForm.DialogResult == DialogResult.OK)
 				{
-					Text = element.ToString(),
-					Segment = element
-				});
-				Calculate();
+					var parent = selectedIndex.Parent as SegmentTreeNode;
+					parent.Segment.SubSegments.Remove(selectedIndex.Segment);
+					parent.Segment.SubSegments.Add(elementForm.NewElement);
+					FillCircuitNodes();
+					Calculate();
+				}
 			}
 			catch (ArgumentNullException exception)
 			{
@@ -337,97 +341,50 @@ namespace CalculationImpedancesUI
 			}
 		}
 
-		private IElement CreateElement()
-		{
-			IElement element = null;
-			try
-			{
-				var name = NameTextBox.Text;
-				var value = double.Parse(ValueTextBox.Text);
-				switch (TypeComboBox.SelectedIndex)
-				{
-					case 1:
-					{
-						element = new Resistor(name, value);
-						break;
-					}
-					case 2:
-					{
-						element = new Inductor(name, value);
-						break;
-					}
-					case 3:
-					{
-						element = new Capacitor(name, value);
-						break;
-					}
-					default:
-					{
-						throw new ArgumentNullException("You must select an element type");
-					}
-				}
-			}
-			catch (FormatException)
-			{
-				throw new ArgumentNullException("Incorrect value");
-			}
-			catch (ArgumentException)
-			{
-				throw new ArgumentNullException("Fields cannot be empty");
-			}
-			return element;
-		}
-
 		private void CircuitsTreeView_AfterSelect(object sender, TreeViewEventArgs e)
 		{
-            //TODO: Дубль (+)
-            try
-            {
-	            var selectedIndex = CheckElementSelection();
+			//TODO: Дубль (+)
+			var selectedIndex = CheckElementSelection();
 
-	            if (selectedIndex.Segment is Resistor)
-	            {
-		            TypeComboBox.Text = "Resistor";
-	            }
-	            else if (selectedIndex.Segment is Inductor)
-	            {
-		            TypeComboBox.Text = "Inductor";
-	            }
-	            else if (selectedIndex.Segment is Capacitor)
-	            {
-		            TypeComboBox.Text = "Capacitor";
-	            }
-	            else
-	            {
-		            TypeComboBox.Text = "";
-	            }
+			if (selectedIndex.Segment is Resistor)
+			{
+				TypeComboBox.Text = "Resistor";
+			}
+			else if (selectedIndex.Segment is Inductor)
+			{
+				TypeComboBox.Text = "Inductor";
+			}
+			else if (selectedIndex.Segment is Capacitor)
+			{
+				TypeComboBox.Text = "Capacitor";
+			}
+			else
+			{
+				TypeComboBox.Text = "";
+			}
 
-	            if (selectedIndex.Segment is IElement element)
-	            {
-		            NameTextBox.Text = selectedIndex.Segment.Name;
-		            ValueTextBox.Text = element.Value.ToString();
-		            EditElementButton.Enabled = true;
-	            }
-	            else
-	            {
-		            TypeComboBox.Text = "";
-		            NameTextBox.Text = "";
-		            ValueTextBox.Text = "";
-		            EditElementButton.Enabled = false;
-	            }
-            }
-            catch (ArgumentNullException exception)
-            {
-	            MessageBox.Show(exception.ParamName, "Warning",
-		            MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
+			if (selectedIndex.Segment is IElement element)
+			{
+				NameTextBox.Text = selectedIndex.Segment.Name;
+				ValueTextBox.Text = element.Value.ToString();
+				EditElementButton.Enabled = true;
+				EditSegmentButton.Enabled = false;
+			}
+			else
+			{
+				TypeComboBox.Text = "";
+				NameTextBox.Text = "";
+				ValueTextBox.Text = "";
+				EditElementButton.Enabled = false;
+				EditSegmentButton.Enabled = true;
+			}
 		}
 
 		private void ShowMessage(object sender, EventArgs e)
 		{
-			var message = e as ElementEventArgs;
-			MessageBox.Show(message.Message, "Information",
-				MessageBoxButtons.OK, MessageBoxIcon.Information);
+			//var message = e as ElementEventArgs;
+			//MessageBox.Show(message.Message, "Information",
+			//	MessageBoxButtons.OK, MessageBoxIcon.Information);
 		}
 
 		private void ImpedanceValues()
@@ -436,7 +393,7 @@ namespace CalculationImpedancesUI
 			foreach (var i in _project.Results)
 			{
 				_project.ImpedanceValues.Add($"{Math.Round(i.Real, 3)} " +
-                                            $"+ {Math.Round(i.Imaginary, 3)}*j");
+											$"+ {Math.Round(i.Imaginary, 3)}*j");
 			}
 		}
 
@@ -501,47 +458,76 @@ namespace CalculationImpedancesUI
 
 					}
 					targetNode.Expand();
-					
+
 				}
 			}
 			CircuitsTreeView.SelectedNode = draggedNode;
 		}
 
-        private void AddSegmentButton_Click(object sender, EventArgs e)
-        {
+		private void AddSegmentButton_Click(object sender, EventArgs e)
+		{
+			var segmentForm = new SegmentForm();
+			segmentForm.ShowDialog();
+			if (segmentForm.DialogResult == DialogResult.OK)
+			{
+				//TODO: Дубль (+)
+				var selectedIndex = CheckElementSelection();
+				var segment = segmentForm.NewSegment;
+
+				if (selectedIndex.Segment is IElement)
+				{
+					MessageBox.Show("Segment cannot be created from element", "Error",
+						MessageBoxButtons.OK, MessageBoxIcon.Error);
+					return;
+				}
+
+				if (selectedIndex == CircuitsTreeView.Nodes[0])
+				{
+					//TODO: Дубль (+)
+					_project.SelectedCircuit.SubSegments.Add(segment);
+
+				}
+				else
+				{
+					//TODO: Дубль (+)
+					selectedIndex.Segment.SubSegments.Add(segment);
+				}
+
+				selectedIndex.Nodes.Add(new SegmentTreeNode
+				{
+					Text = segmentForm.NewSegment.Name,
+					Segment = segment
+				});
+			}
+		}
+
+		private void EditSegmentButton_Click(object sender, EventArgs e)
+		{
 			try
 			{
-				var segmentForm = new SegmentForm();
+				var selectedIndex = CheckElementSelection();
+
+				if (selectedIndex == CircuitsTreeView.Nodes[0])
+				{
+					return;
+				}
+				var segmentForm = new SegmentForm {NewSegment = selectedIndex.Segment};
 				segmentForm.ShowDialog();
 				if (segmentForm.DialogResult == DialogResult.OK)
 				{
-					//TODO: Дубль (+)
-					var selectedIndex = CheckElementSelection();
-					var segment = segmentForm.NewSegment;
-
-					if (selectedIndex.Segment is IElement)
+					var parent = selectedIndex.Parent as SegmentTreeNode;
+					if (parent == CircuitsTreeView.Nodes[0])
 					{
-						MessageBox.Show("Segment cannot be created from element", "Error",
-							MessageBoxButtons.OK, MessageBoxIcon.Error);
-						return;
-					}
-
-					if (selectedIndex == CircuitsTreeView.Nodes[0])
-					{
-						//TODO: Дубль (+)
-						_project.SelectedCircuit.SubSegments.Add(segment);
-						
+						_project.SelectedCircuit.SubSegments.Remove(selectedIndex.Segment);
+						_project.SelectedCircuit.SubSegments.Add(segmentForm.NewSegment);
 					}
 					else
 					{
-						//TODO: Дубль (+)
-						selectedIndex.Segment.SubSegments.Add(segment);
+						parent.Segment.SubSegments.Remove(selectedIndex.Segment);
+						parent.Segment.SubSegments.Add(segmentForm.NewSegment);
 					}
-					selectedIndex.Nodes.Add(new SegmentTreeNode
-					{
-						Text = segmentForm.NewSegment.Name,
-						Segment = segment
-					});
+					FillCircuitNodes();
+					Calculate();
 				}
 			}
 			catch (ArgumentNullException exception)
@@ -549,50 +535,50 @@ namespace CalculationImpedancesUI
 				MessageBox.Show(exception.ParamName, "Warning",
 					MessageBoxButtons.OK, MessageBoxIcon.Warning);
 			}
-			
-        }
 
-        private void UpdateTreeView(SegmentTreeNode draggedNode, SegmentTreeNode targetNode)
-        {
-	        var parent = draggedNode.Parent as SegmentTreeNode;
-	        if (parent.Segment == null)
-	        {
-		        _project.SelectedCircuit.SubSegments.Remove(draggedNode.Segment);
-	        }
-	        else
-	        {
-		        parent.Segment.SubSegments.Remove(draggedNode.Segment);
-	        }
-
-	        if ((targetNode == null) || (targetNode.Segment == null))
-	        {
-		        _project.SelectedCircuit.SubSegments.Add(draggedNode.Segment);
-	        }
-	        else
-	        {
-		        targetNode.Segment.SubSegments.Add(draggedNode.Segment);
-	        }
-        }
-
-		private void UpdateComboBox()
-        {
-	        CircuitSelectionComboBox.DataSource = null;
-	        CircuitSelectionComboBox.DataSource = _project.Circuits;
-	        CircuitSelectionComboBox.DisplayMember = "Name";
 		}
 
-        private SegmentTreeNode CheckElementSelection()
-        {
-	        SegmentTreeNode element = CircuitsTreeView.SelectedNode as SegmentTreeNode;
-	        if (element == null)
-	        {
+		private void UpdateTreeView(SegmentTreeNode draggedNode, SegmentTreeNode targetNode)
+		{
+			var parent = draggedNode.Parent as SegmentTreeNode;
+			if (parent.Segment == null)
+			{
+				_project.SelectedCircuit.SubSegments.Remove(draggedNode.Segment);
+			}
+			else
+			{
+				parent.Segment.SubSegments.Remove(draggedNode.Segment);
+			}
+
+			if ((targetNode == null) || (targetNode.Segment == null))
+			{
+				_project.SelectedCircuit.SubSegments.Add(draggedNode.Segment);
+			}
+			else
+			{
+				targetNode.Segment.SubSegments.Add(draggedNode.Segment);
+			}
+		}
+
+		private void UpdateComboBox()
+		{
+			CircuitSelectionComboBox.DataSource = null;
+			CircuitSelectionComboBox.DataSource = _project.Circuits;
+			CircuitSelectionComboBox.DisplayMember = "Name";
+		}
+
+		private SegmentTreeNode CheckElementSelection()
+		{
+			SegmentTreeNode element = CircuitsTreeView.SelectedNode as SegmentTreeNode;
+			if (element == null)
+			{
 				throw new ArgumentNullException("Select a tree segment");
-	        }
-	        else
-	        {
-		        return element;
-	        }
-        }
+			}
+			else
+			{
+				return element;
+			}
+		}
 	}
 }
 

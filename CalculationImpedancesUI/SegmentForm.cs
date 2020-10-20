@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -32,30 +33,45 @@ namespace CalculationImpedancesUI
 
 		private void OKButton_Click(object sender, EventArgs e)
 		{
-			switch (SegmentComboBox.SelectedIndex)
+			var tempSubSegments = NewSegment != null ? NewSegment.SubSegments : new SegmentsObservableCollection();
+			switch (TypeComboBox.SelectedIndex)
 			{
 				case 0:
 				{
-					NewSegment = new SerialCircuit(new SegmentsObservableCollection());
+					NewSegment = new SerialCircuit(tempSubSegments);
 					break;
 				}
 				case 1:
 				{
-					NewSegment = new ParallelCircuit(new SegmentsObservableCollection());
+					NewSegment = new ParallelCircuit(tempSubSegments);
 					break;
 				}
 			}
             this.DialogResult = DialogResult.OK;
 		}
 
+		private void SegmentForm_Load(object sender, EventArgs e)
+		{
+			TypeComboBox.DataSource = SegmentType;
+
+			if (NewSegment == null)
+			{
+				return;
+			}
+
+			if (NewSegment is ParallelCircuit)
+			{
+				TypeComboBox.Text = "Parallel";
+			}
+			else
+			{
+				TypeComboBox.Text = "Serial";
+			}
+		}
+
 		private void CancelButton_Click(object sender, EventArgs e)
 		{
 			this.DialogResult = DialogResult.Cancel;
 		}
-
-        private void SegmentForm_Load(object sender, EventArgs e)
-        {
-            SegmentComboBox.DataSource = SegmentType;
-		}
-    }
+	}
 }
