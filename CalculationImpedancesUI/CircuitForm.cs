@@ -33,7 +33,7 @@ namespace CalculationImpedancesUI
 			}
 			catch (ArgumentException)
 			{
-				MessageBox.Show("Incorrect Value", "Warning",
+				MessageBox.Show("Incorrect Name", "Warning",
 					MessageBoxButtons.OK, MessageBoxIcon.Warning);
 			}
 		}

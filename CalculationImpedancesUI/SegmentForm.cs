@@ -23,7 +23,9 @@ namespace CalculationImpedancesUI
 		{
 			InitializeComponent();
 		}
-
+		/// <summary>
+		/// New circuit segment type.
+		/// </summary>
 		//TODO: Почему публично? (+)
 		private readonly List<string> SegmentType = new List<string>
 		{

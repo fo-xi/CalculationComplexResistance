@@ -35,6 +35,7 @@
 			this.SegmentLabel = new System.Windows.Forms.Label();
 			this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
 			this.EditSegmentButton = new System.Windows.Forms.Button();
+			this.AddSegmentButton = new System.Windows.Forms.Button();
 			this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
 			this.RemoveButton = new System.Windows.Forms.Button();
 			this.EditButton = new System.Windows.Forms.Button();
@@ -62,7 +63,6 @@
 			this.EditElementButton = new System.Windows.Forms.Button();
 			this.AddElementButton = new System.Windows.Forms.Button();
 			this.RemoveElementButton = new System.Windows.Forms.Button();
-			this.AddSegmentButton = new System.Windows.Forms.Button();
 			this.CircuitsGroupBox.SuspendLayout();
 			this.tableLayoutPanel6.SuspendLayout();
 			this.tableLayoutPanel3.SuspendLayout();
@@ -151,6 +151,24 @@
 			this.EditSegmentButton.TabIndex = 1;
 			this.EditSegmentButton.UseVisualStyleBackColor = true;
 			this.EditSegmentButton.Click += new System.EventHandler(this.EditSegmentButton_Click);
+			// 
+			// AddSegmentButton
+			// 
+			this.AddSegmentButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.AddSegmentButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+			this.AddSegmentButton.BackgroundImage = global::CalculationImpedancesUI.Properties.Resources.add;
+			this.AddSegmentButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+			this.AddSegmentButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.AddSegmentButton.ForeColor = System.Drawing.SystemColors.Control;
+			this.AddSegmentButton.Location = new System.Drawing.Point(3, 3);
+			this.AddSegmentButton.Margin = new System.Windows.Forms.Padding(3, 3, 2, 3);
+			this.AddSegmentButton.Name = "AddSegmentButton";
+			this.AddSegmentButton.Size = new System.Drawing.Size(29, 30);
+			this.AddSegmentButton.TabIndex = 3;
+			this.AddSegmentButton.UseVisualStyleBackColor = true;
+			this.AddSegmentButton.Click += new System.EventHandler(this.AddSegmentButton_Click);
 			// 
 			// tableLayoutPanel3
 			// 
@@ -314,7 +332,7 @@
 			this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 41.56627F));
 			this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 58.43373F));
 			this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 70F));
-			this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 77F));
+			this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 78F));
 			this.tableLayoutPanel4.Controls.Add(this.FrequencyTextBox, 1, 0);
 			this.tableLayoutPanel4.Controls.Add(this.FrequencyLabel, 0, 0);
 			this.tableLayoutPanel4.Controls.Add(this.CalculateButton, 2, 0);
@@ -329,7 +347,7 @@
 			// FrequencyTextBox
 			// 
 			this.FrequencyTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.FrequencyTextBox.Location = new System.Drawing.Point(72, 8);
+			this.FrequencyTextBox.Location = new System.Drawing.Point(71, 8);
 			this.FrequencyTextBox.Name = "FrequencyTextBox";
 			this.FrequencyTextBox.Size = new System.Drawing.Size(90, 20);
 			this.FrequencyTextBox.TabIndex = 1;
@@ -339,7 +357,7 @@
 			// 
 			this.FrequencyLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
 			this.FrequencyLabel.AutoSize = true;
-			this.FrequencyLabel.Location = new System.Drawing.Point(6, 11);
+			this.FrequencyLabel.Location = new System.Drawing.Point(5, 11);
 			this.FrequencyLabel.Name = "FrequencyLabel";
 			this.FrequencyLabel.Size = new System.Drawing.Size(60, 13);
 			this.FrequencyLabel.TabIndex = 0;
@@ -350,7 +368,7 @@
 			this.CalculateButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.CalculateButton.Location = new System.Drawing.Point(168, 3);
+			this.CalculateButton.Location = new System.Drawing.Point(167, 3);
 			this.CalculateButton.Name = "CalculateButton";
 			this.CalculateButton.Size = new System.Drawing.Size(64, 30);
 			this.CalculateButton.TabIndex = 0;
@@ -363,9 +381,9 @@
 			this.RemoveFrequencyButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.RemoveFrequencyButton.Location = new System.Drawing.Point(238, 3);
+			this.RemoveFrequencyButton.Location = new System.Drawing.Point(237, 3);
 			this.RemoveFrequencyButton.Name = "RemoveFrequencyButton";
-			this.RemoveFrequencyButton.Size = new System.Drawing.Size(72, 30);
+			this.RemoveFrequencyButton.Size = new System.Drawing.Size(73, 30);
 			this.RemoveFrequencyButton.TabIndex = 1;
 			this.RemoveFrequencyButton.Text = "Remove";
 			this.RemoveFrequencyButton.UseVisualStyleBackColor = true;
@@ -531,24 +549,6 @@
 			this.RemoveElementButton.TabIndex = 2;
 			this.RemoveElementButton.UseVisualStyleBackColor = true;
 			this.RemoveElementButton.Click += new System.EventHandler(this.RemoveElementButton_Click);
-			// 
-			// AddSegmentButton
-			// 
-			this.AddSegmentButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.AddSegmentButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-			this.AddSegmentButton.BackgroundImage = global::CalculationImpedancesUI.Properties.Resources.add;
-			this.AddSegmentButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-			this.AddSegmentButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.AddSegmentButton.ForeColor = System.Drawing.SystemColors.Control;
-			this.AddSegmentButton.Location = new System.Drawing.Point(3, 3);
-			this.AddSegmentButton.Margin = new System.Windows.Forms.Padding(3, 3, 2, 3);
-			this.AddSegmentButton.Name = "AddSegmentButton";
-			this.AddSegmentButton.Size = new System.Drawing.Size(29, 30);
-			this.AddSegmentButton.TabIndex = 3;
-			this.AddSegmentButton.UseVisualStyleBackColor = true;
-			this.AddSegmentButton.Click += new System.EventHandler(this.AddSegmentButton_Click);
 			// 
 			// MainForm
 			// 

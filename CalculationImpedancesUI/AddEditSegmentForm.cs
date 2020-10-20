@@ -13,8 +13,14 @@ namespace CalculationImpedancesUI
 {
 	public partial class AddEditSegmentForm : Form
 	{
+		/// <summary>
+		/// New circuit element.
+		/// </summary>
 		public IElement NewElement { get; set; }
 
+		/// <summary>
+		/// Type of new circuit element.
+		/// </summary>
 		private readonly List<string> Type = new List<string>
 		{
 			"",

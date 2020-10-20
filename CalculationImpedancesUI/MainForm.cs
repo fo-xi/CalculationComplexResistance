@@ -24,6 +24,9 @@ namespace CalculationImpedancesUI
 		private Project _project = new Project();
 
 		//TODO: Зачем публично? (+)
+		/// <summary>
+		/// Type of circuit element.
+		/// </summary>
 		private readonly List<string> Type = new List<string>
 		{
 			"",
@@ -193,7 +196,6 @@ namespace CalculationImpedancesUI
 						MessageBoxButtons.OK, MessageBoxIcon.Warning);
 				}
 			}
-
 			Calculate();
 		}
 
@@ -309,7 +311,6 @@ namespace CalculationImpedancesUI
 			try
 			{
 				var selectedIndex = CheckElementSelection();
-
 				if (selectedIndex == CircuitsTreeView.Nodes[0])
 				{
 					MessageBox.Show("Can't delete root element", "Error",
@@ -317,7 +318,7 @@ namespace CalculationImpedancesUI
 				}
 				else
 				{
-					//TODO: Дубль (?)
+					//TODO: Дубль (+)
 					var parent = selectedIndex.Parent as SegmentTreeNode;
 					var element = selectedIndex.Segment;
 					if (parent.Segment == null)
@@ -331,7 +332,6 @@ namespace CalculationImpedancesUI
 
 					parent.Nodes.Remove(selectedIndex);
 				}
-
 				Calculate();
 			}
 			catch (ArgumentNullException exception)
@@ -506,7 +506,6 @@ namespace CalculationImpedancesUI
 			try
 			{
 				var selectedIndex = CheckElementSelection();
-
 				if (selectedIndex == CircuitsTreeView.Nodes[0])
 				{
 					return;
