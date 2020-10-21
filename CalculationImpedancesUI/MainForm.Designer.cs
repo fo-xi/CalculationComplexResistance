@@ -331,8 +331,8 @@
 			this.tableLayoutPanel4.ColumnCount = 4;
 			this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 41.56627F));
 			this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 58.43373F));
-			this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 70F));
-			this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 78F));
+			this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+			this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 34F));
 			this.tableLayoutPanel4.Controls.Add(this.FrequencyTextBox, 1, 0);
 			this.tableLayoutPanel4.Controls.Add(this.FrequencyLabel, 0, 0);
 			this.tableLayoutPanel4.Controls.Add(this.CalculateButton, 2, 0);
@@ -341,15 +341,15 @@
 			this.tableLayoutPanel4.Name = "tableLayoutPanel4";
 			this.tableLayoutPanel4.RowCount = 1;
 			this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-			this.tableLayoutPanel4.Size = new System.Drawing.Size(313, 36);
+			this.tableLayoutPanel4.Size = new System.Drawing.Size(309, 36);
 			this.tableLayoutPanel4.TabIndex = 3;
 			// 
 			// FrequencyTextBox
 			// 
 			this.FrequencyTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.FrequencyTextBox.Location = new System.Drawing.Point(71, 8);
+			this.FrequencyTextBox.Location = new System.Drawing.Point(102, 8);
 			this.FrequencyTextBox.Name = "FrequencyTextBox";
-			this.FrequencyTextBox.Size = new System.Drawing.Size(90, 20);
+			this.FrequencyTextBox.Size = new System.Drawing.Size(134, 20);
 			this.FrequencyTextBox.TabIndex = 1;
 			this.FrequencyTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
 			// 
@@ -357,7 +357,7 @@
 			// 
 			this.FrequencyLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
 			this.FrequencyLabel.AutoSize = true;
-			this.FrequencyLabel.Location = new System.Drawing.Point(5, 11);
+			this.FrequencyLabel.Location = new System.Drawing.Point(36, 11);
 			this.FrequencyLabel.Name = "FrequencyLabel";
 			this.FrequencyLabel.Size = new System.Drawing.Size(60, 13);
 			this.FrequencyLabel.TabIndex = 0;
@@ -368,11 +368,14 @@
 			this.CalculateButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.CalculateButton.Location = new System.Drawing.Point(167, 3);
+			this.CalculateButton.BackgroundImage = global::CalculationImpedancesUI.Properties.Resources.add;
+			this.CalculateButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+			this.CalculateButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.CalculateButton.ForeColor = System.Drawing.SystemColors.Control;
+			this.CalculateButton.Location = new System.Drawing.Point(242, 3);
 			this.CalculateButton.Name = "CalculateButton";
-			this.CalculateButton.Size = new System.Drawing.Size(64, 30);
+			this.CalculateButton.Size = new System.Drawing.Size(29, 30);
 			this.CalculateButton.TabIndex = 0;
-			this.CalculateButton.Text = "Calculate";
 			this.CalculateButton.UseVisualStyleBackColor = true;
 			this.CalculateButton.Click += new System.EventHandler(this.CalculateButton_Click);
 			// 
@@ -381,11 +384,14 @@
 			this.RemoveFrequencyButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.RemoveFrequencyButton.Location = new System.Drawing.Point(237, 3);
+			this.RemoveFrequencyButton.BackgroundImage = global::CalculationImpedancesUI.Properties.Resources.minus;
+			this.RemoveFrequencyButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+			this.RemoveFrequencyButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.RemoveFrequencyButton.ForeColor = System.Drawing.SystemColors.Control;
+			this.RemoveFrequencyButton.Location = new System.Drawing.Point(277, 3);
 			this.RemoveFrequencyButton.Name = "RemoveFrequencyButton";
-			this.RemoveFrequencyButton.Size = new System.Drawing.Size(73, 30);
+			this.RemoveFrequencyButton.Size = new System.Drawing.Size(29, 30);
 			this.RemoveFrequencyButton.TabIndex = 1;
-			this.RemoveFrequencyButton.Text = "Remove";
 			this.RemoveFrequencyButton.UseVisualStyleBackColor = true;
 			this.RemoveFrequencyButton.Click += new System.EventHandler(this.RemoveFrequencyButton_Click);
 			// 
@@ -489,17 +495,17 @@
 			// 
 			this.tableLayoutPanel7.Anchor = System.Windows.Forms.AnchorStyles.Top;
 			this.tableLayoutPanel7.ColumnCount = 3;
-			this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
-			this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
-			this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
+			this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+			this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+			this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 32.69231F));
 			this.tableLayoutPanel7.Controls.Add(this.EditElementButton, 1, 0);
 			this.tableLayoutPanel7.Controls.Add(this.AddElementButton, 0, 0);
 			this.tableLayoutPanel7.Controls.Add(this.RemoveElementButton, 2, 0);
-			this.tableLayoutPanel7.Location = new System.Drawing.Point(152, 123);
+			this.tableLayoutPanel7.Location = new System.Drawing.Point(156, 125);
 			this.tableLayoutPanel7.Name = "tableLayoutPanel7";
 			this.tableLayoutPanel7.RowCount = 1;
 			this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-			this.tableLayoutPanel7.Size = new System.Drawing.Size(109, 36);
+			this.tableLayoutPanel7.Size = new System.Drawing.Size(105, 36);
 			this.tableLayoutPanel7.TabIndex = 4;
 			// 
 			// EditElementButton
@@ -511,9 +517,9 @@
 			this.EditElementButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
 			this.EditElementButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.EditElementButton.ForeColor = System.Drawing.SystemColors.Control;
-			this.EditElementButton.Location = new System.Drawing.Point(39, 3);
+			this.EditElementButton.Location = new System.Drawing.Point(38, 3);
 			this.EditElementButton.Name = "EditElementButton";
-			this.EditElementButton.Size = new System.Drawing.Size(30, 30);
+			this.EditElementButton.Size = new System.Drawing.Size(29, 30);
 			this.EditElementButton.TabIndex = 1;
 			this.EditElementButton.UseVisualStyleBackColor = true;
 			this.EditElementButton.Click += new System.EventHandler(this.EditElementButton_Click);
@@ -529,7 +535,7 @@
 			this.AddElementButton.ForeColor = System.Drawing.SystemColors.Control;
 			this.AddElementButton.Location = new System.Drawing.Point(3, 3);
 			this.AddElementButton.Name = "AddElementButton";
-			this.AddElementButton.Size = new System.Drawing.Size(30, 30);
+			this.AddElementButton.Size = new System.Drawing.Size(29, 30);
 			this.AddElementButton.TabIndex = 0;
 			this.AddElementButton.UseVisualStyleBackColor = true;
 			this.AddElementButton.Click += new System.EventHandler(this.AddElementButton_Click);
@@ -543,9 +549,9 @@
 			this.RemoveElementButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
 			this.RemoveElementButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.RemoveElementButton.ForeColor = System.Drawing.SystemColors.Control;
-			this.RemoveElementButton.Location = new System.Drawing.Point(75, 3);
+			this.RemoveElementButton.Location = new System.Drawing.Point(73, 3);
 			this.RemoveElementButton.Name = "RemoveElementButton";
-			this.RemoveElementButton.Size = new System.Drawing.Size(31, 30);
+			this.RemoveElementButton.Size = new System.Drawing.Size(29, 30);
 			this.RemoveElementButton.TabIndex = 2;
 			this.RemoveElementButton.UseVisualStyleBackColor = true;
 			this.RemoveElementButton.Click += new System.EventHandler(this.RemoveElementButton_Click);
