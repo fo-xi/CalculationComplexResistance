@@ -7,6 +7,10 @@
     <UserSecretsId>39c0259d-5901-4cec-94a3-78eac1f85b05</UserSecretsId>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+
   <ItemGroup>
     <ProjectReference Include="..\CalculationImpedancesApp\CalculationImpedancesApp.csproj" />
   </ItemGroup>

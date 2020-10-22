@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -39,17 +38,17 @@ namespace CalculationImpedancesUI
 			switch (TypeComboBox.SelectedIndex)
 			{
 				case 0:
-				{
-					NewSegment = new SerialCircuit(tempSubSegments);
-					break;
-				}
+					{
+						NewSegment = new SerialCircuit(tempSubSegments);
+						break;
+					}
 				case 1:
-				{
-					NewSegment = new ParallelCircuit(tempSubSegments);
-					break;
-				}
+					{
+						NewSegment = new ParallelCircuit(tempSubSegments);
+						break;
+					}
 			}
-            this.DialogResult = DialogResult.OK;
+			this.DialogResult = DialogResult.OK;
 		}
 
 		private void SegmentForm_Load(object sender, EventArgs e)
