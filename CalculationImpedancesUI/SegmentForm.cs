@@ -38,15 +38,15 @@ namespace CalculationImpedancesUI
 			switch (TypeComboBox.SelectedIndex)
 			{
 				case 0:
-					{
-						NewSegment = new SerialCircuit(tempSubSegments);
-						break;
-					}
+				{
+					NewSegment = new SerialCircuit(tempSubSegments);
+					break;
+				}
 				case 1:
-					{
-						NewSegment = new ParallelCircuit(tempSubSegments);
-						break;
-					}
+				{
+					NewSegment = new ParallelCircuit(tempSubSegments);
+					break;
+				}
 			}
 			this.DialogResult = DialogResult.OK;
 		}
@@ -76,3 +76,4 @@ namespace CalculationImpedancesUI
 		}
 	}
 }
+

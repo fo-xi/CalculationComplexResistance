@@ -60,9 +60,9 @@
 			// 
 			// CancelButton
 			// 
-			this.CancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+			this.CancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+			| System.Windows.Forms.AnchorStyles.Left)
+			| System.Windows.Forms.AnchorStyles.Right)));
 			this.CancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
 			this.CancelButton.Location = new System.Drawing.Point(80, 3);
 			this.CancelButton.Name = "CancelButton";
@@ -74,9 +74,9 @@
 			// 
 			// OKButton
 			// 
-			this.OKButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+			this.OKButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+			| System.Windows.Forms.AnchorStyles.Left)
+			| System.Windows.Forms.AnchorStyles.Right)));
 			this.OKButton.Location = new System.Drawing.Point(3, 3);
 			this.OKButton.Name = "OKButton";
 			this.OKButton.Size = new System.Drawing.Size(71, 27);
@@ -168,7 +168,7 @@
 			this.ClientSize = new System.Drawing.Size(307, 155);
 			this.Controls.Add(this.tableLayoutPanel2);
 			this.Controls.Add(this.tableLayoutPanel1);
-			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+			this.Icon = global::CalculationImpedancesUI.Properties.Resources.electrical_circuit;
 			this.MaximumSize = new System.Drawing.Size(323, 194);
 			this.MinimumSize = new System.Drawing.Size(323, 194);
 			this.Name = "AddEditSegmentForm";

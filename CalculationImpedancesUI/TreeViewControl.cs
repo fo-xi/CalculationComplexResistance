@@ -13,9 +13,10 @@ namespace CalculationImpedancesUI
 {
     public partial class TreeViewControl : UserControl
     {
-		private Project _project;
+	    public delegate void CalculateHandler();
+		public event CalculateHandler NotifyCalculate;
 
-		public event EventHandler CircuitChanged;
+		private Project _project = new Project();
 
 		/// <summary>
 		/// Type of circuit element.
@@ -31,14 +32,15 @@ namespace CalculationImpedancesUI
 		public TreeViewControl()
         {
             InitializeComponent();
-        }
-
-		private void TreeViewControl_Load(object sender, EventArgs e)
-		{
-			TypeComboBox.DataSource = Type;
+            MainForm.NotifyProject += GetProject;
 		}
 
-        private void AddSegmentButton_Click(object sender, EventArgs e)
+		private Project GetProject()
+		{
+			return _project;
+		}
+
+		private void AddSegmentButton_Click(object sender, EventArgs e)
         {
 			var segmentForm = new SegmentForm();
 			segmentForm.ShowDialog();
@@ -57,7 +59,6 @@ namespace CalculationImpedancesUI
 				if (selectedIndex == CircuitsTreeView.Nodes[0])
 				{
 					_project.SelectedCircuit.SubSegments.Add(segment);
-
 				}
 				else
 				{
@@ -96,8 +97,8 @@ namespace CalculationImpedancesUI
 						parent.Segment.SubSegments.Remove(selectedIndex.Segment);
 						parent.Segment.SubSegments.Add(segmentForm.NewSegment);
 					}
-					FillCircuitNodes();
-					CircuitChanged?.Invoke(sender, e);
+					TreeViewManager.FillCircuitNodes(_project.SelectedCircuit);
+					NotifyCalculate?.Invoke();
 				}
 			}
 			catch (ArgumentNullException exception)
@@ -141,10 +142,7 @@ namespace CalculationImpedancesUI
 					Segment = elementForm.NewElement
 				});
 
-				TypeComboBox.Text = "";
-				NameTextBox.Text = "";
-				ValueTextBox.Text = "";
-				CircuitChanged?.Invoke(this, EventArgs.Empty);
+				NotifyCalculate?.Invoke();
 			}
 			catch (ArgumentNullException exception)
 			{
@@ -165,8 +163,8 @@ namespace CalculationImpedancesUI
 					var parent = selectedIndex.Parent as SegmentTreeNode;
 					parent.Segment.SubSegments.Remove(selectedIndex.Segment);
 					parent.Segment.SubSegments.Add(elementForm.NewElement);
-					FillCircuitNodes();
-					CircuitChanged?.Invoke(this, EventArgs.Empty);
+					TreeViewManager.FillCircuitNodes(_project.SelectedCircuit);
+					NotifyCalculate?.Invoke();
 				}
 			}
 			catch (ArgumentNullException exception)
@@ -190,7 +188,7 @@ namespace CalculationImpedancesUI
 				{
 					var parent = selectedIndex.Parent as SegmentTreeNode;
 					var element = selectedIndex.Segment;
-					if (parent.Segment == null)
+					if (parent?.Segment == null)
 					{
 						_project.SelectedCircuit.SubSegments.Remove(element);
 					}
@@ -201,7 +199,7 @@ namespace CalculationImpedancesUI
 
 					parent.Nodes.Remove(selectedIndex);
 				}
-				CircuitChanged?.Invoke(this, EventArgs.Empty);
+				NotifyCalculate?.Invoke();
 			}
 			catch (ArgumentNullException exception)
 			{
@@ -209,5 +207,112 @@ namespace CalculationImpedancesUI
 					MessageBoxButtons.OK, MessageBoxIcon.Warning);
 			}
 		}
-    }
+
+        private void CircuitsTreeView_ItemDrag(object sender, ItemDragEventArgs e)
+        {
+	        DoDragDrop(e.Item, DragDropEffects.Move);
+        }
+
+        private void CircuitsTreeView_DragEnter(object sender, DragEventArgs e)
+        {
+	        e.Effect = DragDropEffects.Move;
+        }
+
+        private void CircuitsTreeView_DragDrop(object sender, DragEventArgs e)
+        {
+	        //TODO: Подозрительно много комментариев... (+)
+	        Point targetPoint = CircuitsTreeView.PointToClient(new Point(e.X, e.Y));
+
+	        // Куда перетаскиваем
+	        SegmentTreeNode targetNode = CircuitsTreeView.GetNodeAt(targetPoint) as SegmentTreeNode;
+
+	        // Что перетаскиваем
+	        SegmentTreeNode draggedNode = e.Data.GetData(typeof(SegmentTreeNode)) as SegmentTreeNode;
+
+	        if (draggedNode == null)
+	        {
+		        return;
+	        }
+
+	        if (targetNode == null)
+	        {
+		        UpdateTreeView(draggedNode, targetNode);
+		        draggedNode.Remove();
+		        CircuitsTreeView.Nodes[0].Nodes.Add(draggedNode);
+		        draggedNode.Expand();
+	        }
+	        else
+	        {
+		        TreeNode parentNode = targetNode;
+
+		        if (!draggedNode.Equals(targetNode) && targetNode != null)
+		        {
+			        bool canDrop = true;
+
+			        // Поднимаемся вверх от узла, на который мы упали,
+			        // чтобы узнать, является ли targetNode нашим родителем
+			        while (canDrop && (parentNode != null))
+			        {
+				        canDrop = !Object.ReferenceEquals(draggedNode, parentNode);
+				        parentNode = parentNode.Parent;
+			        }
+
+			        if (canDrop)
+			        {
+				        if (targetNode.Segment is IElement)
+				        {
+					        return;
+				        }
+				        UpdateTreeView(draggedNode, targetNode);
+				        draggedNode.Remove();
+				        targetNode.Nodes.Add(draggedNode);
+
+			        }
+			        targetNode.Expand();
+
+		        }
+	        }
+	        CircuitsTreeView.SelectedNode = draggedNode;
+        }
+
+        private SegmentTreeNode CheckElementSelection()
+        {
+	        SegmentTreeNode element = CircuitsTreeView.SelectedNode as SegmentTreeNode;
+	        if (element == null)
+	        {
+		        throw new ArgumentNullException("Select a tree segment");
+	        }
+	        else
+	        {
+		        return element;
+	        }
+        }
+
+        private void UpdateTreeView(SegmentTreeNode draggedNode, SegmentTreeNode targetNode)
+        {
+	        var parent = draggedNode.Parent as SegmentTreeNode;
+	        if (parent.Segment == null)
+	        {
+		        _project.SelectedCircuit.SubSegments.Remove(draggedNode.Segment);
+	        }
+	        else
+	        {
+		        parent.Segment.SubSegments.Remove(draggedNode.Segment);
+	        }
+
+	        if ((targetNode == null) || (targetNode.Segment == null))
+	        {
+		        _project.SelectedCircuit.SubSegments.Add(draggedNode.Segment);
+	        }
+	        else
+	        {
+		        targetNode.Segment.SubSegments.Add(draggedNode.Segment);
+	        }
+        }
+
+        private void TreeViewControl_Load(object sender, EventArgs e)
+		{
+			TreeViewManager.CircuitsTreeView = CircuitsTreeView;
+		}
+	}
 }

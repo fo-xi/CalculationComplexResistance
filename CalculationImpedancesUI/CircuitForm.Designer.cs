@@ -120,7 +120,7 @@
 			this.ClientSize = new System.Drawing.Size(269, 86);
 			this.Controls.Add(this.tableLayoutPanel2);
 			this.Controls.Add(this.tableLayoutPanel1);
-			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+			this.Icon = global::CalculationImpedancesUI.Properties.Resources.electrical_circuit;
 			this.MaximumSize = new System.Drawing.Size(285, 125);
 			this.MinimumSize = new System.Drawing.Size(285, 125);
 			this.Name = "CircuitForm";

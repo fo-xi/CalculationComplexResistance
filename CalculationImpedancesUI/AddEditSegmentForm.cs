@@ -37,7 +37,7 @@ namespace CalculationImpedancesUI
 		private void OKButton_Click(object sender, EventArgs e)
 		{
 			var name = NameTextBox.Text;
-			if(!double.TryParse(ValueTextBox.Text, out var value))
+			if (!double.TryParse(ValueTextBox.Text, out var value))
 			{
 				MessageBox.Show("Wrong value", "Warning",
 					MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -49,26 +49,26 @@ namespace CalculationImpedancesUI
 				switch (TypeComboBox.SelectedIndex)
 				{
 					case 1:
-					{
-						NewElement = new Resistor(name, value);
-						break;
-					}
+						{
+							NewElement = new Resistor(name, value);
+							break;
+						}
 					case 2:
-					{
-						NewElement = new Inductor(name, value);
-						break;
-					}
+						{
+							NewElement = new Inductor(name, value);
+							break;
+						}
 					case 3:
-					{
-						NewElement = new Capacitor(name, value);
-						break;
-					}
+						{
+							NewElement = new Capacitor(name, value);
+							break;
+						}
 					default:
-					{
-						MessageBox.Show("Select segment type", "Warning",
-							MessageBoxButtons.OK, MessageBoxIcon.Warning);
-						return;
-					}
+						{
+							MessageBox.Show("Select segment type", "Warning",
+								MessageBoxButtons.OK, MessageBoxIcon.Warning);
+							return;
+						}
 				}
 			}
 			catch (ArgumentException exception)
@@ -79,7 +79,7 @@ namespace CalculationImpedancesUI
 			}
 			this.DialogResult = DialogResult.OK;
 		}
-		
+
 		private void CancelButton_Click(object sender, EventArgs e)
 		{
 			this.DialogResult = DialogResult.Cancel;
@@ -112,3 +112,4 @@ namespace CalculationImpedancesUI
 		}
 	}
 }
+
