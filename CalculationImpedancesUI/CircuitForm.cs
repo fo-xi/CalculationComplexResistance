@@ -15,7 +15,7 @@ namespace CalculationImpedancesUI
 	{
 		//TODO: RSDN (+)
 		/// <summary>
-		/// New circuit.
+		/// Used to create a new circuit.
 		/// </summary>
 		public Circuit NewCirciut { get; set; }
 

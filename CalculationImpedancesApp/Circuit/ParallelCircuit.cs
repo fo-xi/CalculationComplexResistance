@@ -61,11 +61,20 @@ namespace CalculationImpedancesApp
         {
             var result = new Complex();
 
+            if (SubSegments.Count == 0)
+            {
+	            return new Complex(0, 0);
+            }
+
             foreach (ISegment segment in SubSegments)
             {
+	            if (segment.CalculateZ(frequencies).Real == 0 && segment.CalculateZ(frequencies).Imaginary == 0)
+	            {
+		            continue;
+	            }
                 result += (1.0/(segment.CalculateZ(frequencies)));
             }
-            result = 1/(result);
+            result = 1.0/(result);
             return result;
         }
 	}

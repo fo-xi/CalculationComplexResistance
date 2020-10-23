@@ -15,7 +15,7 @@ namespace CalculationImpedancesUI
 	{
 		//TODO: RSDN? (+)
 		/// <summary>
-		/// New circuit segment.
+		/// Used to create a new circuit segment.
 		/// </summary>
 		public ISegment NewSegment { get; set; }
 		public SegmentForm()

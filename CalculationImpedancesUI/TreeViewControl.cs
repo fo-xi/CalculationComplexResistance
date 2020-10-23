@@ -14,9 +14,12 @@ namespace CalculationImpedancesUI
     public partial class TreeViewControl : UserControl
     {
 	    public delegate void CalculateHandler();
-		public event CalculateHandler NotifyCalculate;
 
-		private Project _project = new Project();
+		/// <summary>
+		/// Event revealing when calculating circuit impedance.
+		/// Used when updating circuit data.
+		/// </summary>
+		public event CalculateHandler NotifyCalculate;
 
 		/// <summary>
 		/// Type of circuit element.
@@ -32,13 +35,7 @@ namespace CalculationImpedancesUI
 		public TreeViewControl()
         {
             InitializeComponent();
-            MainForm.NotifyProject += GetProject;
-		}
-
-		private Project GetProject()
-		{
-			return _project;
-		}
+        }
 
 		private void AddSegmentButton_Click(object sender, EventArgs e)
         {
@@ -58,7 +55,7 @@ namespace CalculationImpedancesUI
 
 				if (selectedIndex == CircuitsTreeView.Nodes[0])
 				{
-					_project.SelectedCircuit.SubSegments.Add(segment);
+					Project.SelectedCircuit.SubSegments.Add(segment);
 				}
 				else
 				{
@@ -70,8 +67,9 @@ namespace CalculationImpedancesUI
 					Text = segmentForm.NewSegment.Name,
 					Segment = segment
 				});
+				NotifyCalculate?.Invoke();
 			}
-		}
+        }
 
         private void EditSegmentButton_Click(object sender, EventArgs e)
         {
@@ -89,15 +87,15 @@ namespace CalculationImpedancesUI
 					var parent = selectedIndex.Parent as SegmentTreeNode;
 					if (parent == CircuitsTreeView.Nodes[0])
 					{
-						_project.SelectedCircuit.SubSegments.Remove(selectedIndex.Segment);
-						_project.SelectedCircuit.SubSegments.Add(segmentForm.NewSegment);
+						Project.SelectedCircuit.SubSegments.Remove(selectedIndex.Segment);
+						Project.SelectedCircuit.SubSegments.Add(segmentForm.NewSegment);
 					}
 					else
 					{
 						parent.Segment.SubSegments.Remove(selectedIndex.Segment);
 						parent.Segment.SubSegments.Add(segmentForm.NewSegment);
 					}
-					TreeViewManager.FillCircuitNodes(_project.SelectedCircuit);
+					TreeViewManager.FillCircuitNodes(Project.SelectedCircuit);
 					NotifyCalculate?.Invoke();
 				}
 			}
@@ -122,7 +120,7 @@ namespace CalculationImpedancesUI
 
 				if (selectedIndex == CircuitsTreeView.Nodes[0])
 				{
-					_project.SelectedCircuit.SubSegments.Add(elementForm.NewElement);
+					Project.SelectedCircuit.SubSegments.Add(elementForm.NewElement);
 				}
 
 				if (selectedIndex.Segment is IElement)
@@ -141,7 +139,6 @@ namespace CalculationImpedancesUI
 					Text = elementForm.NewElement.ToString(),
 					Segment = elementForm.NewElement
 				});
-
 				NotifyCalculate?.Invoke();
 			}
 			catch (ArgumentNullException exception)
@@ -162,8 +159,13 @@ namespace CalculationImpedancesUI
 				{
 					var parent = selectedIndex.Parent as SegmentTreeNode;
 					parent.Segment.SubSegments.Remove(selectedIndex.Segment);
+					parent.Nodes.Remove(selectedIndex);
 					parent.Segment.SubSegments.Add(elementForm.NewElement);
-					TreeViewManager.FillCircuitNodes(_project.SelectedCircuit);
+					parent.Nodes.Add(new SegmentTreeNode
+					{
+						Text = elementForm.NewElement.ToString(),
+						Segment = elementForm.NewElement
+					});
 					NotifyCalculate?.Invoke();
 				}
 			}
@@ -190,16 +192,15 @@ namespace CalculationImpedancesUI
 					var element = selectedIndex.Segment;
 					if (parent?.Segment == null)
 					{
-						_project.SelectedCircuit.SubSegments.Remove(element);
+						Project.SelectedCircuit.SubSegments.Remove(element);
 					}
 					else
 					{
 						parent.Segment.SubSegments.Remove(element);
 					}
-
 					parent.Nodes.Remove(selectedIndex);
+					NotifyCalculate?.Invoke();
 				}
-				NotifyCalculate?.Invoke();
 			}
 			catch (ArgumentNullException exception)
 			{
@@ -273,7 +274,8 @@ namespace CalculationImpedancesUI
 		        }
 	        }
 	        CircuitsTreeView.SelectedNode = draggedNode;
-        }
+	        NotifyCalculate?.Invoke();
+		}
 
         private SegmentTreeNode CheckElementSelection()
         {
@@ -293,7 +295,7 @@ namespace CalculationImpedancesUI
 	        var parent = draggedNode.Parent as SegmentTreeNode;
 	        if (parent.Segment == null)
 	        {
-		        _project.SelectedCircuit.SubSegments.Remove(draggedNode.Segment);
+		        Project.SelectedCircuit.SubSegments.Remove(draggedNode.Segment);
 	        }
 	        else
 	        {
@@ -302,7 +304,7 @@ namespace CalculationImpedancesUI
 
 	        if ((targetNode == null) || (targetNode.Segment == null))
 	        {
-		        _project.SelectedCircuit.SubSegments.Add(draggedNode.Segment);
+		        Project.SelectedCircuit.SubSegments.Add(draggedNode.Segment);
 	        }
 	        else
 	        {

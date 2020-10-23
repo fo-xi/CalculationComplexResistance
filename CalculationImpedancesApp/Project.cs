@@ -6,48 +6,48 @@ namespace CalculationImpedancesApp
 	/// <summary>
 	/// Сlass that stores all circuit data and its calculations.
 	/// </summary>
-	public class Project
+	public static class Project
 	{
 		/// <summary>
 		/// Circuits list.
 		/// </summary>
-		public List<Circuit> Circuits = new List<Circuit>();
+		public static List<Circuit> Circuits = new List<Circuit>();
 
 		/// <summary>
 		/// Segments list.
 		/// </summary>
-		public List<ISegment> Segments = new List<ISegment>();
+		public static List<ISegment> Segments = new List<ISegment>();
 
 		/// <summary>
 		/// All elements of the selected circuit
 		/// </summary>
-		public List<IElement> Elements = new List<IElement>();
+		public static List<IElement> Elements = new List<IElement>();
 
 		/// <summary>
 		/// Frequencies list.
 		/// </summary>
-		public List<double> Frequencies = new List<double>();
+		public static List<double> Frequencies = new List<double>();
 
 		/// <summary>
 		/// Results list.
 		/// </summary>
-		public List<Complex> Results = new List<Complex>();
+		public static List<Complex> Results = new List<Complex>();
 
 		/// <summary>
 		/// Selected circuit from the list of circuits.
 		/// </summary>
-		public Circuit SelectedCircuit = null;
+		public static Circuit SelectedCircuit = null;
 
 		/// <summary>
 		/// The list necessary for a nice display 
 		/// of the result of calculating the impedance of the circuit.
 		/// </summary>
-		public List<string> ImpedanceValues = new List<string>();
+		public static List<string> ImpedanceValues = new List<string>();
 
 		/// <summary>
 		/// Create a circuits.
 		/// </summary>
-		public Project()
+		static Project()
 		{
 			SegmentsObservableCollection segmentsObservable =
 				new SegmentsObservableCollection

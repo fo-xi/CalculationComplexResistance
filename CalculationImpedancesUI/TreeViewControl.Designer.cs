@@ -184,9 +184,13 @@
 			this.CircuitsTreeView.Name = "CircuitsTreeView";
 			this.CircuitsTreeView.Size = new System.Drawing.Size(255, 350);
 			this.CircuitsTreeView.TabIndex = 6;
+			this.CircuitsTreeView.ItemDrag += new System.Windows.Forms.ItemDragEventHandler(this.CircuitsTreeView_ItemDrag);
+			this.CircuitsTreeView.DragDrop += new System.Windows.Forms.DragEventHandler(this.CircuitsTreeView_DragDrop);
+			this.CircuitsTreeView.DragEnter += new System.Windows.Forms.DragEventHandler(this.CircuitsTreeView_DragEnter);
 			// 
 			// TreeViewControl
 			// 
+			this.AllowDrop = true;
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.Controls.Add(this.CircuitsTreeView);

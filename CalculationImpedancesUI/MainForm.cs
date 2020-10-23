@@ -18,15 +18,6 @@ namespace CalculationImpedancesUI
 {
 	public partial class MainForm : Form
 	{
-		public delegate Project ProjectHandler();
-		public static event ProjectHandler NotifyProject;
-
-		//TODO: RSDN (+)
-		/// <summary>
-		/// All program data
-		/// </summary>
-		private Project _project;
-
 		//TODO: Зачем публично? (+)
 		/// <summary>
 		/// Type of circuit element.
@@ -46,26 +37,24 @@ namespace CalculationImpedancesUI
 
 		private void MainForm_Load(object sender, EventArgs e)
 		{
-			_project = NotifyProject?.Invoke(); 
+			TreeViewControl.NotifyCalculate += Calculate;
 			UpdateComboBox();
-
-			foreach (var i in _project.Circuits)
+			foreach (var i in Project.Circuits)
 			{
 				i.SegmentChanged += ShowMessage;
 			}
 		}
 
 		private void CircuitSelectionComboBox_SelectedIndexChanged(object sender, EventArgs e)
-
 		{
 			var selectedIndexCircuit = CircuitSelectionComboBox.SelectedIndex;
 			if (selectedIndexCircuit != -1)
 			{
-				_project.SelectedCircuit = _project.Circuits[selectedIndexCircuit];
+				Project.SelectedCircuit = Project.Circuits[selectedIndexCircuit];
 			}
 
 			Calculate();
-			TreeViewManager.FillCircuitNodes(_project.SelectedCircuit);
+			TreeViewManager.FillCircuitNodes(Project.SelectedCircuit);
 		}
 
 		private void AddCircuitButton_Click(object sender, EventArgs e)
@@ -74,7 +63,7 @@ namespace CalculationImpedancesUI
 			circuit.ShowDialog();
 			if (circuit.DialogResult == DialogResult.OK)
 			{
-				_project.Circuits.Add(circuit.NewCirciut);
+				Project.Circuits.Add(circuit.NewCirciut);
 				//TODO: Дубль (+)
 				UpdateComboBox();
 			}
@@ -92,17 +81,17 @@ namespace CalculationImpedancesUI
 			{
 
 				var circuit = new CircuitForm();
-				var selectedCircuit = _project.Circuits[selectedIndex];
+				var selectedCircuit = Project.Circuits[selectedIndex];
 				circuit.NewCirciut = selectedCircuit;
 				circuit.ShowDialog();
 				if (circuit.DialogResult == DialogResult.OK)
 				{
-					_project.Circuits[selectedIndex].Name = circuit.NewCirciut.Name;
+					Project.Circuits[selectedIndex].Name = circuit.NewCirciut.Name;
 					//TODO: Дубль (+)
 					UpdateComboBox();
 				}
+				Calculate();
 			}
-			Calculate();
 		}
 
 		private void RemoveCircuitButton_Click(object sender, EventArgs e)
@@ -114,14 +103,13 @@ namespace CalculationImpedancesUI
 					MessageBoxButtons.OK, MessageBoxIcon.Warning);
 				return;
 			}
-
 			//TODO: RSDN (+)
 			var result = MessageBox.Show("Do you really want to remove this circuit?",
 				"Remove Circuit", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
 			if (result == DialogResult.OK)
 			{
-				var selectedCircuit = _project.Circuits[selectedIndex];
-				_project.Circuits.Remove(selectedCircuit);
+				var selectedCircuit = Project.Circuits[selectedIndex];
+				Project.Circuits.Remove(selectedCircuit);
 				//TODO: Дубль (+)
 				UpdateComboBox();
 			}
@@ -133,7 +121,7 @@ namespace CalculationImpedancesUI
 			{
 				try
 				{
-					_project.Frequencies.Add(double.Parse(FrequencyTextBox.Text));
+					Project.Frequencies.Add(double.Parse(FrequencyTextBox.Text));
 					FrequenciesListBox.Items.Add(double.Parse(FrequencyTextBox.Text));
 				}
 				catch
@@ -147,10 +135,10 @@ namespace CalculationImpedancesUI
 
 		private void Calculate()
 		{
-			_project.Results = _project.SelectedCircuit.CalculateZ(_project.Frequencies);
+			Project.Results = Project.SelectedCircuit.CalculateZ(Project.Frequencies);
 			ImpedanceValues();
 			ResultsListBox.DataSource = null;
-			ResultsListBox.DataSource = _project.ImpedanceValues;
+			ResultsListBox.DataSource = Project.ImpedanceValues;
 		}
 
 		private void RemoveFrequencyButton_Click(object sender, EventArgs e)
@@ -167,8 +155,7 @@ namespace CalculationImpedancesUI
 				"Remove Frequency", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
 			if (result == DialogResult.OK)
 			{
-				var selectedFrequency = _project.Frequencies[selectedIndex];
-				_project.Frequencies.Remove(selectedFrequency);
+				Project.Frequencies.RemoveAt(selectedIndex);
 				FrequenciesListBox.Items.RemoveAt(selectedIndex);
 			}
 		}
@@ -182,18 +169,18 @@ namespace CalculationImpedancesUI
 
 		private void ImpedanceValues()
 		{
-			_project.ImpedanceValues = new List<string>();
-			foreach (var i in _project.Results)
+			Project.ImpedanceValues = new List<string>();
+			foreach (var i in Project.Results)
 			{
-				_project.ImpedanceValues.Add($"{Math.Round(i.Real, 3)} " +
-											$"+ {Math.Round(i.Imaginary, 3)}*j");
+				Project.ImpedanceValues.Add($"{Math.Round(i.Real, 5)} " +
+				                            $"+ {Math.Round(i.Imaginary, 5)}*j");
 			}
 		}
 
 		private void UpdateComboBox()
 		{
 			CircuitSelectionComboBox.DataSource = null;
-			CircuitSelectionComboBox.DataSource = _project.Circuits;
+			CircuitSelectionComboBox.DataSource = Project.Circuits;
 			CircuitSelectionComboBox.DisplayMember = "Name";
 		}
 	}
