@@ -18,18 +18,6 @@ namespace CalculationImpedancesUI
 {
 	public partial class MainForm : Form
 	{
-		//TODO: Зачем публично? (+)
-		/// <summary>
-		/// Type of circuit element.
-		/// </summary>
-		private readonly List<string> Type = new List<string>
-		{
-			"",
-			"Resistor",
-			"Inductor",
-			"Capacitor",
-		};
-
 		public MainForm()
 		{
 			InitializeComponent();
@@ -63,7 +51,7 @@ namespace CalculationImpedancesUI
 			circuit.ShowDialog();
 			if (circuit.DialogResult == DialogResult.OK)
 			{
-				Project.Circuits.Add(circuit.NewCirciut);
+				Project.Circuits.Add(circuit.NewCircuit);
 				//TODO: Дубль (+)
 				UpdateComboBox();
 			}
@@ -82,11 +70,11 @@ namespace CalculationImpedancesUI
 
 				var circuit = new CircuitForm();
 				var selectedCircuit = Project.Circuits[selectedIndex];
-				circuit.NewCirciut = selectedCircuit;
+				circuit.NewCircuit = selectedCircuit;
 				circuit.ShowDialog();
 				if (circuit.DialogResult == DialogResult.OK)
 				{
-					Project.Circuits[selectedIndex].Name = circuit.NewCirciut.Name;
+					Project.Circuits[selectedIndex].Name = circuit.NewCircuit.Name;
 					//TODO: Дубль (+)
 					UpdateComboBox();
 				}

@@ -17,7 +17,7 @@ namespace CalculationImpedancesUI
 		/// <summary>
 		/// Used to create a new circuit.
 		/// </summary>
-		public Circuit NewCirciut { get; set; }
+		public Circuit NewCircuit { get; set; }
 
 		public CircuitForm()
 		{
@@ -28,7 +28,7 @@ namespace CalculationImpedancesUI
 		{
 			try
 			{
-				NewCirciut = new Circuit(nameTextBox.Text, new SegmentsObservableCollection());
+				NewCircuit = new Circuit(nameTextBox.Text, new SegmentsObservableCollection());
 				this.DialogResult = DialogResult.OK;
 			}
 			catch (ArgumentException)

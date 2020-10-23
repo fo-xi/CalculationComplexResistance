@@ -21,17 +21,6 @@ namespace CalculationImpedancesUI
 		/// </summary>
 		public event CalculateHandler NotifyCalculate;
 
-		/// <summary>
-		/// Type of circuit element.
-		/// </summary>
-		private readonly List<string> Type = new List<string>
-		{
-			"",
-			"Resistor",
-			"Inductor",
-			"Capacitor",
-		};
-
 		public TreeViewControl()
         {
             InitializeComponent();
