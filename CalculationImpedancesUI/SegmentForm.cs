@@ -18,10 +18,7 @@ namespace CalculationImpedancesUI
 		/// Used to create a new circuit segment.
 		/// </summary>
 		public ISegment NewSegment { get; set; }
-		public SegmentForm()
-		{
-			InitializeComponent();
-		}
+
 		/// <summary>
 		/// New circuit segment type.
 		/// </summary>
@@ -31,6 +28,11 @@ namespace CalculationImpedancesUI
 			"Serial",
 			"Parallel"
 		};
+
+		public SegmentForm()
+		{
+			InitializeComponent();
+		}
 
 		private void OKButton_Click(object sender, EventArgs e)
 		{

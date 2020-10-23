@@ -10,8 +10,15 @@ namespace CalculationImpedancesUI
 {
 	public static class  TreeViewManager
 	{
+		/// <summary>
+		/// Circuit tree.
+		/// </summary>
 		public static TreeView CircuitsTreeView { get; set; }
 
+		/// <summary>
+		/// Fills the tree with nodes.
+		/// </summary>
+		/// <param name="circuit"></param>
 		public static void FillCircuitNodes(Circuit circuit)
 		{
 			CircuitsTreeView.Nodes.Clear();
@@ -38,7 +45,12 @@ namespace CalculationImpedancesUI
 			CircuitsTreeView.ExpandAll();
 		}
 
-		private static void FillTreeNode(SegmentTreeNode circuitNode, ISegment segment)
+		/// <summary>
+		/// Fills segments with elements or sub-segments.
+		/// </summary>
+		/// <param name="parentNode">Parent node.</param>
+		/// <param name="segment">Segment.</param>
+		private static void FillTreeNode(SegmentTreeNode parentNode, ISegment segment)
 		{
 			if (segment is IElement)
 			{
@@ -47,7 +59,7 @@ namespace CalculationImpedancesUI
 					Text = segment.ToString(),
 					Segment = segment
 				};
-				circuitNode.Nodes.Add(elementNode);
+				parentNode.Nodes.Add(elementNode);
 			}
 			else
 			{
@@ -58,7 +70,7 @@ namespace CalculationImpedancesUI
 						Text = subSegment is IElement ? subSegment.ToString() : subSegment.Name,
 						Segment = subSegment
 					};
-					circuitNode.Nodes.Add(segmentNode);
+					parentNode.Nodes.Add(segmentNode);
 					if (!(subSegment is IElement))
 					{
 						FillTreeNode(segmentNode, subSegment);
