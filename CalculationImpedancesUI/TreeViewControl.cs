@@ -37,7 +37,7 @@ namespace CalculationImpedancesUI
 
 				if (selectedIndex.Segment is IElement)
 				{
-					MessageBox.Show("Segment cannot be created from element", "Error",
+					MessageBox.Show("Element cannot be created from element", "Error",
 						MessageBoxButtons.OK, MessageBoxIcon.Error);
 					return;
 				}

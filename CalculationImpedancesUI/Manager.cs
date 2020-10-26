@@ -8,12 +8,13 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
 using CalculationImpedancesApp;
+using CalculationImpedancesUI.Elements;
 
 namespace CalculationImpedancesUI
 {
 	public static class Manager
 	{
-		public static DrawingNode TreeCircuit { get; set; } = new DrawingNode();
+		public static TreeView TreeCircuit { get; set; } = new TreeView();
 
 		public static Graphics Graphics { get; set; }
 
@@ -22,14 +23,14 @@ namespace CalculationImpedancesUI
 		public static void FillCircuitNodes(Circuit circuit)
 		{
 			TreeCircuit.Nodes.Clear();
-			DrawingNode mainCircuitNode = new DrawingNode
+			DrawSegment mainCircuitNode = new DrawSegment
 			{
 				Text = circuit.Name,
 			};
 			TreeCircuit.Nodes.Add(mainCircuitNode);
 			foreach (var subSegment in circuit.SubSegments)
 			{
-				DrawingNode subSegmentNode = new DrawingNode
+				DrawSegment subSegmentNode = new DrawSegment
 				{
 					Text = subSegment is IElement ? subSegment.ToString() : subSegment.Name,
 					Segment = subSegment
@@ -42,11 +43,11 @@ namespace CalculationImpedancesUI
 			}
 		}
 
-		private static void FillTreeNode(DrawingNode parentNode, ISegment segment)
+		private static void FillTreeNode(DrawSegment parentNode, ISegment segment)
 		{
 			if (segment is IElement)
 			{
-				DrawingNode elementNode = new DrawingNode
+				DrawSegment elementNode = new DrawSegment
 				{
 					Text = segment.ToString(),
 					Segment = segment
@@ -57,7 +58,7 @@ namespace CalculationImpedancesUI
 			{
 				foreach (var subSegment in segment.SubSegments)
 				{
-					DrawingNode segmentNode = new DrawingNode
+					DrawSegment segmentNode = new DrawSegment
 					{
 						Text = subSegment is IElement ? subSegment.ToString() : subSegment.Name,
 						Segment = subSegment
@@ -73,13 +74,23 @@ namespace CalculationImpedancesUI
 
 		public static void FindCoordinateNode()
 		{
-			foreach (DrawingNode node in TreeCircuit.Nodes[0].Nodes)
+			foreach (DrawSegment node in TreeCircuit.Nodes[0].Nodes)
 			{
+				if (node.Segment is SerialCircuit)
+				{
+
+				}
+
+				if (node.Segment is ParallelCircuit)
+				{
+
+				}
+
 				node.FindCoordinate();
 			}
 		}
 
-		private static void DrawCapacitor(DrawingNode node)
+		private static void DrawCapacitor(DrawSegment node)
 		{
 			int distanceVerticalLines = 5;
 			int lengthHorizontalLines = node.SizeSegment.Width / 2 - distanceVerticalLines;
@@ -109,7 +120,7 @@ namespace CalculationImpedancesUI
 				coordinatesEndHorizontalSecondLine.X, coordinatesEndHorizontalSecondLine.Y);
 		}
 
-		private static void DrawInductor(DrawingNode node)
+		private static void DrawInductor(DrawSegment node)
 		{
 			int x = node.StartCoordinate.X;
 			int y = node.StartCoordinate.Y;
@@ -124,15 +135,15 @@ namespace CalculationImpedancesUI
 			}
 		}
 
-		private static void DrawResistor(DrawingNode node)
+		private static void DrawResistor(DrawSegment node)
 		{
 			Graphics.DrawRectangle(Pen, node.StartCoordinate.X, node.StartCoordinate.Y,
 				node.SizeSegment.Width, node.SizeSegment.Height);
 		}
 
-		public static void DrawSerialCircuit()
+		public static void DrawElement()
 		{
-			foreach (DrawingNode node in TreeCircuit.Nodes[0].Nodes)
+			foreach (DrawSegment node in TreeCircuit.Nodes[0].Nodes)
 			{
 				if (node.Segment is Resistor)
 				{

@@ -49,7 +49,7 @@ namespace CalculationImpedancesUI
 		/// Fills segments with elements or sub-segments.
 		/// </summary>
 		/// <param name="parentNode">Parent node.</param>
-		/// <param name="segment">Segment.</param>
+		/// <param name="segment">Element.</param>
 		private static void FillTreeNode(SegmentTreeNode parentNode, ISegment segment)
 		{
 			if (segment is IElement)

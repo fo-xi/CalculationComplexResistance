@@ -181,7 +181,7 @@ namespace CalculationImpedancesUI
 
 			Manager.FillCircuitNodes(Project.SelectedCircuit);
 			Manager.FindCoordinateNode();
-			Manager.DrawSerialCircuit();
+			Manager.DrawElement();
 
 			PictureBox.Image = bitmap;
 		}

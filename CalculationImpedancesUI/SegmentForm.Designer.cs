@@ -114,7 +114,7 @@
 			this.SegmentLabel.Name = "SegmentLabel";
 			this.SegmentLabel.Size = new System.Drawing.Size(52, 13);
 			this.SegmentLabel.TabIndex = 0;
-			this.SegmentLabel.Text = "Segment:";
+			this.SegmentLabel.Text = "Element:";
 			this.SegmentLabel.TextAlign = System.Drawing.ContentAlignment.BottomRight;
 			// 
 			// SegmentForm

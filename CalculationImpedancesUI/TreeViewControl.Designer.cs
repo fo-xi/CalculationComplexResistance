@@ -50,7 +50,7 @@
 			this.SegmentLabel.Name = "SegmentLabel";
 			this.SegmentLabel.Size = new System.Drawing.Size(52, 13);
 			this.SegmentLabel.TabIndex = 2;
-			this.SegmentLabel.Text = "Segment:";
+			this.SegmentLabel.Text = "Element:";
 			// 
 			// tableLayoutPanel6
 			// 
