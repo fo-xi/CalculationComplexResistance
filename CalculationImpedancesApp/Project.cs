@@ -52,26 +52,30 @@ namespace CalculationImpedancesApp
 			SegmentsObservableCollection segmentsObservable =
 				new SegmentsObservableCollection
 				{
-					new SerialCircuit(new SegmentsObservableCollection
-					{
-						new Inductor("jng5", 56.0),
-						new Resistor("fr4tt", 32.6),
-						new ParallelCircuit(new SegmentsObservableCollection()
-						{
-							new Capacitor("th", 24.6),
-							new SerialCircuit(new SegmentsObservableCollection()
-							{
-								new Resistor("g55", 43.6),
-								new Resistor("shf7", 21),
-							})
-						})
-					}),
-					new ParallelCircuit(new SegmentsObservableCollection
-					{
-						new Resistor("g56", 7.8),
-						new Capacitor("duj", 22.6)
-					}),
-
+					new Inductor("jng5", 56.9),
+					new Resistor("fr4tt", 32.6),
+					new Resistor("ghj5", 45.8),
+					new Inductor("i76", 12.4),
+					new Capacitor("fg4", 22.6)
+					//new SerialCircuit(new SegmentsObservableCollection
+					//{
+					//	new Inductor("jng5", 56.0),
+					//	new Resistor("fr4tt", 32.6),
+					//	new ParallelCircuit(new SegmentsObservableCollection()
+					//	{
+					//		new Capacitor("th", 24.6),
+					//		new SerialCircuit(new SegmentsObservableCollection()
+					//		{
+					//			new Resistor("g55", 43.6),
+					//			new Resistor("shf7", 21),
+					//		})
+					//	})
+					//}),
+					//new ParallelCircuit(new SegmentsObservableCollection
+					//{
+					//	new Resistor("g56", 7.8),
+					//	new Capacitor("duj", 22.6)
+					//}),
 				};
 			Circuits.Add(new Circuit("Circuit No. 1", segmentsObservable));
 

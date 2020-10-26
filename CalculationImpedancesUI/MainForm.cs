@@ -43,6 +43,7 @@ namespace CalculationImpedancesUI
 
 			Calculate();
 			TreeViewManager.FillCircuitNodes(Project.SelectedCircuit);
+			UpdatePictureBox();
 		}
 
 		private void AddCircuitButton_Click(object sender, EventArgs e)
@@ -170,6 +171,19 @@ namespace CalculationImpedancesUI
 			CircuitSelectionComboBox.DataSource = null;
 			CircuitSelectionComboBox.DataSource = Project.Circuits;
 			CircuitSelectionComboBox.DisplayMember = "Name";
+		}
+
+		private void UpdatePictureBox()
+		{
+			Bitmap bitmap = new Bitmap(PictureBox.Width, PictureBox.Height);
+			Manager.Graphics = Graphics.FromImage(bitmap);
+			Manager.Pen = new Pen(Color.Black);
+
+			Manager.FillCircuitNodes(Project.SelectedCircuit);
+			Manager.FindCoordinateNode();
+			Manager.DrawSerialCircuit();
+
+			PictureBox.Image = bitmap;
 		}
 	}
 }
