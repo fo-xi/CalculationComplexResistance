@@ -20,7 +20,16 @@ namespace CalculationImpedancesUI
 
 		public Point RightСonnectСoordinate { get; set; }
 
+		public static Graphics Graphics { get; set; }
+
+		public static Pen Pen { get; set; }
+
 		public ISegment Segment { get; set; }
+
+		public DrawSegment(ISegment segment)
+		{
+			Segment = segment;
+		}
 
 		public virtual Size GetSize()
 		{
@@ -29,7 +38,12 @@ namespace CalculationImpedancesUI
 
 		public virtual void FindCoordinate()
 		{
-			throw new NotImplementedException();
+			
+		}
+
+		public virtual void Draw()
+		{ 
+			
 		}
 	}
 }

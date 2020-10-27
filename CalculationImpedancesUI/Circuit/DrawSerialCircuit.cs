@@ -11,15 +11,9 @@ namespace CalculationImpedancesUI
 {
 	public class DrawSerialCircuit : DrawSegment 
 	{
-		public Size SizeSegment { get; set; }
-
-		public Point StartCoordinate { get; set; }
-
-		public Point LeftСonnectСoordinate { get; set; }
-
-		public Point RightСonnectСoordinate { get; set; }
-
-		public ISegment Segment { get; set; }
+		public DrawSerialCircuit(ISegment segment) : base(segment)
+		{ 
+		}
 
 		public override Size GetSize()
 		{
@@ -51,7 +45,19 @@ namespace CalculationImpedancesUI
 					segment.StartCoordinate = new Point(prevNode.StartCoordinate.X + 
 					      segment.SizeSegment.Width + distance, prevNode.StartCoordinate.Y);
 				}
+				if (!(segment is DrawElement))
+				{
+					segment.FindCoordinate();
+				}
 			}
 		}
+		public override void Draw()
+		{
+			foreach (DrawSegment node in Nodes)
+			{
+				node.Draw();
+			}
+		}
+
 	}
 }

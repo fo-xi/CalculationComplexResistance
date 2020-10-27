@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using CalculationImpedancesApp;
 using System.Windows.Forms;
 
-namespace CalculationImpedancesUI.Elements
+namespace CalculationImpedancesUI
 {
 	public abstract class DrawElement : DrawSegment
 	{
@@ -16,15 +16,10 @@ namespace CalculationImpedancesUI.Elements
 		protected static readonly int distance = 10;
 		protected static readonly Point startingPoint = new Point(0, 0);
 
-		public Size SizeSegment { get; set; } = new Size(elementWidth, elementHeight);
-
-		public Point StartCoordinate { get; set; }
-
-		public Point LeftСonnectСoordinate { get; set; }
-
-		public Point RightСonnectСoordinate { get; set; }
-
-		public ISegment Segment { get; set; }
+		public DrawElement(ISegment segment) : base(segment)
+		{
+			SizeSegment = new Size(elementWidth, elementHeight);
+		}
 
 		public Size GetSize()
 		{

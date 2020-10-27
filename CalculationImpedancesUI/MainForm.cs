@@ -1,18 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using CalculationImpedancesApp;
-using System.Numerics;
-using System.Runtime.CompilerServices;
-using System.Runtime.Remoting.Messaging;
-using System.Security.AccessControl;
-using System.Security.Cryptography.X509Certificates;
 
 namespace CalculationImpedancesUI
 {
@@ -25,6 +15,11 @@ namespace CalculationImpedancesUI
 
 		private void MainForm_Load(object sender, EventArgs e)
 		{
+			Bitmap bitmap = new Bitmap(PictureBox.Width, PictureBox.Height);
+			DrawSegment.Graphics = Manager.Graphics = Graphics.FromImage(bitmap);
+			DrawSegment.Pen = Manager.Pen = new Pen(Color.Black);
+			PictureBox.Image = bitmap;
+
 			TreeViewControl.NotifyCalculate += Calculate;
 			UpdateComboBox();
 			foreach (var i in Project.Circuits)
@@ -175,15 +170,9 @@ namespace CalculationImpedancesUI
 
 		private void UpdatePictureBox()
 		{
-			Bitmap bitmap = new Bitmap(PictureBox.Width, PictureBox.Height);
-			Manager.Graphics = Graphics.FromImage(bitmap);
-			Manager.Pen = new Pen(Color.Black);
-
 			Manager.FillCircuitNodes(Project.SelectedCircuit);
 			Manager.FindCoordinateNode();
-			Manager.DrawElement();
-
-			PictureBox.Image = bitmap;
+			Manager.Draw();
 		}
 	}
 }

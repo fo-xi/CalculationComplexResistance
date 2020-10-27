@@ -23,18 +23,11 @@ namespace CalculationImpedancesUI
 		public static void FillCircuitNodes(Circuit circuit)
 		{
 			TreeCircuit.Nodes.Clear();
-			DrawSegment mainCircuitNode = new DrawSegment
-			{
-				Text = circuit.Name,
-			};
+			TreeNode mainCircuitNode = new TreeNode();
 			TreeCircuit.Nodes.Add(mainCircuitNode);
 			foreach (var subSegment in circuit.SubSegments)
 			{
-				DrawSegment subSegmentNode = new DrawSegment
-				{
-					Text = subSegment is IElement ? subSegment.ToString() : subSegment.Name,
-					Segment = subSegment
-				};
+				DrawSegment subSegmentNode = GetSegmentType(subSegment);
 				if (!(subSegmentNode.Segment is IElement))
 				{
 					FillTreeNode(subSegmentNode, subSegment);
@@ -47,22 +40,14 @@ namespace CalculationImpedancesUI
 		{
 			if (segment is IElement)
 			{
-				DrawSegment elementNode = new DrawSegment
-				{
-					Text = segment.ToString(),
-					Segment = segment
-				};
+				DrawSegment elementNode = GetSegmentType(segment);
 				parentNode.Nodes.Add(elementNode);
 			}
 			else
 			{
 				foreach (var subSegment in segment.SubSegments)
 				{
-					DrawSegment segmentNode = new DrawSegment
-					{
-						Text = subSegment is IElement ? subSegment.ToString() : subSegment.Name,
-						Segment = subSegment
-					};
+					DrawSegment segmentNode = GetSegmentType(subSegment);
 					parentNode.Nodes.Add(segmentNode);
 					if (!(subSegment is IElement))
 					{
@@ -72,91 +57,72 @@ namespace CalculationImpedancesUI
 			}
 		}
 
+		private static DrawSegment GetSegmentType(ISegment segment)
+		{
+			DrawSegment drawSegment;
+			switch (segment)
+			{
+				case Resistor resistor:
+					{
+						drawSegment = new DrawResistor(segment);
+						break;
+					}
+				case Inductor inductor:
+					{
+						drawSegment = new DrawInductor(segment);
+						break;
+					}
+				case Capacitor capacitor:
+					{
+						drawSegment = new DrawCapacitor(segment);
+						break;
+					}
+				case SerialCircuit serialCircuit:
+					{
+						drawSegment = new DrawSerialCircuit(segment);
+						break;
+					}
+				case ParallelCircuit parallelCircuit:
+					{
+						drawSegment = new DrawParallelCircuit(segment);
+						break;
+					}
+				default:
+					{
+						throw new ArgumentException("There is no such type of segment");
+					}
+			}
+			return drawSegment;
+		}
+
 		public static void FindCoordinateNode()
 		{
+			foreach (DrawSegment segment in TreeCircuit.Nodes[0].Nodes)
+			{
+				int distance = 10;
+				var prevNode = segment.PrevNode as DrawSegment;
+				if (prevNode == null)
+				{
+					segment.StartCoordinate = new Point(0, 0);
+				}
+				else
+				{
+					segment.StartCoordinate = new Point(prevNode.StartCoordinate.X +
+						  segment.SizeSegment.Width + distance, prevNode.StartCoordinate.Y);
+				}
+				if (!(segment is DrawElement))
+				{
+					segment.FindCoordinate();
+				}
+			}
+		}
+
+		public static void Draw()
+		{
 			foreach (DrawSegment node in TreeCircuit.Nodes[0].Nodes)
 			{
-				if (node.Segment is SerialCircuit)
-				{
-
-				}
-
-				if (node.Segment is ParallelCircuit)
-				{
-
-				}
-
 				node.FindCoordinate();
-			}
-		}
-
-		private static void DrawCapacitor(DrawSegment node)
-		{
-			int distanceVerticalLines = 5;
-			int lengthHorizontalLines = node.SizeSegment.Width / 2 - distanceVerticalLines;
-			int lengthVerticalLines = node.SizeSegment.Width / 2;
-			int YCoordinatHorizontalLine = node.StartCoordinate.Y + node.SizeSegment.Height / 2;
-
-			Point coordinatesBeginningHorizontalFirstLine = new Point(node.StartCoordinate.X,
-				YCoordinatHorizontalLine);
-			Point coordinatesEndHorizontalFirstLine = new Point(node.StartCoordinate.X + lengthHorizontalLines,
-				YCoordinatHorizontalLine);
-
-			Point coordinatesBeginningHorizontalSecondLine = new Point(coordinatesEndHorizontalFirstLine.X + distanceVerticalLines,
-				YCoordinatHorizontalLine);
-			Point coordinatesEndHorizontalSecondLine = new Point(coordinatesBeginningHorizontalSecondLine.X + lengthHorizontalLines,
-				YCoordinatHorizontalLine);
-
-			Graphics.DrawLine(Pen, coordinatesBeginningHorizontalFirstLine.X, coordinatesBeginningHorizontalFirstLine.Y,
-				coordinatesEndHorizontalFirstLine.X, coordinatesEndHorizontalFirstLine.Y);
-
-			Graphics.DrawLine(Pen, coordinatesEndHorizontalFirstLine.X, node.StartCoordinate.Y, 
-				coordinatesEndHorizontalFirstLine.X, node.StartCoordinate.Y + node.SizeSegment.Height);
-
-			Graphics.DrawLine(Pen, coordinatesBeginningHorizontalSecondLine.X, node.StartCoordinate.Y,
-				coordinatesBeginningHorizontalSecondLine.X, node.StartCoordinate.Y + node.SizeSegment.Height);
-
-			Graphics.DrawLine(Pen, coordinatesBeginningHorizontalSecondLine.X, coordinatesBeginningHorizontalSecondLine.Y,
-				coordinatesEndHorizontalSecondLine.X, coordinatesEndHorizontalSecondLine.Y);
-		}
-
-		private static void DrawInductor(DrawSegment node)
-		{
-			int x = node.StartCoordinate.X;
-			int y = node.StartCoordinate.Y;
-			int semicircleWidth = node.SizeSegment.Width / 4;
-			int semicircleHeight = node.SizeSegment.Height / 2;
-			int numberSemicircles = 4;
-
-			for (int i = 0; i < numberSemicircles; i++)
-			{
-				Graphics.DrawArc(Pen, x, y, semicircleWidth, semicircleHeight, 180, 180);
-				x += semicircleWidth;
-			}
-		}
-
-		private static void DrawResistor(DrawSegment node)
-		{
-			Graphics.DrawRectangle(Pen, node.StartCoordinate.X, node.StartCoordinate.Y,
-				node.SizeSegment.Width, node.SizeSegment.Height);
-		}
-
-		public static void DrawElement()
-		{
-			foreach (DrawSegment node in TreeCircuit.Nodes[0].Nodes)
-			{
-				if (node.Segment is Resistor)
-				{
-					DrawResistor(node);
-				}
-				if (node.Segment is Inductor)
-				{
-					DrawInductor(node);
-				}
-				if (node.Segment is Capacitor)
-				{
-					DrawCapacitor(node);
-				}
+				node.Draw();
 			}
 		}
 	}
