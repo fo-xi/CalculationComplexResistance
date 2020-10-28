@@ -16,10 +16,6 @@ namespace CalculationImpedancesUI
 	{
 		public static TreeView TreeCircuit { get; set; } = new TreeView();
 
-		public static Graphics Graphics { get; set; }
-
-		public static Pen Pen { get; set; }
-
 		public static void FillCircuitNodes(Circuit circuit)
 		{
 			TreeCircuit.Nodes.Clear();
@@ -28,7 +24,7 @@ namespace CalculationImpedancesUI
 			foreach (var subSegment in circuit.SubSegments)
 			{
 				DrawSegment subSegmentNode = GetSegmentType(subSegment);
-				if (!(subSegmentNode.Segment is IElement))
+				if (!(subSegmentNode is DrawElement))
 				{
 					FillTreeNode(subSegmentNode, subSegment);
 				}
@@ -38,22 +34,13 @@ namespace CalculationImpedancesUI
 
 		private static void FillTreeNode(DrawSegment parentNode, ISegment segment)
 		{
-			if (segment is IElement)
+			foreach (var subSegment in segment.SubSegments)
 			{
-				DrawSegment elementNode = GetSegmentType(segment);
-				parentNode.Nodes.Add(elementNode);
-			}
-			else
-			{
-				foreach (var subSegment in segment.SubSegments)
+				DrawSegment segmentNode = GetSegmentType(subSegment);
+				parentNode.Nodes.Add(segmentNode);
+				if (!(subSegment is IElement))
 				{
-					DrawSegment segmentNode = GetSegmentType(subSegment);
-					segmentNode.GetSize();
-					parentNode.Nodes.Add(segmentNode);
-					if (!(subSegment is IElement))
-					{
-						FillTreeNode(segmentNode, subSegment);
-					}
+					FillTreeNode(segmentNode, subSegment);
 				}
 			}
 		}
@@ -100,7 +87,7 @@ namespace CalculationImpedancesUI
 		{
 			foreach (DrawSegment segment in TreeCircuit.Nodes[0].Nodes)
 			{
-				segment.GetSize();
+				segment.CalculateSize();
 				int distance = 10;
 				var prevNode = segment.PrevNode as DrawSegment;
 				if (prevNode == null)

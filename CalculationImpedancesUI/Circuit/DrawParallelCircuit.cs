@@ -15,17 +15,18 @@ namespace CalculationImpedancesUI
 		{ 
 		}
 
-		public override Size GetSize()
+		public override Size CalculateSize()
 		{
 			int width = 0;
 			int height = 0;
 			int distance = 10;
 			foreach (DrawSegment segment in Nodes)
 			{
-				height += segment.SizeSegment.Height + distance;
-				if (segment.GetSize().Width > width)
+				var calculateSize = segment.CalculateSize();
+				height += calculateSize.Height + distance;
+				if (calculateSize.Width > width)
 				{
-					width = segment.SizeSegment.Width;
+					width = calculateSize.Width;
 				}
 			}
 			SizeSegment = new Size(width, height);

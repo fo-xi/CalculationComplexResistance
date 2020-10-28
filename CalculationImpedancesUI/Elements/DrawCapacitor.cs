@@ -18,7 +18,6 @@ namespace CalculationImpedancesUI.Elements
 		{
 			int distanceVerticalLines = 5;
 			int lengthHorizontalLines = SizeSegment.Width / 2 - distanceVerticalLines;
-			int lengthVerticalLines = SizeSegment.Width / 2;
 			int YCoordinatHorizontalLine = StartCoordinate.Y + SizeSegment.Height / 2;
 
 			Point coordinatesBeginningHorizontalFirstLine = new Point(StartCoordinate.X,

@@ -31,7 +31,7 @@ namespace CalculationImpedancesUI
 			Segment = segment;
 		}
 
-		public abstract Size GetSize();
+		public abstract Size CalculateSize();
 
 		public abstract void FindCoordinate();
 

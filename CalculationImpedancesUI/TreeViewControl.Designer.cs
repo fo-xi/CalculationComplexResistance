@@ -20,8 +20,6 @@
             base.Dispose(disposing);
         }
 
-        #region Код, автоматически созданный конструктором компонентов
-
         /// <summary> 
         /// Требуемый метод для поддержки конструктора — не изменяйте 
         /// содержимое этого метода с помощью редактора кода.
@@ -50,7 +48,7 @@
 			this.SegmentLabel.Name = "SegmentLabel";
 			this.SegmentLabel.Size = new System.Drawing.Size(52, 13);
 			this.SegmentLabel.TabIndex = 2;
-			this.SegmentLabel.Text = "Element:";
+			this.SegmentLabel.Text = "Segment:";
 			// 
 			// tableLayoutPanel6
 			// 
@@ -170,7 +168,7 @@
 			// 
 			this.ElementLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
 			this.ElementLabel.AutoSize = true;
-			this.ElementLabel.Location = new System.Drawing.Point(4, 418);
+			this.ElementLabel.Location = new System.Drawing.Point(8, 418);
 			this.ElementLabel.Name = "ElementLabel";
 			this.ElementLabel.Size = new System.Drawing.Size(48, 13);
 			this.ElementLabel.TabIndex = 5;
@@ -208,7 +206,6 @@
 
         }
 
-        #endregion
         private System.Windows.Forms.Label SegmentLabel;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
         private System.Windows.Forms.Button EditSegmentButton;

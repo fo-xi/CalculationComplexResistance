@@ -21,7 +21,7 @@ namespace CalculationImpedancesUI
 			SizeSegment = new Size(elementWidth, elementHeight);
 		}
 
-		public override Size GetSize()
+		public override Size CalculateSize()
 		{
 			return SizeSegment;
 		}
