@@ -20,11 +20,11 @@ namespace CalculationImpedancesUI
 			int width = 0;
 			int height = 0;
 			int distance = 10;
-			if (Segment is ParallelCircuit)
+			foreach (DrawSegment segment in Nodes)
 			{
-				foreach (DrawSegment segment in Nodes)
+				height += segment.SizeSegment.Height + distance;
+				if (segment.GetSize().Width > width)
 				{
-					height += segment.SizeSegment.Height + distance;
 					width = segment.SizeSegment.Width;
 				}
 			}

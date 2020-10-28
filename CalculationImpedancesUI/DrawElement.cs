@@ -21,12 +21,12 @@ namespace CalculationImpedancesUI
 			SizeSegment = new Size(elementWidth, elementHeight);
 		}
 
-		public Size GetSize()
+		public override Size GetSize()
 		{
 			return SizeSegment;
 		}
 
-		public void FindCoordinate()
+		public override void FindCoordinate()
 		{
 			var prevNode = PrevNode as DrawElement;
 

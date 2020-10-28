@@ -22,8 +22,11 @@ namespace CalculationImpedancesUI
 			int distance = 10;
 			foreach (DrawSegment segment in Nodes)
 			{
-				height = segment.SizeSegment.Height;
 				width += segment.SizeSegment.Width + distance;
+				if (segment.GetSize().Height > height)
+				{
+					height = segment.SizeSegment.Height;
+				}
 			}
 			width += distance;
 			SizeSegment = new Size(width, height);

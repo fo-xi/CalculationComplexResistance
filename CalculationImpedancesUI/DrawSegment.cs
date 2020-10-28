@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace CalculationImpedancesUI
 {
-	public class DrawSegment : TreeNode
+	public abstract class DrawSegment : TreeNode
 	{
 		public Size SizeSegment { get; set; }
 
@@ -26,24 +26,15 @@ namespace CalculationImpedancesUI
 
 		public ISegment Segment { get; set; }
 
-		public DrawSegment(ISegment segment)
+		protected DrawSegment(ISegment segment)
 		{
 			Segment = segment;
 		}
 
-		public virtual Size GetSize()
-		{
-			throw new NotImplementedException();
-		}
+		public abstract Size GetSize();
 
-		public virtual void FindCoordinate()
-		{
-			
-		}
+		public abstract void FindCoordinate();
 
-		public virtual void Draw()
-		{ 
-			
-		}
+		public abstract void Draw();
 	}
 }

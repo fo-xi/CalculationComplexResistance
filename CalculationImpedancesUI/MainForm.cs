@@ -15,11 +15,6 @@ namespace CalculationImpedancesUI
 
 		private void MainForm_Load(object sender, EventArgs e)
 		{
-			Bitmap bitmap = new Bitmap(PictureBox.Width, PictureBox.Height);
-			DrawSegment.Graphics = Manager.Graphics = Graphics.FromImage(bitmap);
-			DrawSegment.Pen = Manager.Pen = new Pen(Color.Black);
-			PictureBox.Image = bitmap;
-
 			TreeViewControl.NotifyCalculate += Calculate;
 			UpdateComboBox();
 			foreach (var i in Project.Circuits)
@@ -170,6 +165,14 @@ namespace CalculationImpedancesUI
 
 		private void UpdatePictureBox()
 		{
+			Manager.Graphics = PictureBox.CreateGraphics();
+			Manager.Graphics.Clear(DefaultBackColor);
+
+			Bitmap bitmap = new Bitmap(PictureBox.Width, PictureBox.Height);
+			DrawSegment.Graphics = Manager.Graphics = Graphics.FromImage(bitmap);
+			DrawSegment.Pen = Manager.Pen = new Pen(Color.Black);
+			PictureBox.Image = bitmap;
+
 			Manager.FillCircuitNodes(Project.SelectedCircuit);
 			Manager.FindCoordinateNode();
 			Manager.Draw();

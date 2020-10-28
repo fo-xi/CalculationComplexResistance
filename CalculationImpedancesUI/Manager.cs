@@ -48,6 +48,7 @@ namespace CalculationImpedancesUI
 				foreach (var subSegment in segment.SubSegments)
 				{
 					DrawSegment segmentNode = GetSegmentType(subSegment);
+					segmentNode.GetSize();
 					parentNode.Nodes.Add(segmentNode);
 					if (!(subSegment is IElement))
 					{
@@ -99,6 +100,7 @@ namespace CalculationImpedancesUI
 		{
 			foreach (DrawSegment segment in TreeCircuit.Nodes[0].Nodes)
 			{
+				segment.GetSize();
 				int distance = 10;
 				var prevNode = segment.PrevNode as DrawSegment;
 				if (prevNode == null)
@@ -107,8 +109,8 @@ namespace CalculationImpedancesUI
 				}
 				else
 				{
-					segment.StartCoordinate = new Point(prevNode.StartCoordinate.X +
-						  segment.SizeSegment.Width + distance, prevNode.StartCoordinate.Y);
+					segment.StartCoordinate = new Point(prevNode.StartCoordinate.X + 
+					     prevNode.SizeSegment.Width + distance, prevNode.StartCoordinate.Y);
 				}
 				if (!(segment is DrawElement))
 				{
@@ -121,7 +123,6 @@ namespace CalculationImpedancesUI
 		{
 			foreach (DrawSegment node in TreeCircuit.Nodes[0].Nodes)
 			{
-				node.FindCoordinate();
 				node.Draw();
 			}
 		}
