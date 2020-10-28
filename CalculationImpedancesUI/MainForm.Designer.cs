@@ -45,7 +45,7 @@
 			this.CalculateButton = new System.Windows.Forms.Button();
 			this.RemoveFrequencyButton = new System.Windows.Forms.Button();
 			this.PictureBox = new System.Windows.Forms.PictureBox();
-			this.treeViewControl1 = new CalculationImpedancesUI.TreeViewControl();
+			this.TreeViewControl = new CalculationImpedancesUI.TreeViewControl();
 			this.CircuitsGroupBox.SuspendLayout();
 			this.tableLayoutPanel3.SuspendLayout();
 			this.ImpedancesGroupBox.SuspendLayout();
@@ -80,7 +80,7 @@
 			// 
 			this.CircuitsGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-			this.CircuitsGroupBox.Controls.Add(this.treeViewControl1);
+			this.CircuitsGroupBox.Controls.Add(this.TreeViewControl);
 			this.CircuitsGroupBox.Controls.Add(this.CircuitSelectionComboBox);
 			this.CircuitsGroupBox.Controls.Add(this.tableLayoutPanel3);
 			this.CircuitsGroupBox.Location = new System.Drawing.Point(15, 12);
@@ -275,13 +275,13 @@
 			this.PictureBox.TabIndex = 4;
 			this.PictureBox.TabStop = false;
 			// 
-			// treeViewControl1
+			// TreeViewControl
 			// 
-			this.treeViewControl1.AllowDrop = true;
-			this.treeViewControl1.Location = new System.Drawing.Point(6, 88);
-			this.treeViewControl1.Name = "treeViewControl1";
-			this.treeViewControl1.Size = new System.Drawing.Size(261, 456);
-			this.treeViewControl1.TabIndex = 2;
+			this.TreeViewControl.AllowDrop = true;
+			this.TreeViewControl.Location = new System.Drawing.Point(6, 88);
+			this.TreeViewControl.Name = "TreeViewControl";
+			this.TreeViewControl.Size = new System.Drawing.Size(261, 456);
+			this.TreeViewControl.TabIndex = 2;
 			// 
 			// MainForm
 			// 
@@ -324,6 +324,6 @@
 		private System.Windows.Forms.Button EditButton;
 		private System.Windows.Forms.Button AddCircuitButton;
 		private System.Windows.Forms.PictureBox PictureBox;
-		private TreeViewControl treeViewControl1;
+		private TreeViewControl TreeViewControl;
 	}
 }

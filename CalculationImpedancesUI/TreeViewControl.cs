@@ -111,16 +111,21 @@ namespace CalculationImpedancesUI
 				{
 					Project.SelectedCircuit.SubSegments.Add(elementForm.NewElement);
 				}
-
-				if (selectedIndex.Segment is IElement)
+				else if (!(selectedIndex.Segment is IElement))
 				{
-					selectedIndex = selectedIndex.Parent as SegmentTreeNode;
 					selectedIndex.Segment.SubSegments.Add(elementForm.NewElement);
 				}
-
-				if (selectedIndex.Segment is ISegment)
+				else
 				{
-					selectedIndex.Segment.SubSegments.Add(elementForm.NewElement);
+					selectedIndex = selectedIndex.Parent as SegmentTreeNode;
+					if (selectedIndex == CircuitsTreeView.Nodes[0])
+					{
+						Project.SelectedCircuit.SubSegments.Add(elementForm.NewElement);
+					}
+					else
+					{
+						selectedIndex.Segment.SubSegments.Add(elementForm.NewElement);
+					}
 				}
 
 				selectedIndex.Nodes.Add(new SegmentTreeNode
@@ -271,7 +276,7 @@ namespace CalculationImpedancesUI
 	        SegmentTreeNode element = CircuitsTreeView.SelectedNode as SegmentTreeNode;
 	        if (element == null)
 	        {
-		        throw new ArgumentNullException("Select a tree segment");
+		        return CircuitsTreeView.Nodes[0] as SegmentTreeNode;
 	        }
 	        else
 	        {
@@ -299,6 +304,7 @@ namespace CalculationImpedancesUI
 	        {
 		        targetNode.Segment.SubSegments.Add(draggedNode.Segment);
 	        }
+
         }
 
         private void TreeViewControl_Load(object sender, EventArgs e)

@@ -15,7 +15,7 @@ namespace CalculationImpedancesUI
 
 		private void MainForm_Load(object sender, EventArgs e)
 		{
-			//TreeViewControl.NotifyCalculate += Calculate;
+			TreeViewControl.NotifyCalculate += Calculate;
 			UpdateComboBox();
 			foreach (var i in Project.Circuits)
 			{
@@ -118,6 +118,7 @@ namespace CalculationImpedancesUI
 			ImpedanceValues();
 			ResultsListBox.DataSource = null;
 			ResultsListBox.DataSource = Project.ImpedanceValues;
+			UpdatePictureBox();
 		}
 
 		private void RemoveFrequencyButton_Click(object sender, EventArgs e)
