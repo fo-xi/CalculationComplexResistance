@@ -29,7 +29,7 @@ namespace CalculationImpedancesUI
 					height = calculateSize.Height;
 				}
 			}
-			width += distance;
+			width -= distance;
 			SizeSegment = new Size(width, height);
 			return SizeSegment;
 		}
@@ -40,9 +40,10 @@ namespace CalculationImpedancesUI
 			{
 				int distance = 10;
 				var prevNode = segment.PrevNode as DrawSegment;
+
 				if (prevNode == null)
 				{
-					segment.StartCoordinate = StartCoordinate;
+					segment.StartCoordinate = new Point(StartCoordinate.X, StartCoordinate.Y);
 				}
 				else
 				{
@@ -53,12 +54,24 @@ namespace CalculationImpedancesUI
 				{
 					segment.FindCoordinate();
 				}
+				segment.CalculateСonnectСoordinate();
 			}
 		}
 		public override void Draw()
 		{
+			if (Nodes.Count == 0)
+			{
+				return;
+			}
+			var lastNode = Nodes[Nodes.Count - 1] as DrawSegment;
 			foreach (DrawSegment node in Nodes)
 			{
+				var prevNode = node.PrevNode as DrawSegment;
+
+				if (prevNode != null)
+				{
+					Graphics.DrawLine(Pen, prevNode.RightСonnectСoordinate, node.LeftСonnectСoordinate);
+				}
 				node.Draw();
 			}
 		}

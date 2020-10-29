@@ -32,6 +32,7 @@
 			this.FrequenciesListBox = new System.Windows.Forms.ListBox();
 			this.ResultsListBox = new System.Windows.Forms.ListBox();
 			this.CircuitsGroupBox = new System.Windows.Forms.GroupBox();
+			this.TreeViewControl = new CalculationImpedancesUI.TreeViewControl();
 			this.CircuitSelectionComboBox = new System.Windows.Forms.ComboBox();
 			this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
 			this.RemoveButton = new System.Windows.Forms.Button();
@@ -45,7 +46,6 @@
 			this.CalculateButton = new System.Windows.Forms.Button();
 			this.RemoveFrequencyButton = new System.Windows.Forms.Button();
 			this.PictureBox = new System.Windows.Forms.PictureBox();
-			this.TreeViewControl = new CalculationImpedancesUI.TreeViewControl();
 			this.CircuitsGroupBox.SuspendLayout();
 			this.tableLayoutPanel3.SuspendLayout();
 			this.ImpedancesGroupBox.SuspendLayout();
@@ -89,6 +89,14 @@
 			this.CircuitsGroupBox.TabIndex = 1;
 			this.CircuitsGroupBox.TabStop = false;
 			this.CircuitsGroupBox.Text = "Circuits";
+			// 
+			// TreeViewControl
+			// 
+			this.TreeViewControl.AllowDrop = true;
+			this.TreeViewControl.Location = new System.Drawing.Point(6, 88);
+			this.TreeViewControl.Name = "TreeViewControl";
+			this.TreeViewControl.Size = new System.Drawing.Size(255, 456);
+			this.TreeViewControl.TabIndex = 2;
 			// 
 			// CircuitSelectionComboBox
 			// 
@@ -203,8 +211,8 @@
 			this.tableLayoutPanel4.ColumnCount = 4;
 			this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 27.80083F));
 			this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 72.19917F));
+			this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 35F));
 			this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 34F));
-			this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 36F));
 			this.tableLayoutPanel4.Controls.Add(this.FrequencyTextBox, 1, 0);
 			this.tableLayoutPanel4.Controls.Add(this.FrequencyLabel, 0, 0);
 			this.tableLayoutPanel4.Controls.Add(this.CalculateButton, 2, 0);
@@ -219,9 +227,9 @@
 			// FrequencyTextBox
 			// 
 			this.FrequencyTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.FrequencyTextBox.Location = new System.Drawing.Point(69, 8);
+			this.FrequencyTextBox.Location = new System.Drawing.Point(70, 8);
 			this.FrequencyTextBox.Name = "FrequencyTextBox";
-			this.FrequencyTextBox.Size = new System.Drawing.Size(167, 20);
+			this.FrequencyTextBox.Size = new System.Drawing.Size(168, 20);
 			this.FrequencyTextBox.TabIndex = 1;
 			this.FrequencyTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
 			// 
@@ -229,7 +237,7 @@
 			// 
 			this.FrequencyLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
 			this.FrequencyLabel.AutoSize = true;
-			this.FrequencyLabel.Location = new System.Drawing.Point(3, 11);
+			this.FrequencyLabel.Location = new System.Drawing.Point(4, 11);
 			this.FrequencyLabel.Name = "FrequencyLabel";
 			this.FrequencyLabel.Size = new System.Drawing.Size(60, 13);
 			this.FrequencyLabel.TabIndex = 0;
@@ -244,9 +252,9 @@
 			this.CalculateButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
 			this.CalculateButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.CalculateButton.ForeColor = System.Drawing.SystemColors.Control;
-			this.CalculateButton.Location = new System.Drawing.Point(242, 3);
+			this.CalculateButton.Location = new System.Drawing.Point(244, 3);
 			this.CalculateButton.Name = "CalculateButton";
-			this.CalculateButton.Size = new System.Drawing.Size(28, 30);
+			this.CalculateButton.Size = new System.Drawing.Size(29, 30);
 			this.CalculateButton.TabIndex = 0;
 			this.CalculateButton.UseVisualStyleBackColor = true;
 			this.CalculateButton.Click += new System.EventHandler(this.CalculateButton_Click);
@@ -260,28 +268,23 @@
 			this.RemoveFrequencyButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
 			this.RemoveFrequencyButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.RemoveFrequencyButton.ForeColor = System.Drawing.SystemColors.Control;
-			this.RemoveFrequencyButton.Location = new System.Drawing.Point(276, 3);
+			this.RemoveFrequencyButton.Location = new System.Drawing.Point(279, 3);
 			this.RemoveFrequencyButton.Name = "RemoveFrequencyButton";
-			this.RemoveFrequencyButton.Size = new System.Drawing.Size(31, 30);
+			this.RemoveFrequencyButton.Size = new System.Drawing.Size(28, 30);
 			this.RemoveFrequencyButton.TabIndex = 1;
 			this.RemoveFrequencyButton.UseVisualStyleBackColor = true;
 			this.RemoveFrequencyButton.Click += new System.EventHandler(this.RemoveFrequencyButton_Click);
 			// 
 			// PictureBox
 			// 
+			this.PictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+			this.PictureBox.Cursor = System.Windows.Forms.Cursors.Default;
 			this.PictureBox.Location = new System.Drawing.Point(288, 12);
 			this.PictureBox.Name = "PictureBox";
 			this.PictureBox.Size = new System.Drawing.Size(639, 416);
+			this.PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
 			this.PictureBox.TabIndex = 4;
 			this.PictureBox.TabStop = false;
-			// 
-			// TreeViewControl
-			// 
-			this.TreeViewControl.AllowDrop = true;
-			this.TreeViewControl.Location = new System.Drawing.Point(6, 88);
-			this.TreeViewControl.Name = "TreeViewControl";
-			this.TreeViewControl.Size = new System.Drawing.Size(261, 456);
-			this.TreeViewControl.TabIndex = 2;
 			// 
 			// MainForm
 			// 

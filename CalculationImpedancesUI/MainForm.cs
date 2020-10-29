@@ -166,14 +166,16 @@ namespace CalculationImpedancesUI
 
 		private void UpdatePictureBox()
 		{
-			Bitmap bitmap = new Bitmap(PictureBox.Width, PictureBox.Height);
+			Manager.FillCircuitNodes(Project.SelectedCircuit);
+			var circuitSize = Manager.CalculateCircuitSize();
+			Bitmap bitmap = new Bitmap(circuitSize.Width, circuitSize.Height);
 			DrawSegment.Graphics = Graphics.FromImage(bitmap);
 			DrawSegment.Pen = new Pen(Color.Black);
-			PictureBox.Image = bitmap;
 
-			Manager.FillCircuitNodes(Project.SelectedCircuit);
 			Manager.FindCoordinateNode();
-			Manager.Draw();
+			Manager.Draw(DrawSegment.Graphics, DrawSegment.Pen);
+
+			PictureBox.Image = bitmap;
 		}
 	}
 }

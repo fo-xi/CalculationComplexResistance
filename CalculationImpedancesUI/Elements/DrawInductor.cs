@@ -16,7 +16,7 @@ namespace CalculationImpedancesUI.Elements
 		public override void Draw()
 		{
 			int x = StartCoordinate.X;
-			int y = StartCoordinate.Y;
+			int y = StartCoordinate.Y + SizeSegment.Height / 4;
 			int semicircleWidth = SizeSegment.Width / 4;
 			int semicircleHeight = SizeSegment.Height / 2;
 			int numberSemicircles = 4;
@@ -26,6 +26,6 @@ namespace CalculationImpedancesUI.Elements
 				Graphics.DrawArc(Pen, x, y, semicircleWidth, semicircleHeight, 180, 180);
 				x += semicircleWidth;
 			}
-		}
+		}	
 	}
 }

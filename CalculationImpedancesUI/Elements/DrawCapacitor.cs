@@ -17,17 +17,17 @@ namespace CalculationImpedancesUI.Elements
 		public override void Draw()
 		{
 			int distanceVerticalLines = 5;
-			int lengthHorizontalLines = SizeSegment.Width / 2 - distanceVerticalLines;
+			int lengthHorizontalLines = SizeSegment.Width/2;
 			int YCoordinatHorizontalLine = StartCoordinate.Y + SizeSegment.Height / 2;
 
 			Point coordinatesBeginningHorizontalFirstLine = new Point(StartCoordinate.X,
 				YCoordinatHorizontalLine);
-			Point coordinatesEndHorizontalFirstLine = new Point(StartCoordinate.X + lengthHorizontalLines,
+			Point coordinatesEndHorizontalFirstLine = new Point(StartCoordinate.X + lengthHorizontalLines - 2,
 				YCoordinatHorizontalLine);
 
 			Point coordinatesBeginningHorizontalSecondLine = new Point(coordinatesEndHorizontalFirstLine.X + distanceVerticalLines,
 				YCoordinatHorizontalLine);
-			Point coordinatesEndHorizontalSecondLine = new Point(coordinatesBeginningHorizontalSecondLine.X + lengthHorizontalLines,
+			Point coordinatesEndHorizontalSecondLine = new Point(StartCoordinate.X + SizeSegment.Width,
 				YCoordinatHorizontalLine);
 
 			Graphics.DrawLine(Pen, coordinatesBeginningHorizontalFirstLine.X, coordinatesBeginningHorizontalFirstLine.Y,

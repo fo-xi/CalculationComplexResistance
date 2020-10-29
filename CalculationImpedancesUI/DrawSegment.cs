@@ -36,5 +36,12 @@ namespace CalculationImpedancesUI
 		public abstract void FindCoordinate();
 
 		public abstract void Draw();
+
+		public void CalculateСonnectСoordinate()
+		{
+			LeftСonnectСoordinate = new Point(StartCoordinate.X, (SizeSegment.Height / 2) + StartCoordinate.Y);
+			RightСonnectСoordinate = new Point(StartCoordinate.X + SizeSegment.Width,
+				(SizeSegment.Height / 2) + StartCoordinate.Y);
+		}
 	}
 }

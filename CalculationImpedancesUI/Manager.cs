@@ -92,7 +92,7 @@ namespace CalculationImpedancesUI
 				var prevNode = segment.PrevNode as DrawSegment;
 				if (prevNode == null)
 				{
-					segment.StartCoordinate = new Point(0, 0);
+					segment.StartCoordinate = new Point(5, 0);
 				}
 				else
 				{
@@ -103,13 +103,64 @@ namespace CalculationImpedancesUI
 				{
 					segment.FindCoordinate();
 				}
+				segment.CalculateСonnectСoordinate();
 			}
 		}
 
-		public static void Draw()
+
+		public static Size CalculateCircuitSize()
 		{
+			if (TreeCircuit.Nodes.Count == 0)
+			{
+				return new Size(1 ,1);
+			}
+			int width = 0;
+			int height = 0;
+			int distance = 10;
+			foreach (DrawSegment segment in TreeCircuit.Nodes[0].Nodes)
+			{
+				var calculateSizeSubsegment = segment.CalculateSize();
+				width += calculateSizeSubsegment.Width + distance;
+				if (calculateSizeSubsegment.Height > height)
+				{
+					height = calculateSizeSubsegment.Height;
+				}
+			}
+			width += distance;
+			return new Size(width, height + 1); 
+		}
+
+		public static void Draw(Graphics graphics, Pen pen)
+		{
+			if (TreeCircuit.Nodes[0].Nodes.Count == 0)
+			{
+				return;
+			}
+			var firstNode = TreeCircuit.Nodes[0] as DrawSegment;
+			var lastNode = TreeCircuit.Nodes[0].Nodes[TreeCircuit.Nodes[0].Nodes.Count - 1] as DrawSegment;
+
+			if (firstNode != null)
+			{
+				var firstPointNode = new Point(firstNode.LeftСonnectСoordinate.X-10, firstNode.LeftСonnectСoordinate.Y);
+				if (lastNode != null)
+				{
+					var lastPointNode = new Point(lastNode.RightСonnectСoordinate.X+10, lastNode.RightСonnectСoordinate.Y);
+
+					graphics.DrawLine(pen, firstPointNode, firstNode.LeftСonnectСoordinate);
+					graphics.DrawLine(pen, lastPointNode, lastNode.RightСonnectСoordinate);
+				}
+			}
+
+
 			foreach (DrawSegment node in TreeCircuit.Nodes[0].Nodes)
 			{
+				var prevNode = node.PrevNode as DrawSegment;
+
+				if (prevNode != null)
+				{
+					graphics.DrawLine(pen, prevNode.RightСonnectСoordinate, node.LeftСonnectСoordinate);
+				}
+
 				node.Draw();
 			}
 		}
