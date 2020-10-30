@@ -46,12 +46,14 @@
 			this.CalculateButton = new System.Windows.Forms.Button();
 			this.RemoveFrequencyButton = new System.Windows.Forms.Button();
 			this.PictureBox = new System.Windows.Forms.PictureBox();
+			this.GroupBox = new System.Windows.Forms.GroupBox();
 			this.CircuitsGroupBox.SuspendLayout();
 			this.tableLayoutPanel3.SuspendLayout();
 			this.ImpedancesGroupBox.SuspendLayout();
 			this.tableLayoutPanel5.SuspendLayout();
 			this.tableLayoutPanel4.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.PictureBox)).BeginInit();
+			this.GroupBox.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// FrequenciesListBox
@@ -176,8 +178,7 @@
 			// 
 			// ImpedancesGroupBox
 			// 
-			this.ImpedancesGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+			this.ImpedancesGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.ImpedancesGroupBox.Controls.Add(this.tableLayoutPanel5);
 			this.ImpedancesGroupBox.Controls.Add(this.tableLayoutPanel4);
@@ -190,8 +191,7 @@
 			// 
 			// tableLayoutPanel5
 			// 
-			this.tableLayoutPanel5.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+			this.tableLayoutPanel5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.tableLayoutPanel5.ColumnCount = 2;
 			this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -277,21 +277,37 @@
 			// 
 			// PictureBox
 			// 
+			this.PictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.PictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
 			this.PictureBox.Cursor = System.Windows.Forms.Cursors.Default;
-			this.PictureBox.Location = new System.Drawing.Point(288, 12);
+			this.PictureBox.Location = new System.Drawing.Point(6, 19);
 			this.PictureBox.Name = "PictureBox";
-			this.PictureBox.Size = new System.Drawing.Size(639, 416);
+			this.PictureBox.Size = new System.Drawing.Size(627, 391);
 			this.PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
 			this.PictureBox.TabIndex = 4;
 			this.PictureBox.TabStop = false;
+			// 
+			// GroupBox
+			// 
+			this.GroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.GroupBox.Controls.Add(this.PictureBox);
+			this.GroupBox.Location = new System.Drawing.Point(288, 12);
+			this.GroupBox.Name = "GroupBox";
+			this.GroupBox.Size = new System.Drawing.Size(639, 416);
+			this.GroupBox.TabIndex = 5;
+			this.GroupBox.TabStop = false;
+			this.GroupBox.Text = "Picture";
 			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(939, 636);
-			this.Controls.Add(this.PictureBox);
+			this.Controls.Add(this.GroupBox);
 			this.Controls.Add(this.ImpedancesGroupBox);
 			this.Controls.Add(this.CircuitsGroupBox);
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -306,6 +322,7 @@
 			this.tableLayoutPanel4.ResumeLayout(false);
 			this.tableLayoutPanel4.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.PictureBox)).EndInit();
+			this.GroupBox.ResumeLayout(false);
 			this.ResumeLayout(false);
 
         }
@@ -328,5 +345,6 @@
 		private System.Windows.Forms.Button AddCircuitButton;
 		private System.Windows.Forms.PictureBox PictureBox;
 		private TreeViewControl TreeViewControl;
+		private System.Windows.Forms.GroupBox GroupBox;
 	}
 }

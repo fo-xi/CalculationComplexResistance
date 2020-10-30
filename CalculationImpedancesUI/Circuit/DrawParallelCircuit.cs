@@ -51,7 +51,7 @@ namespace CalculationImpedancesUI
 				else
 				{
 					segment.StartCoordinate = new Point(StartCoordinate.X + middle,
-						prevNode.StartCoordinate.Y + segment.SizeSegment.Height + distance);
+						prevNode.StartCoordinate.Y + prevNode.SizeSegment.Height + distance);
 				}
 				if (!(segment is DrawElement))
 				{

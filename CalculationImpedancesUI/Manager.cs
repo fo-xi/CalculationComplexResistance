@@ -167,7 +167,7 @@ namespace CalculationImpedancesUI
 				}
 			}
 			width += distance;
-			return new Size(width, height + 100); 
+			return new Size(width, height + 1); 
 		}
 
 		public static void Draw(Graphics graphics, Pen pen)
