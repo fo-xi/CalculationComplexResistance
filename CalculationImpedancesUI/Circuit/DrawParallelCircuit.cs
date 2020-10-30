@@ -40,18 +40,19 @@ namespace CalculationImpedancesUI
 		{
 			foreach (DrawSegment segment in Nodes)
 			{
+				int middle = (SizeSegment.Width / 2) - (segment.SizeSegment.Width / 2);
+
 				int distance = 10;
 				var prevNode = segment.PrevNode as DrawSegment;
 				if (prevNode == null)
 				{
-					segment.StartCoordinate = new Point(StartCoordinate.X + distance/2, StartCoordinate.Y);
+					segment.StartCoordinate = new Point(StartCoordinate.X + middle, StartCoordinate.Y);
 				}
 				else
 				{
-					segment.StartCoordinate = new Point(prevNode.StartCoordinate.X,
+					segment.StartCoordinate = new Point(StartCoordinate.X + middle,
 						prevNode.StartCoordinate.Y + segment.SizeSegment.Height + distance);
 				}
-
 				if (!(segment is DrawElement))
 				{
 					segment.FindCoordinate();

@@ -34,16 +34,14 @@ namespace CalculationImpedancesUI
 				}
 				TreeCircuit.Nodes[0].Nodes.Add(subSegmentNode);
 			}
+
+			ClearTree(TreeCircuit.Nodes[0]);
 		}
 
 		private static void FillTreeNode(DrawSegment parentNode, ISegment segment)
 		{
 			foreach (var subSegment in segment.SubSegments)
 			{
-				if (!(subSegment is IElement) && subSegment.SubSegments.Count == 0)
-				{
-					continue;
-				}
 				DrawSegment segmentNode = GetSegmentType(subSegment);
 				parentNode.Nodes.Add(segmentNode);
 				if (!(subSegment is IElement))
@@ -53,13 +51,30 @@ namespace CalculationImpedancesUI
 			}
 		}
 
-		//private void rjtgnlnr(ISegment segment)
-		//{
-		//	foreach (var subSegment in segment.SubSegments)
-		//	{
-
-		//	}
-		//}
+		private static void ClearTree(TreeNode root)
+		{
+			if (root.Nodes.Count == 0)
+			{
+				return;
+			}
+			DrawSegment node = root.Nodes[0] as DrawSegment;
+			while (node != null)
+			{
+				DrawSegment nextSegment = node.NextNode as DrawSegment;
+				if (!(node is DrawElement))
+				{
+					if (node.Nodes.Count != 0)
+					{
+						ClearTree(node);
+					}
+					if (node.Nodes.Count == 0)
+					{
+						node.Remove();
+					}
+				}
+				node = nextSegment;
+			}
+		}
 
 		private static DrawSegment GetSegmentType(ISegment segment)
 		{
