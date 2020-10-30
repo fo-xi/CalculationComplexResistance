@@ -224,7 +224,7 @@ namespace CalculationImpedancesUI
 	        // Что перетаскиваем
 	        SegmentTreeNode draggedNode = e.Data.GetData(typeof(SegmentTreeNode)) as SegmentTreeNode;
 
-	        if (draggedNode == null)
+	        if (draggedNode == null || draggedNode.Segment == null)
 	        {
 		        return;
 	        }
@@ -287,6 +287,7 @@ namespace CalculationImpedancesUI
         private void UpdateTreeView(SegmentTreeNode draggedNode, SegmentTreeNode targetNode)
         {
 	        var parent = draggedNode.Parent as SegmentTreeNode;
+			if (parent == null) return;
 	        if (parent.Segment == null)
 	        {
 		        Project.SelectedCircuit.SubSegments.Remove(draggedNode.Segment);

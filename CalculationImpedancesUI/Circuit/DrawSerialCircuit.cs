@@ -36,6 +36,15 @@ namespace CalculationImpedancesUI
 
 		public override void FindCoordinate()
 		{
+			int halfHeightSegment = 0;
+			foreach (DrawSegment segment in Nodes)
+			{
+				if (halfHeightSegment < segment.SizeSegment.Height / 2)
+				{
+					halfHeightSegment = segment.SizeSegment.Height / 2;
+				}
+			}
+
 			foreach (DrawSegment segment in Nodes)
 			{
 				int distance = 10;
@@ -43,13 +52,15 @@ namespace CalculationImpedancesUI
 
 				if (prevNode == null)
 				{
-					segment.StartCoordinate = new Point(StartCoordinate.X, StartCoordinate.Y);
+					segment.StartCoordinate = new Point(StartCoordinate.X,
+						StartCoordinate.Y + halfHeightSegment - segment.SizeSegment.Height / 2);
 				}
 				else
 				{
 					segment.StartCoordinate = new Point(prevNode.StartCoordinate.X + 
-					      segment.SizeSegment.Width + distance, prevNode.StartCoordinate.Y);
+					      segment.SizeSegment.Width + distance, prevNode.LeftСonnectСoordinate.Y - segment.SizeSegment.Height / 2);
 				}
+
 				if (!(segment is DrawElement))
 				{
 					segment.FindCoordinate();

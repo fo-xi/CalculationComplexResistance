@@ -23,6 +23,10 @@ namespace CalculationImpedancesUI
 			TreeCircuit.Nodes.Add(mainCircuitNode);
 			foreach (var subSegment in circuit.SubSegments)
 			{
+				if (!(subSegment is IElement) && subSegment.SubSegments.Count == 0)
+				{
+					continue;
+				}
 				DrawSegment subSegmentNode = GetSegmentType(subSegment);
 				if (!(subSegmentNode is DrawElement))
 				{
@@ -36,6 +40,10 @@ namespace CalculationImpedancesUI
 		{
 			foreach (var subSegment in segment.SubSegments)
 			{
+				if (!(subSegment is IElement) && subSegment.SubSegments.Count == 0)
+				{
+					continue;
+				}
 				DrawSegment segmentNode = GetSegmentType(subSegment);
 				parentNode.Nodes.Add(segmentNode);
 				if (!(subSegment is IElement))
@@ -44,6 +52,14 @@ namespace CalculationImpedancesUI
 				}
 			}
 		}
+
+		//private void rjtgnlnr(ISegment segment)
+		//{
+		//	foreach (var subSegment in segment.SubSegments)
+		//	{
+
+		//	}
+		//}
 
 		private static DrawSegment GetSegmentType(ISegment segment)
 		{
@@ -85,6 +101,15 @@ namespace CalculationImpedancesUI
 
 		public static void FindCoordinateNode()
 		{
+			int halfHeightSegment = 0;
+			foreach (DrawSegment segment in TreeCircuit.Nodes[0].Nodes)
+			{
+				if (halfHeightSegment < segment.SizeSegment.Height / 2)
+				{
+					halfHeightSegment = segment.SizeSegment.Height / 2;
+				}
+			}
+
 			foreach (DrawSegment segment in TreeCircuit.Nodes[0].Nodes)
 			{
 				segment.CalculateSize();
@@ -92,12 +117,12 @@ namespace CalculationImpedancesUI
 				var prevNode = segment.PrevNode as DrawSegment;
 				if (prevNode == null)
 				{
-					segment.StartCoordinate = new Point(5, 0);
+					segment.StartCoordinate = new Point(5, halfHeightSegment - segment.SizeSegment.Height / 2);
 				}
 				else
 				{
 					segment.StartCoordinate = new Point(prevNode.StartCoordinate.X + 
-					     prevNode.SizeSegment.Width + distance, prevNode.StartCoordinate.Y);
+					     prevNode.SizeSegment.Width + distance, prevNode.LeftСonnectСoordinate.Y - segment.SizeSegment.Height / 2);
 				}
 				if (!(segment is DrawElement))
 				{
@@ -127,7 +152,7 @@ namespace CalculationImpedancesUI
 				}
 			}
 			width += distance;
-			return new Size(width, height + 1); 
+			return new Size(width, height + 100); 
 		}
 
 		public static void Draw(Graphics graphics, Pen pen)
@@ -151,14 +176,20 @@ namespace CalculationImpedancesUI
 				}
 			}
 
-
 			foreach (DrawSegment node in TreeCircuit.Nodes[0].Nodes)
 			{
 				var prevNode = node.PrevNode as DrawSegment;
-
 				if (prevNode != null)
 				{
-					graphics.DrawLine(pen, prevNode.RightСonnectСoordinate, node.LeftСonnectСoordinate);
+					if (prevNode.Nodes.Count == 0 && !(prevNode is DrawElement))
+					{
+						prevNode = prevNode.PrevNode as DrawSegment;
+					}
+
+					if (prevNode != null)
+					{
+						graphics.DrawLine(pen, prevNode.RightСonnectСoordinate, node.LeftСonnectСoordinate);
+					}
 				}
 
 				node.Draw();

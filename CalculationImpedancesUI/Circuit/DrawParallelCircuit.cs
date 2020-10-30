@@ -30,6 +30,8 @@ namespace CalculationImpedancesUI
 					width = calculateSize.Width;
 				}
 			}
+
+			height -= distance;
 			SizeSegment = new Size(width + distance, height);
 			return SizeSegment;
 		}
@@ -49,6 +51,7 @@ namespace CalculationImpedancesUI
 					segment.StartCoordinate = new Point(prevNode.StartCoordinate.X,
 						prevNode.StartCoordinate.Y + segment.SizeSegment.Height + distance);
 				}
+
 				if (!(segment is DrawElement))
 				{
 					segment.FindCoordinate();
@@ -66,9 +69,18 @@ namespace CalculationImpedancesUI
 				var leftConnect = new Point(LeftСonnectСoordinate.X, node.LeftСonnectСoordinate.Y);
 				var rightConnect = new Point(RightСonnectСoordinate.X, node.RightСonnectСoordinate.Y);
 
-				Graphics.DrawLine(Pen, leftConnect, node.LeftСonnectСoordinate);
+				if (Index != 0 || Nodes.Count > 1)
+				{
+					Graphics.DrawLine(Pen, leftConnect, node.LeftСonnectСoordinate);
+				}
 				Graphics.DrawLine(Pen, rightConnect, node.RightСonnectСoordinate);
 			}
+
+			if (Nodes.Count == 0)
+			{
+				return;
+			}
+
 			var firstNode = Nodes[0] as DrawSegment;
 			var lastNode = Nodes[Nodes.Count - 1] as DrawSegment;
 
