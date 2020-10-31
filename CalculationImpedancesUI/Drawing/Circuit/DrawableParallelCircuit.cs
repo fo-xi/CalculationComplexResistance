@@ -6,13 +6,13 @@ namespace CalculationImpedancesUI
 	/// <summary>
 	/// The class contains methods for working with parallel segment.
 	/// </summary>
-	class DrawParallelCircuit : DrawSegment
+	class DrawableParallelCircuit : DrawableSegmentBase
 	{
 		/// <summary>
 		/// Create a parallel segment.
 		/// </summary>
 		/// <param name="segment">A circuit segment.</param>
-		public DrawParallelCircuit(ISegment segment) : base(segment)
+		public DrawableParallelCircuit(ISegment segment) : base(segment)
 		{ 
 		}
 
@@ -21,7 +21,7 @@ namespace CalculationImpedancesUI
 			int width = 0;
 			int height = 0;
 			int distance = 10;
-			foreach (DrawSegment segment in Nodes)
+			foreach (DrawableSegmentBase segment in Nodes)
 			{
 				var calculateSize = segment.CalculateSize();
 				height += calculateSize.Height + distance;
@@ -38,12 +38,12 @@ namespace CalculationImpedancesUI
 
 		public override void FindCoordinate()
 		{
-			foreach (DrawSegment segment in Nodes)
+			foreach (DrawableSegmentBase segment in Nodes)
 			{
 				int middle = (SizeSegment.Width / 2) - (segment.SizeSegment.Width / 2);
 
 				int distance = 10;
-				var prevNode = segment.PrevNode as DrawSegment;
+				var prevNode = segment.PrevNode as DrawableSegmentBase;
 				if (prevNode == null)
 				{
 					segment.StartCoordinate = new Point(StartCoordinate.X + middle, StartCoordinate.Y);
@@ -53,7 +53,7 @@ namespace CalculationImpedancesUI
 					segment.StartCoordinate = new Point(StartCoordinate.X + middle,
 						prevNode.StartCoordinate.Y + prevNode.SizeSegment.Height + distance);
 				}
-				if (!(segment is DrawElement))
+				if (!(segment is DrawableElement))
 				{
 					segment.FindCoordinate();
 				}
@@ -63,7 +63,7 @@ namespace CalculationImpedancesUI
 
 		public override void Draw()
 		{
-			foreach (DrawSegment node in Nodes)
+			foreach (DrawableSegmentBase node in Nodes)
 			{
 				node.Draw();
 
@@ -82,8 +82,8 @@ namespace CalculationImpedancesUI
 				return;
 			}
 
-			var firstNode = Nodes[0] as DrawSegment;
-			var lastNode = Nodes[Nodes.Count - 1] as DrawSegment;
+			var firstNode = Nodes[0] as DrawableSegmentBase;
+			var lastNode = Nodes[Nodes.Count - 1] as DrawableSegmentBase;
 
 			var firstPointRightConnection = new Point(RightСonnectСoordinate.X, firstNode.RightСonnectСoordinate.Y);
 			var lastPointRightConnection = new Point(RightСonnectСoordinate.X, lastNode.RightСonnectСoordinate.Y);

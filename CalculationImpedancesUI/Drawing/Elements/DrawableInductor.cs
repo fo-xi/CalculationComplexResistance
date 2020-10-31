@@ -5,13 +5,13 @@ namespace CalculationImpedancesUI.Elements
 	/// <summary>
 	/// Contains methods for working with a inductor.
 	/// </summary>
-	class DrawInductor : DrawElement
+	class DrawableInductor : DrawableElement
 	{
 		/// <summary>
 		/// Inductor creation.
 		/// </summary>
 		/// <param name="segment">A circuit segment.</param>
-		public DrawInductor(ISegment segment) : base(segment)
+		public DrawableInductor(ISegment segment) : base(segment)
 		{
 		}
 

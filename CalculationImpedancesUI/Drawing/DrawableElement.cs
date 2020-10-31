@@ -6,7 +6,7 @@ namespace CalculationImpedancesUI
 	/// <summary>
 	/// The class contains methods for working with circuit elements.
 	/// </summary>
-	public abstract class DrawElement : DrawSegment
+	public abstract class DrawableElement : DrawableSegmentBase
 	{
 		/// <summary>
 		/// Element width.
@@ -27,7 +27,7 @@ namespace CalculationImpedancesUI
 		/// Create a circuit element.
 		/// </summary>
 		/// <param name="segment">A circuit segment.</param>
-		public DrawElement(ISegment segment) : base(segment)
+		public DrawableElement(ISegment segment) : base(segment)
 		{
 			SizeSegment = new Size(elementWidth, elementHeight);
 		}
@@ -39,7 +39,7 @@ namespace CalculationImpedancesUI
 
 		public override void FindCoordinate()
 		{
-			var prevNode = PrevNode as DrawElement;
+			var prevNode = PrevNode as DrawableElement;
 			if (prevNode == null)
 			{
 				StartCoordinate = new Point(StartCoordinate.X, StartCoordinate.Y);

@@ -6,13 +6,13 @@ namespace CalculationImpedancesUI
 	/// <summary>
 	/// The class contains methods for working with serial segment.
 	/// </summary>
-	public class DrawSerialCircuit : DrawSegment 
+	public class DrawableSerialCircuit : DrawableSegmentBase 
 	{
 		/// <summary>
 		/// Create a serial segment.
 		/// </summary>
 		/// <param name="segment">A circuit segment.</param>
-		public DrawSerialCircuit(ISegment segment) : base(segment)
+		public DrawableSerialCircuit(ISegment segment) : base(segment)
 		{ 
 		}
 
@@ -21,7 +21,7 @@ namespace CalculationImpedancesUI
 			int width = 0;
 			int height = 0;
 			int distance = 10;
-			foreach (DrawSegment segment in Nodes)
+			foreach (DrawableSegmentBase segment in Nodes)
 			{
 				var calculateSize = segment.CalculateSize();
 				width += calculateSize.Width + distance;
@@ -38,7 +38,7 @@ namespace CalculationImpedancesUI
 		public override void FindCoordinate()
 		{
 			int halfHeightSegment = 0;
-			foreach (DrawSegment segment in Nodes)
+			foreach (DrawableSegmentBase segment in Nodes)
 			{
 				if (halfHeightSegment < segment.SizeSegment.Height / 2)
 				{
@@ -46,10 +46,10 @@ namespace CalculationImpedancesUI
 				}
 			}
 
-			foreach (DrawSegment segment in Nodes)
+			foreach (DrawableSegmentBase segment in Nodes)
 			{
 				int distance = 10;
-				var prevNode = segment.PrevNode as DrawSegment;
+				var prevNode = segment.PrevNode as DrawableSegmentBase;
 
 				if (prevNode == null)
 				{
@@ -62,7 +62,7 @@ namespace CalculationImpedancesUI
 					      segment.SizeSegment.Width + distance, prevNode.LeftСonnectСoordinate.Y - segment.SizeSegment.Height / 2);
 				}
 
-				if (!(segment is DrawElement))
+				if (!(segment is DrawableElement))
 				{
 					segment.FindCoordinate();
 				}
@@ -75,10 +75,10 @@ namespace CalculationImpedancesUI
 			{
 				return;
 			}
-			var lastNode = Nodes[Nodes.Count - 1] as DrawSegment;
-			foreach (DrawSegment node in Nodes)
+			var lastNode = Nodes[Nodes.Count - 1] as DrawableSegmentBase;
+			foreach (DrawableSegmentBase node in Nodes)
 			{
-				var prevNode = node.PrevNode as DrawSegment;
+				var prevNode = node.PrevNode as DrawableSegmentBase;
 
 				if (prevNode != null)
 				{

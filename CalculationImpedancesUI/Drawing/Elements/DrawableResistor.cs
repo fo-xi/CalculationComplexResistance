@@ -5,13 +5,13 @@ namespace CalculationImpedancesUI.Elements
 	/// <summary>
 	/// Contains methods for working with a resistor.
 	/// </summary>
-	class DrawResistor : DrawElement
+	class DrawableResistor : DrawableElement
 	{
 		/// <summary>
 		/// Resistor creation.
 		/// </summary>
 		/// <param name="segment">A circuit segment.</param>
-		public DrawResistor(ISegment segment) : base(segment)
+		public DrawableResistor(ISegment segment) : base(segment)
 		{
 		}
 

@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace CalculationImpedancesUI
 {
-	public abstract class DrawSegment : TreeNode
+	public abstract class DrawableSegmentBase : TreeNode
 	{
 		/// <summary>
 		/// Gets and sets the segment size.
@@ -46,7 +46,7 @@ namespace CalculationImpedancesUI
 		/// Creates a segment to draw.
 		/// </summary>
 		/// <param name="segment"></param>
-		protected DrawSegment(ISegment segment)
+		protected DrawableSegmentBase(ISegment segment)
 		{
 			Segment = segment;
 		}

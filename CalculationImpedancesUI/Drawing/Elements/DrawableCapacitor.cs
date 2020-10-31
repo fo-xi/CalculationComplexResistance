@@ -6,13 +6,13 @@ namespace CalculationImpedancesUI.Elements
 	/// <summary>
 	/// Contains methods for working with a capacitor.
 	/// </summary>
-	class DrawCapacitor : DrawElement
+	class DrawableCapacitor : DrawableElement
 	{
 		/// <summary>
 		/// Capacitor creation.
 		/// </summary>
 		/// <param name="segment">A circuit segment.</param>
-		public DrawCapacitor(ISegment segment) : base(segment)
+		public DrawableCapacitor(ISegment segment) : base(segment)
 		{
 		}
 

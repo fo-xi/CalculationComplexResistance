@@ -32,8 +32,8 @@ namespace CalculationImpedancesUI
 				{
 					continue;
 				}
-				DrawSegment subSegmentNode = GetSegmentType(subSegment);
-				if (!(subSegmentNode is DrawElement))
+				DrawableSegmentBase subSegmentNode = GetSegmentType(subSegment);
+				if (!(subSegmentNode is DrawableElement))
 				{
 					FillTreeNode(subSegmentNode, subSegment);
 				}
@@ -48,11 +48,11 @@ namespace CalculationImpedancesUI
 		/// </summary>
 		/// <param name="parentNode">Parent segment of a sub-segment.</param>
 		/// <param name="segment">Sub-segment</param>
-		private static void FillTreeNode(DrawSegment parentNode, ISegment segment)
+		private static void FillTreeNode(DrawableSegmentBase parentNode, ISegment segment)
 		{
 			foreach (var subSegment in segment.SubSegments)
 			{
-				DrawSegment segmentNode = GetSegmentType(subSegment);
+				DrawableSegmentBase segmentNode = GetSegmentType(subSegment);
 				parentNode.Nodes.Add(segmentNode);
 				if (!(subSegment is IElement))
 				{
@@ -71,11 +71,11 @@ namespace CalculationImpedancesUI
 			{
 				return;
 			}
-			DrawSegment node = root.Nodes[0] as DrawSegment;
+			DrawableSegmentBase node = root.Nodes[0] as DrawableSegmentBase;
 			while (node != null)
 			{
-				DrawSegment nextSegment = node.NextNode as DrawSegment;
-				if (!(node is DrawElement))
+				DrawableSegmentBase nextSegment = node.NextNode as DrawableSegmentBase;
+				if (!(node is DrawableElement))
 				{
 					if (node.Nodes.Count != 0)
 					{
@@ -95,34 +95,34 @@ namespace CalculationImpedancesUI
 		/// </summary>
 		/// <param name="segment">Segment to be checked.</param>
 		/// <returns></returns>
-		private static DrawSegment GetSegmentType(ISegment segment)
+		private static DrawableSegmentBase GetSegmentType(ISegment segment)
 		{
-			DrawSegment drawSegment;
+			DrawableSegmentBase drawSegment;
 			switch (segment)
 			{
 				case Resistor resistor:
 					{
-						drawSegment = new DrawResistor(segment);
+						drawSegment = new DrawableResistor(segment);
 						break;
 					}
 				case Inductor inductor:
 					{
-						drawSegment = new DrawInductor(segment);
+						drawSegment = new DrawableInductor(segment);
 						break;
 					}
 				case Capacitor capacitor:
 					{
-						drawSegment = new DrawCapacitor(segment);
+						drawSegment = new DrawableCapacitor(segment);
 						break;
 					}
 				case SerialCircuit serialCircuit:
 					{
-						drawSegment = new DrawSerialCircuit(segment);
+						drawSegment = new DrawableSerialCircuit(segment);
 						break;
 					}
 				case ParallelCircuit parallelCircuit:
 					{
-						drawSegment = new DrawParallelCircuit(segment);
+						drawSegment = new DrawableParallelCircuit(segment);
 						break;
 					}
 				default:
@@ -139,7 +139,7 @@ namespace CalculationImpedancesUI
 		public static void FindCoordinateNode()
 		{
 			int halfHeightSegment = 0;
-			foreach (DrawSegment segment in TreeCircuit.Nodes[0].Nodes)
+			foreach (DrawableSegmentBase segment in TreeCircuit.Nodes[0].Nodes)
 			{
 				if (halfHeightSegment < segment.SizeSegment.Height / 2)
 				{
@@ -147,11 +147,11 @@ namespace CalculationImpedancesUI
 				}
 			}
 
-			foreach (DrawSegment segment in TreeCircuit.Nodes[0].Nodes)
+			foreach (DrawableSegmentBase segment in TreeCircuit.Nodes[0].Nodes)
 			{
 				segment.CalculateSize();
 				int distance = 10;
-				var prevNode = segment.PrevNode as DrawSegment;
+				var prevNode = segment.PrevNode as DrawableSegmentBase;
 				if (prevNode == null)
 				{
 					segment.StartCoordinate = new Point(5, halfHeightSegment - segment.SizeSegment.Height / 2);
@@ -161,7 +161,7 @@ namespace CalculationImpedancesUI
 					segment.StartCoordinate = new Point(prevNode.StartCoordinate.X + 
 					     prevNode.SizeSegment.Width + distance, prevNode.LeftСonnectСoordinate.Y - segment.SizeSegment.Height / 2);
 				}
-				if (!(segment is DrawElement))
+				if (!(segment is DrawableElement))
 				{
 					segment.FindCoordinate();
 				}
@@ -182,7 +182,7 @@ namespace CalculationImpedancesUI
 			int width = 0;
 			int height = 0;
 			int distance = 10;
-			foreach (DrawSegment segment in TreeCircuit.Nodes[0].Nodes)
+			foreach (DrawableSegmentBase segment in TreeCircuit.Nodes[0].Nodes)
 			{
 				var calculateSizeSubsegment = segment.CalculateSize();
 				width += calculateSizeSubsegment.Width + distance;
@@ -206,8 +206,8 @@ namespace CalculationImpedancesUI
 			{
 				return;
 			}
-			var firstNode = TreeCircuit.Nodes[0] as DrawSegment;
-			var lastNode = TreeCircuit.Nodes[0].Nodes[TreeCircuit.Nodes[0].Nodes.Count - 1] as DrawSegment;
+			var firstNode = TreeCircuit.Nodes[0] as DrawableSegmentBase;
+			var lastNode = TreeCircuit.Nodes[0].Nodes[TreeCircuit.Nodes[0].Nodes.Count - 1] as DrawableSegmentBase;
 
 			if (firstNode != null)
 			{
@@ -221,14 +221,14 @@ namespace CalculationImpedancesUI
 				}
 			}
 
-			foreach (DrawSegment node in TreeCircuit.Nodes[0].Nodes)
+			foreach (DrawableSegmentBase node in TreeCircuit.Nodes[0].Nodes)
 			{
-				var prevNode = node.PrevNode as DrawSegment;
+				var prevNode = node.PrevNode as DrawableSegmentBase;
 				if (prevNode != null)
 				{
-					if (prevNode.Nodes.Count == 0 && !(prevNode is DrawElement))
+					if (prevNode.Nodes.Count == 0 && !(prevNode is DrawableElement))
 					{
-						prevNode = prevNode.PrevNode as DrawSegment;
+						prevNode = prevNode.PrevNode as DrawableSegmentBase;
 					}
 
 					if (prevNode != null)

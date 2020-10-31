@@ -169,11 +169,11 @@ namespace CalculationImpedancesUI
 			Manager.FillCircuitNodes(Project.SelectedCircuit);
 			var circuitSize = Manager.CalculateCircuitSize();
 			Bitmap bitmap = new Bitmap(circuitSize.Width, circuitSize.Height);
-			DrawSegment.Graphics = Graphics.FromImage(bitmap);
-			DrawSegment.Pen = new Pen(Color.Black);
+			DrawableSegmentBase.Graphics = Graphics.FromImage(bitmap);
+			DrawableSegmentBase.Pen = new Pen(Color.Black);
 
 			Manager.FindCoordinateNode();
-			Manager.Draw(DrawSegment.Graphics, DrawSegment.Pen);
+			Manager.Draw(DrawableSegmentBase.Graphics, DrawableSegmentBase.Pen);
 
 			PictureBox.Image = bitmap;
 		}
