@@ -1,14 +1,16 @@
 ﻿using CalculationImpedancesApp;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CalculationImpedancesUI.Elements
 {
+	/// <summary>
+	/// Contains methods for working with a resistor.
+	/// </summary>
 	class DrawResistor : DrawElement
 	{
+		/// <summary>
+		/// Resistor creation.
+		/// </summary>
+		/// <param name="segment">A circuit segment.</param>
 		public DrawResistor(ISegment segment) : base(segment)
 		{
 		}

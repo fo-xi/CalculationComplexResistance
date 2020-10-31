@@ -1,21 +1,26 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Xml;
 using CalculationImpedancesApp;
 using CalculationImpedancesUI.Elements;
 
 namespace CalculationImpedancesUI
 {
+	/// <summary>
+	/// The class is intended for working with the main circuit. 
+	/// Contains methods for rendering the main circuit.
+	/// </summary>
 	public static class Manager
 	{
+		/// <summary>
+		/// Circuit for the drawing.
+		/// </summary>
 		public static TreeView TreeCircuit { get; set; } = new TreeView();
 
+		/// <summary>
+		/// Fills the tree with nodes.
+		/// </summary>
+		/// <param name="circuit">Selected circuit</param>
 		public static void FillCircuitNodes(Circuit circuit)
 		{
 			TreeCircuit.Nodes.Clear();
@@ -38,6 +43,11 @@ namespace CalculationImpedancesUI
 			ClearTree(TreeCircuit.Nodes[0]);
 		}
 
+		/// <summary>
+		/// Fills segments with elements or sub-segments.
+		/// </summary>
+		/// <param name="parentNode">Parent segment of a sub-segment.</param>
+		/// <param name="segment">Sub-segment</param>
 		private static void FillTreeNode(DrawSegment parentNode, ISegment segment)
 		{
 			foreach (var subSegment in segment.SubSegments)
@@ -51,6 +61,10 @@ namespace CalculationImpedancesUI
 			}
 		}
 
+		/// <summary>
+		/// Clearing empty nodes from a tree.
+		/// </summary>
+		/// <param name="root">Tree root.</param>
 		private static void ClearTree(TreeNode root)
 		{
 			if (root.Nodes.Count == 0)
@@ -76,6 +90,11 @@ namespace CalculationImpedancesUI
 			}
 		}
 
+		/// <summary>
+		/// Find out the type of segment.
+		/// </summary>
+		/// <param name="segment">Segment to be checked.</param>
+		/// <returns></returns>
 		private static DrawSegment GetSegmentType(ISegment segment)
 		{
 			DrawSegment drawSegment;
@@ -114,6 +133,9 @@ namespace CalculationImpedancesUI
 			return drawSegment;
 		}
 
+		/// <summary>
+		/// Finding the coordinates of the circuit nodes.
+		/// </summary>
 		public static void FindCoordinateNode()
 		{
 			int halfHeightSegment = 0;
@@ -147,7 +169,10 @@ namespace CalculationImpedancesUI
 			}
 		}
 
-
+		/// <summary>
+		/// Counting circuit size.
+		/// </summary>
+		/// <returns></returns>
 		public static Size CalculateCircuitSize()
 		{
 			if (TreeCircuit.Nodes.Count == 0)
@@ -170,6 +195,11 @@ namespace CalculationImpedancesUI
 			return new Size(width, height + 1); 
 		}
 
+		/// <summary>
+		/// Drawing the circuit. 
+		/// </summary>
+		/// <param name="graphics">Provides methods for drawing objects.</param>
+		/// <param name="pen">Draws a line.</param>
 		public static void Draw(Graphics graphics, Pen pen)
 		{
 			if (TreeCircuit.Nodes[0].Nodes.Count == 0)
@@ -206,7 +236,6 @@ namespace CalculationImpedancesUI
 						graphics.DrawLine(pen, prevNode.RightСonnectСoordinate, node.LeftСonnectСoordinate);
 					}
 				}
-
 				node.Draw();
 			}
 		}

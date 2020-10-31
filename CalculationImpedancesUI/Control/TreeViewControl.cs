@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using CalculationImpedancesApp;
 
@@ -218,11 +212,11 @@ namespace CalculationImpedancesUI
 	        //TODO: Подозрительно много комментариев... (+)
 	        Point targetPoint = CircuitsTreeView.PointToClient(new Point(e.X, e.Y));
 
-	        // Куда перетаскиваем
-	        SegmentTreeNode targetNode = CircuitsTreeView.GetNodeAt(targetPoint) as SegmentTreeNode;
+			// Where we drag
+			SegmentTreeNode targetNode = CircuitsTreeView.GetNodeAt(targetPoint) as SegmentTreeNode;
 
-	        // Что перетаскиваем
-	        SegmentTreeNode draggedNode = e.Data.GetData(typeof(SegmentTreeNode)) as SegmentTreeNode;
+			// What are we dragging
+			SegmentTreeNode draggedNode = e.Data.GetData(typeof(SegmentTreeNode)) as SegmentTreeNode;
 
 	        if (draggedNode == null || draggedNode.Segment == null)
 	        {
@@ -244,9 +238,10 @@ namespace CalculationImpedancesUI
 		        {
 			        bool canDrop = true;
 
-			        // Поднимаемся вверх от узла, на который мы упали,
-			        // чтобы узнать, является ли targetNode нашим родителем
-			        while (canDrop && (parentNode != null))
+					//Climb up from the node we fell on 
+					//to find out if targetNode is our parent
+
+					while (canDrop && (parentNode != null))
 			        {
 				        canDrop = !Object.ReferenceEquals(draggedNode, parentNode);
 				        parentNode = parentNode.Parent;

@@ -1,16 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Drawing;
 using CalculationImpedancesApp;
-using System.Windows.Forms;
 
 namespace CalculationImpedancesUI
 {
+	/// <summary>
+	/// The class contains methods for working with serial segment.
+	/// </summary>
 	public class DrawSerialCircuit : DrawSegment 
 	{
+		/// <summary>
+		/// Create a serial segment.
+		/// </summary>
+		/// <param name="segment">A circuit segment.</param>
 		public DrawSerialCircuit(ISegment segment) : base(segment)
 		{ 
 		}

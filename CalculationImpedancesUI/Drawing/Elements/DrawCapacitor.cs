@@ -1,15 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CalculationImpedancesApp;
+﻿using CalculationImpedancesApp;
 using System.Drawing;
 
 namespace CalculationImpedancesUI.Elements
 {
+	/// <summary>
+	/// Contains methods for working with a capacitor.
+	/// </summary>
 	class DrawCapacitor : DrawElement
 	{
+		/// <summary>
+		/// Capacitor creation.
+		/// </summary>
+		/// <param name="segment">A circuit segment.</param>
 		public DrawCapacitor(ISegment segment) : base(segment)
 		{
 		}

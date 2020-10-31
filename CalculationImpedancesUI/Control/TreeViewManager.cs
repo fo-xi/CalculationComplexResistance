@@ -1,14 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
-using System.Threading.Tasks;
+﻿using System.Windows.Forms;
 using CalculationImpedancesApp;
 
 namespace CalculationImpedancesUI
 {
-	public static class  TreeViewManager
+	/// <summary>
+	/// The class contains methods for filling the tree.
+	/// </summary>
+	public static class TreeViewManager
 	{
 		/// <summary>
 		/// Circuit tree.

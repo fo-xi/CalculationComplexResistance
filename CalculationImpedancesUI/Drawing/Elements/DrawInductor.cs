@@ -1,14 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CalculationImpedancesApp;
+﻿using CalculationImpedancesApp;
 
 namespace CalculationImpedancesUI.Elements
 {
+	/// <summary>
+	/// Contains methods for working with a inductor.
+	/// </summary>
 	class DrawInductor : DrawElement
 	{
+		/// <summary>
+		/// Inductor creation.
+		/// </summary>
+		/// <param name="segment">A circuit segment.</param>
 		public DrawInductor(ISegment segment) : base(segment)
 		{
 		}

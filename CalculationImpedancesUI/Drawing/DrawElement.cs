@@ -1,21 +1,32 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Drawing;
 using CalculationImpedancesApp;
-using System.Windows.Forms;
 
 namespace CalculationImpedancesUI
 {
+	/// <summary>
+	/// The class contains methods for working with circuit elements.
+	/// </summary>
 	public abstract class DrawElement : DrawSegment
 	{
+		/// <summary>
+		/// Element width.
+		/// </summary>
 		protected static readonly int elementWidth = 48;
-		protected static readonly int elementHeight = 24;
-		protected static readonly int distance = 10;
-		protected static readonly Point startingPoint = new Point(0, 0);
 
+		/// <summary>
+		/// Element height.
+		/// </summary>
+		protected static readonly int elementHeight = 24;
+
+		/// <summary>
+		/// Distance between elements.
+		/// </summary>
+		protected static readonly int distance = 10;
+
+		/// <summary>
+		/// Create a circuit element.
+		/// </summary>
+		/// <param name="segment">A circuit segment.</param>
 		public DrawElement(ISegment segment) : base(segment)
 		{
 			SizeSegment = new Size(elementWidth, elementHeight);
@@ -29,15 +40,13 @@ namespace CalculationImpedancesUI
 		public override void FindCoordinate()
 		{
 			var prevNode = PrevNode as DrawElement;
-
 			if (prevNode == null)
 			{
-				StartCoordinate = startingPoint;
+				StartCoordinate = new Point(StartCoordinate.X, StartCoordinate.Y);
 				return;
 			}
 			StartCoordinate = new Point(prevNode.StartCoordinate.X + prevNode.SizeSegment.Width + distance,
 				prevNode.StartCoordinate.Y);
-
 			CalculateСonnectСoordinate();
 		}
 	}

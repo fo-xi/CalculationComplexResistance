@@ -1,17 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.SqlTypes;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Drawing;
 using CalculationImpedancesApp;
-using System.Windows.Forms;
 
 namespace CalculationImpedancesUI
 {
+	/// <summary>
+	/// The class contains methods for working with parallel segment.
+	/// </summary>
 	class DrawParallelCircuit : DrawSegment
 	{
+		/// <summary>
+		/// Create a parallel segment.
+		/// </summary>
+		/// <param name="segment">A circuit segment.</param>
 		public DrawParallelCircuit(ISegment segment) : base(segment)
 		{ 
 		}
