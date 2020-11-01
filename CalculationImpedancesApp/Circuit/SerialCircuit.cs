@@ -5,6 +5,7 @@ using System.Numerics;
 using System.Collections.ObjectModel;
 using System.Globalization;
 
+//TODO: Несоответствие дефолтному namespace
 namespace CalculationImpedancesApp
 {
 	/// <summary>
@@ -12,6 +13,7 @@ namespace CalculationImpedancesApp
     /// </summary>
     public class SerialCircuit : ISegment
     {
+        //TODO: Не используется
 	    /// <summary>
         /// Serial circuit segment name.
         /// </summary>
@@ -30,6 +32,7 @@ namespace CalculationImpedancesApp
         /// <summary>
         /// Create a serial circuit segment.
         /// </summary>
+        /// //TODO Сигнатура XML комментария и метода различны
         /// <param name="name">Serial circuit name.</param>
         /// <param name="subSegmentsObservable">Serial circuit segment.</param>
         public SerialCircuit(SegmentsObservableCollection subSegmentsObservable)

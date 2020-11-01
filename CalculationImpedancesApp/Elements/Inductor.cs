@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Numerics;
-
+//TODO: Несоответствие дефолтному namespace
 namespace CalculationImpedancesApp
 {
     /// <summary>

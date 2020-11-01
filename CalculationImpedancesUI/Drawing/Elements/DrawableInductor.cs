@@ -1,7 +1,8 @@
 ﻿using CalculationImpedancesApp;
-
+//TODO: Несоответствие дефолтному namespace
 namespace CalculationImpedancesUI.Elements
 {
+	//TODO: RSDN
 	/// <summary>
 	/// Contains methods for working with a inductor.
 	/// </summary>
@@ -25,6 +26,7 @@ namespace CalculationImpedancesUI.Elements
 
 			for (int i = 0; i < numberSemicircles; i++)
 			{
+				//TODO: RSDN - длины строк
 				Graphics.DrawArc(Pen, x, y, semicircleWidth, semicircleHeight, 180, 180);
 				x += semicircleWidth;
 			}

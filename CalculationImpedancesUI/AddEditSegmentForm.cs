@@ -18,6 +18,7 @@ namespace CalculationImpedancesUI
 		/// </summary>
 		public IElement NewElement { get; set; }
 
+		//TODO: RSDN - именование
 		/// <summary>
 		/// Type of new circuit element.
 		/// </summary>
@@ -48,6 +49,7 @@ namespace CalculationImpedancesUI
 			{
 				switch (TypeComboBox.SelectedIndex)
 				{
+					//TODO: RSDN
 					case 1:
 						{
 							NewElement = new Resistor(name, value);

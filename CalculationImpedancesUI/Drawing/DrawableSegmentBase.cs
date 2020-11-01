@@ -2,7 +2,7 @@
 using CalculationImpedancesApp;
 using System.Windows.Forms;
 
-
+//TODO: Несоответствие дефолтному namespace
 namespace CalculationImpedancesUI
 {
 	public abstract class DrawableSegmentBase : TreeNode
@@ -72,6 +72,7 @@ namespace CalculationImpedancesUI
 		/// </summary>
 		public void CalculateСonnectСoordinate()
 		{
+			//TODO: RSDN - длины строк
 			LeftСonnectСoordinate = new Point(StartCoordinate.X, (SizeSegment.Height / 2) + StartCoordinate.Y);
 			RightСonnectСoordinate = new Point(StartCoordinate.X + SizeSegment.Width,
 				(SizeSegment.Height / 2) + StartCoordinate.Y);

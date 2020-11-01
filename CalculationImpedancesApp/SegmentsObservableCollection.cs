@@ -41,6 +41,7 @@ namespace CalculationImpedancesApp
                 new ElementEventArgs($"Removed element to the circuit"));
         }
 
+        //TODO: RSDN - именование
         /// <summary>
         /// CollectionChanged event registration.
         /// </summary>

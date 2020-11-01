@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Numerics;
 using System.Collections.Generic;
-
+//TODO: Несоответствие дефолтному namespace
 namespace CalculationImpedancesApp
 {
     /// <summary>

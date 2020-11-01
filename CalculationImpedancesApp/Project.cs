@@ -57,6 +57,7 @@ namespace CalculationImpedancesApp
 					new Resistor("ghj5", 45.8),
 					new Inductor("i76", 12.4),
 					new Capacitor("fg4", 22.6)
+                    //TODO: Зачем эти комменты
 					//new SerialCircuit(new SegmentsObservableCollection
 					//{
 					//	new Inductor("jng5", 56.0),
@@ -87,6 +88,7 @@ namespace CalculationImpedancesApp
 					new Inductor("bb7", 11.3),
 					new Resistor("ji9", 81.0)
 				})
+                //TODO: Зачем эти комменты
 				//new ParallelCircuit(new SegmentsObservableCollection
 				//{
 				//	new Inductor("bb7", 11.3),

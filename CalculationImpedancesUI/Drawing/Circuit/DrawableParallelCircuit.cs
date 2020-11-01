@@ -1,8 +1,9 @@
 ﻿using System.Drawing;
 using CalculationImpedancesApp;
-
+//TODO: Несоответствие дефолтному namespace
 namespace CalculationImpedancesUI
 {
+	//TODO: RSDN
 	/// <summary>
 	/// The class contains methods for working with parallel segment.
 	/// </summary>
@@ -16,8 +17,10 @@ namespace CalculationImpedancesUI
 		{ 
 		}
 
+		//TODO: XML
 		public override Size CalculateSize()
 		{
+			//TODO: Дубль
 			int width = 0;
 			int height = 0;
 			int distance = 10;
@@ -36,10 +39,12 @@ namespace CalculationImpedancesUI
 			return SizeSegment;
 		}
 
+		//TODO: XML
 		public override void FindCoordinate()
 		{
 			foreach (DrawableSegmentBase segment in Nodes)
 			{
+				//TODO: RSDN - длины строк
 				int middle = (SizeSegment.Width / 2) - (segment.SizeSegment.Width / 2);
 
 				int distance = 10;
@@ -61,12 +66,13 @@ namespace CalculationImpedancesUI
 			}
 		}
 
+		//TODO: XML
 		public override void Draw()
 		{
 			foreach (DrawableSegmentBase node in Nodes)
 			{
 				node.Draw();
-
+				//TODO: RSDN - длины строк
 				var leftConnect = new Point(LeftСonnectСoordinate.X, node.LeftСonnectСoordinate.Y);
 				var rightConnect = new Point(RightСonnectСoordinate.X, node.RightСonnectСoordinate.Y);
 
@@ -84,7 +90,7 @@ namespace CalculationImpedancesUI
 
 			var firstNode = Nodes[0] as DrawableSegmentBase;
 			var lastNode = Nodes[Nodes.Count - 1] as DrawableSegmentBase;
-
+			//TODO: RSDN - длины строк
 			var firstPointRightConnection = new Point(RightСonnectСoordinate.X, firstNode.RightСonnectСoordinate.Y);
 			var lastPointRightConnection = new Point(RightСonnectСoordinate.X, lastNode.RightСonnectСoordinate.Y);
 

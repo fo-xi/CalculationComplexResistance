@@ -13,7 +13,6 @@ namespace CalculationImpedancesUI
 {
 	public partial class SegmentForm : Form
 	{
-		//TODO: RSDN? (+)
 		/// <summary>
 		/// Used to create a new circuit segment.
 		/// </summary>
@@ -22,7 +21,7 @@ namespace CalculationImpedancesUI
 		/// <summary>
 		/// New circuit segment type.
 		/// </summary>
-		//TODO: Почему публично? (+)
+		//TODO: RSDN
 		private readonly List<string> SegmentType = new List<string>
 		{
 			"Serial",
@@ -36,6 +35,7 @@ namespace CalculationImpedancesUI
 
 		private void OKButton_Click(object sender, EventArgs e)
 		{
+			//TODO: RSDN
 			var tempSubSegments = NewSegment != null ? NewSegment.SubSegments : new SegmentsObservableCollection();
 			switch (TypeComboBox.SelectedIndex)
 			{
@@ -61,7 +61,7 @@ namespace CalculationImpedancesUI
 			{
 				return;
 			}
-
+			//TODO: switch-case
 			if (NewSegment is ParallelCircuit)
 			{
 				TypeComboBox.Text = "Parallel";

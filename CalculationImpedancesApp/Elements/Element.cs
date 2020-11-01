@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Numerics;
 using System.Text;
 
+//TODO: Несоответствие дефолтному namespace
 namespace CalculationImpedancesApp
 {
+	//TODO: RSDN - именование
 	/// <summary>
 	/// Base class for all chain elements.
 	/// </summary>
@@ -39,6 +41,7 @@ namespace CalculationImpedancesApp
 			{
 				if (value.Length == 0)
 				{
+					//TODO: RSDN
 					throw new ArgumentException($"The {nameof(Name)} cannot be empty!");
 				}
 				_name = value;
@@ -56,6 +59,7 @@ namespace CalculationImpedancesApp
 			}
 			set
 			{
+				//TODO: RSDN
 				if (value < 0)
 				{
 					throw new ArgumentException($"The {nameof(Value)} cannot be negative!");
@@ -69,6 +73,7 @@ namespace CalculationImpedancesApp
 			}
 		}
 
+        //TODO: Правильнее понизить видимость конструктора
 		/// <summary>
 		/// Creates an element.
 		/// </summary>

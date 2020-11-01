@@ -1,6 +1,6 @@
 ﻿using System.Drawing;
 using CalculationImpedancesApp;
-
+//TODO: Несоответствие дефолтному namespace
 namespace CalculationImpedancesUI
 {
 	/// <summary>
@@ -15,9 +15,10 @@ namespace CalculationImpedancesUI
 		public DrawableSerialCircuit(ISegment segment) : base(segment)
 		{ 
 		}
-
+		//TODO: XML
 		public override Size CalculateSize()
 		{
+			//TODO: Дубль
 			int width = 0;
 			int height = 0;
 			int distance = 10;
@@ -50,7 +51,7 @@ namespace CalculationImpedancesUI
 			{
 				int distance = 10;
 				var prevNode = segment.PrevNode as DrawableSegmentBase;
-
+				//TODO: RSDN - длины строк
 				if (prevNode == null)
 				{
 					segment.StartCoordinate = new Point(StartCoordinate.X,
@@ -69,6 +70,7 @@ namespace CalculationImpedancesUI
 				segment.CalculateСonnectСoordinate();
 			}
 		}
+		//TODO: XML
 		public override void Draw()
 		{
 			if (Nodes.Count == 0)

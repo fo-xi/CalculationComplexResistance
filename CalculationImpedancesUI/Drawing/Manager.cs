@@ -3,7 +3,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using CalculationImpedancesApp;
 using CalculationImpedancesUI.Elements;
-
+//TODO: Несоответствие дефолтному namespace
 namespace CalculationImpedancesUI
 {
 	/// <summary>

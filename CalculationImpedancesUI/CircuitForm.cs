@@ -13,7 +13,6 @@ namespace CalculationImpedancesUI
 {
 	public partial class CircuitForm : Form
 	{
-		//TODO: RSDN (+)
 		/// <summary>
 		/// Used to create a new circuit.
 		/// </summary>
@@ -28,6 +27,7 @@ namespace CalculationImpedancesUI
 		{
 			try
 			{
+				//TODO: RSDN
 				NewCircuit = new Circuit(nameTextBox.Text, new SegmentsObservableCollection());
 				this.DialogResult = DialogResult.OK;
 			}
@@ -38,6 +38,7 @@ namespace CalculationImpedancesUI
 			}
 		}
 
+        //TODO: Не используемый обработчик
 		private void CancelButton_Click(object sender, EventArgs e)
 		{
 			this.DialogResult = DialogResult.Cancel;

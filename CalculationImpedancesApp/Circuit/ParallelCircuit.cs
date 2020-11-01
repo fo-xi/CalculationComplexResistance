@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Numerics;
 
+//TODO: Несоответствие дефолтному namespace
 namespace CalculationImpedancesApp
 {
 	/// <summary>
@@ -10,6 +11,7 @@ namespace CalculationImpedancesApp
 	/// </summary>
     public class ParallelCircuit : ISegment
 	{
+        //TODO: Не используется
 		/// <summary>
         /// Parallel circuit segment name.
         /// </summary>
@@ -28,6 +30,7 @@ namespace CalculationImpedancesApp
         /// <summary>
         /// Create a parallel circuit segment.
         /// </summary>
+        /// //TODO Сигнатура XML комментария и метода различны
         /// <param name="name">Parallel circuit name.</param>
         /// <param name="subSegmentsObservable">Parallel circuit segment.</param>
         public ParallelCircuit(SegmentsObservableCollection subSegmentsObservable)
@@ -68,6 +71,7 @@ namespace CalculationImpedancesApp
 
             foreach (ISegment segment in SubSegments)
             {
+                //TODO: RSDN
 	            if (segment.CalculateZ(frequencies).Real == 0 && segment.CalculateZ(frequencies).Imaginary == 0)
 	            {
 		            continue;

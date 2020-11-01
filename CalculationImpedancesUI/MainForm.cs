@@ -66,7 +66,6 @@ namespace CalculationImpedancesUI
 				if (circuit.DialogResult == DialogResult.OK)
 				{
 					Project.Circuits[selectedIndex].Name = circuit.NewCircuit.Name;
-					//TODO: Дубль (+)
 					UpdateComboBox();
 				}
 				Calculate();
@@ -82,14 +81,13 @@ namespace CalculationImpedancesUI
 					MessageBoxButtons.OK, MessageBoxIcon.Warning);
 				return;
 			}
-			//TODO: RSDN (+)
+
 			var result = MessageBox.Show("Do you really want to remove this circuit?",
 				"Remove Circuit", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
 			if (result == DialogResult.OK)
 			{
 				var selectedCircuit = Project.Circuits[selectedIndex];
 				Project.Circuits.Remove(selectedCircuit);
-				//TODO: Дубль (+)
 				UpdateComboBox();
 			}
 		}

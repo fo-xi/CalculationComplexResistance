@@ -29,6 +29,7 @@ namespace CalculationImpedancesUI
 			{
 				SegmentTreeNode subSegmentNode = new SegmentTreeNode
 				{
+					//TODO: RSDN
 					Text = subSegment is IElement ? subSegment.ToString() : subSegment.Name,
 					Segment = subSegment
 				};
@@ -48,6 +49,7 @@ namespace CalculationImpedancesUI
 		/// </summary>
 		/// <param name="parentNode">Parent node.</param>
 		/// <param name="segment">Element.</param>
+		/// //TODO: RSDN - длины строк
 		private static void FillTreeNode(SegmentTreeNode parentNode, ISegment segment)
 		{
 			if (segment is IElement)
@@ -65,6 +67,7 @@ namespace CalculationImpedancesUI
 				{
 					SegmentTreeNode segmentNode = new SegmentTreeNode
 					{
+						//TODO: RSDN
 						Text = subSegment is IElement ? subSegment.ToString() : subSegment.Name,
 						Segment = subSegment
 					};
