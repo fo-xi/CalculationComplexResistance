@@ -13,7 +13,7 @@ namespace NUnitTest
 	    {
 		    Assert.DoesNotThrow(() =>
 		    {
-			    var project = new Project();
+                var project = new Project();
 		    }, "The Project constructor create a capacitor project");
 	    }
     }

@@ -4,6 +4,7 @@ using System.Numerics;
 using System.Text;
 using CalculationImpedancesApp;
 using NUnit.Framework;
+using CalculationImpedancesApp.Elements;
 
 namespace NUnitTest
 {

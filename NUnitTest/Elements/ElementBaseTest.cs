@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Text;
 using CalculationImpedancesApp;
 using NUnit.Framework;
+using CalculationImpedancesApp.Elements;
 
 namespace NUnitTest
 {
-	class ElementTest
+	class ElementBaseTest
 	{
 		[Test(Description = "Positive test of the getter Name")]
 		public void TestNameGet_CorrectValue()

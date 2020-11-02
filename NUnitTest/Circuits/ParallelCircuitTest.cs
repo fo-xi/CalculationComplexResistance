@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Text;
 using CalculationImpedancesApp;
 using NUnit.Framework;
+using CalculationImpedancesApp.Circuits;
+using CalculationImpedancesApp.Elements;
 
 namespace NUnitTest
 {

@@ -4,6 +4,8 @@ using System.Text;
 using CalculationImpedancesApp;
 using NUnit.Framework;
 using System.Numerics;
+using CalculationImpedancesApp.Circuits;
+using CalculationImpedancesApp.Elements;
 
 namespace NUnitTest
 {
