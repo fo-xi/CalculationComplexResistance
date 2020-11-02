@@ -1,15 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Numerics;
 
-//TODO: Несоответствие дефолтному namespace
-namespace CalculationImpedancesApp
+//TODO: Несоответствие дефолтному namespace (+)
+namespace CalculationImpedancesApp.Elements
 {
     /// <summary>
     /// A class representing a capacitor.
     /// </summary>
-    public class Capacitor : Element
+    public class Capacitor : ElementBase
     {
 	    /// <summary>
         /// Creates a capacitor.

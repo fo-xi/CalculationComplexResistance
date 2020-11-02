@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Numerics;
 
-//TODO: Несоответствие дефолтному namespace
-namespace CalculationImpedancesApp
+//TODO: Несоответствие дефолтному namespace (+)
+namespace CalculationImpedancesApp.Circuits
 {
     /// <summary>
     /// Circuit class

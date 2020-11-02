@@ -1,16 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Numerics;
-using System.Text;
 
-//TODO: Несоответствие дефолтному namespace
-namespace CalculationImpedancesApp
+//TODO: Несоответствие дефолтному namespace (+)
+namespace CalculationImpedancesApp.Elements
 {
-	//TODO: RSDN - именование
+	//TODO: RSDN - именование (+)
 	/// <summary>
 	/// Base class for all chain elements.
 	/// </summary>
-	public abstract class Element : IElement
+	public abstract class ElementBase : IElement
 	{
 		/// <summary>
 		/// Element name.
@@ -44,6 +42,7 @@ namespace CalculationImpedancesApp
 					//TODO: RSDN
 					throw new ArgumentException($"The {nameof(Name)} cannot be empty!");
 				}
+
 				_name = value;
 			}
 		}
@@ -64,22 +63,24 @@ namespace CalculationImpedancesApp
 				{
 					throw new ArgumentException($"The {nameof(Value)} cannot be negative!");
 				}
+
 				if (value != _value)
 				{
 					SegmentChanged?.Invoke(this,
 						new ElementEventArgs($"The capacitor changed the {nameof(Value)} to {Value}!"));
 				}
+
 				_value = value;
 			}
 		}
 
-        //TODO: Правильнее понизить видимость конструктора
+        //TODO: Правильнее понизить видимость конструктора (+)
 		/// <summary>
 		/// Creates an element.
 		/// </summary>
 		/// <param name="name">Element name</param>
 		/// <param name="value">Element value</param>
-		public Element(string name, double value)
+		protected ElementBase(string name, double value)
 		{
 			Name = name;
 			Value = value;

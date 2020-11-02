@@ -1,14 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Numerics;
-//TODO: Несоответствие дефолтному namespace
-namespace CalculationImpedancesApp
+
+//TODO: Несоответствие дефолтному namespace (+)
+namespace CalculationImpedancesApp.Elements
 {
     /// <summary>
     /// A class representing a inductor.
     /// </summary>
-    public class Inductor : Element
+    public class Inductor : ElementBase
     {
 	    /// <summary>
         /// Creates a inductor.

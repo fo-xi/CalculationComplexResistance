@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Numerics;
-using System.Collections.Generic;
-//TODO: Несоответствие дефолтному namespace
-namespace CalculationImpedancesApp
+
+//TODO: Несоответствие дефолтному namespace (+)
+namespace CalculationImpedancesApp.Elements
 {
     /// <summary>
     /// A class representing a resistor.
     /// </summary>
-    public class Resistor : Element
+    public class Resistor : ElementBase
     {
 	    /// <summary>
         /// Creates a resistor.

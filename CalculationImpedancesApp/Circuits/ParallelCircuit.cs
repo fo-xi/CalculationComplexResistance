@@ -1,21 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Numerics;
 
-//TODO: Несоответствие дефолтному namespace
-namespace CalculationImpedancesApp
+//TODO: Несоответствие дефолтному namespace (+)
+namespace CalculationImpedancesApp.Circuits
 {
 	/// <summary>
 	/// Parallel circuit segment.
 	/// </summary>
     public class ParallelCircuit : ISegment
 	{
-        //TODO: Не используется
-		/// <summary>
-        /// Parallel circuit segment name.
-        /// </summary>
-        private string _name;
+        //TODO: Не используется(+)
 
         /// <summary>
         /// Collection of serial parallel segment subsegments.
@@ -30,8 +24,7 @@ namespace CalculationImpedancesApp
         /// <summary>
         /// Create a parallel circuit segment.
         /// </summary>
-        /// //TODO Сигнатура XML комментария и метода различны
-        /// <param name="name">Parallel circuit name.</param>
+        /// //TODO Сигнатура XML комментария и метода различны (+)
         /// <param name="subSegmentsObservable">Parallel circuit segment.</param>
         public ParallelCircuit(SegmentsObservableCollection subSegmentsObservable)
         {

@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Numerics;
+using CalculationImpedancesApp.Circuits;
+using CalculationImpedancesApp.Elements;
 
 namespace CalculationImpedancesApp
 {
@@ -57,27 +59,8 @@ namespace CalculationImpedancesApp
 					new Resistor("ghj5", 45.8),
 					new Inductor("i76", 12.4),
 					new Capacitor("fg4", 22.6)
-                    //TODO: Зачем эти комменты
-					//new SerialCircuit(new SegmentsObservableCollection
-					//{
-					//	new Inductor("jng5", 56.0),
-					//	new Resistor("fr4tt", 32.6),
-					//	new ParallelCircuit(new SegmentsObservableCollection()
-					//	{
-					//		new Capacitor("th", 24.6),
-					//		new SerialCircuit(new SegmentsObservableCollection()
-					//		{
-					//			new Resistor("g55", 43.6),
-					//			new Resistor("shf7", 21),
-					//		})
-					//	})
-					//}),
-					//new ParallelCircuit(new SegmentsObservableCollection
-					//{
-					//	new Resistor("g56", 7.8),
-					//	new Capacitor("duj", 22.6)
-					//}),
-				};
+                    //TODO: Зачем эти комменты (+)
+                };
 			Circuits.Add(new Circuit("Circuit No. 1", segmentsObservable));
 
 			segmentsObservable = new SegmentsObservableCollection
@@ -88,29 +71,8 @@ namespace CalculationImpedancesApp
 					new Inductor("bb7", 11.3),
 					new Resistor("ji9", 81.0)
 				})
-                //TODO: Зачем эти комменты
-				//new ParallelCircuit(new SegmentsObservableCollection
-				//{
-				//	new Inductor("bb7", 11.3),
-				//	new Resistor("ji9", 81.0),
-				//	new Capacitor("trg", 43.2),
-				//	new SerialCircuit(new SegmentsObservableCollection()
-				//	{
-				//		new Resistor("asf", 54),
-				//		new Resistor("efe3", 32.8),
-				//	})
-				//}),
-				//new ParallelCircuit(new SegmentsObservableCollection
-				//{
-				//	new Inductor("dfg4", 55.8),
-				//	new Inductor("gg6", 89.3),
-				//}),
-				//new SerialCircuit(new SegmentsObservableCollection
-				//{
-				//	new Capacitor("j55t", 32.5),
-				//	new Resistor("sct", 4.6)
-				//})
-			};
+                //TODO: Зачем эти комменты (+)
+            };
 			Circuits.Add(new Circuit("Circuit No. 2", segmentsObservable));
 
 			segmentsObservable = new SegmentsObservableCollection

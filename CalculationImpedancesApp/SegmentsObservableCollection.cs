@@ -23,7 +23,7 @@ namespace CalculationImpedancesApp
         protected override void InsertItem(int index, ISegment item)
         {
             base.InsertItem(index, item);
-            item.SegmentChanged += item_SegmentChanged;
+            item.SegmentChanged += OnSegmentChanged;
             CollectionChanged?.Invoke(this, 
                 new ElementEventArgs($"Added element to the circuit"));
         }
@@ -36,18 +36,18 @@ namespace CalculationImpedancesApp
         {
             var item = this[index];
             base.RemoveItem(index);
-            item.SegmentChanged -= item_SegmentChanged;
+            item.SegmentChanged -= OnSegmentChanged;
             CollectionChanged?.Invoke(this,
                 new ElementEventArgs($"Removed element to the circuit"));
         }
 
-        //TODO: RSDN - именование
+        //TODO: RSDN - именование (+)
         /// <summary>
         /// CollectionChanged event registration.
         /// </summary>
         /// <param name="sender">Object.</param>
         /// <param name="e">EventArgs.</param>
-        private void item_SegmentChanged(object sender, EventArgs e)
+        private void OnSegmentChanged(object sender, EventArgs e)
         {
             CollectionChanged?.Invoke(sender, e);
         }
