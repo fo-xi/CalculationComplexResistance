@@ -1,8 +1,8 @@
 ﻿using System.Drawing;
 using CalculationImpedancesApp;
 
-//TODO: Несоответствие дефолтному namespace
-namespace CalculationImpedancesUI
+//TODO: Несоответствие дефолтному namespace (+)
+namespace CalculationImpedancesUI.Drawing
 {
 
 	/// <summary>
@@ -10,48 +10,44 @@ namespace CalculationImpedancesUI
 	/// </summary>
 	public abstract class DrawableElement : DrawableSegmentBase
 	{
-
-		/// <summary>
-		/// Element width.
-		/// </summary>
-		protected static readonly int elementWidth = 48;
-
-		/// <summary>
-		/// Element height.
-		/// </summary>
-		protected static readonly int elementHeight = 24;
-
-		/// <summary>
-		/// Distance between elements.
-		/// </summary>
-		protected static readonly int distance = 10;
-
-		/// <summary>
+        /// <summary>
 		/// Create a circuit element.
 		/// </summary>
 		/// <param name="segment">A circuit segment.</param>
 		public DrawableElement(ISegment segment) : base(segment)
 		{
-			SizeSegment = new Size(elementWidth, elementHeight);
-		}
+            Width = 48;
+            Height = 24;
+			SizeSegment = new Size(Width, Height);
+        }
 
+		/// <summary>
+		/// Calculating the element size.
+		/// </summary>
+		/// <returns></returns>
 		public override Size CalculateSize()
 		{
 			return SizeSegment;
 		}
-		//TODO: XML
+		//TODO: XML (+)
+		/// <summary>
+		/// Find the coordinate of an element.
+		/// </summary>
 		public override void FindCoordinate()
 		{
 			var prevNode = PrevNode as DrawableElement;
 			if (prevNode == null)
 			{
-				//TODO: RSDN - длины строк
-				StartCoordinate = new Point(StartCoordinate.X, StartCoordinate.Y);
+				//TODO: RSDN - длины строк (+)
+				StartCoordinate = 
+                    new Point(StartCoordinate.X, StartCoordinate.Y);
 				return;
 			}
-			//TODO: RSDN - длины строк
-			StartCoordinate = new Point(prevNode.StartCoordinate.X + prevNode.SizeSegment.Width + distance,
-				prevNode.StartCoordinate.Y);
+			//TODO: RSDN - длины строк (+)
+			StartCoordinate = 
+                new Point(prevNode.StartCoordinate.X + 
+                    prevNode.SizeSegment.Width + Distance, 
+                    prevNode.StartCoordinate.Y);
 			CalculateСonnectСoordinate();
 		}
 	}

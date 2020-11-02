@@ -2,19 +2,19 @@
 using System.Drawing;
 using System.Windows.Forms;
 using CalculationImpedancesApp;
+using CalculationImpedancesUI.Control;
 
 namespace CalculationImpedancesUI
 {
     public partial class TreeViewControl : UserControl
     {
-        //TODO: Убрать этот делегат, использовать обычный EventHandler
-	    public delegate void CalculateHandler();
+        //TODO: Убрать этот делегат, использовать обычный EventHandler (+)
 
-		/// <summary>
+        /// <summary>
 		/// Event revealing when calculating circuit impedance.
 		/// Used when updating circuit data.
 		/// </summary>
-		public event CalculateHandler NotifyCalculate;
+		public event EventHandler NotifyCalculate;
 
 		public TreeViewControl()
         {
@@ -29,12 +29,11 @@ namespace CalculationImpedancesUI
 			{
 				var selectedIndex = CheckElementSelection();
 				var segment = segmentForm.NewSegment;
-
-				if (selectedIndex.Segment is IElement)
+                if (selectedIndex.Segment is IElement)
 				{
-					//TODO: RSDN
-					MessageBox.Show("Element cannot be created from element", "Error",
-						MessageBoxButtons.OK, MessageBoxIcon.Error);
+					//TODO: RSDN (+)
+					MessageBox.Show("Element cannot be created from element",
+                        "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 					return;
 				}
 
@@ -52,7 +51,7 @@ namespace CalculationImpedancesUI
 					Text = segmentForm.NewSegment.Name,
 					Segment = segment
 				});
-				NotifyCalculate?.Invoke();
+				NotifyCalculate?.Invoke(this, e);
 			}
         }
 
@@ -65,8 +64,11 @@ namespace CalculationImpedancesUI
 				{
 					return;
 				}
-				//TODO: RSDN
-				var segmentForm = new SegmentForm { NewSegment = selectedIndex.Segment };
+				//TODO: RSDN (+)
+				var segmentForm = new SegmentForm
+                {
+                    NewSegment = selectedIndex.Segment
+                };
 				segmentForm.ShowDialog();
 				if (segmentForm.DialogResult == DialogResult.OK)
 				{
@@ -82,7 +84,7 @@ namespace CalculationImpedancesUI
 						parent.Segment.SubSegments.Add(segmentForm.NewSegment);
 					}
 					TreeViewManager.FillCircuitNodes(Project.SelectedCircuit);
-					NotifyCalculate?.Invoke();
+					NotifyCalculate?.Invoke(this, e);
 				}
 			}
 			catch (ArgumentNullException exception)
@@ -104,34 +106,24 @@ namespace CalculationImpedancesUI
 					return;
 				}
 
-				//TODO: Есть ощущение, что ниже дубль логики
-				if (selectedIndex == CircuitsTreeView.Nodes[0])
-				{
-					Project.SelectedCircuit.SubSegments.Add(elementForm.NewElement);
-				}
-				else if (!(selectedIndex.Segment is IElement))
-				{
-					selectedIndex.Segment.SubSegments.Add(elementForm.NewElement);
-				}
-				else
-				{
-					selectedIndex = selectedIndex.Parent as SegmentTreeNode;
-					if (selectedIndex == CircuitsTreeView.Nodes[0])
-					{
-						Project.SelectedCircuit.SubSegments.Add(elementForm.NewElement);
-					}
-					else
-					{
-						selectedIndex.Segment.SubSegments.Add(elementForm.NewElement);
-					}
-				}
+				//TODO: Есть ощущение, что ниже дубль логики (+)
+                var subSements = Project.SelectedCircuit.SubSegments;
+                if (!(selectedIndex.Segment is IElement))
+                {
+                    subSements = selectedIndex.Segment.SubSegments;
+                }
+                else if (selectedIndex.Parent is SegmentTreeNode parent && parent.Segment != null)
+                {
+                    subSements = parent.Segment.SubSegments;
+                }
 
-				selectedIndex.Nodes.Add(new SegmentTreeNode
+				subSements.Add(elementForm.NewElement);
+                selectedIndex.Nodes.Add(new SegmentTreeNode
 				{
 					Text = elementForm.NewElement.ToString(),
 					Segment = elementForm.NewElement
 				});
-				NotifyCalculate?.Invoke();
+				NotifyCalculate?.Invoke(this, e);
 			}
 			catch (ArgumentNullException exception)
 			{
@@ -145,8 +137,11 @@ namespace CalculationImpedancesUI
 			try
 			{
 				var selectedIndex = CheckElementSelection();
-				//TODO: RSDN
-				var elementForm = new AddEditSegmentForm { NewElement = selectedIndex.Segment as IElement };
+				//TODO: RSDN (+)
+				var elementForm = new AddEditSegmentForm
+                {
+                    NewElement = selectedIndex.Segment as IElement
+                };
 				elementForm.ShowDialog();
 				if (elementForm.DialogResult == DialogResult.OK)
 				{
@@ -159,7 +154,7 @@ namespace CalculationImpedancesUI
 						Text = elementForm.NewElement.ToString(),
 						Segment = elementForm.NewElement
 					});
-					NotifyCalculate?.Invoke();
+					NotifyCalculate?.Invoke(this, e);
 				}
 			}
 			catch (ArgumentNullException exception)
@@ -183,17 +178,16 @@ namespace CalculationImpedancesUI
 				{
 					var parent = selectedIndex.Parent as SegmentTreeNode;
 					var element = selectedIndex.Segment;
-					//TODO: Дубль
-					if (parent?.Segment == null)
-					{
-						Project.SelectedCircuit.SubSegments.Remove(element);
-					}
-					else
-					{
-						parent.Segment.SubSegments.Remove(element);
-					}
+					//TODO: Дубль (+)
+                    var subSegments = Project.SelectedCircuit.SubSegments;
+                    if (parent?.Segment != null)
+                    {
+                        subSegments = parent.Segment.SubSegments;
+                    }
+
+                    subSegments.Remove(element);
 					parent.Nodes.Remove(selectedIndex);
-					NotifyCalculate?.Invoke();
+					NotifyCalculate?.Invoke(this, e);
 				}
 			}
 			catch (ArgumentNullException exception)
@@ -215,93 +209,89 @@ namespace CalculationImpedancesUI
 
         private void CircuitsTreeView_DragDrop(object sender, DragEventArgs e)
         {
-	        //TODO: Подозрительно много комментариев... Всё ещё, переименуйте переменные, чтобы не нужны были комментарии
+	        //TODO: Подозрительно много комментариев... Всё ещё, переименуйте переменные, чтобы не нужны были комментарии (+)
 	        Point targetPoint = CircuitsTreeView.PointToClient(new Point(e.X, e.Y));
 
-			// Where we drag
-			SegmentTreeNode targetNode = CircuitsTreeView.GetNodeAt(targetPoint) as SegmentTreeNode;
+			SegmentTreeNode whereDrag = CircuitsTreeView.GetNodeAt(targetPoint) as SegmentTreeNode;
 
-			// What are we dragging
-			SegmentTreeNode draggedNode = e.Data.GetData(typeof(SegmentTreeNode)) as SegmentTreeNode;
+			SegmentTreeNode whatDragging = e.Data.GetData(typeof(SegmentTreeNode)) as SegmentTreeNode;
 
-	        if (draggedNode == null || draggedNode.Segment == null)
+	        if (whatDragging == null || whatDragging.Segment == null)
 	        {
 		        return;
 	        }
 
-	        if (targetNode == null)
+	        if (whereDrag == null)
 	        {
-		        UpdateTreeView(draggedNode, targetNode);
-		        draggedNode.Remove();
-		        CircuitsTreeView.Nodes[0].Nodes.Add(draggedNode);
-		        draggedNode.Expand();
+		        UpdateTreeView(whatDragging, whereDrag);
+		        whatDragging.Remove();
+		        CircuitsTreeView.Nodes[0].Nodes.Add(whatDragging);
+		        whatDragging.Expand();
 	        }
 	        else
 	        {
-		        TreeNode parentNode = targetNode;
-
-		        if (!draggedNode.Equals(targetNode) && targetNode != null)
+		        TreeNode parentNode = whereDrag;
+                if (!whatDragging.Equals(whereDrag) && whereDrag != null)
 		        {
 			        bool canDrop = true;
-
-					//Climb up from the node we fell on 
-					//to find out if targetNode is our parent
-
-					while (canDrop && (parentNode != null))
+                    while (canDrop && (parentNode != null))
 			        {
-				        canDrop = !Object.ReferenceEquals(draggedNode, parentNode);
+				        canDrop = !Object.ReferenceEquals(whatDragging, parentNode);
 				        parentNode = parentNode.Parent;
 			        }
 
 			        if (canDrop)
 			        {
-				        if (targetNode.Segment is IElement)
+				        if (whereDrag.Segment is IElement)
 				        {
 					        return;
 				        }
-				        UpdateTreeView(draggedNode, targetNode);
-				        draggedNode.Remove();
-				        targetNode.Nodes.Add(draggedNode);
+
+				        UpdateTreeView(whatDragging, whereDrag);
+				        whatDragging.Remove();
+				        whereDrag.Nodes.Add(whatDragging);
 
 			        }
-			        targetNode.Expand();
-
-		        }
+			        whereDrag.Expand();
+                }
 	        }
-	        CircuitsTreeView.SelectedNode = draggedNode;
-	        NotifyCalculate?.Invoke();
+	        CircuitsTreeView.SelectedNode = whatDragging;
+	        NotifyCalculate?.Invoke(this, e);
 		}
 
         private SegmentTreeNode CheckElementSelection()
         {
-			//TODO: RSDN
-	        SegmentTreeNode element = CircuitsTreeView.SelectedNode as SegmentTreeNode;
+			//TODO: RSDN (+)
+	        var element = CircuitsTreeView.SelectedNode as SegmentTreeNode;
 	        if (element == null)
 	        {
 		        return CircuitsTreeView.Nodes[0] as SegmentTreeNode;
 	        }
-	        else
-	        {
-		        return element;
-	        }
+
+            return element;
         }
 
-		//TODO: RSDN
-        private void UpdateTreeView(SegmentTreeNode draggedNode, SegmentTreeNode targetNode)
+		//TODO: RSDN (+)
+        private void UpdateTreeView(SegmentTreeNode draggedNode,
+            SegmentTreeNode targetNode)
         {
 	        var parent = draggedNode.Parent as SegmentTreeNode;
-			if (parent == null) return;
-			//TODO: Дубль
-	        if (parent.Segment == null)
-	        {
-		        Project.SelectedCircuit.SubSegments.Remove(draggedNode.Segment);
-	        }
-	        else
-	        {
-		        parent.Segment.SubSegments.Remove(draggedNode.Segment);
-	        }
+            if (parent == null)
+            {
+                return;
+            }
 
-	        if ((targetNode == null) || (targetNode.Segment == null))
+			//TODO: Дубль (+)
+            var subSegments = Project.SelectedCircuit.SubSegments;
+
+			if (parent.Segment != null)
+            {
+                subSegments = parent.Segment.SubSegments;
+
+            }
+
+            subSegments.Remove(draggedNode.Segment);
+			if ((targetNode == null) || (targetNode.Segment == null))
 	        {
 		        Project.SelectedCircuit.SubSegments.Add(draggedNode.Segment);
 	        }

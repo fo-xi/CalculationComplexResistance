@@ -39,7 +39,7 @@ namespace CalculationImpedancesApp.Elements
 			{
 				if (value.Length == 0)
 				{
-					//TODO: RSDN
+					//TODO: RSDN (?)
 					throw new ArgumentException($"The {nameof(Name)} cannot be empty!");
 				}
 
@@ -58,7 +58,7 @@ namespace CalculationImpedancesApp.Elements
 			}
 			set
 			{
-				//TODO: RSDN
+				//TODO: RSDN (?)
 				if (value < 0)
 				{
 					throw new ArgumentException($"The {nameof(Value)} cannot be negative!");

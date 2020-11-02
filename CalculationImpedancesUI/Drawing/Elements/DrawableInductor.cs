@@ -1,12 +1,14 @@
 ﻿using CalculationImpedancesApp;
-//TODO: Несоответствие дефолтному namespace
+using CalculationImpedancesUI.Drawing;
+
+//TODO: Несоответствие дефолтному namespace (+)
 namespace CalculationImpedancesUI.Elements
 {
-	//TODO: RSDN
+	//TODO: RSDN (+)
 	/// <summary>
 	/// Contains methods for working with a inductor.
 	/// </summary>
-	class DrawableInductor : DrawableElement
+	public class DrawableInductor : DrawableElement
 	{
 		/// <summary>
 		/// Inductor creation.
@@ -16,6 +18,9 @@ namespace CalculationImpedancesUI.Elements
 		{
 		}
 
+		/// <summary>
+		/// Draws a inductor.
+		/// </summary>
 		public override void Draw()
 		{
 			int x = StartCoordinate.X;
@@ -26,8 +31,10 @@ namespace CalculationImpedancesUI.Elements
 
 			for (int i = 0; i < numberSemicircles; i++)
 			{
-				//TODO: RSDN - длины строк
-				Graphics.DrawArc(Pen, x, y, semicircleWidth, semicircleHeight, 180, 180);
+				//TODO: RSDN - длины строк (+)
+				Graphics.DrawArc(Pen, x, y, 
+                    semicircleWidth, semicircleHeight, 
+                    180, 180);
 				x += semicircleWidth;
 			}
 		}	

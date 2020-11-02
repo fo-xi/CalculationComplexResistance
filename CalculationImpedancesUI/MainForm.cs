@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 using CalculationImpedancesApp;
+using CalculationImpedancesUI.Control;
+using CalculationImpedancesUI.Drawing;
 
 namespace CalculationImpedancesUI
 {
@@ -15,7 +17,7 @@ namespace CalculationImpedancesUI
 
 		private void MainForm_Load(object sender, EventArgs e)
 		{
-            TreeViewControl.NotifyCalculate += Calculate;
+            TreeViewControl.NotifyCalculate += CallCalculate;
 			UpdateComboBox();
 			foreach (var i in Project.Circuits)
 			{
@@ -119,7 +121,12 @@ namespace CalculationImpedancesUI
 			UpdatePictureBox();
 		}
 
-		private void RemoveFrequencyButton_Click(object sender, EventArgs e)
+        private void CallCalculate(object sender, EventArgs e)
+        {
+            Calculate();
+        }
+
+        private void RemoveFrequencyButton_Click(object sender, EventArgs e)
 		{
 			var selectedIndex = FrequenciesListBox.SelectedIndex;
 			if (selectedIndex == -1)

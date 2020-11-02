@@ -1,13 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using CalculationImpedancesApp;
+using CalculationImpedancesApp.Circuits;
 
 namespace CalculationImpedancesUI
 {
@@ -27,8 +21,9 @@ namespace CalculationImpedancesUI
 		{
 			try
 			{
-				//TODO: RSDN
-				NewCircuit = new Circuit(nameTextBox.Text, new SegmentsObservableCollection());
+				//TODO: RSDN (+)
+				NewCircuit = new Circuit(nameTextBox.Text,
+                    new SegmentsObservableCollection());
 				this.DialogResult = DialogResult.OK;
 			}
 			catch (ArgumentException)
@@ -38,7 +33,7 @@ namespace CalculationImpedancesUI
 			}
 		}
 
-        //TODO: Не используемый обработчик
+        //TODO: Не используемый обработчик (+)
 		private void CancelButton_Click(object sender, EventArgs e)
 		{
 			this.DialogResult = DialogResult.Cancel;

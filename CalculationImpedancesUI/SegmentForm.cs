@@ -1,13 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using CalculationImpedancesApp;
+using CalculationImpedancesApp.Circuits;
 
 namespace CalculationImpedancesUI
 {
@@ -21,8 +16,8 @@ namespace CalculationImpedancesUI
 		/// <summary>
 		/// New circuit segment type.
 		/// </summary>
-		//TODO: RSDN
-		private readonly List<string> SegmentType = new List<string>
+		//TODO: RSDN (+)
+		private readonly List<string> _segmentType = new List<string>
 		{
 			"Serial",
 			"Parallel"
@@ -35,8 +30,9 @@ namespace CalculationImpedancesUI
 
 		private void OKButton_Click(object sender, EventArgs e)
 		{
-			//TODO: RSDN
-			var tempSubSegments = NewSegment != null ? NewSegment.SubSegments : new SegmentsObservableCollection();
+			//TODO: RSDN (+)
+			var tempSubSegments = NewSegment != null 
+                ? NewSegment.SubSegments : new SegmentsObservableCollection();
 			switch (TypeComboBox.SelectedIndex)
 			{
 				case 0:
@@ -55,22 +51,31 @@ namespace CalculationImpedancesUI
 
 		private void SegmentForm_Load(object sender, EventArgs e)
 		{
-			TypeComboBox.DataSource = SegmentType;
+			TypeComboBox.DataSource = _segmentType;
 
 			if (NewSegment == null)
 			{
 				return;
 			}
-			//TODO: switch-case
-			if (NewSegment is ParallelCircuit)
-			{
-				TypeComboBox.Text = "Parallel";
-			}
-			else
-			{
-				TypeComboBox.Text = "Serial";
-			}
-		}
+			//TODO: switch-case (+)
+            switch (NewSegment)
+            {
+				case ParallelCircuit parallelCircuit:
+                {
+                    TypeComboBox.Text = "Parallel";
+                    break;
+                }
+                case SerialCircuit serialCircuit:
+                {
+                    TypeComboBox.Text = "Serial";
+                    break;
+                }
+                default:
+                {
+                    return;
+                }
+            }
+        }
 
 		private void CancelButton_Click(object sender, EventArgs e)
 		{

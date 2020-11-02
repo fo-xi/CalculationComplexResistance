@@ -9,7 +9,7 @@ namespace CalculationImpedancesApp.Circuits
 	/// </summary>
     public class ParallelCircuit : ISegment
 	{
-        //TODO: Не используется(+)
+        //TODO: Не используется (+)
 
         /// <summary>
         /// Collection of serial parallel segment subsegments.
@@ -64,13 +64,16 @@ namespace CalculationImpedancesApp.Circuits
 
             foreach (ISegment segment in SubSegments)
             {
-                //TODO: RSDN
-	            if (segment.CalculateZ(frequencies).Real == 0 && segment.CalculateZ(frequencies).Imaginary == 0)
+                //TODO: RSDN (+)
+	            if (segment.CalculateZ(frequencies).Real == 0 && 
+                    segment.CalculateZ(frequencies).Imaginary == 0)
 	            {
 		            continue;
 	            }
+
                 result += (1.0/(segment.CalculateZ(frequencies)));
             }
+
             result = 1.0/(result);
             return result;
         }

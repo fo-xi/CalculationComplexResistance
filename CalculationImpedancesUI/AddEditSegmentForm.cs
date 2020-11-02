@@ -1,13 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using CalculationImpedancesApp;
+using CalculationImpedancesApp.Elements;
 
 namespace CalculationImpedancesUI
 {
@@ -18,11 +13,11 @@ namespace CalculationImpedancesUI
 		/// </summary>
 		public IElement NewElement { get; set; }
 
-		//TODO: RSDN - именование
+		//TODO: RSDN - именование (+)
 		/// <summary>
-		/// Type of new circuit element.
+		/// _elementType of new circuit element.
 		/// </summary>
-		private readonly List<string> Type = new List<string>
+		private readonly List<string> _elementType = new List<string>
 		{
 			"",
 			"Resistor",
@@ -49,28 +44,28 @@ namespace CalculationImpedancesUI
 			{
 				switch (TypeComboBox.SelectedIndex)
 				{
-					//TODO: RSDN
+					//TODO: RSDN (+)
 					case 1:
-						{
-							NewElement = new Resistor(name, value);
-							break;
-						}
+                    {
+                        NewElement = new Resistor(name, value);
+                        break;
+                    }
 					case 2:
-						{
-							NewElement = new Inductor(name, value);
-							break;
-						}
+                    {
+                        NewElement = new Inductor(name, value);
+                        break;
+                    }
 					case 3:
-						{
-							NewElement = new Capacitor(name, value);
-							break;
-						}
+                    {
+                        NewElement = new Capacitor(name, value);
+                        break;
+                    }
 					default:
-						{
-							MessageBox.Show("Select segment type", "Warning",
-								MessageBoxButtons.OK, MessageBoxIcon.Warning);
-							return;
-						}
+                    {
+                        MessageBox.Show("Select segment type", "Warning", 
+                            MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
 				}
 			}
 			catch (ArgumentException exception)
@@ -89,7 +84,7 @@ namespace CalculationImpedancesUI
 
 		private void ElementForm_Load(object sender, EventArgs e)
 		{
-			TypeComboBox.DataSource = Type;
+			TypeComboBox.DataSource = _elementType;
 
 			if (NewElement == null)
 			{

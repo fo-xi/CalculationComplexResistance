@@ -2,9 +2,13 @@
 using System.Drawing;
 using System.Windows.Forms;
 using CalculationImpedancesApp;
+using CalculationImpedancesApp.Circuits;
+using CalculationImpedancesApp.Elements;
 using CalculationImpedancesUI.Elements;
-//TODO: Несоответствие дефолтному namespace
-namespace CalculationImpedancesUI
+using CalculationImpedancesUI.Circuits;
+
+//TODO: Несоответствие дефолтному namespace (+)
+namespace CalculationImpedancesUI.Drawing
 {
 	/// <summary>
 	/// The class is intended for working with the main circuit. 
@@ -33,10 +37,12 @@ namespace CalculationImpedancesUI
 					continue;
 				}
 				DrawableSegmentBase subSegmentNode = GetSegmentType(subSegment);
+
 				if (!(subSegmentNode is DrawableElement))
 				{
 					FillTreeNode(subSegmentNode, subSegment);
 				}
+
 				TreeCircuit.Nodes[0].Nodes.Add(subSegmentNode);
 			}
 
@@ -81,11 +87,13 @@ namespace CalculationImpedancesUI
 					{
 						ClearTree(node);
 					}
+
 					if (node.Nodes.Count == 0)
 					{
 						node.Remove();
 					}
-				}
+                }
+
 				node = nextSegment;
 			}
 		}
@@ -101,34 +109,34 @@ namespace CalculationImpedancesUI
 			switch (segment)
 			{
 				case Resistor resistor:
-					{
-						drawSegment = new DrawableResistor(segment);
-						break;
-					}
+                {
+                    drawSegment = new DrawableResistor(segment);
+                    break;
+                }
 				case Inductor inductor:
-					{
-						drawSegment = new DrawableInductor(segment);
+                {
+                    drawSegment = new DrawableInductor(segment);
 						break;
-					}
+                }
 				case Capacitor capacitor:
-					{
-						drawSegment = new DrawableCapacitor(segment);
-						break;
-					}
+                {
+                    drawSegment = new DrawableCapacitor(segment);
+                    break;
+                }
 				case SerialCircuit serialCircuit:
-					{
-						drawSegment = new DrawableSerialCircuit(segment);
-						break;
-					}
+                {
+                    drawSegment = new DrawableSerialCircuit(segment);
+                    break;
+                }
 				case ParallelCircuit parallelCircuit:
-					{
-						drawSegment = new DrawableParallelCircuit(segment);
-						break;
-					}
+                {
+                    drawSegment = new DrawableParallelCircuit(segment);
+                    break;
+                }
 				default:
-					{
-						throw new ArgumentException("There is no such type of segment");
-					}
+                {
+                    throw new ArgumentException("There is no such type of segment");
+                }
 			}
 			return drawSegment;
 		}
@@ -161,10 +169,12 @@ namespace CalculationImpedancesUI
 					segment.StartCoordinate = new Point(prevNode.StartCoordinate.X + 
 					     prevNode.SizeSegment.Width + distance, prevNode.LeftСonnectСoordinate.Y - segment.SizeSegment.Height / 2);
 				}
+
 				if (!(segment is DrawableElement))
 				{
 					segment.FindCoordinate();
 				}
+
 				segment.CalculateСonnectСoordinate();
 			}
 		}
@@ -179,6 +189,7 @@ namespace CalculationImpedancesUI
 			{
 				return new Size(1 ,1);
 			}
+
 			int width = 0;
 			int height = 0;
 			int distance = 10;
@@ -195,12 +206,12 @@ namespace CalculationImpedancesUI
 			return new Size(width, height + 1); 
 		}
 
-		/// <summary>
-		/// Drawing the circuit. 
-		/// </summary>
-		/// <param name="graphics">Provides methods for drawing objects.</param>
-		/// <param name="pen">Draws a line.</param>
-		public static void Draw(Graphics graphics, Pen pen)
+        /// <summary>
+        /// Drawing the circuit. 
+        /// </summary>
+        /// <param name="graphics">Provides methods for drawing objects.</param>
+        /// <param name="pen">Draws a line.</param>
+        public static void Draw(Graphics graphics, Pen pen)
 		{
 			if (TreeCircuit.Nodes[0].Nodes.Count == 0)
 			{

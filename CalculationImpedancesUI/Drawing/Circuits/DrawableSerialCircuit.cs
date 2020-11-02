@@ -1,7 +1,9 @@
 ﻿using System.Drawing;
 using CalculationImpedancesApp;
-//TODO: Несоответствие дефолтному namespace
-namespace CalculationImpedancesUI
+using CalculationImpedancesUI.Drawing;
+
+//TODO: Несоответствие дефолтному namespace (+)
+namespace CalculationImpedancesUI.Circuits
 {
 	/// <summary>
 	/// The class contains methods for working with serial segment.
@@ -15,27 +17,33 @@ namespace CalculationImpedancesUI
 		public DrawableSerialCircuit(ISegment segment) : base(segment)
 		{ 
 		}
-		//TODO: XML
+		//TODO: XML (+)
+		/// <summary>
+		/// Calculating the size for a serial circuit segment.
+		/// </summary>
+		/// <returns></returns>
 		public override Size CalculateSize()
 		{
-			//TODO: Дубль
-			int width = 0;
-			int height = 0;
-			int distance = 10;
-			foreach (DrawableSegmentBase segment in Nodes)
+			//TODO: Дубль (+)
+            Height = 0;
+            Width = 0;
+            foreach (DrawableSegmentBase segment in Nodes)
 			{
 				var calculateSize = segment.CalculateSize();
-				width += calculateSize.Width + distance;
-				if (calculateSize.Height > height)
+				Width += calculateSize.Width + Distance;
+				if (calculateSize.Height > Height)
 				{
-					height = calculateSize.Height;
+					Height = calculateSize.Height;
 				}
 			}
-			width -= distance;
-			SizeSegment = new Size(width, height);
+			Width -= Distance;
+			SizeSegment = new Size(Width, Height);
 			return SizeSegment;
 		}
 
+		/// <summary>
+		/// Finding the coordinates of a serial circuit segment.
+		/// </summary>
 		public override void FindCoordinate()
 		{
 			int halfHeightSegment = 0;
@@ -51,32 +59,39 @@ namespace CalculationImpedancesUI
 			{
 				int distance = 10;
 				var prevNode = segment.PrevNode as DrawableSegmentBase;
-				//TODO: RSDN - длины строк
+				//TODO: RSDN - длины строк (+)
 				if (prevNode == null)
 				{
 					segment.StartCoordinate = new Point(StartCoordinate.X,
-						StartCoordinate.Y + halfHeightSegment - segment.SizeSegment.Height / 2);
+						StartCoordinate.Y + halfHeightSegment 
+                        - segment.SizeSegment.Height / 2);
 				}
 				else
 				{
 					segment.StartCoordinate = new Point(prevNode.StartCoordinate.X + 
-					      segment.SizeSegment.Width + distance, prevNode.LeftСonnectСoordinate.Y - segment.SizeSegment.Height / 2);
+					      segment.SizeSegment.Width + distance, 
+                        prevNode.LeftСonnectСoordinate.Y - segment.SizeSegment.Height / 2);
 				}
 
 				if (!(segment is DrawableElement))
 				{
 					segment.FindCoordinate();
 				}
+
 				segment.CalculateСonnectСoordinate();
 			}
 		}
-		//TODO: XML
+		//TODO: XML (+)
+		/// <summary>
+		/// Draws a serial segment of the circuit.
+		/// </summary>
 		public override void Draw()
 		{
 			if (Nodes.Count == 0)
 			{
 				return;
 			}
+
 			var lastNode = Nodes[Nodes.Count - 1] as DrawableSegmentBase;
 			foreach (DrawableSegmentBase node in Nodes)
 			{
@@ -89,6 +104,5 @@ namespace CalculationImpedancesUI
 				node.Draw();
 			}
 		}
-
-	}
+    }
 }

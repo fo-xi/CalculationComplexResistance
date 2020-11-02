@@ -1,12 +1,14 @@
 ﻿using CalculationImpedancesApp;
-//TODO: Несоответствие дефолтному namespace
+using CalculationImpedancesUI.Drawing;
+
+//TODO: Несоответствие дефолтному namespace (+)
 namespace CalculationImpedancesUI.Elements
 {
-	//TODO: RSDN
+	//TODO: RSDN (+)
 	/// <summary>
 	/// Contains methods for working with a resistor.
 	/// </summary>
-	class DrawableResistor : DrawableElement
+	public class DrawableResistor : DrawableElement
 	{
 		/// <summary>
 		/// Resistor creation.
@@ -16,7 +18,10 @@ namespace CalculationImpedancesUI.Elements
 		{
 		}
 
-		//TODO: XML
+		//TODO: XML (+)
+		/// <summary>
+		/// Draws a resistor.
+		/// </summary>
 		public override void Draw()
 		{
 			Graphics.DrawRectangle(Pen, StartCoordinate.X, StartCoordinate.Y,

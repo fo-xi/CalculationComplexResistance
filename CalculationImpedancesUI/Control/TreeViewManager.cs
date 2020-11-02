@@ -1,7 +1,8 @@
 ﻿using System.Windows.Forms;
 using CalculationImpedancesApp;
+using CalculationImpedancesApp.Circuits;
 
-namespace CalculationImpedancesUI
+namespace CalculationImpedancesUI.Control
 {
 	/// <summary>
 	/// The class contains methods for filling the tree.
@@ -29,8 +30,9 @@ namespace CalculationImpedancesUI
 			{
 				SegmentTreeNode subSegmentNode = new SegmentTreeNode
 				{
-					//TODO: RSDN
-					Text = subSegment is IElement ? subSegment.ToString() : subSegment.Name,
+					//TODO: RSDN (+)
+					Text = subSegment is IElement 
+                        ? subSegment.ToString() : subSegment.Name,
 					Segment = subSegment
 				};
 				if (!(subSegmentNode.Segment is IElement))
@@ -49,8 +51,9 @@ namespace CalculationImpedancesUI
 		/// </summary>
 		/// <param name="parentNode">Parent node.</param>
 		/// <param name="segment">Element.</param>
-		/// //TODO: RSDN - длины строк
-		private static void FillTreeNode(SegmentTreeNode parentNode, ISegment segment)
+		/// //TODO: RSDN - длины строк (+)
+		private static void FillTreeNode(SegmentTreeNode parentNode, 
+            ISegment segment)
 		{
 			if (segment is IElement)
 			{
@@ -67,8 +70,9 @@ namespace CalculationImpedancesUI
 				{
 					SegmentTreeNode segmentNode = new SegmentTreeNode
 					{
-						//TODO: RSDN
-						Text = subSegment is IElement ? subSegment.ToString() : subSegment.Name,
+						//TODO: RSDN (+)
+						Text = subSegment is IElement 
+                            ? subSegment.ToString() : subSegment.Name,
 						Segment = subSegment
 					};
 					parentNode.Nodes.Add(segmentNode);

@@ -113,7 +113,7 @@
 			this.TypeLabel.Name = "TypeLabel";
 			this.TypeLabel.Size = new System.Drawing.Size(34, 13);
 			this.TypeLabel.TabIndex = 2;
-			this.TypeLabel.Text = "Type:";
+			this.TypeLabel.Text = "_elementType:";
 			// 
 			// NameLabel
 			// 
