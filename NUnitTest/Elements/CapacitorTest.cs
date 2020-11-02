@@ -35,7 +35,7 @@ namespace NUnitTest
         public void TestToString_CorrectValue()
         {
 	        var capacitor = new Capacitor("dfr4", 43.5);
-	        var expected = "Capacitor: " + "dfr4" + " = " + "43.5";
+	        var expected = "Capacitor: " + "dfr4" + " = " + "43.5 F";
 	        var actual = capacitor.ToString();
 
 	        Assert.AreEqual(expected,

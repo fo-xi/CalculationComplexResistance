@@ -36,7 +36,7 @@ namespace NUnitTest
         public void TestToString_CorrectValue()
         {
 	        var resistor = new Resistor("dfr4", 43.5);
-	        var expected = "Resistor: " + "dfr4" + " = " + "43.5";
+	        var expected = "Resistor: " + "dfr4" + " = " + "43.5 Om";
 	        var actual = resistor.ToString();
 
 	        Assert.AreEqual(expected,

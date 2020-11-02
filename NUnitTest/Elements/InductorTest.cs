@@ -35,7 +35,7 @@ namespace NUnitTest
         public void TestToString_CorrectValue()
         {
 	        var inductor = new Inductor("dfr4", 43.5);
-	        var expected = "Inductor: " + "dfr4" + " = " + "43.5";
+	        var expected = "Inductor: " + "dfr4" + " = " + "43.5 H";
 	        var actual = inductor.ToString();
 
 	        Assert.AreEqual(expected,
