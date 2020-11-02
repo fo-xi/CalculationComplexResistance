@@ -15,7 +15,7 @@ namespace CalculationImpedancesUI
 
 		private void MainForm_Load(object sender, EventArgs e)
 		{
-			TreeViewControl.NotifyCalculate += Calculate;
+            TreeViewControl.NotifyCalculate += Calculate;
 			UpdateComboBox();
 			foreach (var i in Project.Circuits)
 			{
