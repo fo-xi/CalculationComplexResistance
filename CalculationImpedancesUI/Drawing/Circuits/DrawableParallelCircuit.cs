@@ -93,7 +93,7 @@ namespace CalculationImpedancesUI.Circuits
 				var rightConnect = 
                     new Point(RightСonnectСoordinate.X, node.RightСonnectСoordinate.Y);
 
-				if (Index != 0 || Nodes.Count > 1)
+				if (Index != 0 || Nodes.Count > 0)
 				{
 					Graphics.DrawLine(Pen, leftConnect, node.LeftСonnectСoordinate);
 				}

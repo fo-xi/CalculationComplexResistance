@@ -108,7 +108,8 @@ namespace CalculationImpedancesUI
 
 				//TODO: Есть ощущение, что ниже дубль логики (+)
                 var subSements = Project.SelectedCircuit.SubSegments;
-                if (!(selectedIndex.Segment is IElement))
+                if (!(selectedIndex.Segment is IElement) && 
+					(selectedIndex != CircuitsTreeView.Nodes[0]))
                 {
                     subSements = selectedIndex.Segment.SubSegments;
                 }

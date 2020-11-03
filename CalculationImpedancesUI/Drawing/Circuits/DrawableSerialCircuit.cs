@@ -57,7 +57,6 @@ namespace CalculationImpedancesUI.Circuits
 
 			foreach (DrawableSegmentBase segment in Nodes)
 			{
-				int distance = 10;
 				var prevNode = segment.PrevNode as DrawableSegmentBase;
 				//TODO: RSDN - длины строк (+)
 				if (prevNode == null)
@@ -69,7 +68,7 @@ namespace CalculationImpedancesUI.Circuits
 				else
 				{
 					segment.StartCoordinate = new Point(prevNode.StartCoordinate.X + 
-					      segment.SizeSegment.Width + distance, 
+					      segment.SizeSegment.Width + Distance, 
                         prevNode.LeftСonnectСoordinate.Y - segment.SizeSegment.Height / 2);
 				}
 
@@ -101,6 +100,7 @@ namespace CalculationImpedancesUI.Circuits
 				{
 					Graphics.DrawLine(Pen, prevNode.RightСonnectСoordinate, node.LeftСonnectСoordinate);
 				}
+
 				node.Draw();
 			}
 		}
