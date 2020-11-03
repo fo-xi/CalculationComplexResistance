@@ -46,26 +46,26 @@ namespace CalculationImpedancesUI
 				{
 					//TODO: RSDN (+)
 					case 1:
-                    {
-                        NewElement = new Resistor(name, value);
-                        break;
-                    }
+						{
+							NewElement = new Resistor(name, value);
+							break;
+						}
 					case 2:
-                    {
-                        NewElement = new Inductor(name, value);
-                        break;
-                    }
+						{
+							NewElement = new Inductor(name, value);
+							break;
+						}
 					case 3:
-                    {
-                        NewElement = new Capacitor(name, value);
-                        break;
-                    }
+						{
+							NewElement = new Capacitor(name, value);
+							break;
+						}
 					default:
-                    {
-                        MessageBox.Show("Select segment type", "Warning", 
-                            MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        return;
-                    }
+						{
+							MessageBox.Show("Select segment type", "Warning",
+								MessageBoxButtons.OK, MessageBoxIcon.Warning);
+							return;
+						}
 				}
 			}
 			catch (ArgumentException exception)
@@ -109,4 +109,3 @@ namespace CalculationImpedancesUI
 		}
 	}
 }
-

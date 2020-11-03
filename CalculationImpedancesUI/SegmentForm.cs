@@ -31,20 +31,20 @@ namespace CalculationImpedancesUI
 		private void OKButton_Click(object sender, EventArgs e)
 		{
 			//TODO: RSDN (+)
-			var tempSubSegments = NewSegment != null 
-                ? NewSegment.SubSegments : new SegmentsObservableCollection();
+			var tempSubSegments = NewSegment != null
+				? NewSegment.SubSegments : new SegmentsObservableCollection();
 			switch (TypeComboBox.SelectedIndex)
 			{
 				case 0:
-				{
-					NewSegment = new SerialCircuit(tempSubSegments);
-					break;
-				}
+					{
+						NewSegment = new SerialCircuit(tempSubSegments);
+						break;
+					}
 				case 1:
-				{
-					NewSegment = new ParallelCircuit(tempSubSegments);
-					break;
-				}
+					{
+						NewSegment = new ParallelCircuit(tempSubSegments);
+						break;
+					}
 			}
 			this.DialogResult = DialogResult.OK;
 		}
@@ -58,24 +58,24 @@ namespace CalculationImpedancesUI
 				return;
 			}
 			//TODO: switch-case (+)
-            switch (NewSegment)
-            {
+			switch (NewSegment)
+			{
 				case ParallelCircuit parallelCircuit:
-                {
-                    TypeComboBox.Text = "Parallel";
-                    break;
-                }
-                case SerialCircuit serialCircuit:
-                {
-                    TypeComboBox.Text = "Serial";
-                    break;
-                }
-                default:
-                {
-                    return;
-                }
-            }
-        }
+					{
+						TypeComboBox.Text = "Parallel";
+						break;
+					}
+				case SerialCircuit serialCircuit:
+					{
+						TypeComboBox.Text = "Serial";
+						break;
+					}
+				default:
+					{
+						return;
+					}
+			}
+		}
 
 		private void CancelButton_Click(object sender, EventArgs e)
 		{
@@ -83,4 +83,3 @@ namespace CalculationImpedancesUI
 		}
 	}
 }
-

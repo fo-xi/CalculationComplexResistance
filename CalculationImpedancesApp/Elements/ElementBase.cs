@@ -39,8 +39,9 @@ namespace CalculationImpedancesApp.Elements
 			{
 				if (value.Length == 0)
 				{
-					//TODO: RSDN (?)
-					throw new ArgumentException($"The {nameof(Name)} cannot be empty!");
+					//TODO: RSDN (+)
+					throw new ArgumentException($"The {nameof(Name)} " +
+						$"cannot be empty!");
 				}
 
 				_name = value;
@@ -58,16 +59,18 @@ namespace CalculationImpedancesApp.Elements
 			}
 			set
 			{
-				//TODO: RSDN (?)
+				//TODO: RSDN (+)
 				if (value < 0)
 				{
-					throw new ArgumentException($"The {nameof(Value)} cannot be negative!");
+					throw new ArgumentException($"The {nameof(Value)} " +
+						$"cannot be negative!");
 				}
 
 				if (value != _value)
 				{
 					SegmentChanged?.Invoke(this,
-						new ElementEventArgs($"The capacitor changed the {nameof(Value)} to {Value}!"));
+						new ElementEventArgs($"The capacitor" +
+						$" changed the {nameof(Value)} to {Value}!"));
 				}
 
 				_value = value;
