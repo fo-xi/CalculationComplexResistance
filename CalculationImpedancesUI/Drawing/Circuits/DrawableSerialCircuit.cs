@@ -67,9 +67,9 @@ namespace CalculationImpedancesUI.Circuits
 				}
 				else
 				{
-					segment.StartCoordinate = new Point(prevNode.StartCoordinate.X + 
-					      segment.SizeSegment.Width + Distance, 
-                        prevNode.LeftСonnectСoordinate.Y - segment.SizeSegment.Height / 2);
+					segment.StartCoordinate = new Point(prevNode.StartCoordinate.X +
+					                                    prevNode.SizeSegment.Width + Distance,
+						prevNode.LeftСonnectСoordinate.Y - segment.SizeSegment.Height / 2);
 				}
 
 				if (!(segment is DrawableElement))

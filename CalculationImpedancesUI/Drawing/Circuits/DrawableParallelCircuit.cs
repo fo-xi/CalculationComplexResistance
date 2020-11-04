@@ -39,8 +39,14 @@ namespace CalculationImpedancesUI.Circuits
 				}
 			}
 
+			var width = Width;
 			Height -= Distance;
-			SizeSegment = new Size(Width + Distance, Height);
+			if (Nodes.Count != 1)
+			{
+				width += Distance;
+			}
+
+			SizeSegment = new Size(width, Height);
 			return SizeSegment;
 		}
 
@@ -88,16 +94,11 @@ namespace CalculationImpedancesUI.Circuits
 			{
 				node.Draw();
 				//TODO: RSDN - длины строк (+)
-				var leftConnect = 
-                    new Point(LeftСonnectСoordinate.X, node.LeftСonnectСoordinate.Y);
-				var rightConnect = 
-                    new Point(RightСonnectСoordinate.X, node.RightСonnectСoordinate.Y);
-
-				if (Index != 0 || Nodes.Count > 0)
-				{
-					Graphics.DrawLine(Pen, leftConnect, node.LeftСonnectСoordinate);
-				}
-
+				var leftConnect =
+					new Point(LeftСonnectСoordinate.X, node.LeftСonnectСoordinate.Y);
+				var rightConnect =
+					new Point(RightСonnectСoordinate.X, node.RightСonnectСoordinate.Y);
+				Graphics.DrawLine(Pen, leftConnect, node.LeftСonnectСoordinate);
 				Graphics.DrawLine(Pen, rightConnect, node.RightСonnectСoordinate);
 			}
 
