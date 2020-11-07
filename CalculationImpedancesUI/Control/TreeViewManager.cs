@@ -28,11 +28,12 @@ namespace CalculationImpedancesUI.Control
 			CircuitsTreeView.Nodes.Add(mainCircuitNode);
 			foreach (var subSegment in circuit.SubSegments)
 			{
+				//TODO: Дубль в следующем методе
 				SegmentTreeNode subSegmentNode = new SegmentTreeNode
 				{
-					//TODO: RSDN (+)
 					Text = subSegment is IElement 
-                        ? subSegment.ToString() : subSegment.Name,
+                        ? subSegment.ToString() 
+                        : subSegment.Name,
 					Segment = subSegment
 				};
 				if (!(subSegmentNode.Segment is IElement))
@@ -51,7 +52,6 @@ namespace CalculationImpedancesUI.Control
 		/// </summary>
 		/// <param name="parentNode">Parent node.</param>
 		/// <param name="segment">Element.</param>
-		/// //TODO: RSDN - длины строк (+)
 		private static void FillTreeNode(SegmentTreeNode parentNode, 
             ISegment segment)
 		{
@@ -68,11 +68,12 @@ namespace CalculationImpedancesUI.Control
 			{
 				foreach (var subSegment in segment.SubSegments)
 				{
+                    //TODO: Дубль
 					SegmentTreeNode segmentNode = new SegmentTreeNode
 					{
-						//TODO: RSDN (+)
 						Text = subSegment is IElement 
-                            ? subSegment.ToString() : subSegment.Name,
+                            ? subSegment.ToString() 
+                            : subSegment.Name,
 						Segment = subSegment
 					};
 					parentNode.Nodes.Add(segmentNode);

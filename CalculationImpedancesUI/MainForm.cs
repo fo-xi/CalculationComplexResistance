@@ -45,7 +45,6 @@ namespace CalculationImpedancesUI
 			if (circuit.DialogResult == DialogResult.OK)
 			{
 				Project.Circuits.Add(circuit.NewCircuit);
-				//TODO: Дубль (+)
 				UpdateComboBox();
 			}
 		}

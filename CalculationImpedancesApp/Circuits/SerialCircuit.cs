@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Numerics;
 
-//TODO: Несоответствие дефолтному namespace (+)
 namespace CalculationImpedancesApp.Circuits
 {
 	/// <summary>
@@ -9,8 +8,6 @@ namespace CalculationImpedancesApp.Circuits
     /// </summary>
     public class SerialCircuit : ISegment
     {
-        //TODO: Не используется (+)
-
         /// <summary>
         /// Collection of serial circuit segment subsegments.
         /// </summary>
@@ -24,7 +21,6 @@ namespace CalculationImpedancesApp.Circuits
         /// <summary>
         /// Create a serial circuit segment.
         /// </summary>
-        /// //TODO Сигнатура XML комментария и метода различны (+)
         /// <param name="subSegmentsObservable">Serial circuit segment.</param>
         public SerialCircuit(SegmentsObservableCollection subSegmentsObservable)
         {

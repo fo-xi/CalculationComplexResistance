@@ -44,7 +44,7 @@ namespace CalculationImpedancesUI
 			{
 				switch (TypeComboBox.SelectedIndex)
 				{
-					//TODO: RSDN (+)
+					//TODO: RSDN отступы!
 					case 1:
 						{
 							NewElement = new Resistor(name, value);
@@ -68,6 +68,7 @@ namespace CalculationImpedancesUI
 						}
 				}
 			}
+            //TODO: Нет смысла в аргументе catch-a
 			catch (ArgumentException exception)
 			{
 				MessageBox.Show("Enter element name", "Warning",

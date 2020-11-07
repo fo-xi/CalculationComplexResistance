@@ -7,7 +7,6 @@ using CalculationImpedancesApp.Elements;
 using CalculationImpedancesUI.Elements;
 using CalculationImpedancesUI.Circuits;
 
-//TODO: Несоответствие дефолтному namespace (+)
 namespace CalculationImpedancesUI.Drawing
 {
 	/// <summary>
@@ -108,6 +107,7 @@ namespace CalculationImpedancesUI.Drawing
 			DrawableSegmentBase drawSegment;
 			switch (segment)
 			{
+                //TODO: Можно сразу возвращать экземпляры из case-ов
 				case Resistor resistor:
                 {
                     drawSegment = new DrawableResistor(segment);
@@ -147,6 +147,7 @@ namespace CalculationImpedancesUI.Drawing
 		public static void FindCoordinateNode()
 		{
 			int halfHeightSegment = 0;
+			//TODO: Нужны два форыча?
 			foreach (DrawableSegmentBase segment in TreeCircuit.Nodes[0].Nodes)
 			{
 				if (halfHeightSegment < segment.SizeSegment.Height / 2)
@@ -162,10 +163,12 @@ namespace CalculationImpedancesUI.Drawing
 				var prevNode = segment.PrevNode as DrawableSegmentBase;
 				if (prevNode == null)
 				{
+					//TODO: RSDN - длины строк
 					segment.StartCoordinate = new Point(5, halfHeightSegment - segment.SizeSegment.Height / 2);
 				}
 				else
 				{
+					//TODO: RSDN - длины строк
 					segment.StartCoordinate = new Point(prevNode.StartCoordinate.X + 
 					     prevNode.SizeSegment.Width + distance, prevNode.LeftСonnectСoordinate.Y - segment.SizeSegment.Height / 2);
 				}
@@ -189,10 +192,11 @@ namespace CalculationImpedancesUI.Drawing
 			{
 				return new Size(1 ,1);
 			}
-
+            //TODO: Дублируется в CalculateSize в DrawableCircuit
 			int width = 0;
 			int height = 0;
 			int distance = 10;
+			//TODO: RSDN - длины строк
 			foreach (DrawableSegmentBase segment in TreeCircuit.Nodes[0].Nodes)
 			{
 				var calculateSizeSubsegment = segment.CalculateSize();
@@ -222,9 +226,11 @@ namespace CalculationImpedancesUI.Drawing
 
 			if (firstNode != null)
 			{
+				//TODO: RSDN - длины строк
 				var firstPointNode = new Point(firstNode.LeftСonnectСoordinate.X-10, firstNode.LeftСonnectСoordinate.Y);
 				if (lastNode != null)
 				{
+					//TODO: RSDN - длины строк
 					var lastPointNode = new Point(lastNode.RightСonnectСoordinate.X+10, lastNode.RightСonnectСoordinate.Y);
 
 					graphics.DrawLine(pen, firstPointNode, firstNode.LeftСonnectСoordinate);
@@ -244,6 +250,7 @@ namespace CalculationImpedancesUI.Drawing
 
 					if (prevNode != null)
 					{
+						//TODO: RSDN - длины строк
 						graphics.DrawLine(pen, prevNode.RightСonnectСoordinate, node.LeftСonnectСoordinate);
 					}
 				}

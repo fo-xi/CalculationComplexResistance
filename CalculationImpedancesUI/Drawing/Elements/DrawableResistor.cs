@@ -1,10 +1,9 @@
 ﻿using CalculationImpedancesApp;
 using CalculationImpedancesUI.Drawing;
 
-//TODO: Несоответствие дефолтному namespace (+)
+//TODO: Несоответствие дефолтному namespace
 namespace CalculationImpedancesUI.Elements
 {
-	//TODO: RSDN (+)
 	/// <summary>
 	/// Contains methods for working with a resistor.
 	/// </summary>
@@ -18,7 +17,6 @@ namespace CalculationImpedancesUI.Elements
 		{
 		}
 
-		//TODO: XML (+)
 		/// <summary>
 		/// Draws a resistor.
 		/// </summary>

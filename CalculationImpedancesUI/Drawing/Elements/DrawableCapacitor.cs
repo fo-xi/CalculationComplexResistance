@@ -2,10 +2,9 @@
 using CalculationImpedancesUI.Drawing;
 using System.Drawing;
 
-//TODO: Несоответствие дефолтному namespace (+)
+//TODO: Несоответствие дефолтному namespace
 namespace CalculationImpedancesUI.Elements
 {
-	//TODO: RSDN (+)
 	/// <summary>
 	/// Contains methods for working with a capacitor.
 	/// </summary>
@@ -26,8 +25,6 @@ namespace CalculationImpedancesUI.Elements
 		{
 			int distanceVerticalLines = 5;
 			int lengthHorizontalLines = SizeSegment.Width/2;
-			//TODO: RSDN - именование (+)
-			//TODO: RSDN - длины строк (+)
 			int horizontalLine = StartCoordinate.Y + SizeSegment.Height / 2;
 
 			Point startFirstLine = new Point(StartCoordinate.X,

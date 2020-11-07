@@ -7,14 +7,17 @@ using System.Numerics;
 using CalculationImpedancesApp.Circuits;
 using CalculationImpedancesApp.Elements;
 
+//TODO: Несоответствие дефолтному namespace
 namespace NUnitTest
 {
+	//TODO: RSDN
 	class SerialCircuitTest
     {
 		[Test(Description = "Positive test of the getter Name")]
 		public void TestSerialCircuitNameGet_CorrectValue()
 		{
 			var expected = "Serial";
+            //TODO: Дубли данных лучше сократить
 			var serialCircuit = new SerialCircuit(new SegmentsObservableCollection
 			{
 				new Inductor("jng5", 56.0),
@@ -29,6 +32,7 @@ namespace NUnitTest
 		public void TestSerialCircuitNameSet_CorrectValue()
 		{
 			var expected = "Serial";
+            //TODO: Дубли данных лучше сократить
 			var serialCircuit = new SerialCircuit(new SegmentsObservableCollection
 			{
 				new Capacitor("j55t", 32.5),
@@ -42,6 +46,7 @@ namespace NUnitTest
 		[Test(Description = "Positive test of the getter SubSegments")]
 		public void TestSubSegmentsGet_CorrectValue()
 		{
+            //TODO: Дубли данных лучше сократить
 			var expected = new SegmentsObservableCollection
 			{
 				new Inductor("jng5", 56.0),
@@ -58,6 +63,7 @@ namespace NUnitTest
 		[Test(Description = "Positive test of the setter SubSegments")]
 		public void TestSubSegmentsSet_CorrectValue()
 		{
+            //TODO: Дубли данных лучше сократить
 			var expected = new SegmentsObservableCollection
 			{
 				new Inductor("jng5", 56.0),
@@ -73,6 +79,7 @@ namespace NUnitTest
 		[Test(Description = "Positive test of the constructor SerialCircuit")]
 		public void TestSerialCircuitConstructor_CorrectValue()
 		{
+            //TODO: Дубли данных лучше сократить
 			var subSegments = new SegmentsObservableCollection
 			{
 				new Inductor("jng5", 56.0),
@@ -86,6 +93,7 @@ namespace NUnitTest
 		[Test(Description = "Test of the calculate")]
 		public void TestCalculateZ_CorrectValue()
 		{
+            //TODO: Дубли данных лучше сократить
 			var subSegments = new SegmentsObservableCollection
 			{
 				new Inductor("jng5", 56.0),
@@ -108,6 +116,7 @@ namespace NUnitTest
 		public void EventRegistrationTesting_CorrectValue()
 		{
 			var wasCalled = false;
+            //TODO: Дубли данных лучше сократить
 			var subSegments = new SegmentsObservableCollection
 			{
 				new Inductor("jng5", 56.0),

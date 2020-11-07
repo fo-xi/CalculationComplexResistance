@@ -7,8 +7,10 @@ using System.Numerics;
 using CalculationImpedancesApp.Circuits;
 using CalculationImpedancesApp.Elements;
 
+//TODO: Несоответствие дефолтному namespace
 namespace NUnitTest
 {
+	//TODO: RSDN
 	class CircuitTest
 	{
 		[Test(Description = "Positive test of the getter Name")]
@@ -56,6 +58,7 @@ namespace NUnitTest
 		[Test(Description = "Positive test of the getter SubSegments")]
 		public void TestSubSegmentsGet_CorrectValue()
 		{
+            //TODO: Дубли данных лучше сократить
 			var expected = new SegmentsObservableCollection
 			{
 				new SerialCircuit(new SegmentsObservableCollection
@@ -78,6 +81,7 @@ namespace NUnitTest
 		[Test(Description = "Positive test of the setter SubSegments")]
 		public void TestSubSegmentsSet_CorrectValue()
 		{
+            //TODO: Дубли данных лучше сократить
 			var expected = new SegmentsObservableCollection
 			{
 				new SerialCircuit(new SegmentsObservableCollection
@@ -101,6 +105,7 @@ namespace NUnitTest
 		public void TestConstructor_CorrectValue()
 		{
 			var name = "d345";
+            //TODO: Дубли данных лучше сократить
 			var subSegments = new SegmentsObservableCollection
 			{
 				new SerialCircuit(new SegmentsObservableCollection
@@ -124,6 +129,7 @@ namespace NUnitTest
 		public void EventRegistrationTesting_CorrectValue()
 		{
 			var wasCalled = false;
+            //TODO: Дубли данных лучше сократить
 			var subSegments = new SegmentsObservableCollection
 			{
 				new SerialCircuit(new SegmentsObservableCollection
@@ -151,6 +157,7 @@ namespace NUnitTest
 		[Test(Description = "Test of the calculate")]
 		public void TestCalculateZ_CorrectValue()
 		{
+            //TODO: Дубли данных лучше сократить
 			var subSegments = new SegmentsObservableCollection
 			{
 				new SerialCircuit(new SegmentsObservableCollection

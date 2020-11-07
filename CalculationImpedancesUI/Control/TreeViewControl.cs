@@ -4,12 +4,11 @@ using System.Windows.Forms;
 using CalculationImpedancesApp;
 using CalculationImpedancesUI.Control;
 
+//TODO: Несоответствие дефолтному namespace
 namespace CalculationImpedancesUI
 {
     public partial class TreeViewControl : UserControl
     {
-        //TODO: Убрать этот делегат, использовать обычный EventHandler (+)
-
         /// <summary>
 		/// Event revealing when calculating circuit impedance.
 		/// Used when updating circuit data.
@@ -31,7 +30,6 @@ namespace CalculationImpedancesUI
 				var segment = segmentForm.NewSegment;
                 if (selectedIndex.Segment is IElement)
 				{
-					//TODO: RSDN (+)
 					MessageBox.Show("Element cannot be created from element",
                         "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 					return;
@@ -64,7 +62,7 @@ namespace CalculationImpedancesUI
 				{
 					return;
 				}
-				//TODO: RSDN (+)
+
 				var segmentForm = new SegmentForm
                 {
                     NewSegment = selectedIndex.Segment
@@ -106,7 +104,7 @@ namespace CalculationImpedancesUI
 					return;
 				}
 
-				//TODO: Есть ощущение, что ниже дубль логики (+)
+				//TODO: RSDN - длины строк
                 var subSements = Project.SelectedCircuit.SubSegments;
                 if (!(selectedIndex.Segment is IElement) && 
 					(selectedIndex != CircuitsTreeView.Nodes[0]))
@@ -138,7 +136,7 @@ namespace CalculationImpedancesUI
 			try
 			{
 				var selectedIndex = CheckElementSelection();
-				//TODO: RSDN (+)
+
 				var elementForm = new AddEditSegmentForm
                 {
                     NewElement = selectedIndex.Segment as IElement
@@ -179,7 +177,7 @@ namespace CalculationImpedancesUI
 				{
 					var parent = selectedIndex.Parent as SegmentTreeNode;
 					var element = selectedIndex.Segment;
-					//TODO: Дубль (+)
+
                     var subSegments = Project.SelectedCircuit.SubSegments;
                     if (parent?.Segment != null)
                     {
@@ -210,8 +208,8 @@ namespace CalculationImpedancesUI
 
         private void CircuitsTreeView_DragDrop(object sender, DragEventArgs e)
         {
-	        //TODO: Подозрительно много комментариев... Всё ещё, переименуйте переменные, чтобы не нужны были комментарии (+)
-	        Point targetPoint = CircuitsTreeView.PointToClient(new Point(e.X, e.Y));
+			//TODO: RSDN - длины строк
+            Point targetPoint = CircuitsTreeView.PointToClient(new Point(e.X, e.Y));
 
 			SegmentTreeNode whereDrag = CircuitsTreeView.GetNodeAt(targetPoint) as SegmentTreeNode;
 
@@ -260,10 +258,10 @@ namespace CalculationImpedancesUI
 	        NotifyCalculate?.Invoke(this, e);
 		}
 
+		//TODO: XML
         private SegmentTreeNode CheckElementSelection()
         {
-			//TODO: RSDN (+)
-	        var element = CircuitsTreeView.SelectedNode as SegmentTreeNode;
+            var element = CircuitsTreeView.SelectedNode as SegmentTreeNode;
 	        if (element == null)
 	        {
 		        return CircuitsTreeView.Nodes[0] as SegmentTreeNode;
@@ -272,7 +270,7 @@ namespace CalculationImpedancesUI
             return element;
         }
 
-		//TODO: RSDN (+)
+		//TODO: XML
         private void UpdateTreeView(SegmentTreeNode draggedNode,
             SegmentTreeNode targetNode)
         {
@@ -282,7 +280,6 @@ namespace CalculationImpedancesUI
                 return;
             }
 
-			//TODO: Дубль (+)
             var subSegments = Project.SelectedCircuit.SubSegments;
 
 			if (parent.Segment != null)

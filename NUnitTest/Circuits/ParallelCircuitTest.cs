@@ -6,14 +6,17 @@ using NUnit.Framework;
 using CalculationImpedancesApp.Circuits;
 using CalculationImpedancesApp.Elements;
 
+//TODO: Несоответствие дефолтному namespace
 namespace NUnitTest
 {
+	//TODO: RSDN
 	class ParallelCircuitTest
     {
 		[Test(Description = "Positive test of the getter Name")]
 		public void TestParallelCircuitNameGet_CorrectValue()
 		{
 			var expected = "Parallel";
+            //TODO: Дубли данных лучше сократить
 			var parallelCircuit = new ParallelCircuit(new SegmentsObservableCollection
 			{
 				new Inductor("jng5", 56.0),
@@ -28,6 +31,7 @@ namespace NUnitTest
 		public void TestParallelCircuitNameSet_CorrectValue()
 		{
 			var expected = "Parallel";
+            //TODO: Дубли данных лучше сократить
 			var parallelCircuit = new ParallelCircuit(new SegmentsObservableCollection
 			{
 				new Capacitor("j55t", 32.5),
@@ -41,6 +45,7 @@ namespace NUnitTest
 		[Test(Description = "Positive test of the getter SubSegments")]
 		public void TestSubSegmentsGet_CorrectValue()
 		{
+            //TODO: Дубли данных лучше сократить
 			var expected = new SegmentsObservableCollection
 			{
 				new Inductor("jng5", 56.0),
@@ -57,6 +62,7 @@ namespace NUnitTest
 		[Test(Description = "Positive test of the setter SubSegments")]
 		public void TestSubSegmentsSet_CorrectValue()
 		{
+            //TODO: Дубли данных лучше сократить
 			var expected = new SegmentsObservableCollection
 			{
 				new Inductor("jng5", 56.0),
@@ -72,6 +78,7 @@ namespace NUnitTest
 		[Test(Description = "Positive test of the constructor ParallelCircuit")]
 		public void TestParallelCircuitConstructor_CorrectValue()
 		{
+            //TODO: Дубли данных лучше сократить
 			var subSegments = new SegmentsObservableCollection
 			{
 					new Inductor("jng5", 56.0),
@@ -85,6 +92,7 @@ namespace NUnitTest
 		[Test(Description = "Test of the calculate")]
 		public void TestCalculateZ_CorrectValue()
 		{
+            //TODO: Дубли данных лучше сократить
 			var subSegments = new SegmentsObservableCollection
 			{
 				new Resistor("g56", 7.8),
@@ -107,6 +115,7 @@ namespace NUnitTest
 		public void EventRegistrationTesting_CorrectValue()
 		{
 			var wasCalled = false;
+            //TODO: Дубли данных лучше сократить
 			var subSegments = new SegmentsObservableCollection
 			{
 				new Resistor("g56", 7.8),

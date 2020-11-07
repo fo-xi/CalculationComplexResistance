@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Numerics;
 
-//TODO: Несоответствие дефолтному namespace (+)
 namespace CalculationImpedancesApp.Circuits
 {
     /// <summary>
@@ -34,6 +33,7 @@ namespace CalculationImpedancesApp.Circuits
 	        {
 		        if (value.Length == 0)
 		        {
+                    //TODO: RSDN - длины строк
 			        throw new ArgumentException($"The {nameof(Name)} cannot be empty!");
 		        }
 		        _name = value;

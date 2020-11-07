@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Numerics;
 
-//TODO: Несоответствие дефолтному namespace (+)
 namespace CalculationImpedancesApp.Elements
 {
     /// <summary>

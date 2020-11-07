@@ -2,7 +2,7 @@
 using CalculationImpedancesApp;
 using CalculationImpedancesUI.Drawing;
 
-//TODO: Несоответствие дефолтному namespace (+)
+//TODO: Несоответствие дефолтному namespace
 namespace CalculationImpedancesUI.Circuits
 {
 	/// <summary>
@@ -17,14 +17,13 @@ namespace CalculationImpedancesUI.Circuits
 		public DrawableSerialCircuit(ISegment segment) : base(segment)
 		{ 
 		}
-		//TODO: XML (+)
+
 		/// <summary>
 		/// Calculating the size for a serial circuit segment.
 		/// </summary>
 		/// <returns></returns>
 		public override Size CalculateSize()
 		{
-			//TODO: Дубль (+)
             Height = 0;
             Width = 0;
             foreach (DrawableSegmentBase segment in Nodes)
@@ -58,7 +57,7 @@ namespace CalculationImpedancesUI.Circuits
 			foreach (DrawableSegmentBase segment in Nodes)
 			{
 				var prevNode = segment.PrevNode as DrawableSegmentBase;
-				//TODO: RSDN - длины строк (+)
+				
 				if (prevNode == null)
 				{
 					segment.StartCoordinate = new Point(StartCoordinate.X,
@@ -67,6 +66,7 @@ namespace CalculationImpedancesUI.Circuits
 				}
 				else
 				{
+					//TODO: RSDN - длины строк
 					segment.StartCoordinate = new Point(prevNode.StartCoordinate.X +
 					                                    prevNode.SizeSegment.Width + Distance,
 						prevNode.LeftСonnectСoordinate.Y - segment.SizeSegment.Height / 2);
@@ -80,7 +80,7 @@ namespace CalculationImpedancesUI.Circuits
 				segment.CalculateСonnectСoordinate();
 			}
 		}
-		//TODO: XML (+)
+
 		/// <summary>
 		/// Draws a serial segment of the circuit.
 		/// </summary>
@@ -91,13 +91,16 @@ namespace CalculationImpedancesUI.Circuits
 				return;
 			}
 
+			//TODO: Не используется
 			var lastNode = Nodes[Nodes.Count - 1] as DrawableSegmentBase;
 			foreach (DrawableSegmentBase node in Nodes)
 			{
+                //TODO: Можно переделать в PatternMatching
 				var prevNode = node.PrevNode as DrawableSegmentBase;
 
 				if (prevNode != null)
 				{
+					//TODO: RSDN - длины строк
 					Graphics.DrawLine(Pen, prevNode.RightСonnectСoordinate, node.LeftСonnectСoordinate);
 				}
 

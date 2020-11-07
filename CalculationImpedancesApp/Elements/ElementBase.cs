@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Numerics;
 
-//TODO: Несоответствие дефолтному namespace (+)
 namespace CalculationImpedancesApp.Elements
 {
-	//TODO: RSDN - именование (+)
 	/// <summary>
 	/// Base class for all chain elements.
 	/// </summary>
@@ -39,7 +37,6 @@ namespace CalculationImpedancesApp.Elements
 			{
 				if (value.Length == 0)
 				{
-					//TODO: RSDN (+)
 					throw new ArgumentException($"The {nameof(Name)} " +
 						$"cannot be empty!");
 				}
@@ -59,7 +56,6 @@ namespace CalculationImpedancesApp.Elements
 			}
 			set
 			{
-				//TODO: RSDN (+)
 				if (value < 0)
 				{
 					throw new ArgumentException($"The {nameof(Value)} " +
@@ -69,6 +65,7 @@ namespace CalculationImpedancesApp.Elements
 				if (value != _value)
 				{
 					SegmentChanged?.Invoke(this,
+                        //TODO: При чём здесь Capacitor?
 						new ElementEventArgs($"The capacitor" +
 						$" changed the {nameof(Value)} to {Value}!"));
 				}
@@ -77,7 +74,6 @@ namespace CalculationImpedancesApp.Elements
 			}
 		}
 
-        //TODO: Правильнее понизить видимость конструктора (+)
 		/// <summary>
 		/// Creates an element.
 		/// </summary>

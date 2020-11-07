@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Numerics;
 
-//TODO: Несоответствие дефолтному namespace (+)
 namespace CalculationImpedancesApp.Elements
 {
     /// <summary>
@@ -34,7 +33,7 @@ namespace CalculationImpedancesApp.Elements
         /// public override string ToString()
         public override string ToString()
         {
-	        return "Resistor: " + Name + " = " + Value + " Om";
+	        return "Resistor: " + Name + " = " + Value + " Ohm";
         }
     }
 }

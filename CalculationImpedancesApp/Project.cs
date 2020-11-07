@@ -59,7 +59,6 @@ namespace CalculationImpedancesApp
 					new Resistor("ghj5", 45.8),
 					new Inductor("i76", 12.4),
 					new Capacitor("fg4", 22.6)
-                    //TODO: Зачем эти комменты (+)
                 };
 			Circuits.Add(new Circuit("Circuit No. 1", segmentsObservable));
 
@@ -71,7 +70,6 @@ namespace CalculationImpedancesApp
 					new Inductor("bb7", 11.3),
 					new Resistor("ji9", 81.0)
 				})
-                //TODO: Зачем эти комменты (+)
             };
 			Circuits.Add(new Circuit("Circuit No. 2", segmentsObservable));
 

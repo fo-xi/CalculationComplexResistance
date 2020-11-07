@@ -16,7 +16,6 @@ namespace CalculationImpedancesUI
 		/// <summary>
 		/// New circuit segment type.
 		/// </summary>
-		//TODO: RSDN (+)
 		private readonly List<string> _segmentType = new List<string>
 		{
 			"Serial",
@@ -30,11 +29,11 @@ namespace CalculationImpedancesUI
 
 		private void OKButton_Click(object sender, EventArgs e)
 		{
-			//TODO: RSDN (+)
 			var tempSubSegments = NewSegment != null
 				? NewSegment.SubSegments : new SegmentsObservableCollection();
 			switch (TypeComboBox.SelectedIndex)
 			{
+				//TODO: RSDN - отступы в case-ах!
 				case 0:
 					{
 						NewSegment = new SerialCircuit(tempSubSegments);
@@ -57,7 +56,7 @@ namespace CalculationImpedancesUI
 			{
 				return;
 			}
-			//TODO: switch-case (+)
+			//TODO: RSDN отступы в case-ах!
 			switch (NewSegment)
 			{
 				case ParallelCircuit parallelCircuit:

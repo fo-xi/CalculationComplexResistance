@@ -2,10 +2,9 @@
 using CalculationImpedancesApp;
 using CalculationImpedancesUI.Drawing;
 
-//TODO: Несоответствие дефолтному namespace (+)
+//TODO: Несоответствие дефолтному namespace
 namespace CalculationImpedancesUI.Circuits
 {
-	//TODO: RSDN (+)
 	/// <summary>
 	/// The class contains methods for working with parallel segment.
 	/// </summary>
@@ -19,14 +18,12 @@ namespace CalculationImpedancesUI.Circuits
 		{ 
 		}
 
-		//TODO: XML (+)
         /// <summary>
         /// Calculating the size for a parallel circuit segment.
         /// </summary>
         /// <returns></returns>
 		public override Size CalculateSize()
 		{
-			//TODO: Дубль (+)
             Height = 0;
             Width = 0;
 			foreach (DrawableSegmentBase segment in Nodes)
@@ -50,7 +47,6 @@ namespace CalculationImpedancesUI.Circuits
 			return SizeSegment;
 		}
 
-		//TODO: XML (+)
         /// <summary>
         /// Finding the coordinates of a parallel circuit segment.
         /// </summary>
@@ -58,7 +54,6 @@ namespace CalculationImpedancesUI.Circuits
 		{
 			foreach (DrawableSegmentBase segment in Nodes)
 			{
-				//TODO: RSDN - длины строк (+)
 				int middle = (SizeSegment.Width / 2) 
                      - (segment.SizeSegment.Width / 2);
                 int distance = 10;
@@ -84,7 +79,6 @@ namespace CalculationImpedancesUI.Circuits
 			}
 		}
 
-		//TODO: XML (+)
         /// <summary>
         /// Draws a parallel segment of the circuit.
         /// </summary>
@@ -93,7 +87,6 @@ namespace CalculationImpedancesUI.Circuits
 			foreach (DrawableSegmentBase node in Nodes)
 			{
 				node.Draw();
-				//TODO: RSDN - длины строк (+)
 				var leftConnect =
 					new Point(LeftСonnectСoordinate.X, node.LeftСonnectСoordinate.Y);
 				var rightConnect =
@@ -107,9 +100,10 @@ namespace CalculationImpedancesUI.Circuits
 				return;
 			}
 
+            //TODO: Дублируются операции по инициализации точек связи
 			var firstNode = Nodes[0] as DrawableSegmentBase;
 			var lastNode = Nodes[Nodes.Count - 1] as DrawableSegmentBase;
-			//TODO: RSDN - длины строк (+)
+
 			var firstPointRightConnection = 
                 new Point(RightСonnectСoordinate.X, firstNode.RightСonnectСoordinate.Y);
 			var lastPointRightConnection = 
