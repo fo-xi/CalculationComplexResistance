@@ -33,17 +33,17 @@ namespace CalculationImpedancesUI
 				? NewSegment.SubSegments : new SegmentsObservableCollection();
 			switch (TypeComboBox.SelectedIndex)
 			{
-				//TODO: RSDN - отступы в case-ах!
+				//TODO: RSDN - отступы в case-ах! (+)
 				case 0:
-					{
-						NewSegment = new SerialCircuit(tempSubSegments);
-						break;
-					}
+				{
+					NewSegment = new SerialCircuit(tempSubSegments);
+					break;
+				}
 				case 1:
-					{
-						NewSegment = new ParallelCircuit(tempSubSegments);
-						break;
-					}
+				{
+					NewSegment = new ParallelCircuit(tempSubSegments);
+					break;
+				}
 			}
 			this.DialogResult = DialogResult.OK;
 		}
@@ -56,23 +56,23 @@ namespace CalculationImpedancesUI
 			{
 				return;
 			}
-			//TODO: RSDN отступы в case-ах!
+			//TODO: RSDN отступы в case-ах! (+)
 			switch (NewSegment)
 			{
 				case ParallelCircuit parallelCircuit:
-					{
-						TypeComboBox.Text = "Parallel";
-						break;
+				{
+					TypeComboBox.Text = "Parallel";
+				break;
 					}
 				case SerialCircuit serialCircuit:
-					{
-						TypeComboBox.Text = "Serial";
-						break;
-					}
+				{
+					TypeComboBox.Text = "Serial";
+					break;
+				}
 				default:
-					{
-						return;
-					}
+				{
+					return;
+				}
 			}
 		}
 
