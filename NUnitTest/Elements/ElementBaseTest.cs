@@ -5,11 +5,11 @@ using CalculationImpedancesApp;
 using NUnit.Framework;
 using CalculationImpedancesApp.Elements;
 
-//TODO: Несоответствие дефолтному namespace
-namespace NUnitTest
+//TODO: Несоответствие дефолтному namespace (+)
+namespace NUnitTest.Elements
 {
-	//TODO: RSDN
-	class ElementBaseTest
+	//TODO: RSDN (+)
+	public class ElementBaseTest
 	{
 		[Test(Description = "Positive test of the getter Name")]
 		public void TestNameGet_CorrectValue()
@@ -33,16 +33,16 @@ namespace NUnitTest
 			}, "The Name setter accepts the correct name");
 		}
 
-        //TODO: Зачем сообщение выносить в параметр, если у вас один тесткейс?
-		[TestCase("", "An exception may occur if the name contains less than 1 symbol",
-			TestName = "Assigning an incorrect element name that contains less than 1 symbol")]
-		public void TestName_InvalidName(string wrongName, string message)
+        //TODO: Зачем сообщение выносить в параметр, если у вас один тесткейс? (+)
+		[Test(Description = "Name assignment containing less than 1 character")]
+		public void TestName_InvalidName()
 		{
 			var element = new Resistor(" ", 32.5);
+			var wrongName = "";
 			Assert.Throws<ArgumentException>(() =>
 			{
 				element.Name = wrongName;
-			}, message);
+			}, "Assigning an incorrect element name that contains less than 1 symbol");
 		}
 
 
@@ -68,16 +68,16 @@ namespace NUnitTest
 				element.Value = expected;
 			}, "The Value setter accepts the correct value");
 		}
-        //TODO: Зачем сообщение выносить в параметр, если у вас один тесткейс?
-		[TestCase(-8.5, "An exception can occur if the value contains a negative number",
-			TestName = "Assigning a negative number")]
-		public void TestValue_NegativeNumber(double wrongValue, string message)
+		//TODO: Зачем сообщение выносить в параметр, если у вас один тесткейс? (+)
+		[Test(Description = "Assigning a negative value")]
+		public void TestValue_NegativeNumber()
 		{
 			var element = new Resistor("thn4", 32.5);
+			var wrongValue = -8.5;
 			Assert.Throws<ArgumentException>(() =>
 			{
 				element.Value = wrongValue;
-			}, message);
+			}, "Assigning a negative number");
 		}
 
 		[Test(Description = "Positive test of the getter SubSegments")]

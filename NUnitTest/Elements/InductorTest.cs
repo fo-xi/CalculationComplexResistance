@@ -5,11 +5,11 @@ using CalculationImpedancesApp;
 using NUnit.Framework;
 using CalculationImpedancesApp.Elements;
 
-//TODO: Несоответствие дефолтному namespace
-namespace NUnitTest
+//TODO: Несоответствие дефолтному namespace (+)
+namespace NUnitTest.Elements
 {
-    //TODO: RSDN
-	class InductorTest
+    //TODO: RSDN (+)
+	public class InductorTest
     {
         //TODO: Нужно ещё добавить тестирование на корректную установку свойств
 	    [Test(Description = "Test of the constructor")]

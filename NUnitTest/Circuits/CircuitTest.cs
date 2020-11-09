@@ -7,11 +7,11 @@ using System.Numerics;
 using CalculationImpedancesApp.Circuits;
 using CalculationImpedancesApp.Elements;
 
-//TODO: Несоответствие дефолтному namespace
-namespace NUnitTest
+//TODO: Несоответствие дефолтному namespace (+)
+namespace NUnitTest.Circuits
 {
-	//TODO: RSDN
-	class CircuitTest
+	//TODO: RSDN (+)
+	public class CircuitTest
 	{
 		[Test(Description = "Positive test of the getter Name")]
 		public void TestNameGet_CorrectValue()
@@ -58,17 +58,12 @@ namespace NUnitTest
 		[Test(Description = "Positive test of the getter SubSegments")]
 		public void TestSubSegmentsGet_CorrectValue()
 		{
-            //TODO: Дубли данных лучше сократить
+            //TODO: Дубли данных лучше сократить (+)
 			var expected = new SegmentsObservableCollection
 			{
 				new SerialCircuit(new SegmentsObservableCollection
 				{
 					new Inductor("jng5", 56.0),
-				}),
-				new ParallelCircuit(new SegmentsObservableCollection
-				{
-					new Resistor("g56", 7.8),
-					new Capacitor("duj", 22.6)
 				}),
 			};
 			var circuit = new Circuit(" ", new SegmentsObservableCollection());
@@ -81,17 +76,12 @@ namespace NUnitTest
 		[Test(Description = "Positive test of the setter SubSegments")]
 		public void TestSubSegmentsSet_CorrectValue()
 		{
-            //TODO: Дубли данных лучше сократить
+            //TODO: Дубли данных лучше сократить (+)
 			var expected = new SegmentsObservableCollection
 			{
 				new SerialCircuit(new SegmentsObservableCollection
 				{
 					new Inductor("jng5", 56.0),
-				}),
-				new ParallelCircuit(new SegmentsObservableCollection
-				{
-					new Resistor("g56", 7.8),
-					new Capacitor("duj", 22.6)
 				}),
 			};
 			var circuit = new Circuit(" ", new SegmentsObservableCollection());
@@ -105,18 +95,12 @@ namespace NUnitTest
 		public void TestConstructor_CorrectValue()
 		{
 			var name = "d345";
-            //TODO: Дубли данных лучше сократить
+            //TODO: Дубли данных лучше сократить (+)
 			var subSegments = new SegmentsObservableCollection
 			{
 				new SerialCircuit(new SegmentsObservableCollection
 				{
 					new Inductor("jng5", 56.0),
-					new Resistor("fr4tt", 32.6)
-				}),
-				new ParallelCircuit(new SegmentsObservableCollection
-				{
-					new Resistor("g56", 7.8),
-					new Capacitor("duj", 22.6)
 				}),
 			}; 
 			Assert.DoesNotThrow(() =>
@@ -129,18 +113,12 @@ namespace NUnitTest
 		public void EventRegistrationTesting_CorrectValue()
 		{
 			var wasCalled = false;
-            //TODO: Дубли данных лучше сократить
+            //TODO: Дубли данных лучше сократить (+)
 			var subSegments = new SegmentsObservableCollection
 			{
 				new SerialCircuit(new SegmentsObservableCollection
 				{
-					new Inductor("jng5", 56.0),
 					new Resistor("fr4tt", 32.6)
-				}),
-				new ParallelCircuit(new SegmentsObservableCollection
-				{
-					new Resistor("g56", 7.8),
-					new Capacitor("duj", 22.6)
 				}),
 			};
 			var circuit = new Circuit("fdr4", subSegments);
@@ -150,25 +128,23 @@ namespace NUnitTest
 				wasCalled = true;
 			};
 
-			circuit.SubSegments.RemoveAt(1);
+			circuit.SubSegments.RemoveAt(0);
 			Assert.IsTrue(wasCalled);
 		}
 
 		[Test(Description = "Test of the calculate")]
 		public void TestCalculateZ_CorrectValue()
 		{
-            //TODO: Дубли данных лучше сократить
+            //TODO: Дубли данных лучше сократить (+)
 			var subSegments = new SegmentsObservableCollection
 			{
 				new SerialCircuit(new SegmentsObservableCollection
 				{
 					new Inductor("jng5", 56.0),
-					new Resistor("fr4tt", 32.6)
 				}),
 				new ParallelCircuit(new SegmentsObservableCollection
 				{
 					new Resistor("g56", 7.8),
-					new Capacitor("duj", 22.6)
 				}),
 			};
 			var circuit = new Circuit("fdr4", subSegments);
@@ -178,12 +154,10 @@ namespace NUnitTest
 			List<Complex> results = new List<Complex>();
 			foreach (var frequency in frequencies)
 			{
-				var serialCircuitResult = 
-					subSegments[0].SubSegments[0].CalculateZ(frequency) +
-				    subSegments[0].SubSegments[1].CalculateZ(frequency);
+				var serialCircuitResult =
+					subSegments[0].SubSegments[0].CalculateZ(frequency);
 				var parallelCircuitResult = 
-					1/((1/(subSegments[1].SubSegments[0].CalculateZ(frequency)) + 
-				    (1/(subSegments[1].SubSegments[1].CalculateZ(frequency)))));
+					1/((1/(subSegments[1].SubSegments[0].CalculateZ(frequency))));
 				var result = serialCircuitResult + parallelCircuitResult;
 				results.Add(result);
 			}

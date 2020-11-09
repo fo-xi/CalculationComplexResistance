@@ -58,15 +58,15 @@ namespace CalculationImpedancesApp.Elements
 			{
 				if (value < 0)
 				{
-					throw new ArgumentException($"The {nameof(Value)} " +
-						$"cannot be negative!");
+					throw new ArgumentException($"The " +
+						$"{nameof(Value)} cannot be negative!");
 				}
 
 				if (value != _value)
 				{
 					SegmentChanged?.Invoke(this,
-                        //TODO: При чём здесь Capacitor?
-						new ElementEventArgs($"The capacitor" +
+                        //TODO: При чём здесь Capacitor? (+)
+						new ElementEventArgs($"The element" +
 						$" changed the {nameof(Value)} to {Value}!"));
 				}
 

@@ -134,9 +134,10 @@ namespace NUnitTest
             for (int i =0; i<expected.Count;i++)
             {
 
-                //TODO: RSDN - длины строк
-                Assert.AreEqual(expected[i].Name, actual[i].Name, "The constructor " +
-                                                                "doesn't work correctly");
+                //TODO: RSDN - длины строк (+)
+                Assert.AreEqual(expected[i].Name,
+                    actual[i].Name, 
+                    "The constructor doesn't work correctly");
             }
         }
     }
