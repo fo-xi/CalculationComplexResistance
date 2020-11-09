@@ -2,8 +2,8 @@
 using CalculationImpedancesApp;
 using CalculationImpedancesUI.Drawing;
 
-//TODO: Несоответствие дефолтному namespace
-namespace CalculationImpedancesUI.Circuits
+//TODO: Несоответствие дефолтному namespace (+)
+namespace CalculationImpedancesUI.Drawing.Circuits
 {
 	/// <summary>
 	/// The class contains methods for working with parallel segment.

@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
-using CalculationImpedancesApp;
 using CalculationImpedancesUI.Control;
+using CalculationImpedancesApp;
 
 //TODO: Несоответствие дефолтному namespace
 namespace CalculationImpedancesUI
@@ -104,14 +104,15 @@ namespace CalculationImpedancesUI
 					return;
 				}
 
-				//TODO: RSDN - длины строк
+				//TODO: RSDN - длины строк (+)
                 var subSements = Project.SelectedCircuit.SubSegments;
                 if (!(selectedIndex.Segment is IElement) && 
 					(selectedIndex != CircuitsTreeView.Nodes[0]))
                 {
                     subSements = selectedIndex.Segment.SubSegments;
                 }
-                else if (selectedIndex.Parent is SegmentTreeNode parent && parent.Segment != null)
+                else if (selectedIndex.Parent is 
+					SegmentTreeNode parent && parent.Segment != null)
                 {
                     subSements = parent.Segment.SubSegments;
                 }
@@ -208,12 +209,15 @@ namespace CalculationImpedancesUI
 
         private void CircuitsTreeView_DragDrop(object sender, DragEventArgs e)
         {
-			//TODO: RSDN - длины строк
-            Point targetPoint = CircuitsTreeView.PointToClient(new Point(e.X, e.Y));
+			//TODO: RSDN - длины строк (+)
+            Point targetPoint = 
+				CircuitsTreeView.PointToClient(new Point(e.X, e.Y));
 
-			SegmentTreeNode whereDrag = CircuitsTreeView.GetNodeAt(targetPoint) as SegmentTreeNode;
+			SegmentTreeNode whereDrag = 
+				CircuitsTreeView.GetNodeAt(targetPoint) as SegmentTreeNode;
 
-			SegmentTreeNode whatDragging = e.Data.GetData(typeof(SegmentTreeNode)) as SegmentTreeNode;
+			SegmentTreeNode whatDragging =
+				e.Data.GetData(typeof(SegmentTreeNode)) as SegmentTreeNode;
 
 	        if (whatDragging == null || whatDragging.Segment == null)
 	        {
@@ -235,7 +239,8 @@ namespace CalculationImpedancesUI
 			        bool canDrop = true;
                     while (canDrop && (parentNode != null))
 			        {
-				        canDrop = !Object.ReferenceEquals(whatDragging, parentNode);
+				        canDrop = 
+							!Object.ReferenceEquals(whatDragging, parentNode);
 				        parentNode = parentNode.Parent;
 			        }
 

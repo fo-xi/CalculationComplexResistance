@@ -2,8 +2,8 @@
 using CalculationImpedancesApp;
 using CalculationImpedancesUI.Drawing;
 
-//TODO: Несоответствие дефолтному namespace
-namespace CalculationImpedancesUI.Circuits
+//TODO: Несоответствие дефолтному namespace (+)
+namespace CalculationImpedancesUI.Drawing.Circuits
 {
 	/// <summary>
 	/// The class contains methods for working with serial segment.
@@ -66,10 +66,12 @@ namespace CalculationImpedancesUI.Circuits
 				}
 				else
 				{
-					//TODO: RSDN - длины строк
-					segment.StartCoordinate = new Point(prevNode.StartCoordinate.X +
-					                                    prevNode.SizeSegment.Width + Distance,
-						prevNode.LeftСonnectСoordinate.Y - segment.SizeSegment.Height / 2);
+					//TODO: RSDN - длины строк (+)
+					segment.StartCoordinate = 
+						new Point(prevNode.StartCoordinate.X +
+					              prevNode.SizeSegment.Width + Distance,
+								  prevNode.LeftСonnectСoordinate.Y - 
+								  segment.SizeSegment.Height / 2);
 				}
 
 				if (!(segment is DrawableElement))
@@ -91,17 +93,17 @@ namespace CalculationImpedancesUI.Circuits
 				return;
 			}
 
-			//TODO: Не используется
-			var lastNode = Nodes[Nodes.Count - 1] as DrawableSegmentBase;
+			//TODO: Не используется (+)
 			foreach (DrawableSegmentBase node in Nodes)
 			{
-                //TODO: Можно переделать в PatternMatching
-				var prevNode = node.PrevNode as DrawableSegmentBase;
+                //TODO: Можно переделать в PatternMatching (+)
 
-				if (prevNode != null)
-				{
-					//TODO: RSDN - длины строк
-					Graphics.DrawLine(Pen, prevNode.RightСonnectСoordinate, node.LeftСonnectСoordinate);
+				if (node.PrevNode is DrawableSegmentBase prevNode
+					&& prevNode != null)
+				{ 
+					//TODO: RSDN - длины строк (+)
+					Graphics.DrawLine(Pen, 
+						prevNode.RightСonnectСoordinate, node.LeftСonnectСoordinate);
 				}
 
 				node.Draw();

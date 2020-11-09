@@ -4,8 +4,8 @@ using System.Windows.Forms;
 using CalculationImpedancesApp;
 using CalculationImpedancesApp.Circuits;
 using CalculationImpedancesApp.Elements;
-using CalculationImpedancesUI.Elements;
-using CalculationImpedancesUI.Circuits;
+using CalculationImpedancesUI.Drawing.Elements;
+using CalculationImpedancesUI.Drawing.Circuits;
 
 namespace CalculationImpedancesUI.Drawing
 {
@@ -31,7 +31,8 @@ namespace CalculationImpedancesUI.Drawing
 			TreeCircuit.Nodes.Add(mainCircuitNode);
 			foreach (var subSegment in circuit.SubSegments)
 			{
-				if (!(subSegment is IElement) && subSegment.SubSegments.Count == 0)
+				if (!(subSegment is IElement) && 
+					subSegment.SubSegments.Count == 0)
 				{
 					continue;
 				}
@@ -79,7 +80,8 @@ namespace CalculationImpedancesUI.Drawing
 			DrawableSegmentBase node = root.Nodes[0] as DrawableSegmentBase;
 			while (node != null)
 			{
-				DrawableSegmentBase nextSegment = node.NextNode as DrawableSegmentBase;
+				DrawableSegmentBase nextSegment 
+					= node.NextNode as DrawableSegmentBase;
 				if (!(node is DrawableElement))
 				{
 					if (node.Nodes.Count != 0)
@@ -104,41 +106,35 @@ namespace CalculationImpedancesUI.Drawing
 		/// <returns></returns>
 		private static DrawableSegmentBase GetSegmentType(ISegment segment)
 		{
-			DrawableSegmentBase drawSegment;
 			switch (segment)
 			{
-                //TODO: Можно сразу возвращать экземпляры из case-ов
+                //TODO: Можно сразу возвращать экземпляры из case-ов (+)
 				case Resistor resistor:
                 {
-                    drawSegment = new DrawableResistor(segment);
-                    break;
+                    return new DrawableResistor(segment);
                 }
 				case Inductor inductor:
                 {
-                    drawSegment = new DrawableInductor(segment);
-						break;
+					return new DrawableInductor(segment);
                 }
 				case Capacitor capacitor:
                 {
-                    drawSegment = new DrawableCapacitor(segment);
-                    break;
+					return new DrawableCapacitor(segment);
                 }
 				case SerialCircuit serialCircuit:
                 {
-                    drawSegment = new DrawableSerialCircuit(segment);
-                    break;
+					return new DrawableSerialCircuit(segment);
+
                 }
 				case ParallelCircuit parallelCircuit:
                 {
-                    drawSegment = new DrawableParallelCircuit(segment);
-                    break;
+					return new DrawableParallelCircuit(segment);
                 }
 				default:
                 {
                     throw new ArgumentException("There is no such type of segment");
                 }
 			}
-			return drawSegment;
 		}
 
 		/// <summary>
@@ -163,14 +159,20 @@ namespace CalculationImpedancesUI.Drawing
 				var prevNode = segment.PrevNode as DrawableSegmentBase;
 				if (prevNode == null)
 				{
-					//TODO: RSDN - длины строк
-					segment.StartCoordinate = new Point(5, halfHeightSegment - segment.SizeSegment.Height / 2);
+					//TODO: RSDN - длины строк (+)
+					segment.StartCoordinate = 
+						new Point(5, halfHeightSegment - 
+						segment.SizeSegment.Height / 2);
 				}
 				else
 				{
-					//TODO: RSDN - длины строк
-					segment.StartCoordinate = new Point(prevNode.StartCoordinate.X + 
-					     prevNode.SizeSegment.Width + distance, prevNode.LeftСonnectСoordinate.Y - segment.SizeSegment.Height / 2);
+					//TODO: RSDN - длины строк (+)
+					segment.StartCoordinate = 
+						new Point(prevNode.StartCoordinate.X + 
+					     prevNode.SizeSegment.Width + 
+						 distance, 
+						 prevNode.LeftСonnectСoordinate.Y - 
+						 segment.SizeSegment.Height / 2);
 				}
 
 				if (!(segment is DrawableElement))
@@ -196,8 +198,9 @@ namespace CalculationImpedancesUI.Drawing
 			int width = 0;
 			int height = 0;
 			int distance = 10;
-			//TODO: RSDN - длины строк
-			foreach (DrawableSegmentBase segment in TreeCircuit.Nodes[0].Nodes)
+			//TODO: RSDN - длины строк (+)
+			foreach (DrawableSegmentBase segment 
+				in TreeCircuit.Nodes[0].Nodes)
 			{
 				var calculateSizeSubsegment = segment.CalculateSize();
 				width += calculateSizeSubsegment.Width + distance;
@@ -222,16 +225,21 @@ namespace CalculationImpedancesUI.Drawing
 				return;
 			}
 			var firstNode = TreeCircuit.Nodes[0] as DrawableSegmentBase;
-			var lastNode = TreeCircuit.Nodes[0].Nodes[TreeCircuit.Nodes[0].Nodes.Count - 1] as DrawableSegmentBase;
+			var lastNode = 
+				TreeCircuit.Nodes[0].Nodes[TreeCircuit.Nodes[0].Nodes.Count - 1] as DrawableSegmentBase;
 
 			if (firstNode != null)
 			{
-				//TODO: RSDN - длины строк
-				var firstPointNode = new Point(firstNode.LeftСonnectСoordinate.X-10, firstNode.LeftСonnectСoordinate.Y);
+				//TODO: RSDN - длины строк (+)
+				var firstPointNode = 
+					new Point(firstNode.LeftСonnectСoordinate.X-10, 
+					firstNode.LeftСonnectСoordinate.Y);
 				if (lastNode != null)
 				{
-					//TODO: RSDN - длины строк
-					var lastPointNode = new Point(lastNode.RightСonnectСoordinate.X+10, lastNode.RightСonnectСoordinate.Y);
+					//TODO: RSDN - длины строк (+)
+					var lastPointNode = 
+						new Point(lastNode.RightСonnectСoordinate.X+10, 
+						lastNode.RightСonnectСoordinate.Y);
 
 					graphics.DrawLine(pen, firstPointNode, firstNode.LeftСonnectСoordinate);
 					graphics.DrawLine(pen, lastPointNode, lastNode.RightСonnectСoordinate);
@@ -250,8 +258,10 @@ namespace CalculationImpedancesUI.Drawing
 
 					if (prevNode != null)
 					{
-						//TODO: RSDN - длины строк
-						graphics.DrawLine(pen, prevNode.RightСonnectСoordinate, node.LeftСonnectСoordinate);
+						//TODO: RSDN - длины строк (+)
+						graphics.DrawLine(pen, 
+							prevNode.RightСonnectСoordinate, 
+							node.LeftСonnectСoordinate);
 					}
 				}
 				node.Draw();

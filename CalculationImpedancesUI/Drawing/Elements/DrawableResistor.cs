@@ -1,8 +1,8 @@
 ﻿using CalculationImpedancesApp;
 using CalculationImpedancesUI.Drawing;
 
-//TODO: Несоответствие дефолтному namespace
-namespace CalculationImpedancesUI.Elements
+//TODO: Несоответствие дефолтному namespace (+)
+namespace CalculationImpedancesUI.Drawing.Elements
 {
 	/// <summary>
 	/// Contains methods for working with a resistor.

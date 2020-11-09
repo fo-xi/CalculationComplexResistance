@@ -2,7 +2,6 @@
 using CalculationImpedancesApp;
 using System.Windows.Forms;
 
-
 namespace CalculationImpedancesUI.Drawing
 {
 	public abstract class DrawableSegmentBase : TreeNode
