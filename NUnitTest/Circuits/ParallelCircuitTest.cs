@@ -12,15 +12,20 @@ namespace NUnitTest.Circuits
 	//TODO: RSDN (+)
 	public class ParallelCircuitTest
     {
+	    private ParallelCircuit CreateParallelCircuit()
+	    {
+		    return new ParallelCircuit(new SegmentsObservableCollection
+		    {
+			    new Inductor("jng5", 56.0),
+		    });
+	    }
+
 		[Test(Description = "Positive test of the getter Name")]
 		public void TestParallelCircuitNameGet_CorrectValue()
 		{
 			var expected = "Parallel";
-            //TODO: Дубли данных лучше сократить (?)
-			var parallelCircuit = new ParallelCircuit(new SegmentsObservableCollection
-			{
-				new Inductor("jng5", 56.0),
-			});
+            //TODO: Дубли данных лучше сократить (+)
+			var parallelCircuit = CreateParallelCircuit();
 			parallelCircuit.Name = expected;
 			var actual = parallelCircuit.Name;
 			Assert.AreEqual(expected, actual, "The Name getter " +
@@ -31,11 +36,8 @@ namespace NUnitTest.Circuits
 		public void TestParallelCircuitNameSet_CorrectValue()
 		{
 			var expected = "Parallel";
-            //TODO: Дубли данных лучше сократить (?)
-			var parallelCircuit = new ParallelCircuit(new SegmentsObservableCollection
-			{
-				new Capacitor("j55t", 32.5),
-			});
+            //TODO: Дубли данных лучше сократить (+)
+			var parallelCircuit = CreateParallelCircuit();
 			Assert.DoesNotThrow(() =>
 			{
 				parallelCircuit.Name = expected;
@@ -45,11 +47,8 @@ namespace NUnitTest.Circuits
 		[Test(Description = "Positive test of the getter SubSegments")]
 		public void TestSubSegmentsGet_CorrectValue()
 		{
-            //TODO: Дубли данных лучше сократить (?)
-			var expected = new SegmentsObservableCollection
-			{
-				new Inductor("jng5", 56.0),
-			};
+            //TODO: Дубли данных лучше сократить (+)
+			var expected = CreateParallelCircuit().SubSegments;
 			var parallelCircuit = new ParallelCircuit(new SegmentsObservableCollection());
 			parallelCircuit.SubSegments = expected;
 			var actual = parallelCircuit.SubSegments;
@@ -60,11 +59,8 @@ namespace NUnitTest.Circuits
 		[Test(Description = "Positive test of the setter SubSegments")]
 		public void TestSubSegmentsSet_CorrectValue()
 		{
-            //TODO: Дубли данных лучше сократить (?)
-			var expected = new SegmentsObservableCollection
-			{
-				new Inductor("jng5", 56.0),
-			};
+            //TODO: Дубли данных лучше сократить (+)
+			var expected = CreateParallelCircuit().SubSegments;
 			var parallelCircuit = new ParallelCircuit(new SegmentsObservableCollection());
 			Assert.DoesNotThrow(() =>
 			{
@@ -75,25 +71,19 @@ namespace NUnitTest.Circuits
 		[Test(Description = "Positive test of the constructor ParallelCircuit")]
 		public void TestParallelCircuitConstructor_CorrectValue()
 		{
-            //TODO: Дубли данных лучше сократить (?)
-			var subSegments = new SegmentsObservableCollection
-			{
-				new Inductor("jng5", 56.0),
-			};
+            //TODO: Дубли данных лучше сократить (+)
+			var subSegments = CreateParallelCircuit().SubSegments;
 			Assert.DoesNotThrow(() =>
 			{
 				var parallelCircuit = new ParallelCircuit(subSegments);
-			}, "The ParallelCircuit constructor create a parallel сircuit object");
+			}, "The ParallelCircuit constructor create a parallel circuit object");
 		}
 
 		[Test(Description = "Test of the calculate")]
 		public void TestCalculateZ_CorrectValue()
 		{
             //TODO: Дубли данных лучше сократить (+)
-			var subSegments = new SegmentsObservableCollection
-			{
-				new Resistor("g56", 7.8),
-			};
+			var subSegments = CreateParallelCircuit().SubSegments;
 			var parallelCircuit = new ParallelCircuit(subSegments);
 
 			var frequency = 7;
@@ -110,10 +100,7 @@ namespace NUnitTest.Circuits
 		{
 			var wasCalled = false;
             //TODO: Дубли данных лучше сократить (+)
-			var subSegments = new SegmentsObservableCollection
-			{
-				new Resistor("g56", 7.8),
-			};
+			var subSegments = CreateParallelCircuit().SubSegments;
 			var parallelCircuit = new ParallelCircuit(subSegments);
 
 			parallelCircuit.SegmentChanged += delegate (object o, EventArgs e)

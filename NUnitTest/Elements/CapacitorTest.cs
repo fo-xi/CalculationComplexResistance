@@ -11,7 +11,7 @@ namespace NUnitTest.Elements
     //TODO: RSDN (+)
 	public class CapacitorTest
     {
-        //TODO: Нужно ещё добавить тестирование на корректную установку свойств
+        //TODO: Нужно ещё добавить тестирование на корректную установку свойств (+)
         [Test(Description = "Test of the constructor")]
         public void TestConstructor_CorrectValue()
         {
@@ -21,6 +21,30 @@ namespace NUnitTest.Elements
             {
                 var capacitor = new Capacitor(name, value);
             }, "The Capacitor constructor create a capacitor object");
+        }
+
+        [Test(Description = "Negative test of the constructor Capacitor with wrong name")]
+        public void TestConstructor_InvalidName()
+        {
+	        var wrongName = "";
+	        var value = 23.2;
+	        Assert.Throws<ArgumentException>(() =>
+		        {
+			        var capacitor = new Capacitor(wrongName, value);
+		        }, "An exception should be thrown if the constructor " +
+                   "creates a capacitor whose name contains less than one character");
+        }
+
+        [Test(Description = "Negative test of the constructor Capacitor with wrong value")]
+        public void TestConstructor_InvalidValue()
+        {
+	        var name = "thh";
+	        var wrongValue = -23.2;
+	        Assert.Throws<ArgumentException>(() =>
+		        {
+			        var capacitor = new Capacitor(name, wrongValue);
+		        }, "An exception should be thrown if the constructor " +
+                   "creates a capacitor with wrong value");
         }
 
         [Test(Description = "Test of the calculate")]

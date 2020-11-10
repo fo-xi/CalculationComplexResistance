@@ -13,15 +13,20 @@ namespace NUnitTest.Circuits
 	//TODO: RSDN (+)
 	public class SerialCircuitTest
     {
+		private SerialCircuit CreateSerialCircuit()
+		{
+			return new SerialCircuit(new SegmentsObservableCollection
+			{
+				new Inductor("jng5", 56.0),
+			});
+		}
+
 		[Test(Description = "Positive test of the getter Name")]
 		public void TestSerialCircuitNameGet_CorrectValue()
 		{
 			var expected = "Serial";
-            //TODO: Дубли данных лучше сократить (?)
-			var serialCircuit = new SerialCircuit(new SegmentsObservableCollection
-			{
-				new Inductor("jng5", 56.0),
-			});
+            //TODO: Дубли данных лучше сократить (+)
+            var serialCircuit = CreateSerialCircuit();
 			serialCircuit.Name = expected;
 			var actual = serialCircuit.Name;
 			Assert.AreEqual(expected, actual, "The Name getter " +
@@ -32,11 +37,8 @@ namespace NUnitTest.Circuits
 		public void TestSerialCircuitNameSet_CorrectValue()
 		{
 			var expected = "Serial";
-            //TODO: Дубли данных лучше сократить (?)
-			var serialCircuit = new SerialCircuit(new SegmentsObservableCollection
-			{
-				new Capacitor("j55t", 32.5),
-			});
+            //TODO: Дубли данных лучше сократить (+)
+			var serialCircuit = CreateSerialCircuit();
 			Assert.DoesNotThrow(() =>
 			{
 				serialCircuit.Name = expected;
@@ -47,10 +49,7 @@ namespace NUnitTest.Circuits
 		public void TestSubSegmentsGet_CorrectValue()
 		{
             //TODO: Дубли данных лучше сократить (+)
-			var expected = new SegmentsObservableCollection
-			{
-				new Inductor("jng5", 56.0),
-			};
+			var expected = CreateSerialCircuit().SubSegments;
 			var serialCircuit = new SerialCircuit(new SegmentsObservableCollection());
 			serialCircuit.SubSegments = expected;
 			var actual = serialCircuit.SubSegments;
@@ -62,10 +61,7 @@ namespace NUnitTest.Circuits
 		public void TestSubSegmentsSet_CorrectValue()
 		{
             //TODO: Дубли данных лучше сократить (+)
-			var expected = new SegmentsObservableCollection
-			{
-				new Inductor("jng5", 56.0),
-			};
+			var expected = CreateSerialCircuit().SubSegments;
 			var serialCircuit = new SerialCircuit(new SegmentsObservableCollection());
 			Assert.DoesNotThrow(() =>
 			{
@@ -76,11 +72,8 @@ namespace NUnitTest.Circuits
 		[Test(Description = "Positive test of the constructor SerialCircuit")]
 		public void TestSerialCircuitConstructor_CorrectValue()
 		{
-            //TODO: Дубли данных лучше сократить (?)
-			var subSegments = new SegmentsObservableCollection
-			{
-				new Inductor("jng5", 56.0),
-			};
+            //TODO: Дубли данных лучше сократить (+)
+			var subSegments = CreateSerialCircuit().SubSegments;
 			Assert.DoesNotThrow(() =>
 			{
 				var serialCircuit = new SerialCircuit(subSegments);
@@ -91,10 +84,7 @@ namespace NUnitTest.Circuits
 		public void TestCalculateZ_CorrectValue()
 		{
             //TODO: Дубли данных лучше сократить (+)
-			var subSegments = new SegmentsObservableCollection
-			{
-				new Inductor("jng5", 56.0),
-			};
+			var subSegments = CreateSerialCircuit().SubSegments;
 			var serialCircuit = new SerialCircuit(subSegments);
 
 			var frequency = 7;
@@ -112,10 +102,7 @@ namespace NUnitTest.Circuits
 		{
 			var wasCalled = false;
             //TODO: Дубли данных лучше сократить (+)
-			var subSegments = new SegmentsObservableCollection
-			{
-				new Inductor("jng5", 56.0),
-			};
+			var subSegments = CreateSerialCircuit().SubSegments;
 			var serialCircuit = new SerialCircuit(subSegments);
 
 			serialCircuit.SegmentChanged += delegate (object o, EventArgs e)

@@ -11,7 +11,7 @@ namespace NUnitTest.Elements
     //TODO: RSDN (+)
 	public class InductorTest
     {
-        //TODO: Нужно ещё добавить тестирование на корректную установку свойств
+        //TODO: Нужно ещё добавить тестирование на корректную установку свойств (+)
 	    [Test(Description = "Test of the constructor")]
         public void TestConstructor_CorrectValue()
         {
@@ -21,6 +21,30 @@ namespace NUnitTest.Elements
             {
                 var inductor = new Inductor(name, value);
             }, "The Inductor constructor create a inductor object");
+        }
+
+        [Test(Description = "Negative test of the constructor Inductor with wrong name")]
+        public void TestConstructor_InvalidName()
+        {
+	        var wrongName = "";
+	        var value = 23.2;
+	        Assert.Throws<ArgumentException>(() =>
+		        {
+			        var inductor = new Inductor(wrongName, value);
+		        }, "An exception should be thrown if the constructor " +
+                   "creates a inductor whose name contains less than one character");
+        }
+
+        [Test(Description = "Negative test of the constructor Inductor with wrong value")]
+        public void TestConstructor_InvalidValue()
+        {
+	        var name = "thh";
+	        var wrongValue = -23.2;
+	        Assert.Throws<ArgumentException>(() =>
+		        {
+			        var inductor = new Inductor(name, wrongValue);
+		        }, "An exception should be thrown if the constructor " +
+                   "creates a inductor with wrong value");
         }
 
         [Test(Description = "Test of the calculate")]

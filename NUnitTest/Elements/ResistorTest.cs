@@ -12,7 +12,7 @@ namespace NUnitTest.Elements
     //TODO: RSDN (+)
 	public class ResistorTest
     {
-        //TODO: Нужно ещё добавить тестирование на корректную установку свойств
+        //TODO: Нужно ещё добавить тестирование на корректную установку свойств (+)
         [Test(Description = "Test of the constructor Resistor")]
         public void TestConstructor_CorrectValue()
         {
@@ -22,6 +22,30 @@ namespace NUnitTest.Elements
             {
                 var resistor = new Resistor(name, value);
             }, "The Resistor constructor create a resistor object");
+        }
+
+        [Test(Description = "Negative test of the constructor Resistor with wrong name")]
+        public void TestConstructor_InvalidName()
+        {
+	        var wrongName = "";
+	        var value = 23.2;
+            Assert.Throws<ArgumentException>(() =>
+	        {
+		        var resistor = new Resistor(wrongName, value);
+	        }, "An exception should be thrown if the constructor " +
+	           "creates a resistor whose name contains less than one character");
+        }
+
+        [Test(Description = "Negative test of the constructor Resistor with wrong value")]
+        public void TestConstructor_InvalidValue()
+        {
+	        var name = "thh";
+	        var wrongValue = -23.2;
+	        Assert.Throws<ArgumentException>(() =>
+		        {
+			        var resistor = new Resistor(name, wrongValue);
+		        }, "An exception should be thrown if the constructor " +
+                   "creates a resistor with wrong value");
         }
 
         [Test(Description =  "Test of the calculate")]
@@ -39,7 +63,7 @@ namespace NUnitTest.Elements
         public void TestToString_CorrectValue()
         {
 	        var resistor = new Resistor("dfr4", 43.5);
-	        var expected = "Resistor: " + "dfr4" + " = " + "43.5 Om";
+	        var expected = "Resistor: " + "dfr4" + " = " + "43.5 Ohm";
 	        var actual = resistor.ToString();
 
 	        Assert.AreEqual(expected,

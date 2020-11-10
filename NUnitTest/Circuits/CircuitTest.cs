@@ -13,14 +13,26 @@ namespace NUnitTest.Circuits
 	//TODO: RSDN (+)
 	public class CircuitTest
 	{
+		private Circuit CreateCircuit()
+		{
+			return new Circuit(" ", new SegmentsObservableCollection
+			{
+				new SerialCircuit(new SegmentsObservableCollection
+				{
+					new Inductor("jng5", 56.0),
+				}),
+				new ParallelCircuit(new SegmentsObservableCollection
+				{
+					new Resistor("g56", 7.8),
+				}),
+			});
+		}
+
 		[Test(Description = "Positive test of the getter Name")]
 		public void TestNameGet_CorrectValue()
 		{
 			var expected = "ht56";
-			var circuit = new Circuit(" ", new SegmentsObservableCollection
-			{
-				new Capacitor("j55t", 32.5),
-			});
+			var circuit = CreateCircuit();
 			circuit.Name = expected;
 			var actual = circuit.Name;
 			Assert.AreEqual(expected, actual, "The Name getter " +
@@ -31,10 +43,7 @@ namespace NUnitTest.Circuits
 		public void TestNameSet_CorrectValue()
 		{
 			var expected = "htt56";
-			var circuit = new Circuit(" ", new SegmentsObservableCollection
-			{
-				new Capacitor("j55t", 32.5),
-			});
+			var circuit = CreateCircuit();
 			Assert.DoesNotThrow(() =>
 			{
 				circuit.Name = expected;
@@ -45,10 +54,7 @@ namespace NUnitTest.Circuits
 			TestName = "Assigning an incorrect circuit name that contains less than 1 symbol")]
 		public void TestName_InvalidName(string wrongName, string message)
 		{
-			var circuit = new Circuit(" ", new SegmentsObservableCollection
-			{
-				new Capacitor("rg4", 32.5)
-			});
+			var circuit = CreateCircuit();
 			Assert.Throws<ArgumentException>(() =>
 			{
 				circuit.Name = wrongName;
@@ -59,13 +65,7 @@ namespace NUnitTest.Circuits
 		public void TestSubSegmentsGet_CorrectValue()
 		{
             //TODO: Дубли данных лучше сократить (+)
-			var expected = new SegmentsObservableCollection
-			{
-				new SerialCircuit(new SegmentsObservableCollection
-				{
-					new Inductor("jng5", 56.0),
-				}),
-			};
+            var expected = CreateCircuit().SubSegments;
 			var circuit = new Circuit(" ", new SegmentsObservableCollection());
 			circuit.SubSegments = expected;
 			var actual = circuit.SubSegments;
@@ -77,13 +77,7 @@ namespace NUnitTest.Circuits
 		public void TestSubSegmentsSet_CorrectValue()
 		{
             //TODO: Дубли данных лучше сократить (+)
-			var expected = new SegmentsObservableCollection
-			{
-				new SerialCircuit(new SegmentsObservableCollection
-				{
-					new Inductor("jng5", 56.0),
-				}),
-			};
+            var expected = CreateCircuit().SubSegments;
 			var circuit = new Circuit(" ", new SegmentsObservableCollection());
 			Assert.DoesNotThrow(() =>
 			{
@@ -96,13 +90,7 @@ namespace NUnitTest.Circuits
 		{
 			var name = "d345";
             //TODO: Дубли данных лучше сократить (+)
-			var subSegments = new SegmentsObservableCollection
-			{
-				new SerialCircuit(new SegmentsObservableCollection
-				{
-					new Inductor("jng5", 56.0),
-				}),
-			}; 
+            var subSegments = CreateCircuit().SubSegments;
 			Assert.DoesNotThrow(() =>
 			{
 				var circuit = new Circuit(name, subSegments);
@@ -114,13 +102,7 @@ namespace NUnitTest.Circuits
 		{
 			var wasCalled = false;
             //TODO: Дубли данных лучше сократить (+)
-			var subSegments = new SegmentsObservableCollection
-			{
-				new SerialCircuit(new SegmentsObservableCollection
-				{
-					new Resistor("fr4tt", 32.6)
-				}),
-			};
+            var subSegments = CreateCircuit().SubSegments;
 			var circuit = new Circuit("fdr4", subSegments);
 
 			circuit.SegmentChanged += delegate (object o, EventArgs e)
@@ -136,17 +118,7 @@ namespace NUnitTest.Circuits
 		public void TestCalculateZ_CorrectValue()
 		{
             //TODO: Дубли данных лучше сократить (+)
-			var subSegments = new SegmentsObservableCollection
-			{
-				new SerialCircuit(new SegmentsObservableCollection
-				{
-					new Inductor("jng5", 56.0),
-				}),
-				new ParallelCircuit(new SegmentsObservableCollection
-				{
-					new Resistor("g56", 7.8),
-				}),
-			};
+			var subSegments = CreateCircuit().SubSegments;
 			var circuit = new Circuit("fdr4", subSegments);
 
 			List<double> frequencies = new List<double> { 32.5, 21.4, 11.9 };

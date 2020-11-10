@@ -45,8 +45,6 @@ namespace NUnitTest.Elements
 			}, "Assigning an incorrect element name that contains less than 1 symbol");
 		}
 
-
-
 		[Test(Description = "Positive test of the getter Value")]
 		public void TestValueGet_CorrectValue()
 		{
