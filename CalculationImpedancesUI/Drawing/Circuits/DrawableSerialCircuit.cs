@@ -74,7 +74,7 @@ namespace CalculationImpedancesUI.Drawing.Circuits
 								  segment.SizeSegment.Height / 2);
 				}
 
-				if (!(segment is DrawableElement))
+				if (!(segment is DrawingElement))
 				{
 					segment.FindCoordinate();
 				}
@@ -103,7 +103,8 @@ namespace CalculationImpedancesUI.Drawing.Circuits
 				{ 
 					//TODO: RSDN - длины строк (+)
 					Graphics.DrawLine(Pen, 
-						prevNode.RightСonnectСoordinate, node.LeftСonnectСoordinate);
+						prevNode.RightСonnectСoordinate,
+						node.LeftСonnectСoordinate);
 				}
 
 				node.Draw();

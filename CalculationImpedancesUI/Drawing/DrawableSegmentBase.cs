@@ -4,6 +4,9 @@ using System.Windows.Forms;
 
 namespace CalculationImpedancesUI.Drawing
 {
+	/// <summary>
+	/// The class contains methods for working with circuit segments.
+	/// </summary>
 	public abstract class DrawableSegmentBase : TreeNode
 	{
         /// <summary>

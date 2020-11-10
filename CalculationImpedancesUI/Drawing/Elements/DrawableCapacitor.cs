@@ -7,7 +7,7 @@ namespace CalculationImpedancesUI.Drawing.Elements
 	/// <summary>
 	/// Contains methods for working with a capacitor.
 	/// </summary>
-	public class DrawableCapacitor : DrawableElement
+	public class DrawableCapacitor : DrawingElement
 	{
 		/// <summary>
 		/// Capacitor creation.

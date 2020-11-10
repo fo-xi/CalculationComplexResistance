@@ -7,7 +7,7 @@ namespace CalculationImpedancesUI.Drawing.Elements
 	/// <summary>
 	/// Contains methods for working with a resistor.
 	/// </summary>
-	public class DrawableResistor : DrawableElement
+	public class DrawableResistor : DrawingElement
 	{
 		/// <summary>
 		/// Resistor creation.

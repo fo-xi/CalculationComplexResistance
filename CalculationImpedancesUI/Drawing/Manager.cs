@@ -27,7 +27,7 @@ namespace CalculationImpedancesUI.Drawing
 		public static void FillCircuitNodes(Circuit circuit)
 		{
 			TreeCircuit.Nodes.Clear();
-			TreeNode mainCircuitNode = new TreeNode();
+			DrawableSegmentBase mainCircuitNode = new DrawableSerialCircuit(null);
 			TreeCircuit.Nodes.Add(mainCircuitNode);
 			foreach (var subSegment in circuit.SubSegments)
 			{
@@ -38,7 +38,7 @@ namespace CalculationImpedancesUI.Drawing
 				}
 				DrawableSegmentBase subSegmentNode = GetSegmentType(subSegment);
 
-				if (!(subSegmentNode is DrawableElement))
+				if (!(subSegmentNode is DrawingElement))
 				{
 					FillTreeNode(subSegmentNode, subSegment);
 				}
@@ -82,7 +82,7 @@ namespace CalculationImpedancesUI.Drawing
 			{
 				DrawableSegmentBase nextSegment 
 					= node.NextNode as DrawableSegmentBase;
-				if (!(node is DrawableElement))
+				if (!(node is DrawingElement))
 				{
 					if (node.Nodes.Count != 0)
 					{
@@ -144,6 +144,8 @@ namespace CalculationImpedancesUI.Drawing
 		{
 			int halfHeightSegment = 0;
 			//TODO: Нужны два форыча?
+			//Нужно сначала найти самую высокую ноду из всех нод, а потом, в следующем foreach произвести операции
+			//Это необходимо для выравнивания
 			foreach (DrawableSegmentBase segment in TreeCircuit.Nodes[0].Nodes)
 			{
 				if (halfHeightSegment < segment.SizeSegment.Height / 2)
@@ -175,42 +177,13 @@ namespace CalculationImpedancesUI.Drawing
 						 segment.SizeSegment.Height / 2);
 				}
 
-				if (!(segment is DrawableElement))
+				if (!(segment is DrawingElement))
 				{
 					segment.FindCoordinate();
 				}
 
 				segment.CalculateСonnectСoordinate();
 			}
-		}
-
-		/// <summary>
-		/// Counting circuit size.
-		/// </summary>
-		/// <returns></returns>
-		public static Size CalculateCircuitSize()
-		{
-			if (TreeCircuit.Nodes.Count == 0)
-			{
-				return new Size(1 ,1);
-			}
-            //TODO: Дублируется в CalculateSize в DrawableCircuit
-			int width = 0;
-			int height = 0;
-			int distance = 10;
-			//TODO: RSDN - длины строк (+)
-			foreach (DrawableSegmentBase segment 
-				in TreeCircuit.Nodes[0].Nodes)
-			{
-				var calculateSizeSubsegment = segment.CalculateSize();
-				width += calculateSizeSubsegment.Width + distance;
-				if (calculateSizeSubsegment.Height > height)
-				{
-					height = calculateSizeSubsegment.Height;
-				}
-			}
-			width += distance;
-			return new Size(width, height + 1); 
 		}
 
         /// <summary>
@@ -224,34 +197,13 @@ namespace CalculationImpedancesUI.Drawing
 			{
 				return;
 			}
-			var firstNode = TreeCircuit.Nodes[0] as DrawableSegmentBase;
-			var lastNode = 
-				TreeCircuit.Nodes[0].Nodes[TreeCircuit.Nodes[0].Nodes.Count - 1] as DrawableSegmentBase;
-
-			if (firstNode != null)
-			{
-				//TODO: RSDN - длины строк (+)
-				var firstPointNode = 
-					new Point(firstNode.LeftСonnectСoordinate.X-10, 
-					firstNode.LeftСonnectСoordinate.Y);
-				if (lastNode != null)
-				{
-					//TODO: RSDN - длины строк (+)
-					var lastPointNode = 
-						new Point(lastNode.RightСonnectСoordinate.X+10, 
-						lastNode.RightСonnectСoordinate.Y);
-
-					graphics.DrawLine(pen, firstPointNode, firstNode.LeftСonnectСoordinate);
-					graphics.DrawLine(pen, lastPointNode, lastNode.RightСonnectСoordinate);
-				}
-			}
 
 			foreach (DrawableSegmentBase node in TreeCircuit.Nodes[0].Nodes)
 			{
 				var prevNode = node.PrevNode as DrawableSegmentBase;
 				if (prevNode != null)
 				{
-					if (prevNode.Nodes.Count == 0 && !(prevNode is DrawableElement))
+					if (prevNode.Nodes.Count == 0 && !(prevNode is DrawingElement))
 					{
 						prevNode = prevNode.PrevNode as DrawableSegmentBase;
 					}

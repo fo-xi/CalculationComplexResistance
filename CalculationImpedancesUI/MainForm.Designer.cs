@@ -1,4 +1,6 @@
-﻿namespace CalculationImpedancesUI
+﻿using CalculationImpedancesUI.Control;
+
+namespace CalculationImpedancesUI
 {
     partial class MainForm
     {
@@ -45,7 +47,7 @@
             this.RemoveFrequencyButton = new System.Windows.Forms.Button();
             this.PictureBox = new System.Windows.Forms.PictureBox();
             this.GroupBox = new System.Windows.Forms.GroupBox();
-            this.TreeViewControl = new CalculationImpedancesUI.TreeViewControl();
+            this.TreeViewControl = new CalculationImpedancesUI.Control.TreeViewControl();
             this.CircuitsGroupBox.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.ImpedancesGroupBox.SuspendLayout();

@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
-using CalculationImpedancesUI.Control;
 using CalculationImpedancesApp;
 
-//TODO: Несоответствие дефолтному namespace
-namespace CalculationImpedancesUI
+//TODO: Несоответствие дефолтному namespace (+)
+namespace CalculationImpedancesUI.Control
 {
     public partial class TreeViewControl : UserControl
     {
@@ -105,7 +104,8 @@ namespace CalculationImpedancesUI
 				}
 
 				//TODO: RSDN - длины строк (+)
-                var subSements = Project.SelectedCircuit.SubSegments;
+                var subSements = 
+	                Project.SelectedCircuit.SubSegments;
                 if (!(selectedIndex.Segment is IElement) && 
 					(selectedIndex != CircuitsTreeView.Nodes[0]))
                 {
@@ -226,7 +226,7 @@ namespace CalculationImpedancesUI
 
 	        if (whereDrag == null)
 	        {
-		        UpdateTreeView(whatDragging, whereDrag);
+		        UpdatingData(whatDragging, whereDrag);
 		        whatDragging.Remove();
 		        CircuitsTreeView.Nodes[0].Nodes.Add(whatDragging);
 		        whatDragging.Expand();
@@ -251,7 +251,7 @@ namespace CalculationImpedancesUI
 					        return;
 				        }
 
-				        UpdateTreeView(whatDragging, whereDrag);
+				        UpdatingData(whatDragging, whereDrag);
 				        whatDragging.Remove();
 				        whereDrag.Nodes.Add(whatDragging);
 
@@ -263,8 +263,12 @@ namespace CalculationImpedancesUI
 	        NotifyCalculate?.Invoke(this, e);
 		}
 
-		//TODO: XML
-        private SegmentTreeNode CheckElementSelection()
+		//TODO: XML (+)
+		/// <summary>
+		/// Checking if the selected item is a root.
+		/// </summary>
+		/// <returns></returns>
+		private SegmentTreeNode CheckElementSelection()
         {
             var element = CircuitsTreeView.SelectedNode as SegmentTreeNode;
 	        if (element == null)
@@ -275,11 +279,16 @@ namespace CalculationImpedancesUI
             return element;
         }
 
-		//TODO: XML
-        private void UpdateTreeView(SegmentTreeNode draggedNode,
-            SegmentTreeNode targetNode)
+		//TODO: XML (+)
+		/// <summary>
+		/// Updating data after we changed the tree structure.
+		/// </summary>
+		/// <param name="whatDragging">What are we dragging.</param>
+		/// <param name="whereDrag">Where we drag.</param>
+		private void UpdatingData(SegmentTreeNode whatDragging,
+            SegmentTreeNode whereDrag)
         {
-	        var parent = draggedNode.Parent as SegmentTreeNode;
+	        var parent = whatDragging.Parent as SegmentTreeNode;
             if (parent == null)
             {
                 return;
@@ -293,16 +302,15 @@ namespace CalculationImpedancesUI
 
             }
 
-            subSegments.Remove(draggedNode.Segment);
-			if ((targetNode == null) || (targetNode.Segment == null))
+            subSegments.Remove(whatDragging.Segment);
+			if ((whereDrag == null) || (whereDrag.Segment == null))
 	        {
-		        Project.SelectedCircuit.SubSegments.Add(draggedNode.Segment);
+		        Project.SelectedCircuit.SubSegments.Add(whatDragging.Segment);
 	        }
 	        else
 	        {
-		        targetNode.Segment.SubSegments.Add(draggedNode.Segment);
+		        whereDrag.Segment.SubSegments.Add(whatDragging.Segment);
 	        }
-
         }
 
         private void TreeViewControl_Load(object sender, EventArgs e)

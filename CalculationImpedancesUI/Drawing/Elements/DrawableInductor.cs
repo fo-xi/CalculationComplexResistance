@@ -7,7 +7,7 @@ namespace CalculationImpedancesUI.Drawing.Elements
 	/// <summary>
 	/// Contains methods for working with a inductor.
 	/// </summary>
-	public class DrawableInductor : DrawableElement
+	public class DrawableInductor : DrawingElement
 	{
 		/// <summary>
 		/// Inductor creation.

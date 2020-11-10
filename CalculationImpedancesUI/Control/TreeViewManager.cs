@@ -28,14 +28,8 @@ namespace CalculationImpedancesUI.Control
 			CircuitsTreeView.Nodes.Add(mainCircuitNode);
 			foreach (var subSegment in circuit.SubSegments)
 			{
-				//TODO: Дубль в следующем методе
-				SegmentTreeNode subSegmentNode = new SegmentTreeNode
-				{
-					Text = subSegment is IElement 
-                        ? subSegment.ToString() 
-                        : subSegment.Name,
-					Segment = subSegment
-				};
+				//TODO: Дубль в следующем методе (+)
+				SegmentTreeNode subSegmentNode = CreateSegmentTreeNode(subSegment);
 				if (!(subSegmentNode.Segment is IElement))
 				{
 					FillTreeNode(subSegmentNode, subSegment);
@@ -68,14 +62,8 @@ namespace CalculationImpedancesUI.Control
 			{
 				foreach (var subSegment in segment.SubSegments)
 				{
-                    //TODO: Дубль
-					SegmentTreeNode segmentNode = new SegmentTreeNode
-					{
-						Text = subSegment is IElement 
-                            ? subSegment.ToString() 
-                            : subSegment.Name,
-						Segment = subSegment
-					};
+					//TODO: Дубль (+)
+					SegmentTreeNode segmentNode = CreateSegmentTreeNode(subSegment);
 					parentNode.Nodes.Add(segmentNode);
 					if (!(subSegment is IElement))
 					{
@@ -83,6 +71,19 @@ namespace CalculationImpedancesUI.Control
 					}
 				}
 			}
+		}
+
+		private static SegmentTreeNode CreateSegmentTreeNode(ISegment subSegment)
+		{
+			SegmentTreeNode node = new SegmentTreeNode
+			{
+				Text = subSegment is IElement
+					? subSegment.ToString()
+					: subSegment.Name,
+				Segment = subSegment
+			};
+
+			return node;
 		}
 	}
 }

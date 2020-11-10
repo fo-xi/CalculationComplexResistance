@@ -1,4 +1,4 @@
-﻿namespace CalculationImpedancesUI
+﻿namespace CalculationImpedancesUI.Control
 {
     partial class TreeViewControl
     {

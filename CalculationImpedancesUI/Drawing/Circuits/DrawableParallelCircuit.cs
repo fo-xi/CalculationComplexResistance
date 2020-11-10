@@ -70,7 +70,7 @@ namespace CalculationImpedancesUI.Drawing.Circuits
 						prevNode.StartCoordinate.Y + prevNode.SizeSegment.Height + distance);
 				}
 
-				if (!(segment is DrawableElement))
+				if (!(segment is DrawingElement))
 				{
 					segment.FindCoordinate();
 				}
@@ -100,22 +100,21 @@ namespace CalculationImpedancesUI.Drawing.Circuits
 				return;
 			}
 
-            //TODO: Дублируются операции по инициализации точек связи
+            //TODO: Дублируются операции по инициализации точек связи (+)
 			var firstNode = Nodes[0] as DrawableSegmentBase;
 			var lastNode = Nodes[Nodes.Count - 1] as DrawableSegmentBase;
 
-			var firstPointRightConnection = 
+			var firstPointConnection = 
                 new Point(RightСonnectСoordinate.X, firstNode.RightСonnectСoordinate.Y);
-			var lastPointRightConnection = 
+			var lastPointConnection = 
                 new Point(RightСonnectСoordinate.X, lastNode.RightСonnectСoordinate.Y);
+			Graphics.DrawLine(Pen, firstPointConnection, lastPointConnection);
 
-			var firstPointLeftConnection = 
+			firstPointConnection = 
                 new Point(LeftСonnectСoordinate.X, firstNode.RightСonnectСoordinate.Y);
-			var lastPointLeftConnection = 
+			lastPointConnection = 
                 new Point(LeftСonnectСoordinate.X, lastNode.RightСonnectСoordinate.Y);
-
-			Graphics.DrawLine(Pen, firstPointRightConnection, lastPointRightConnection);
-			Graphics.DrawLine(Pen, firstPointLeftConnection, lastPointLeftConnection);
+			Graphics.DrawLine(Pen, firstPointConnection, lastPointConnection);
 		}
 	}
 }
