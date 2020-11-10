@@ -24,8 +24,12 @@ namespace CalculationImpedancesUI.Drawing.Circuits
 		/// <returns></returns>
 		public override Size CalculateSize()
 		{
-            Height = 0;
-            Width = 0;
+			Height = 0;
+			Width = 0;
+			if (Nodes.Count == 0)
+			{
+				return new Size(Width, Height);
+			}
             foreach (DrawableSegmentBase segment in Nodes)
 			{
 				var calculateSize = segment.CalculateSize();

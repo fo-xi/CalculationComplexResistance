@@ -170,8 +170,10 @@ namespace CalculationImpedancesUI
 
 		private void UpdatePictureBox()
 		{
+			PictureBox.Image = null;
 			Manager.FillCircuitNodes(Project.SelectedCircuit);
 			var circuitSize = (Manager.TreeCircuit.Nodes[0] as DrawableSegmentBase).CalculateSize();
+
 			Bitmap bitmap = new Bitmap(circuitSize.Width+10, circuitSize.Height+1);
 			DrawableSegmentBase.Graphics = Graphics.FromImage(bitmap);
 			DrawableSegmentBase.Pen = new Pen(Color.Black);

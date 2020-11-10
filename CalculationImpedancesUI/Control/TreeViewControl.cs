@@ -146,9 +146,14 @@ namespace CalculationImpedancesUI.Control
 				if (elementForm.DialogResult == DialogResult.OK)
 				{
 					var parent = selectedIndex.Parent as SegmentTreeNode;
-					parent.Segment.SubSegments.Remove(selectedIndex.Segment);
+					var subSegments = Project.SelectedCircuit.SubSegments;
+					if (parent != CircuitsTreeView.Nodes[0])
+					{
+						subSegments = parent.Segment.SubSegments;
+					}
+					subSegments.Remove(selectedIndex.Segment);
 					parent.Nodes.Remove(selectedIndex);
-					parent.Segment.SubSegments.Add(elementForm.NewElement);
+					subSegments.Add(elementForm.NewElement);
 					parent.Nodes.Add(new SegmentTreeNode
 					{
 						Text = elementForm.NewElement.ToString(),
