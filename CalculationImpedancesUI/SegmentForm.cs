@@ -62,8 +62,8 @@ namespace CalculationImpedancesUI
 				case ParallelCircuit parallelCircuit:
 				{
 					TypeComboBox.Text = "Parallel";
-				break;
-					}
+					break;
+				}
 				case SerialCircuit serialCircuit:
 				{
 					TypeComboBox.Text = "Serial";

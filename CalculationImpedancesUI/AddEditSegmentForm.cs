@@ -35,7 +35,7 @@ namespace CalculationImpedancesUI
 			var name = NameTextBox.Text;
 			if (!double.TryParse(ValueTextBox.Text, out var value))
 			{
-				MessageBox.Show("Wrong value", "Warning",
+				MessageBox.Show("Empty fields!", "Warning",
 					MessageBoxButtons.OK, MessageBoxIcon.Warning);
 				return;
 			}
@@ -69,9 +69,9 @@ namespace CalculationImpedancesUI
 				}
 			}
             //TODO: Нет смысла в аргументе catch-a (+)
-			catch (ArgumentException)
+			catch (ArgumentException exception)
 			{
-				MessageBox.Show("Enter element name", "Warning",
+				MessageBox.Show(exception.Message, "Warning",
 					MessageBoxButtons.OK, MessageBoxIcon.Warning);
 				return;
 			}
