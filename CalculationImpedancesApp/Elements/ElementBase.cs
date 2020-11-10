@@ -37,8 +37,14 @@ namespace CalculationImpedancesApp.Elements
 			{
 				if (value.Length == 0)
 				{
-					throw new ArgumentException($"The {nameof(Name)} " +
-						$"cannot be empty!");
+					throw new ArgumentException($"The " + 
+					     $"{nameof(Name)} cannot be empty!");
+				}
+				if (value != _name)
+				{
+					SegmentChanged?.Invoke(this,
+						new ElementEventArgs($"The element" +
+						  $" changed the {nameof(Name)} to {Name}!"));
 				}
 
 				_name = value;
@@ -56,10 +62,10 @@ namespace CalculationImpedancesApp.Elements
 			}
 			set
 			{
-				if (value < 0)
+				if (value <= 0)
 				{
 					throw new ArgumentException($"The " +
-						$"{nameof(Value)} cannot be negative!");
+						$"{nameof(Value)} cannot be negative or zero!");
 				}
 
 				if (value != _value)

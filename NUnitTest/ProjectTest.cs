@@ -8,7 +8,7 @@ using NUnit.Framework;
 
 namespace NUnitTest
 {
-	class ProjectTest
+	public class ProjectTest
     {
         [Test(Description = "Test of the constructor")]
         public void TestConstructor_CorrectValue()

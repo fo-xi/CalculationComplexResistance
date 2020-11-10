@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Numerics;
 using CalculationImpedancesApp;
 using NUnit.Framework;
 using CalculationImpedancesApp.Circuits;
@@ -80,7 +81,7 @@ namespace NUnitTest.Circuits
 		}
 
 		[Test(Description = "Test of the calculate")]
-		public void TestCalculateZ_CorrectValue()
+		public void TestCalculateZ()
 		{
             //TODO: Дубли данных лучше сократить (+)
 			var subSegments = CreateParallelCircuit().SubSegments;
@@ -91,6 +92,18 @@ namespace NUnitTest.Circuits
 				1/((1 / (subSegments[0].CalculateZ(frequency))));
 			var actual = parallelCircuit.CalculateZ(frequency);
 
+			Assert.AreEqual(expected,
+				actual, "The calculator does not count correctly");
+		}
+
+		[Test(Description = "Test of the calculate with empty collection")]
+		public void TestCalculateZ_EmptyCollection()
+		{
+			var parallelCircuit = new ParallelCircuit
+				(new SegmentsObservableCollection());
+			var expected = new Complex(0, 0);
+			var frequency = 7;
+			var actual = parallelCircuit.CalculateZ(frequency);
 			Assert.AreEqual(expected,
 				actual, "The calculator does not count correctly");
 		}

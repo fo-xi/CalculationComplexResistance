@@ -6,7 +6,7 @@ using NUnit.Framework;
 
 namespace NUnitTest
 {
-	class ElementEventArgsTest
+	public class ElementEventArgsTest
     {
 	    [Test(Description = "Positive test of the getter Message")]
 	    public void TestMessageGet_CorrectValue()

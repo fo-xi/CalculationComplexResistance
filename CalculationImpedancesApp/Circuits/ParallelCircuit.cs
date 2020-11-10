@@ -60,13 +60,7 @@ namespace CalculationImpedancesApp.Circuits
 
             foreach (ISegment segment in SubSegments)
             {
-	            if (segment.CalculateZ(frequencies).Real == 0 && 
-                    segment.CalculateZ(frequencies).Imaginary == 0)
-	            {
-		            continue;
-	            }
-
-                result += (1.0/(segment.CalculateZ(frequencies)));
+	            result += (1.0/(segment.CalculateZ(frequencies)));
             }
 
             result = 1.0/(result);

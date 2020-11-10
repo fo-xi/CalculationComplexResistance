@@ -102,8 +102,7 @@ namespace NUnitTest.Circuits
 		{
 			var wasCalled = false;
             //TODO: Дубли данных лучше сократить (+)
-            var subSegments = CreateCircuit().SubSegments;
-			var circuit = new Circuit("fdr4", subSegments);
+			var circuit = CreateCircuit();
 
 			circuit.SegmentChanged += delegate (object o, EventArgs e)
 			{

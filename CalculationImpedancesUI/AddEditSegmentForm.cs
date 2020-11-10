@@ -68,8 +68,8 @@ namespace CalculationImpedancesUI
 					}
 				}
 			}
-            //TODO: Нет смысла в аргументе catch-a
-			catch (ArgumentException exception)
+            //TODO: Нет смысла в аргументе catch-a (+)
+			catch (ArgumentException)
 			{
 				MessageBox.Show("Enter element name", "Warning",
 					MessageBoxButtons.OK, MessageBoxIcon.Warning);
