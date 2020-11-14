@@ -56,7 +56,7 @@ namespace CalculationImpedancesUI.Control
 			try
 			{
 				var selectedIndex = CheckElementSelection();
-				if (selectedIndex == CircuitsTreeView.Nodes[0])
+				if (selectedIndex == CircuitsTreeView.Nodes[0] || selectedIndex.Segment is IElement)
 				{
 					return;
 				}
@@ -71,13 +71,11 @@ namespace CalculationImpedancesUI.Control
 					var parent = selectedIndex.Parent as SegmentTreeNode;
 					if (parent == CircuitsTreeView.Nodes[0])
 					{
-						Project.SelectedCircuit.SubSegments.Remove(selectedIndex.Segment);
-						Project.SelectedCircuit.SubSegments.Add(segmentForm.NewSegment);
+						Project.SelectedCircuit.SubSegments[selectedIndex.Index] = segmentForm.NewSegment;
 					}
 					else
 					{
-						parent.Segment.SubSegments.Remove(selectedIndex.Segment);
-						parent.Segment.SubSegments.Add(segmentForm.NewSegment);
+						parent.Segment.SubSegments[selectedIndex.Index] = segmentForm.NewSegment;
 					}
 					TreeViewManager.FillCircuitNodes(Project.SelectedCircuit);
 					NotifyCalculate?.Invoke(this, e);
@@ -149,14 +147,13 @@ namespace CalculationImpedancesUI.Control
 					{
 						subSegments = parent.Segment.SubSegments;
 					}
-					subSegments.Remove(selectedIndex.Segment);
-					parent.Nodes.Remove(selectedIndex);
-					subSegments.Add(elementForm.NewElement);
-					parent.Nodes.Add(new SegmentTreeNode
+					subSegments[selectedIndex.Index] = elementForm.NewElement;
+					parent.Nodes.RemoveAt(selectedIndex.Index);
+					parent.Nodes[selectedIndex.Index] = new SegmentTreeNode
 					{
 						Text = elementForm.NewElement.ToString(),
 						Segment = elementForm.NewElement
-					});
+					};
 					NotifyCalculate?.Invoke(this, e);
 				}
 			}
@@ -172,7 +169,12 @@ namespace CalculationImpedancesUI.Control
 			try
 			{
 				var selectedIndex = CheckElementSelection();
-				if (selectedIndex == CircuitsTreeView.Nodes[0])
+				if (selectedIndex == null)
+				{
+					MessageBox.Show("Select element/segment", "Warning",
+						MessageBoxButtons.OK, MessageBoxIcon.Warning);
+				}
+				else if (selectedIndex == CircuitsTreeView.Nodes[0])
 				{
 					MessageBox.Show("Can't delete root element", "Error",
 						MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -192,6 +194,8 @@ namespace CalculationImpedancesUI.Control
 					parent.Nodes.Remove(selectedIndex);
 					NotifyCalculate?.Invoke(this, e);
 				}
+
+				CircuitsTreeView.SelectedNode = null;
 			}
 			catch (ArgumentNullException exception)
 			{
@@ -272,11 +276,6 @@ namespace CalculationImpedancesUI.Control
 		private SegmentTreeNode CheckElementSelection()
         {
             var element = CircuitsTreeView.SelectedNode as SegmentTreeNode;
-	        if (element == null)
-	        {
-		        return CircuitsTreeView.Nodes[0] as SegmentTreeNode;
-	        }
-
             return element;
         }
 

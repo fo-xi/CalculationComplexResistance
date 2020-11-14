@@ -11,27 +11,25 @@ namespace NUnitTest.Circuits
 {
 	public class CircuitTest
 	{
-		//TODO: Корректнее сделать приватным свойством
-		private Circuit CreateCircuit()
+		//TODO: Корректнее сделать приватным свойством (+)
+		private Circuit CreateCircuit { get; } = new Circuit(" ", new SegmentsObservableCollection
 		{
-			return new Circuit(" ", new SegmentsObservableCollection
+			new SerialCircuit(new SegmentsObservableCollection
 			{
-				new SerialCircuit(new SegmentsObservableCollection
-				{
-					new Inductor("jng5", 56.0),
-				}),
-				new ParallelCircuit(new SegmentsObservableCollection
-				{
-					new Resistor("g56", 7.8),
-				}),
-			});
-		}
+				new Inductor("jng5", 56.0),
+			}),
+			new ParallelCircuit(new SegmentsObservableCollection
+			{
+				new Resistor("g56", 7.8),
+			}),
+		});
+		
 
 		[Test(Description = "Positive test of the getter Name")]
 		public void TestNameGet_CorrectValue()
 		{
 			var expected = "ht56";
-			var circuit = CreateCircuit();
+			var circuit = CreateCircuit;
 			circuit.Name = expected;
 			var actual = circuit.Name;
 			Assert.AreEqual(expected, actual, "The Name getter " +
@@ -42,7 +40,7 @@ namespace NUnitTest.Circuits
 		public void TestNameSet_CorrectValue()
 		{
 			var expected = "htt56";
-			var circuit = CreateCircuit();
+			var circuit = CreateCircuit;
 			Assert.DoesNotThrow(() =>
 			{
 				circuit.Name = expected;
@@ -53,7 +51,7 @@ namespace NUnitTest.Circuits
 			TestName = "Assigning an incorrect circuit name that contains less than 1 symbol")]
 		public void TestName_InvalidName(string wrongName, string message)
 		{
-			var circuit = CreateCircuit();
+			var circuit = CreateCircuit;
 			Assert.Throws<ArgumentException>(() =>
 			{
 				circuit.Name = wrongName;
@@ -63,7 +61,7 @@ namespace NUnitTest.Circuits
 		[Test(Description = "Positive test of the getter SubSegments")]
 		public void TestSubSegmentsGet_CorrectValue()
 		{
-            var expected = CreateCircuit().SubSegments;
+            var expected = CreateCircuit.SubSegments;
 			var circuit = new Circuit(" ", new SegmentsObservableCollection());
 			circuit.SubSegments = expected;
 			var actual = circuit.SubSegments;
@@ -74,7 +72,7 @@ namespace NUnitTest.Circuits
 		[Test(Description = "Positive test of the setter SubSegments")]
 		public void TestSubSegmentsSet_CorrectValue()
 		{
-            var expected = CreateCircuit().SubSegments;
+            var expected = CreateCircuit.SubSegments;
 			var circuit = new Circuit(" ", new SegmentsObservableCollection());
 			Assert.DoesNotThrow(() =>
 			{
@@ -86,7 +84,7 @@ namespace NUnitTest.Circuits
 		public void TestConstructor_CorrectValue()
 		{
 			var name = "d345";
-            var subSegments = CreateCircuit().SubSegments;
+            var subSegments = CreateCircuit.SubSegments;
 			Assert.DoesNotThrow(() =>
 			{
 				var circuit = new Circuit(name, subSegments);
@@ -97,7 +95,7 @@ namespace NUnitTest.Circuits
 		public void EventRegistrationTesting_CorrectValue()
 		{
 			var wasCalled = false;
-			var circuit = CreateCircuit();
+			var circuit = CreateCircuit;
 
 			circuit.SegmentChanged += delegate (object o, EventArgs e)
 			{
@@ -111,7 +109,7 @@ namespace NUnitTest.Circuits
 		[Test(Description = "Test of the calculate")]
 		public void TestCalculateZ_CorrectValue()
 		{
-			var subSegments = CreateCircuit().SubSegments;
+			var subSegments = CreateCircuit.SubSegments;
 			var circuit = new Circuit("fdr4", subSegments);
 
 			List<double> frequencies = new List<double> { 32.5, 21.4, 11.9 };
