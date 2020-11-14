@@ -1,7 +1,6 @@
 ﻿using CalculationImpedancesApp;
 using System.Drawing;
 
-//TODO: Несоответствие дефолтному namespace (+)
 namespace CalculationImpedancesUI.Drawing.Elements
 {
 	/// <summary>

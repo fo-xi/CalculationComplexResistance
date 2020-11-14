@@ -13,7 +13,6 @@ namespace CalculationImpedancesUI
 		/// </summary>
 		public IElement NewElement { get; set; }
 
-		//TODO: RSDN - именование (+)
 		/// <summary>
 		/// _elementType of new circuit element.
 		/// </summary>
@@ -44,7 +43,6 @@ namespace CalculationImpedancesUI
 			{
 				switch (TypeComboBox.SelectedIndex)
 				{
-					//TODO: RSDN отступы! (+)
 					case 1:
 					{
 						NewElement = new Resistor(name, value);
@@ -68,7 +66,6 @@ namespace CalculationImpedancesUI
 					}
 				}
 			}
-            //TODO: Нет смысла в аргументе catch-a (+)
 			catch (ArgumentException exception)
 			{
 				MessageBox.Show(exception.Message, "Warning",

@@ -2,7 +2,6 @@
 using CalculationImpedancesApp;
 using CalculationImpedancesUI.Drawing;
 
-//TODO: Несоответствие дефолтному namespace (+)
 namespace CalculationImpedancesUI.Drawing.Circuits
 {
 	/// <summary>
@@ -100,7 +99,6 @@ namespace CalculationImpedancesUI.Drawing.Circuits
 				return;
 			}
 
-            //TODO: Дублируются операции по инициализации точек связи (+)
 			var firstNode = Nodes[0] as DrawableSegmentBase;
 			var lastNode = Nodes[Nodes.Count - 1] as DrawableSegmentBase;
 

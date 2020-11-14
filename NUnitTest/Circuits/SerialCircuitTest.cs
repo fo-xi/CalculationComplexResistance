@@ -7,10 +7,8 @@ using System.Numerics;
 using CalculationImpedancesApp.Circuits;
 using CalculationImpedancesApp.Elements;
 
-//TODO: Несоответствие дефолтному namespace (+)
 namespace NUnitTest.Circuits
 {
-	//TODO: RSDN (+)
 	public class SerialCircuitTest
     {
 		private SerialCircuit CreateSerialCircuit()
@@ -25,7 +23,6 @@ namespace NUnitTest.Circuits
 		public void TestSerialCircuitNameGet_CorrectValue()
 		{
 			var expected = "Serial";
-            //TODO: Дубли данных лучше сократить (+)
             var serialCircuit = CreateSerialCircuit();
 			serialCircuit.Name = expected;
 			var actual = serialCircuit.Name;
@@ -37,7 +34,6 @@ namespace NUnitTest.Circuits
 		public void TestSerialCircuitNameSet_CorrectValue()
 		{
 			var expected = "Serial";
-            //TODO: Дубли данных лучше сократить (+)
 			var serialCircuit = CreateSerialCircuit();
 			Assert.DoesNotThrow(() =>
 			{
@@ -48,7 +44,6 @@ namespace NUnitTest.Circuits
 		[Test(Description = "Positive test of the getter SubSegments")]
 		public void TestSubSegmentsGet_CorrectValue()
 		{
-            //TODO: Дубли данных лучше сократить (+)
 			var expected = CreateSerialCircuit().SubSegments;
 			var serialCircuit = new SerialCircuit(new SegmentsObservableCollection());
 			serialCircuit.SubSegments = expected;
@@ -60,7 +55,6 @@ namespace NUnitTest.Circuits
 		[Test(Description = "Positive test of the setter SubSegments")]
 		public void TestSubSegmentsSet_CorrectValue()
 		{
-            //TODO: Дубли данных лучше сократить (+)
 			var expected = CreateSerialCircuit().SubSegments;
 			var serialCircuit = new SerialCircuit(new SegmentsObservableCollection());
 			Assert.DoesNotThrow(() =>
@@ -72,7 +66,6 @@ namespace NUnitTest.Circuits
 		[Test(Description = "Positive test of the constructor SerialCircuit")]
 		public void TestSerialCircuitConstructor_CorrectValue()
 		{
-            //TODO: Дубли данных лучше сократить (+)
 			var subSegments = CreateSerialCircuit().SubSegments;
 			Assert.DoesNotThrow(() =>
 			{
@@ -83,7 +76,6 @@ namespace NUnitTest.Circuits
 		[Test(Description = "Test of the calculate")]
 		public void TestCalculateZ_CorrectValue()
 		{
-            //TODO: Дубли данных лучше сократить (+)
 			var subSegments = CreateSerialCircuit().SubSegments;
 			var serialCircuit = new SerialCircuit(subSegments);
 
@@ -101,7 +93,6 @@ namespace NUnitTest.Circuits
 		public void EventRegistrationTesting_CorrectValue()
 		{
 			var wasCalled = false;
-            //TODO: Дубли данных лучше сократить (+)
 			var subSegments = CreateSerialCircuit().SubSegments;
 			var serialCircuit = new SerialCircuit(subSegments);
 

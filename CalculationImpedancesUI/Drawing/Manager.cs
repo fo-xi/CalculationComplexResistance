@@ -108,7 +108,6 @@ namespace CalculationImpedancesUI.Drawing
 		{
 			switch (segment)
 			{
-                //TODO: Можно сразу возвращать экземпляры из case-ов (+)
 				case Resistor resistor:
                 {
                     return new DrawableResistor(segment);
@@ -143,9 +142,10 @@ namespace CalculationImpedancesUI.Drawing
 		public static void FindCoordinateNode()
 		{
 			int halfHeightSegment = 0;
-			//TODO: Нужны два форыча?
-			//Нужно сначала найти самую высокую ноду из всех нод, а потом, в следующем foreach произвести операции
-			//Это необходимо для выравнивания
+			
+            // Нужно сначала найти самую высокую ноду из всех нод,
+            // а потом, в следующем foreach произвести операции
+			// Это необходимо для выравнивания
 			foreach (DrawableSegmentBase segment in TreeCircuit.Nodes[0].Nodes)
 			{
 				if (halfHeightSegment < segment.SizeSegment.Height / 2)
@@ -161,14 +161,12 @@ namespace CalculationImpedancesUI.Drawing
 				var prevNode = segment.PrevNode as DrawableSegmentBase;
 				if (prevNode == null)
 				{
-					//TODO: RSDN - длины строк (+)
 					segment.StartCoordinate = 
 						new Point(5, halfHeightSegment - 
 						segment.SizeSegment.Height / 2);
 				}
 				else
 				{
-					//TODO: RSDN - длины строк (+)
 					segment.StartCoordinate = 
 						new Point(prevNode.StartCoordinate.X + 
 					     prevNode.SizeSegment.Width + 
@@ -210,7 +208,6 @@ namespace CalculationImpedancesUI.Drawing
 
 					if (prevNode != null)
 					{
-						//TODO: RSDN - длины строк (+)
 						graphics.DrawLine(pen, 
 							prevNode.RightСonnectСoordinate, 
 							node.LeftСonnectСoordinate);

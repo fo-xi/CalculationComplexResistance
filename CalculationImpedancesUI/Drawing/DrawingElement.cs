@@ -3,13 +3,11 @@ using CalculationImpedancesApp;
 
 namespace CalculationImpedancesUI.Drawing
 {
-	//TODO: RSDN (+)
 	/// <summary>
 	/// The class contains methods for working with circuit elements.
 	/// </summary>
 	public abstract class DrawingElement : DrawableSegmentBase
 	{
-        //TODO: ПРавильнее понизить модификатор доступа (+)
         /// <summary>
 		/// Create a circuit element.
 		/// </summary>

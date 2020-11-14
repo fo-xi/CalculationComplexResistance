@@ -3,7 +3,6 @@ using System.Drawing;
 using System.Windows.Forms;
 using CalculationImpedancesApp;
 
-//TODO: Несоответствие дефолтному namespace (+)
 namespace CalculationImpedancesUI.Control
 {
     public partial class TreeViewControl : UserControl
@@ -103,7 +102,6 @@ namespace CalculationImpedancesUI.Control
 					return;
 				}
 
-				//TODO: RSDN - длины строк (+)
                 var subSements = 
 	                Project.SelectedCircuit.SubSegments;
                 if (!(selectedIndex.Segment is IElement) && 
@@ -214,7 +212,6 @@ namespace CalculationImpedancesUI.Control
 
         private void CircuitsTreeView_DragDrop(object sender, DragEventArgs e)
         {
-			//TODO: RSDN - длины строк (+)
             Point targetPoint = 
 				CircuitsTreeView.PointToClient(new Point(e.X, e.Y));
 
@@ -268,7 +265,6 @@ namespace CalculationImpedancesUI.Control
 	        NotifyCalculate?.Invoke(this, e);
 		}
 
-		//TODO: XML (+)
 		/// <summary>
 		/// Checking if the selected item is a root.
 		/// </summary>
@@ -284,7 +280,6 @@ namespace CalculationImpedancesUI.Control
             return element;
         }
 
-		//TODO: XML (+)
 		/// <summary>
 		/// Updating data after we changed the tree structure.
 		/// </summary>

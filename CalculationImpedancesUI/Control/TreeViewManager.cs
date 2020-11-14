@@ -28,7 +28,6 @@ namespace CalculationImpedancesUI.Control
 			CircuitsTreeView.Nodes.Add(mainCircuitNode);
 			foreach (var subSegment in circuit.SubSegments)
 			{
-				//TODO: Дубль в следующем методе (+)
 				SegmentTreeNode subSegmentNode = CreateSegmentTreeNode(subSegment);
 				if (!(subSegmentNode.Segment is IElement))
 				{
@@ -62,7 +61,6 @@ namespace CalculationImpedancesUI.Control
 			{
 				foreach (var subSegment in segment.SubSegments)
 				{
-					//TODO: Дубль (+)
 					SegmentTreeNode segmentNode = CreateSegmentTreeNode(subSegment);
 					parentNode.Nodes.Add(segmentNode);
 					if (!(subSegment is IElement))

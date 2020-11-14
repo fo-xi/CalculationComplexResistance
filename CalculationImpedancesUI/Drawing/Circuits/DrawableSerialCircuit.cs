@@ -2,7 +2,6 @@
 using CalculationImpedancesApp;
 using CalculationImpedancesUI.Drawing;
 
-//TODO: Несоответствие дефолтному namespace (+)
 namespace CalculationImpedancesUI.Drawing.Circuits
 {
 	/// <summary>
@@ -70,7 +69,6 @@ namespace CalculationImpedancesUI.Drawing.Circuits
 				}
 				else
 				{
-					//TODO: RSDN - длины строк (+)
 					segment.StartCoordinate = 
 						new Point(prevNode.StartCoordinate.X +
 					              prevNode.SizeSegment.Width + Distance,
@@ -97,15 +95,10 @@ namespace CalculationImpedancesUI.Drawing.Circuits
 				return;
 			}
 
-			//TODO: Не используется (+)
 			foreach (DrawableSegmentBase node in Nodes)
 			{
-                //TODO: Можно переделать в PatternMatching (+)
-
-				if (node.PrevNode is DrawableSegmentBase prevNode
-					&& prevNode != null)
+                if (node.PrevNode is DrawableSegmentBase prevNode)
 				{ 
-					//TODO: RSDN - длины строк (+)
 					Graphics.DrawLine(Pen, 
 						prevNode.RightСonnectСoordinate,
 						node.LeftСonnectСoordinate);

@@ -33,7 +33,6 @@ namespace CalculationImpedancesUI
 				? NewSegment.SubSegments : new SegmentsObservableCollection();
 			switch (TypeComboBox.SelectedIndex)
 			{
-				//TODO: RSDN - отступы в case-ах! (+)
 				case 0:
 				{
 					NewSegment = new SerialCircuit(tempSubSegments);
@@ -56,7 +55,6 @@ namespace CalculationImpedancesUI
 			{
 				return;
 			}
-			//TODO: RSDN отступы в case-ах! (+)
 			switch (NewSegment)
 			{
 				case ParallelCircuit parallelCircuit:

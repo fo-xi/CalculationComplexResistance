@@ -71,7 +71,6 @@ namespace CalculationImpedancesApp.Elements
 				if (value != _value)
 				{
 					SegmentChanged?.Invoke(this,
-                        //TODO: При чём здесь Capacitor? (+)
 						new ElementEventArgs($"The element" +
 						$" changed the {nameof(Value)} to {Value}!"));
 				}

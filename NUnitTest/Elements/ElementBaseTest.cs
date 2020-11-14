@@ -5,10 +5,8 @@ using CalculationImpedancesApp;
 using NUnit.Framework;
 using CalculationImpedancesApp.Elements;
 
-//TODO: Несоответствие дефолтному namespace (+)
 namespace NUnitTest.Elements
 {
-	//TODO: RSDN (+)
 	public class ElementBaseTest
 	{
 		[Test(Description = "Positive test of the getter Name")]
@@ -33,7 +31,6 @@ namespace NUnitTest.Elements
 			}, "The Name setter accepts the correct name");
 		}
 
-        //TODO: Зачем сообщение выносить в параметр, если у вас один тесткейс? (+)
 		[Test(Description = "Name assignment containing less than 1 character")]
 		public void TestName_InvalidName()
 		{
@@ -49,9 +46,11 @@ namespace NUnitTest.Elements
 		public void TestValueGet_CorrectValue()
 		{
 			var expected = 4.6;
-			var element = new Resistor("j55t", 32.5);
-			element.Value = expected;
-			var actual = element.Value;
+            var element = new Resistor("j55t", 32.5)
+            {
+                Value = expected
+            };
+            var actual = element.Value;
 			Assert.AreEqual(expected, actual, "The Value getter " +
 			                                  "returns an incorrect value");
 		}
@@ -66,7 +65,7 @@ namespace NUnitTest.Elements
 				element.Value = expected;
 			}, "The Value setter accepts the correct value");
 		}
-		//TODO: Зачем сообщение выносить в параметр, если у вас один тесткейс? (+)
+
 		[Test(Description = "Assigning a negative value")]
 		public void TestValue_NegativeNumber()
 		{

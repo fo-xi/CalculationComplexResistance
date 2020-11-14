@@ -7,12 +7,11 @@ using System.Numerics;
 using CalculationImpedancesApp.Circuits;
 using CalculationImpedancesApp.Elements;
 
-//TODO: Несоответствие дефолтному namespace (+)
 namespace NUnitTest.Circuits
 {
-	//TODO: RSDN (+)
 	public class CircuitTest
 	{
+		//TODO: Корректнее сделать приватным свойством
 		private Circuit CreateCircuit()
 		{
 			return new Circuit(" ", new SegmentsObservableCollection
@@ -64,7 +63,6 @@ namespace NUnitTest.Circuits
 		[Test(Description = "Positive test of the getter SubSegments")]
 		public void TestSubSegmentsGet_CorrectValue()
 		{
-            //TODO: Дубли данных лучше сократить (+)
             var expected = CreateCircuit().SubSegments;
 			var circuit = new Circuit(" ", new SegmentsObservableCollection());
 			circuit.SubSegments = expected;
@@ -76,7 +74,6 @@ namespace NUnitTest.Circuits
 		[Test(Description = "Positive test of the setter SubSegments")]
 		public void TestSubSegmentsSet_CorrectValue()
 		{
-            //TODO: Дубли данных лучше сократить (+)
             var expected = CreateCircuit().SubSegments;
 			var circuit = new Circuit(" ", new SegmentsObservableCollection());
 			Assert.DoesNotThrow(() =>
@@ -89,7 +86,6 @@ namespace NUnitTest.Circuits
 		public void TestConstructor_CorrectValue()
 		{
 			var name = "d345";
-            //TODO: Дубли данных лучше сократить (+)
             var subSegments = CreateCircuit().SubSegments;
 			Assert.DoesNotThrow(() =>
 			{
@@ -101,7 +97,6 @@ namespace NUnitTest.Circuits
 		public void EventRegistrationTesting_CorrectValue()
 		{
 			var wasCalled = false;
-            //TODO: Дубли данных лучше сократить (+)
 			var circuit = CreateCircuit();
 
 			circuit.SegmentChanged += delegate (object o, EventArgs e)
@@ -116,7 +111,6 @@ namespace NUnitTest.Circuits
 		[Test(Description = "Test of the calculate")]
 		public void TestCalculateZ_CorrectValue()
 		{
-            //TODO: Дубли данных лучше сократить (+)
 			var subSegments = CreateCircuit().SubSegments;
 			var circuit = new Circuit("fdr4", subSegments);
 
