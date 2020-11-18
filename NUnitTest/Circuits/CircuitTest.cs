@@ -11,7 +11,6 @@ namespace NUnitTest.Circuits
 {
 	public class CircuitTest
 	{
-		//TODO: Корректнее сделать приватным свойством (+)
 		private Circuit CreateCircuit { get; } = new Circuit(" ", new SegmentsObservableCollection
 		{
 			new SerialCircuit(new SegmentsObservableCollection
