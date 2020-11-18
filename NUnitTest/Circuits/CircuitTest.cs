@@ -11,15 +11,16 @@ namespace NUnitTest.Circuits
 {
 	public class CircuitTest
 	{
+		//TODO: Корректнее сделать приватным свойством (+)
 		private Circuit CreateCircuit { get; } = new Circuit(" ", new SegmentsObservableCollection
 		{
 			new SerialCircuit(new SegmentsObservableCollection
 			{
-				new Inductor("jng5", 56.0),
+				new Resistor("jng5", 56.0),
 			}),
 			new ParallelCircuit(new SegmentsObservableCollection
 			{
-				new Resistor("g56", 7.8),
+				new Resistor("g56", 8.0),
 			}),
 		});
 		
@@ -111,23 +112,24 @@ namespace NUnitTest.Circuits
 			var subSegments = CreateCircuit.SubSegments;
 			var circuit = new Circuit("fdr4", subSegments);
 
-			List<double> frequencies = new List<double> { 32.5, 21.4, 11.9 };
+			List<double> frequencies = new List<double> {32.5};
 
 			List<Complex> results = new List<Complex>();
 			foreach (var frequency in frequencies)
 			{
-				var serialCircuitResult =
-					subSegments[0].SubSegments[0].CalculateZ(frequency);
-				var parallelCircuitResult = 
-					1/((1/(subSegments[1].SubSegments[0].CalculateZ(frequency))));
+				var serialCircuitResult = 56.0;
+				var parallelCircuitResult = 8.0;
 				var result = serialCircuitResult + parallelCircuitResult;
 				results.Add(result);
 			}
+
 			List<Complex> expected = results;
 			var actual = circuit.CalculateZ(frequencies);
 
-			Assert.AreEqual(expected,
-				actual, "The calculator does not count correctly");
+
+			Assert.AreEqual(expected[0],
+				actual[0], "The calculator does not count correctly");
+
 		}
 	}
 }
