@@ -23,7 +23,6 @@ namespace NUnitTest.Circuits
 				new Resistor("g56", 8.0),
 			}),
 		});
-		
 
 		[Test(Description = "Positive test of the getter Name")]
 		public void TestNameGet_CorrectValue()
@@ -109,27 +108,31 @@ namespace NUnitTest.Circuits
 		[Test(Description = "Test of the calculate")]
 		public void TestCalculateZ_CorrectValue()
 		{
-			var subSegments = CreateCircuit.SubSegments;
-			var circuit = new Circuit("fdr4", subSegments);
+			var circuit = new Circuit(" ", new SegmentsObservableCollection
+			{
+				new SerialCircuit(new SegmentsObservableCollection
+				{
+					new Resistor("jng5", 56.0),
+				}),
+				new ParallelCircuit(new SegmentsObservableCollection
+				{
+					new Resistor("g56", 8.0),
+				}),
+			});
 
-			List<double> frequencies = new List<double> {32.5};
+			List<double> frequencies = new List<double> { 32.5 };
 
 			List<Complex> results = new List<Complex>();
-			foreach (var frequency in frequencies)
-			{
-				var serialCircuitResult = 56.0;
-				var parallelCircuitResult = 8.0;
-				var result = serialCircuitResult + parallelCircuitResult;
-				results.Add(result);
-			}
+			var serialCircuitResult = 56.0;
+			var parallelCircuitResult = 8.0;
+			var result = serialCircuitResult + parallelCircuitResult;
+			results.Add(result);
 
 			List<Complex> expected = results;
 			var actual = circuit.CalculateZ(frequencies);
 
-
 			Assert.AreEqual(expected[0],
 				actual[0], "The calculator does not count correctly");
-
 		}
 	}
 }
