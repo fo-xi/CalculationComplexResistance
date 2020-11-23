@@ -11,27 +11,21 @@ namespace NUnitTest.Circuits
 {
 	public class CircuitTest
 	{
-		//TODO: Корректнее сделать приватным свойством (+)
-        private Circuit CreateCircuit
-        {
-            get
+        private Circuit CreateCircuit =>
+            new Circuit(" ", new SegmentsObservableCollection
             {
-                return new Circuit(" ", new SegmentsObservableCollection
+                new SerialCircuit(new SegmentsObservableCollection
                 {
-                    new SerialCircuit(new SegmentsObservableCollection
-                    {
-                        new Resistor("jng5", 56.0),
-                    }),
-                    new ParallelCircuit(new SegmentsObservableCollection
-                    {
-                        new Resistor("g56", 8.0),
-                    }),
-                });
-			}
-        } 
-            
+                    new Resistor("jng5", 56.0),
+                }),
+                new ParallelCircuit(new SegmentsObservableCollection
+                {
+                    new Resistor("g56", 8.0),
+                }),
+            });
 
-		[Test(Description = "Positive test of the getter Name")]
+
+        [Test(Description = "Positive test of the getter Name")]
 		public void TestNameGet_CorrectValue()
 		{
 			var expected = "ht56";
