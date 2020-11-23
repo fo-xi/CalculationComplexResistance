@@ -12,17 +12,24 @@ namespace NUnitTest.Circuits
 	public class CircuitTest
 	{
 		//TODO: Корректнее сделать приватным свойством (+)
-		private Circuit CreateCircuit { get; } = new Circuit(" ", new SegmentsObservableCollection
-		{
-			new SerialCircuit(new SegmentsObservableCollection
-			{
-				new Resistor("jng5", 56.0),
-			}),
-			new ParallelCircuit(new SegmentsObservableCollection
-			{
-				new Resistor("g56", 8.0),
-			}),
-		});
+        private Circuit CreateCircuit
+        {
+            get
+            {
+                return new Circuit(" ", new SegmentsObservableCollection
+                {
+                    new SerialCircuit(new SegmentsObservableCollection
+                    {
+                        new Resistor("jng5", 56.0),
+                    }),
+                    new ParallelCircuit(new SegmentsObservableCollection
+                    {
+                        new Resistor("g56", 8.0),
+                    }),
+                });
+			}
+        } 
+            
 
 		[Test(Description = "Positive test of the getter Name")]
 		public void TestNameGet_CorrectValue()
@@ -108,19 +115,7 @@ namespace NUnitTest.Circuits
 		[Test(Description = "Test of the calculate")]
 		public void TestCalculateZ_CorrectValue()
 		{
-			var circuit = new Circuit(" ", new SegmentsObservableCollection
-			{
-				new SerialCircuit(new SegmentsObservableCollection
-				{
-					new Resistor("jng5", 56.0),
-				}),
-				new ParallelCircuit(new SegmentsObservableCollection
-				{
-					new Resistor("g56", 8.0),
-				}),
-			});
-
-			List<double> frequencies = new List<double> { 32.5 };
+            List<double> frequencies = new List<double> { 32.5 };
 
 			List<Complex> results = new List<Complex>();
 			var serialCircuitResult = 56.0;
@@ -129,7 +124,7 @@ namespace NUnitTest.Circuits
 			results.Add(result);
 
 			List<Complex> expected = results;
-			var actual = circuit.CalculateZ(frequencies);
+			var actual = CreateCircuit.CalculateZ(frequencies);
 
 			Assert.AreEqual(expected[0],
 				actual[0], "The calculator does not count correctly");
